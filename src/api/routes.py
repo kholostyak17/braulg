@@ -8,11 +8,23 @@ from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+@api.route('/user/<email>', methods=['GET'])
+def get_user_by_email(email):
+    # user = User(
+    #         id= 0,
+    #         name= "Persefone", 
+    #         email= "persefone@gmail.com", 
+    #         _password= "1234",
+    #         language= "English, Spanish and a little sumerian",
+    #         age= "30",
+    #         localization = "Cologne (Germany)",
+    #         bio= "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+    # )
+    # user = user.create()
+    user = User.get_by_email(email)
+    print(user)
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend"
-    }
+    return jsonify(user.to_dict()), 200
 
-    return jsonify(response_body), 200
+
+    
