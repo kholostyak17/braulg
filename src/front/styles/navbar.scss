@@ -1,0 +1,21 @@
+@import 'index.scss';
+
+.navbar{
+    background-color: $primary-color;
+    font-family: $font-family;
+    font-weight: 600;
+}
+
+.logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: $white-color;
+}
+a{
+    color: $white-color;
+}
+a:hover{
+    color: $secondary-color;
+    text-decoration: none;
+}
