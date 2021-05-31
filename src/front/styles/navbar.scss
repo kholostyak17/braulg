@@ -5,17 +5,19 @@
     font-family: $font-family;
     font-weight: 600;
 }
-
+a, a:hover{
+    text-decoration: none;
+}
 .logo{
     width: 30px;
     height: 30px;
     border-radius: 100%;
     color: $white-color;
 }
-a{
+.link-navbar{
     color: $white-color;
 }
-a:hover{
+.link-navbar:hover{
     color: $secondary-color;
     text-decoration: none;
 }

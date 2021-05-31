@@ -8,7 +8,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg mb-3">
 			<div className="container-fluid">
 				<Link to="/">
-					<a className="nav-link active" aria-current="page" href="#">
+					<a className="nav-link active link-navbar" aria-current="page" href="#">
 						<img src={logo} className="logo" />
 					</a>
 				</Link>
@@ -26,28 +26,28 @@ export const Navbar = () => {
 					<ul className="navbar-nav">
 						<li className="nav-item">
 							<Link to="/trips">
-								<a className="nav-link" href="#">
+								<a className="nav-link link-navbar" href="#">
 									Viajes propuestos
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link to="/newtrip">
-								<a className="nav-link" href="#">
+								<a className="nav-link link-navbar" href="#">
 									Proponer un viaje
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link to="/chat">
-								<a className="nav-link" href="#">
+								<a className="nav-link link-navbar" href="#">
 									Chat
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link to="/blog">
-								<a className="nav-link" href="#">
+								<a className="nav-link link-navbar" href="#">
 									Blog
 								</a>
 							</Link>
@@ -55,7 +55,7 @@ export const Navbar = () => {
 					</ul>
 					<div className="ml-auto nav-item dropdown">
 						<a
-							className="nav-link dropdown-toggle"
+							className="nav-link dropdown-toggle link-navbar"
 							href="#"
 							id="navbarDropdownMenuLink"
 							role="button"
