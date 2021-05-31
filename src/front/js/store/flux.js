@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getUser: async () => {
-				fetch("https://3001-purple-cheetah-2623lbh4.ws-eu08.gitpod.io/api/user/persefone@gmail", {
+				fetch("https://3001-azure-haddock-u9yq6ojj.ws-eu08.gitpod.io/api/user/persefone@gmail", {
 					method: "GET"
 				})
 					.then(function(response) {

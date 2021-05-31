@@ -1,4 +1,31 @@
+@import 'index.scss';
 
-.p{
-    font-size: 40;
+.title{
+    margin-top: 8rem;
+    margin-left: 18rem;
+    margin-right: 34rem;
+}
+.colorcito{
+    background-color:blue;
+}
+.basic-information{
+    margin-top: 4rem;
+    margin-left: 8rem;
+}
+
+.basic-information-secondary{
+    justify-content: flex-start;
+}
+
+.languages{
+    margin-top: 2rem;
+    margin-left: 8rem;
+}
+
+.message{
+    margin-top: 5rem;
+    margin-left: 20rem;
+}
+.next-trips{
+
 }
