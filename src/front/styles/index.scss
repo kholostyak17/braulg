@@ -3,8 +3,10 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
 $font-family: 'Nunito', sans-serif;
+$font-family-secondary: 'Roboto', sans-serif;
 $primary-color: #17A398;
 $primary-color-hover: rgb(24, 148, 138);
 $secondary-color: #F5B82E;
@@ -12,3 +14,52 @@ $secondary-color-hover: rgb(241, 172, 10);
 $black-color: #141414;
 $grey-color: #C4C4C4;
 $white-color: #FFFFFF;
+
+
+h1{
+    font-family: $font-family;
+    font-size: 96;
+    font-weight: bold;
+    color: $primary-color;
+}
+
+h2{
+    font-family: $font-family;
+    font-size: 72;
+    font-weight: bold;
+    color: $primary-color;
+}
+
+h3{
+    font-family: $font-family;
+    font-size: 64;
+    font-weight: bold;
+    color: $primary-color;
+}
+
+h4{
+    font-family: $font-family;
+    font-size: 48; 
+    font-weight: 600;
+    color: $primary-color;
+}
+
+h5{
+    font-family: $font-family;
+    font-size: 36;
+    font-weight: 600;
+    color: $primary-color; 
+}
+
+h6{
+    font-family: $font-family;
+    font-size: 36; 
+    font-weight: 600;
+    color: $primary-color;
+}
+
+p{
+    font-family: $font-family-secondary; 
+    font-size: 24; 
+    color: $black-color;
+}
