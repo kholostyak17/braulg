@@ -55,28 +55,23 @@ export const Navbar = () => {
 					</ul>
 					<div className="ml-auto nav-item dropdown">
 						<a
-							className="nav-link dropdown-toggle link-navbar"
+							className="dropdown-toggle"
 							href="#"
-							id="navbarDropdownMenuLink"
 							role="button"
+							id="dropdownMenuLink"
 							data-bs-toggle="dropdown"
 							aria-expanded="false">
 							<i className="fas fa-user" />
 						</a>
-						<ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<li>
 								<a className="dropdown-item" href="#">
-									Action
+									Mi perfil
 								</a>
 							</li>
 							<li>
 								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Something else here
+									Cerrar sesión
 								</a>
 							</li>
 						</ul>
