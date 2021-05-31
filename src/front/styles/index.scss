@@ -1,6 +1,7 @@
 /* 
     General Styles
 */
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
 $font-family: 'Nunito', sans-serif;
@@ -11,52 +12,3 @@ $secondary-color-hover: rgb(241, 172, 10);
 $black-color: #141414;
 $grey-color: #C4C4C4;
 $white-color: #FFFFFF;
-
-
-.button{
-    color: $white-color;
-    border-radius: 0.15rem;
-    font-weight: 700;
-    font-family: $font-family;
-    font-size: 16px;
-    border-width: 0;
-}
-
-.primary:hover{
-    background-color: $primary-color-hover;
-}
-.secondary:hover{
-    background-color: $secondary-color-hover;
-}
-
-.primary{
-    background-color: $primary-color;
-}
-.secondary{
-    background-color: $secondary-color;
-}
-.s{
-    height: 3.5rem;
-    width: 7.5rem;
-    font-size: 1.125rem;
-}
-.m{
-    height: 4.375rem;
-    width: 19.5rem;
-    font-size: 2.25rem;
-}
-.l{
-    height: 4.375rem;
-    width: 43.75rem;
-    font-size: 2.25rem;
-}
-.sm{
-    height: 1.85rem;
-    width: 6.75rem;
-    font-size: 0.875rem;
-}
-.lm{
-    height: 2.5rem;
-    width: 17.5rem;
-    font-size: 1.125rem;
-}

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import Button from "../component/button.js";
-import "../../styles/home.scss";
+import "../../styles/button.scss";
 
 export const Components = () => {
 	const { store, actions } = useContext(Context);
