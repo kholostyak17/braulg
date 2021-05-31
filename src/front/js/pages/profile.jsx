@@ -1,33 +1,38 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import "../../styles/profile.scss";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
+	const [userProfileDetails, setUserProfileDetails] = useState([]);
 	const params = useParams();
+	console.log(params);
 
 	useEffect(() => {
-		console.log(params);
-		actions.getUser();
+		// actions.getUser(params.email);
+		console.log(params.email);
 	}, []);
 
-	return (
-		<div className="text-center mt-5">
-			<h1>PROFILE</h1>
-			{store.user.length > 1
-				? store.user.map((e, i) => {
-						return (
-							<p key={i}>
-								{e.name}
-								{e.language}
-								{e.age}
-								{e.localization}
-								{e.bio}
-							</p>
-						);
-				  })
-				: "LOADING"}
-		</div>
-	);
+	// useEffect(
+	// 	() => {
+	// 		if (store.user != undefined) {
+	// 			setUserProfileDetails(
+	// 				<>
+	// 					<h2>{store.user.name}</h2>
+	// 					<ul>
+	// 						<li>Language ⇨ {store.user.language}</li>
+	// 						<li>Age ⇨ {store.user.age} years</li>
+	// 						<li>Localization ⇨ {store.user.localization}</li>
+	// 					</ul>
+	// 				</>
+	// 			);
+	// 		}
+	// 	},
+	// 	[store.userProfileDetails]
+	// );
+
+	console.log("User Profile", userProfileDetails);
+
+	return <div className=" d-flex flex-wrap justify-content-around">{userProfileDetails}</div>;
 };
