@@ -22,12 +22,8 @@ export const Profile = () => {
 						<h2>{store.user.name}</h2>
 						<p>{store.user.bio}</p>
 						<h5>Información básica</h5>
-						<p>
-							<h6>Edad</h6> {store.user.age}
-						</p>
-						<p>
-							<h6>Vive en</h6> {store.user.localization}
-						</p>
+						<h6>Edad</h6> {store.user.age}
+						<h6>Vive en</h6> {store.user.localization}
 						<h5>Lenguajes</h5>
 						{store.user.language}
 					</>

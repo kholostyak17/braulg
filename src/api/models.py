@@ -18,15 +18,9 @@ class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String)
-<<<<<<< HEAD
     email = db.Column(db.String)
     _password = db.Column(db.String)
     language = db.Column(db.String) 
-=======
-    mail = db.Column(db.String)
-    _password = db.Column(db.String)
-    language = db.Column(db.String)
->>>>>>> d54930a8a738e934ef650c8f915f535f1755d0b6
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
