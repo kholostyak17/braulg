@@ -5,34 +5,40 @@ import "../../styles/profile.scss";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
-	const [userProfileDetails, setUserProfileDetails] = useState([]);
+	const [user, setUser] = useState([]);
 	const params = useParams();
 	console.log(params);
 
 	useEffect(() => {
-		// actions.getUser(params.email);
+		actions.getUser(params.email);
 		console.log(params.email);
 	}, []);
 
-	// useEffect(
-	// 	() => {
-	// 		if (store.user != undefined) {
-	// 			setUserProfileDetails(
-	// 				<>
-	// 					<h2>{store.user.name}</h2>
-	// 					<ul>
-	// 						<li>Language ⇨ {store.user.language}</li>
-	// 						<li>Age ⇨ {store.user.age} years</li>
-	// 						<li>Localization ⇨ {store.user.localization}</li>
-	// 					</ul>
-	// 				</>
-	// 			);
-	// 		}
-	// 	},
-	// 	[store.userProfileDetails]
-	// );
+	useEffect(
+		() => {
+			if (store.user != undefined) {
+				setUser(
+					<>
+						<h2>{store.user.name}</h2>
+						<p>{store.user.bio}</p>
+						<h5>Información básica</h5>
+						<p>
+							<h6>Edad</h6> {store.user.age}
+						</p>
+						<p>
+							<h6>Vive en</h6> {store.user.localization}
+						</p>
+						<h5>Lenguajes</h5>
+						{store.user.language}
+					</>
+				);
+			}
+		},
+		[store.user]
+	);
+	console.log(store.user);
+	console.log(store.user.age);
+	console.log("User Profile", user);
 
-	console.log("User Profile", userProfileDetails);
-
-	return <div className=" d-flex flex-wrap justify-content-around">{userProfileDetails}</div>;
+	return <div className="">{user}</div>;
 };

@@ -13,7 +13,7 @@ def get_user_by_email(email):
     # user = User(
     #         id= 0,
     #         name= "Persefone", 
-    #         email= "persefone@gmail.com", 
+    #         email= "persefone@gmail", 
     #         _password= "1234",
     #         language= "English, Spanish and a little sumerian",
     #         age= "30",
