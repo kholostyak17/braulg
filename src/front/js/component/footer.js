@@ -3,26 +3,18 @@ import { Link } from "react-router-dom";
 import "../../styles/footer.scss";
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-1 text-center">
-		<span>
+	<footer className="footer mt-auto py-1 text-center d-flex flex-wrap">
+		<div className="ms-3 me-auto">
 			Made with <i className="fa fa-heart text-danger" /> by Andrea, Sergio &amp; Iván
-		</span>
-		<div>
-			<Link to="/aboutus">
-				<a href="#" className="link-footer">
-					Acerca de nosotros
-				</a>
-			</Link>
-			<Link to="/contact">
-				<a href="#" className="link-footer">
-					Contacta
-				</a>
-			</Link>
-			<Link to="/faq">
-				<a href="#" className="link-footer">
-					Preguntas frecuentes
-				</a>
-			</Link>
 		</div>
+		<Link to="/aboutus">
+			<div className="link-footer">Acerca de nosotros</div>
+		</Link>
+		<Link to="/contact">
+			<div className="link-footer">Contacta</div>
+		</Link>
+		<Link to="/faq">
+			<div className="link-footer">Preguntas frecuentes</div>
+		</Link>
 	</footer>
 );

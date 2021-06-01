@@ -4,15 +4,11 @@ footer{
     color: $white-color;
     background-color: $black-color;
     font-family: $font-family;
-    display: flex;
-    justify-content: flex-end;
-}
-a, a:hover{
-    text-decoration: none;
 }
 .link-footer{
     margin: 0 1rem;
     color: $white-color;
+    display: inline-block;
 }
 .link-footer:hover{
     color: $secondary-color;
