@@ -20,34 +20,41 @@ export const Profile = () => {
 			if (store.user != undefined) {
 				setUser(
 					<>
-						<div className="title">
-							<h2>{store.user.name}</h2>
+						<div className="row title">
+							<div className="col-sm-8">
+								<h2>{store.user.name}</h2>
 
-							<p>{store.user.bio}</p>
+								<p>{store.user.bio}</p>
+							</div>
 						</div>
-
-						<div className="form-row">
-							<div className="form-group ">
-								<div className="colorcito">!</div>
+						<div className="row body">
+							<div className="row col-sm-6 ">
 								<h3>Información básica</h3>
-								<div className="form-group col-md-2">
-									<h5>Edad</h5> <p>{store.user.age}</p>
+								<div className="row basic-information">
+									<div className="row col-sm-6">
+										<h5>Edad</h5>
+										<h5>Vive en</h5>
+									</div>
+									<div className="row-group col-sm-6">
+										<p>{store.user.age}</p>
+										<p>{store.user.localization}</p>
+									</div>
 								</div>
-								<div className="form-group col-md-2">
-									<h5>Vive en</h5> <p>{store.user.localization}</p>
-								</div>
-							</div>
-
-							<div className="languages">
 								<h3>Lenguajes</h3>
+								{/* 
+							<div className="row languages">
+
 								{store.user.language}
+							</div> */}
+								{/* 
+							<p className="row message">
+								<Button className="" size="m" color="secondary" text="Enviar mensaje" />
+							</p> */}
 							</div>
 
-							<p className="message">
-								<Button className="" size="m" color="secondary" text="Enviar mensaje" />
-							</p>
-
-							<h3 className="next-rips">Siguientes viajes</h3>
+							<div className="row col-sm-6">
+								<h3 className="next-rips">Siguientes viajes</h3>
+							</div>
 						</div>
 					</>
 				);

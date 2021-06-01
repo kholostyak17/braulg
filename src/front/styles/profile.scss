@@ -1,31 +1,51 @@
 @import 'index.scss';
 
 .title{
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
     margin-top: 8rem;
-    margin-left: 18rem;
-    margin-right: 34rem;
 }
-.colorcito{
-    background-color:blue;
+.body{
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    flex-wrap: wrap;
+    flex-flow: column wrap;
 }
 .basic-information{
-    margin-top: 4rem;
-    margin-left: 8rem;
+    margin-top:4rem;
+    justify-content: left;
+    align-items: left;
 }
 
-.basic-information-secondary{
-    justify-content: flex-start;
-}
+// .title{
+//     margin-top: 8rem;
+//     margin-left: 18rem;
+//     margin-right: 34rem;
+// }
+// .colorcito{
+//     background-color:blue;
+// }
+// .basic-information{
+//     margin-top: 4rem;
+//     margin-left: 8rem;
+// }
 
-.languages{
-    margin-top: 2rem;
-    margin-left: 8rem;
-}
+// .basic-information-secondary{
+//     justify-content: flex-start;
+// }
 
-.message{
-    margin-top: 5rem;
-    margin-left: 20rem;
-}
-.next-trips{
+// .languages{
+//     margin-top: 2rem;
+//     margin-left: 8rem;
+// }
 
-}
+// .message{
+//     margin-top: 5rem;
+//     margin-left: 20rem;
+// }
+// .next-trips{
+
+// }
