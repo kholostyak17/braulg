@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Components } from "./pages/components";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import Blog from "./pages/blog.js"
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -28,6 +29,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/components">
 							<Components />
+						</Route>
+                        <Route exact path="/blog">
+							<Blog />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
