@@ -1,0 +1,35 @@
+.big__Card{
+width: 78.188rem;
+height:40.063rem;
+margin: 1rem auto;
+flex-direction: row;
+
+}
+.img_Big{
+  width: 40%;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.big_Button{
+    margin: 0 auto 2rem auto
+}
+
+.title_Big{
+  color:#16A398;
+  font-size: 3rem;
+  margin-left: 4rem;
+
+}
+.subtitle_Big{
+  color:#16A398;
+  font-size: 2rem;
+  margin: 2rem 0 0 1rem;
+
+}
+.img_round{
+ border-radius: 50%;
+ height:5rem;
+ width: 6rem;
+ margin:1rem 1rem 0 1.5rem;
+}
