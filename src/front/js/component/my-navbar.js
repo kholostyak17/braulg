@@ -16,7 +16,7 @@ export const MyNavbar = () => {
 				<Nav.Link href="/">
 					<img src={logo} className="logo" />
 				</Nav.Link>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-secondary-color" />
+				<Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle-button bg-secondary-color" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
 						<Nav.Link href="/trips">
