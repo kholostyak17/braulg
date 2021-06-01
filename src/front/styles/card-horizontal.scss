@@ -1,33 +1,33 @@
-.big__Card{
+.card__big{
 width: 78.188rem;
 height:40.063rem;
 margin: 1rem auto;
 flex-direction: row;
 
 }
-.img_Big{
+.img_big{
   width: 40%;
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
-.big_Button{
+.button__big{
     margin: 0 auto 2rem auto
 }
 
-.title_Big{
+.title__big{
   color:#16A398;
   font-size: 3rem;
   margin-left: 4rem;
 
 }
-.subtitle_Big{
+.subtitle__big{
   color:#16A398;
   font-size: 2rem;
   margin: 2rem 0 0 1rem;
 
 }
-.img_round{
+.img__round{
  border-radius: 50%;
  height:5rem;
  width: 6rem;
