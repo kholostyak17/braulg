@@ -5,16 +5,13 @@ footer{
     background-color: $black-color;
     font-family: $font-family;
 }
-.link-footer{
-    margin: 0 1rem;
+.link-footer, .text-footer{
+    margin: 0.5rem 0.5rem;
     color: $white-color;
+    text-align: center;
     display: inline-block;
+    white-space: nowrap
 }
 .link-footer:hover{
     color: $secondary-color;
-    text-decoration: none;
-}
-span{
-    margin-right: auto;
-    margin-left: 1rem;
 }
