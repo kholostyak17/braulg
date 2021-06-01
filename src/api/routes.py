@@ -2,18 +2,20 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
+from flask_cors import CORS
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
+CORS(api)
 
 
 @api.route('/user/<email>', methods=['GET'])
 def get_user_by_email(email):
     # user = User(
     #         id= 0,
-    #         name= "Persefone", 
-    #         email= "persefone@gmail", 
+    #         name= "Persefone",
+    #         email= "persefone@gmail",
     #         _password= "1234",
     #         language= "English, Spanish and a little sumerian",
     #         age= "30",
@@ -23,8 +25,8 @@ def get_user_by_email(email):
     # user = user.create()
     user = User.get_by_email(email)
     print(user)
-
-    return jsonify(user.to_dict()), 200
-
-
+    if user:
+        return jsonify(user.to_dict()), 200
     
+
+    return jsonify({'error': "User not found"}), 404 

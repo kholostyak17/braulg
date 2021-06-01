@@ -1,18 +1,25 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: {}
+			user: {},
+			email_test: "persefone@gmail",
+			base_url: "https://3001-azure-raccoon-g9mwlo1w.ws-eu08.gitpod.io/api/"
 		},
 		actions: {
-			getUser: async () => {
-				fetch("https://3001-purple-silkworm-esr25y85.ws-eu08.gitpod.io/api/user/persefone@gmail", {
-					method: "GET"
-				})
+			getUser: () => {
+				fetch(getStore().base_url.concat("user/", getStore().email_test))
 					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load User!");
+						}
 						return response.json();
+						console.log(response);
 					})
 					.then(function(responseAsJson) {
 						setStore({ user: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
 					});
 			}
 		}

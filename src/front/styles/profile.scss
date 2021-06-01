@@ -11,13 +11,11 @@
     margin-top: 4rem;
     margin-left: 2rem;
     margin-right: 1rem;
-    flex-wrap: wrap;
     flex-flow: column wrap;
 }
 .basic-information{
     margin-top:4rem;
-    justify-content: left;
-    align-items: left;
+    align-self: flex-start;    
 }
 
 // .title{

@@ -30,31 +30,39 @@ export const Profile = () => {
 						<div className="row body">
 							<div className="row col-sm-6 ">
 								<h3>Información básica</h3>
-								<div className="row basic-information">
-									<div className="row col-sm-6">
-										<h5>Edad</h5>
-										<h5>Vive en</h5>
-									</div>
-									<div className="row-group col-sm-6">
-										<p>{store.user.age}</p>
-										<p>{store.user.localization}</p>
+								<div className="row basic-information ">
+									<div className="row col">
+										<div className="row col-sm-6">
+											<h5>Edad</h5>
+										</div>
+										<div className="row col-sm-6">
+											<p>{store.user.age}</p>
+										</div>
+										<div className="row col" />
+										<div className="row col-sm-6">
+											<h5>Vive en</h5>
+										</div>
+										<div className="row col-sm-6">
+											<p>{store.user.localization}</p>
+										</div>
 									</div>
 								</div>
-								<h3>Lenguajes</h3>
-								{/* 
+								<div className="row col-sm-6" />
+							</div>
+							<h3>Lenguajes</h3>
+							{/* 
 							<div className="row languages">
 
 								{store.user.language}
 							</div> */}
-								{/* 
+							{/* 
 							<p className="row message">
 								<Button className="" size="m" color="secondary" text="Enviar mensaje" />
 							</p> */}
-							</div>
+						</div>
 
-							<div className="row col-sm-6">
-								<h3 className="next-rips">Siguientes viajes</h3>
-							</div>
+						<div className="row col-sm-6">
+							<h3 className="next-rips">Siguientes viajes</h3>
 						</div>
 					</>
 				);
