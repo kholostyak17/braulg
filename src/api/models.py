@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, Enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -20,7 +20,7 @@ class User(db.Model):
     name = db.Column(db.String)
     mail = db.Column(db.String)
     _password = db.Column(db.String)
-    language = db.Column(db.String)
+    language = db.Column(db.Enum("english","spanish", name="language_enum"),nullable=False)
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
