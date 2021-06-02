@@ -1,0 +1,38 @@
+.card--big{
+width: 78.188rem;
+height:40.063rem;
+margin: 1rem auto;
+flex-direction: row;
+
+}
+.img--big{
+  width: 40%;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.button--big{
+   display:flex;
+   justify-content: center;
+   margin: 0 auto
+}
+
+.title--Big{
+  color:#16A398;
+  font-size: 3rem;
+}
+.subtitle--Big{
+  color:#16A398;
+  font-size: 2rem;
+  margin-top: 2rem
+
+}
+.img--round{
+    border-radius: 100%;
+    height:6rem;
+    width: 6rem;
+    margin:1rem 1rem 0 1.5rem;
+}
+.big--button{
+    margin: 2rem
+}
