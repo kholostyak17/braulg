@@ -3,11 +3,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			email_test: "persefone@gmail",
-			base_url: "https://3001-copper-quelea-du42js3e.ws-eu08.gitpod.io/api/"
+			base_url: "https://3001-gray-slug-nautwk8k.ws-eu08.gitpod.io/"
 		},
 		actions: {
 			getUser: () => {
-				fetch(getStore().base_url.concat("user/", getStore().email_test))
+				fetch(getStore().base_url.concat("api/user/", getStore().email_test))
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load User!");

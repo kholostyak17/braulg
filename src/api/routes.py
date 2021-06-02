@@ -17,7 +17,7 @@ def get_user_by_email(email):
     #         name= "Persefone",
     #         email= "persefone@gmail",
     #         _password= "1234",
-    #         language= "English, Spanish and a little sumerian",
+    #         language= "english",
     #         age= "30",
     #         localization = "Cologne (Germany)",
     #         bio= "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",

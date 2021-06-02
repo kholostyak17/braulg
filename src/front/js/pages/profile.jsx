@@ -41,18 +41,18 @@ export const Profile = () => {
 									<h3>Información básica</h3>
 
 									<div className="row basic-info">
-										<div className="col-sm-3 ">
-											<h6>Edad</h6>
+										<div className="col-sm-2 ">
+											<h5>Edad</h5>
 										</div>
-										<div className="col-sm-9 ">
+										<div className="col-sm ">
 											<p>{store.user.age}</p>
 										</div>
 									</div>
 									<div className="row">
-										<div className="col-sm-3 ">
-											<h6>Vive en</h6>
+										<div className="col-sm-2 ">
+											<h5>Vive en</h5>
 										</div>
-										<div className="col-sm-9 ">
+										<div className="col-sm">
 											<p>{store.user.localization}</p>
 										</div>
 									</div>

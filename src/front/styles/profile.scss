@@ -1,9 +1,6 @@
 @import 'index.scss';
 @import 'button.scss';
 
-// div{
-//     border: 0.1rem solid red;
-// }
 
 .container-fluid{
     padding:0rem;
@@ -39,8 +36,6 @@
     padding:10rem;
 }
 .message{
-    justify-content:center;
-    align-content:center;
     padding-top: 2rem;
     padding-bottom:2rem;
 }
@@ -52,9 +47,12 @@
     p{
         text-align: justify;
     }
+    .message{
+        justify-content:center;
+    }
     .message-button{
         size: "s";
-        height: 3.5rem;
+            height: 3.5rem;
         width: 7.5rem;
         font-size: 1.125rem;
     }
