@@ -26,37 +26,6 @@ class User(db.Model):
     bio = db.Column(db.Text, nullable=True)
     trip = relationship("Trip",
         secondary=association_table)
-
-    
-     #Función para el Print 
-    def __repr__(self):
-        return f'User {self.email}, {self.id}'
-
-    #Función to dict 
-    def to_dict(self):
-        return {
-            'id': self.id, 
-            'name': self.name,
-            'email': self.email,
-            'language': self.language,
-            'age': self.age,
-            'localization': self.localization,
-            'bio': self.bio,
-            'trip': self.trip
-        }
-
-    #Función para mostrar todos los usurios
-    @classmethod
-    def get_all(cls):
-        users = cls.query.all()
-        
-        return [user.to_dict() for user in users] #Por cada elemento que hay en "users" conviertemelo en diccionionario (def to_dict()) 
-        #Aquí user = elemento del for "element"
-
-    @classmethod
-    def get_by_id(cls, id):
-        user = cls.query.filter_by(id=id).one_or_none()
-        return user 
     
 
 class Trip(db.Model):

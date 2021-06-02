@@ -5,7 +5,6 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Components } from "./pages/components";
 import { Single } from "./pages/single";
-import Blog from "./pages/blog.js"
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -28,9 +27,6 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/components">
 							<Components />
-						</Route>
-                        <Route exact path="/blog">
-							<Blog />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
