@@ -16,3 +16,21 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+#-------Get de todos los usuarios
+@app.route('/user', methods=['GET'])
+def get_user():
+    all_users = User.get_all() 
+
+    if all_users:
+        return jsonify(all_users), 200
+    return jsonify({'message': 'No users yet'}), 200
+
+#-------Get de todos los id de los usuarios
+@app.route('/user/<id>', methods=['GET'])
+def get_users_by_id(id):
+    user = User.get_by_id(id) 
+    
+    if user:
+        return jsonify(user.to_dict()), 200
+    return jsonify({'error':'User not found'}), 404
