@@ -1,0 +1,26 @@
+@import 'index.scss';
+
+.image{
+    padding-left: 0;
+}
+.landscape-image{
+    width: 100%;
+    height: 100%;
+}
+.form-div{
+    margin: 1rem auto;
+    width: 90%;
+}
+.input-style{
+    border: none;
+    border-bottom: solid 0.1rem $grey-color;
+    &::placeholder{
+        color: $secondary-color;
+    }
+    
+}
+.my-textarea{
+    width: 100%;
+    height: 5rem;
+    resize:none;
+}
