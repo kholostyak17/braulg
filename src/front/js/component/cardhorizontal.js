@@ -7,32 +7,32 @@ import Button from "./button.js";
 
 const CardHorizontal = props => {
 	return (
-		<Card className="card--big">
-			<Card.Img className="img--big" src={props.img} />
-			<div style={{ display: "flex", flexDirection: "column", width: "60%", alignItems: "center" }}>
+		<Card className="big__Card">
+			<Card.Img className="img_Big" src={props.img} />
+			<div style={{ display: "flex", flexDirection: "column", width: "60%" }}>
 				<Card.Body>
-					<Card.Title className="title--Big">{props.title}</Card.Title>
-					<div style={{ display: "flex", justifyContent: "space--around", marginTop: "1rem" }}>
+					<Card.Title className="title_Big">{props.title}</Card.Title>
+					<div style={{ display: "flex", justifyContent: "space-around", marginTop: "1rem" }}>
 						<div>
-							<Card.Title className="subtitle--Big">Ciudades</Card.Title>
-							<Card.Text>Málaga, Madrid, Barcelona</Card.Text>
+							<Card.Title className="subtitle_Big">Ciudades</Card.Title>
+							<Card.Text className="small_Text">Malaga, España, Barcelona</Card.Text>
 						</div>
-						<div style={{ marginLeft: "3rem" }}>
-							<Card.Title className="subtitle--Big">Actividades</Card.Title>
-							<Card.Text>Teatro, Restaurantes, Salidas Nocturnas.</Card.Text>
+						<div>
+							<Card.Title className="subtitle_Big">Actividades</Card.Title>
+							<Card.Text className="small_Text">Teatro, Restaurantes, Salidas Nccturna.</Card.Text>
 						</div>
 					</div>
-					<div style={{ display: "flex", justifyContent: "space--around", marginTop: "4rem" }}>
+					<div style={{ display: "flex", justifyContent: "space-around", marginTop: "4rem" }}>
 						<div>
-							<Card.Title className="subtitle--Big">Fecha</Card.Title>
-							<Card.Text>19 Mayo / 30 Mayo</Card.Text>
+							<Card.Title className="subtitle_Big">Fecha</Card.Title>
+							<Card.Text className="small_Text">19 Mayo / 30 Mayo</Card.Text>
 						</div>
-						<div style={{ marginLeft: "6rem" }}>
-							<Card.Title className="subtitle--Big">Compañeros</Card.Title>
+						<div>
+							<Card.Title className="subtitle_Big">Compañeros</Card.Title>
 							<div style={{ display: "flex" }}>
-								<Card.Img className="img--round" src="https://c.stocksy.com/a/xL7400/z9/981581.jpg" />
+								<Card.Img className="img_round" src="https://c.stocksy.com/a/xL7400/z9/981581.jpg" />
 								<Card.Img
-									className="img--round"
+									className="img_round"
 									src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/robert-downey-jr-iron-man-casting-1563435293.jpg"
 								/>
 							</div>
@@ -40,9 +40,7 @@ const CardHorizontal = props => {
 					</div>
 					<div />
 				</Card.Body>
-				<div className="big--button">
-					<Button size="m" color="primary" text="Leer" />
-				</div>
+				<Button className="big_Button" size="m" color="primary" text="Leer" />
 			</div>
 		</Card>
 	);
