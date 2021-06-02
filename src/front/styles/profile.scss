@@ -1,49 +1,73 @@
 @import 'index.scss';
+@import 'button.scss';
 
+// div{
+//     border: 0.1rem solid red;
+// }
+
+.container-fluid{
+    padding:0rem;
+}
+.image{
+    position:absolute;
+    object-fit: cover;
+    width: 100%;
+    max-height: 12rem;
+    z-index: 1;
+}
+.profile-img{
+    position:absolute;
+    border-radius:50%;
+    max-height: 12rem;
+    max-width: 12rem;
+    z-index: 2;
+    top:10rem;
+    left:14%;
+}
 .title{
-    align-items: center;
     justify-content: center;
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-top: 8rem;
+    margin-top:14rem;
 }
 .body{
-    margin-top: 4rem;
-    margin-left: 2rem;
-    margin-right: 1rem;
-    flex-flow: column wrap;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom:2rem;
 }
-.basic-information{
-    margin-top:4rem;
-    align-self: flex-start;    
+.language{
+    padding:10rem;
+}
+.message{
+    justify-content:center;
+    align-content:center;
+    padding-top: 2rem;
+    padding-bottom:2rem;
 }
 
-// .title{
-//     margin-top: 8rem;
-//     margin-left: 18rem;
-//     margin-right: 34rem;
-// }
-// .colorcito{
-//     background-color:blue;
-// }
-// .basic-information{
-//     margin-top: 4rem;
-//     margin-left: 8rem;
-// }
-
-// .basic-information-secondary{
-//     justify-content: flex-start;
-// }
-
-// .languages{
-//     margin-top: 2rem;
-//     margin-left: 8rem;
-// }
-
-// .message{
-//     margin-top: 5rem;
-//     margin-left: 20rem;
-// }
-// .next-trips{
-
-// }
+@media only screen and (max-width: 1450px) {
+    h2{
+        text-align: center;
+    }
+    p{
+        text-align: justify;
+    }
+    .message-button{
+        size: "s";
+        height: 3.5rem;
+        width: 7.5rem;
+        font-size: 1.125rem;
+    }
+    .profile{
+        justify-content:center;
+    }
+    .title{
+        margin-top:22rem;
+    }
+    .profile-img{
+        position:absolute;
+        top:14rem;
+        left:24%;
+        
+    }
+}

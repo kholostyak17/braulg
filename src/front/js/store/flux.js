@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			email_test: "persefone@gmail",
-			base_url: "https://3001-azure-raccoon-g9mwlo1w.ws-eu08.gitpod.io/api/"
+			base_url: "https://3001-copper-quelea-du42js3e.ws-eu08.gitpod.io/api/"
 		},
 		actions: {
 			getUser: () => {

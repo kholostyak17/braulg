@@ -20,17 +20,65 @@ export const Profile = () => {
 			if (store.user != undefined) {
 				setUser(
 					<>
-						<div className="row title">
-							<div className="col-sm-8">
-								<h2>{store.user.name}</h2>
+						<div className="container-fluid">
+							<img
+								className="img-fluid image"
+								alt=""
+								src="https://images.pexels.com/photos/386025/pexels-photo-386025.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+							/>
+							<div className="row profile">
+								<img className="profile-img" alt="" src="https://i.ibb.co/b6k9rXF/circle-cropped.png" />
+							</div>
+							<div className="row title">
+								<div className="col-sm-6">
+									<h2>{store.user.name}</h2>
+									<p>{store.user.bio}</p>
+								</div>
+							</div>
 
-								<p>{store.user.bio}</p>
+							<div className="row body">
+								<div className="col-sm-6 ">
+									<h3>Información básica</h3>
+
+									<div className="row basic-info">
+										<div className="col-sm-3 ">
+											<h6>Edad</h6>
+										</div>
+										<div className="col-sm-9 ">
+											<p>{store.user.age}</p>
+										</div>
+									</div>
+									<div className="row">
+										<div className="col-sm-3 ">
+											<h6>Vive en</h6>
+										</div>
+										<div className="col-sm-9 ">
+											<p>{store.user.localization}</p>
+										</div>
+									</div>
+									<h3>Lenguajes</h3>
+									<div className="row">
+										<div className="col-sm-12 ">
+											<p>{store.user.language}</p>
+										</div>
+									</div>
+									<div className="row message">
+										<Button
+											className="message-button"
+											size="m"
+											color="secondary"
+											text="Enviar mensaje"
+										/>
+									</div>
+								</div>
+
+								<div className="col-sm-6">
+									<h3>Siguientes viajes</h3>
+								</div>
 							</div>
 						</div>
-						<div className="row body">
-							<div className="row col-sm-6 ">
-								<h3>Información básica</h3>
-								<div className="row basic-information ">
+
+						{/* <div className="row basic-information ">
 									<div className="row col">
 										<div className="row col-sm-6">
 											<h5>Edad</h5>
@@ -46,24 +94,12 @@ export const Profile = () => {
 											<p>{store.user.localization}</p>
 										</div>
 									</div>
-								</div>
-								<div className="row col-sm-6" />
-							</div>
-							<h3>Lenguajes</h3>
-							{/* 
-							<div className="row languages">
-
-								{store.user.language}
-							</div> */}
-							{/* 
-							<p className="row message">
-								<Button className="" size="m" color="secondary" text="Enviar mensaje" />
-							</p> */}
-						</div>
-
-						<div className="row col-sm-6">
-							<h3 className="next-rips">Siguientes viajes</h3>
-						</div>
+								</div> */}
+						{/* <h3>Lenguajes</h3> */}
+						{/* <div className="row languages">{store.user.language}</div> */}
+						{/* <p className="">
+							<Button className="" size="m" color="secondary" text="Enviar mensaje" />
+						</p> */}
 					</>
 				);
 			}
