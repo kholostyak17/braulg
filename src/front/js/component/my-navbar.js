@@ -16,36 +16,41 @@ export const MyNavbar = () => {
 				<Nav.Link href="/">
 					<img src={logo} className="logo" />
 				</Nav.Link>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle-button bg-secondary-color" />
+				<Navbar.Toggle
+					aria-controls="basic-navbar-nav"
+					className="toggle-button bg-secondary-color me-2 px-2"
+				/>
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
 						<Nav.Link href="/trips">
-							<span className="link-navbar">Viajes propuestos</span>
+							<div className="link-navbar text-center">Viajes propuestos</div>
 						</Nav.Link>
 						<Nav.Link href="/newtrip">
-							<span className="link-navbar">Proponer un viaje</span>
+							<div className="link-navbar text-center">Proponer un viaje</div>
 						</Nav.Link>
 						<Nav.Link href="/chat">
-							<span className="link-navbar">Chat</span>
+							<div className="link-navbar text-center">Chat</div>
 						</Nav.Link>
 						<Nav.Link href="/blog">
-							<span className="link-navbar">Blog</span>
+							<div className="link-navbar text-center">Blog</div>
 						</Nav.Link>
 					</Nav>
 					<Nav>
 						<Dropdown>
-							<Dropdown.Toggle id="dropdown-button-light-example1" className="link-navbar" variant="">
-								<i className="fas fa-user" /> Usuario
-							</Dropdown.Toggle>
-							<Dropdown.Menu variant="dark" className="bg-secondary-color">
-								<Dropdown.Item href="/profile" className="text-white menu-hover">
+							<div className="text-center">
+								<Dropdown.Toggle id="dropdown-button-light-example1" className="link-navbar" variant="">
+									<i className="fas fa-user" /> Usuario
+								</Dropdown.Toggle>
+							</div>
+							<Dropdown.Menu variant="dark" className="bg-secondary-color mx-4 dropdown-menu-right">
+								<Dropdown.Item href="/profile" className="text-white menu-hover text-center">
 									Mi perfil
 								</Dropdown.Item>
-								<Dropdown.Item href="/settings" className="text-white menu-hover">
+								<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
 									Ajustes
 								</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item href="#" className="text-danger fw-bold menu-hover">
+								<Dropdown.Item href="#" className="text-danger fw-bold menu-hover text-center">
 									Cerrar sesión
 								</Dropdown.Item>
 							</Dropdown.Menu>
