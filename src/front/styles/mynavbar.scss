@@ -1,0 +1,29 @@
+@import 'index.scss';
+
+.navbar{
+    background-color: $primary-color;
+    font-family: $font-family;
+    font-weight: 600;
+    color: $white-color;
+}
+.logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    color: $white-color;
+}
+.link-navbar{
+    color: $white-color;
+}
+.link-navbar:hover{
+    color: $secondary-color;
+}
+.bg-secondary-color, .menu-hover:hover, .menu-hover:active, .menu-hover:visited, .dropdown-item.active{
+    background-color: $secondary-color;
+}
+.item-hover:hover{
+    color: $primary-color;
+}
+.toggle-button{
+    padding-left: 0;
+}

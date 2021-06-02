@@ -1,0 +1,17 @@
+@import 'index.scss';
+
+footer{
+    color: $white-color;
+    background-color: $black-color;
+    font-family: $font-family;
+}
+.link-footer, .text-footer{
+    margin: 0.5rem 0.5rem;
+    color: $white-color;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap
+}
+.link-footer:hover{
+    color: $secondary-color;
+}
