@@ -15,11 +15,8 @@ export const Components = () => {
 	const url =
 		"https://media-exp1.licdn.com/dms/image/C5616AQHycuoK6FWNow/profile-displaybackgroundimage-shrink_350_1400/0/1603134843668?e=1628121600&v=beta&t=7x8fDBnqPNyLxIogi9dEK4ccrQaxHelXQF48vUUY8t4";
 	const urlBig = "https://wallpaperaccess.com/full/335666.jpg";
-	const coloredText = {
-		firstPart: "Repellat dolorem dolores sapiente laborum eligendi illo culpa! ",
-		coloredPart: "praesentium excepturi vero animi ",
-		lastPart: "Modi molestiae aperiam."
-	};
+	const coloredText =
+		"Repellat dolorem dolores sapiente laborum eligendi illo culpa!, praesentium excepturi vero animi, Modi molestiae aperiam.";
 
 	return (
 		<div className="d-flex flex-column">
@@ -29,8 +26,8 @@ export const Components = () => {
 			<Button className="" size="sm" color="primary" text="button S-m" />
 			<Button className="" size="lm" color="secondary" text="button L-m" />
 			<CardHorizontal title="Titulo" img={urlBig} />
-			<CardSmall title="Titulo" img={url} colored={coloredText} />
-			<CardBlog title="Titulo" colored={coloredText} img={urlBig} name="Sergio Carrascal" />
+			<CardSmall title="Titulo" img={url} coloredText={coloredText} />
+			<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name="Sergio Carrascal" />
 			<div>
 				<CircularLogo size="big" img={Logo} />
 				<CircularLogo size="large" img={Logo} />

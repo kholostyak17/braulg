@@ -12,11 +12,7 @@ const CardSmall = props => {
 				<Card.Img className="img--small" src={props.img} />
 				<Card.Body className="d-flex column flex-wrap align-items-end">
 					<Card.Title className="title--small">{props.title}</Card.Title>
-					<Card.Text className="text--small">
-						{props.colored.firstPart}
-						<span>{props.colored.coloredPart}</span>
-						{props.colored.lastPart}
-					</Card.Text>
+					<Card.Text className="text--small">{props.coloredText}</Card.Text>
 					<Button className="button--small" size="sm" color="primary" text="Leer" />
 				</Card.Body>
 			</Card>
@@ -28,6 +24,6 @@ export default CardSmall;
 
 CardSmall.propTypes = {
 	title: PropTypes.string,
-	colored: PropTypes.object,
+	coloredText: PropTypes.string,
 	img: PropTypes.string
 };

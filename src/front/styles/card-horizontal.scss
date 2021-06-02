@@ -1,20 +1,18 @@
 .card--big{
-width: 78.188rem;
-height:40.063rem;
-margin: 1rem auto;
-flex-direction: row;
-
+    width: 78.188rem;
+    margin: 1rem auto;
+    flex-direction: row;
 }
 .img--big{
-  width: 40%;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: calc(0.25rem - 1px);
+    width: 40%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
 .button--big{
-   display:flex;
-   justify-content: center;
-   margin: 0 auto
+    display:flex;
+    justify-content: center;
+    margin: 0 auto
 }
 
 .title--Big{
