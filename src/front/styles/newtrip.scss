@@ -1,26 +1,49 @@
 @import 'index.scss';
 
-.image{
-    padding-left: 0;
+html,body, .row{ margin:0px; height:100%;}
+
+.container-fluid, .left-box{
+    padding: 0;
 }
-.landscape-image{
-    width: 100%;
-    height: 100%;
-}
+
 .form-div{
     margin: 1rem auto;
     width: 90%;
 }
+
 .input-style{
     border: none;
     border-bottom: solid 0.1rem $grey-color;
+    background-color: rgba(255, 255, 255, 0);
     &::placeholder{
-        color: $secondary-color;
+        color: $black-color;
     }
+    margin-bottom: 1rem;
     
 }
+
 .my-textarea{
     width: 100%;
-    height: 5rem;
-    resize:none;
+    resize: vertical;
+    height:2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .image{
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .web{
+        background-image: url("../img/pexels-photo-3889987.png");
+        background-repeat: round;
+    }
+    .right-box{
+        background-color: rgba(255, 255, 255, 0.85)
+    }
+    .left-box, .image{height: 0;}
+    
 }

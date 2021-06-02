@@ -8,11 +8,11 @@ export const NewTrip = () => {
 
 	return (
 		<div className="container-fluid">
-			<div className="row">
-				<div className="col-5 image">
-					<img src={newtripImage} className="landscape-image" />
+			<div className="row web">
+				<div className="col-sm-12 col-md-5 left-box">
+					<img src={newtripImage} className="image" />
 				</div>
-				<div className="col-7">
+				<div className="col-sm-12 col-md-7 right-box">
 					<div>
 						<h1 className="text-center my-4">Proponer un viaje</h1>
 						<form>
@@ -269,7 +269,11 @@ export const NewTrip = () => {
 									placeholder="Escribe aquí tus planes de viaje"
 								/>
 								<div className="text-center">
-									<input type="submit" value="Aceptar" className="button m secondary m-auto" />
+									<input
+										type="submit"
+										value="PROPONER VIAJE"
+										className="button lm secondary mx-auto my-4"
+									/>
 								</div>
 							</div>
 						</form>
