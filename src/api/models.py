@@ -47,8 +47,8 @@ class User(db.Model):
         return self
 
     @classmethod
-    def get_by_id(cls, id):
-        user = cls.query.filter_by(id=id).one_or_none()
+    def get_by_email(cls, email):
+        user = cls.query.filter_by(email=email).one_or_none()
         return user 
 
 class Trip(db.Model):
@@ -72,7 +72,25 @@ class Post(db.Model):
     media = db.Column(db.String)
     text = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user = db.relationship(User)
+    user = db.relationship("User")
+
+    def _repr_(self):
+        return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.user_id}, '
+
+    def to_dict(self):
+        return{
+            "id":self.id,
+            "title": self.title,
+            "media": self.media,
+            "text": self.text,
+            "user_id": self.user_id,
+
+        }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
 
 class Comments(db.Model):
     __tablename__ = 'comments'
