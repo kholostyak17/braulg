@@ -5,6 +5,8 @@ import { Home } from "./pages/home";
 import { Components } from "./pages/components";
 import injectContext from "./store/appContext";
 
+import { Blog } from "./pages/blog.js";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -20,6 +22,9 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/components">
 						<Components />
+					</Route>
+					<Route exact path="/blog">
+						<Blog />
 					</Route>
 					<Route>
 						<h1>Not found!</h1>

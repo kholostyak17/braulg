@@ -18,7 +18,7 @@ class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String)
-    mail = db.Column(db.String)
+    email = db.Column(db.String)
     _password = db.Column(db.String)
     language = db.Column(db.Enum("english","spanish", name="language_enum"),nullable=False)
     age = db.Column(db.Integer, nullable=True)
@@ -26,7 +26,30 @@ class User(db.Model):
     bio = db.Column(db.Text, nullable=True)
     trip = relationship("Trip",
         secondary=association_table)
-    
+
+    def _repr_(self):
+        return f'User {self.name} with mail {self.email}'
+
+    def to_dict(self):
+        return{
+            "id":self.id,
+            "name": self.name,
+            "email": self.email,
+            "age": self.age,
+            "language": self.language,
+            "localization": self.localization,
+            "bio": self.bio,
+        }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @classmethod
+    def get_by_id(cls, id):
+        user = cls.query.filter_by(id=id).one_or_none()
+        return user 
 
 class Trip(db.Model):
     __tablename__ = 'trip'
