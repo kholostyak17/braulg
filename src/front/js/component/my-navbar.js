@@ -14,7 +14,7 @@ export const MyNavbar = () => {
 		<Navbar expand="sm">
 			<div className="container-fluid">
 				<Nav.Link href="/">
-					<img src={logo} className="logo" />
+					<img src={logo} className="nav-logo" />
 				</Nav.Link>
 				<Navbar.Toggle
 					aria-controls="basic-navbar-nav"
