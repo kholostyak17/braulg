@@ -18,7 +18,7 @@ class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String)
-    email = db.Column(db.String)
+    email = db.Column(db.String,nullable=False)
     _password = db.Column(db.String)
     language = db.Column(db.Enum("english","spanish", name="language_enum"),nullable=False)
     age = db.Column(db.Integer, nullable=True)
