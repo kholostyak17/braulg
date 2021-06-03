@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import Button from "../component/button.js";
 import CardHorizontal from "../component/cardhorizontal.js";
 import CardSmall from "../component/cardsmall.js";
+import Input from "../component/input.js";
 import "../../styles/button.scss";
 
 export const Components = () => {
@@ -22,6 +23,7 @@ export const Components = () => {
 			<Button className="" size="lm" color="secondary" text="button L-m" />
 			<CardHorizontal title="Titulo" text={text} img={urlBig} />
 			<CardSmall title="Titulo" text={text} img={url} />
+			<Input id="myInput" className="" type="text" placeholder="Mi input" />
 		</div>
 	);
 };
