@@ -24,7 +24,6 @@ def get_user_by_email(email):
     # )
     # user = user.create()
     user = User.get_by_email(email)
-    print(user)
     if user:
         return jsonify(user.to_dict()), 200
     
