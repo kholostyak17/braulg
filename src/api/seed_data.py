@@ -1,5 +1,5 @@
 data = {
-    "User":[
+    "Traveler":[
         {
             "id": 0,
             "name": "Persefone",
@@ -34,19 +34,19 @@ data = {
     "Post":[
         {
             "id": 0,
-            "tittle": "Viaje a Jerusalen",
+            "title": "Viaje a Jerusalen",
             "media": "",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",      
         },
         {
             "id": 1,
-            "tittle": "Viaje a Bogotá",
+            "title": "Viaje a Bogotá",
             "media": "",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",      
         },
         {
             "id": 2,
-            "tittle": "Viaje a Hong Kong",
+            "title": "Viaje a Hong Kong",
             "media": "",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",      
         }
