@@ -3,7 +3,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
 import { Components } from "./pages/components";
+import { NewTrip } from "./pages/newtrip";
+import { Login } from "./pages/login";
+//import { Blog } from "./pages/blog";
 import injectContext from "./store/appContext";
+
+import { MyNavbar } from "./component/my-navbar";
+import { Footer } from "./component/footer";
 
 //create your first component
 const Layout = () => {
@@ -21,8 +27,19 @@ const Layout = () => {
 					<Route exact path="/components">
 						<Components />
 					</Route>
+					<Route exact path="/newtrip">
+						<NewTrip />
+					</Route>
+					<Route exact path="/blog">
+						blog
+					</Route>
+					<Route exact path="/login">
+						<Login />
+					</Route>
 					<Route>
+						<MyNavbar />
 						<h1>Not found!</h1>
+						<Footer />
 					</Route>
 				</Switch>
 			</BrowserRouter>
