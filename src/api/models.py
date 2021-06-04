@@ -8,11 +8,7 @@ from sqlalchemy import create_engine
 
 db = SQLAlchemy()
 
-association_table = Table('association', db.Model.metadata,
-    db.Column('traveler_id', db.Integer, db.ForeignKey('traveler.id')),
-    db.Column('trip_id', db.Integer, db.ForeignKey('trip.id'))
 
-)
 
 class Traveler(db.Model):
     __tablename__ = 'traveler'
@@ -24,9 +20,7 @@ class Traveler(db.Model):
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
-    trip = relationship("Trip",
-        secondary=association_table)
-    
+
 
 class Trip(db.Model):
     __tablename__ = 'trip'
@@ -36,7 +30,7 @@ class Trip(db.Model):
     activities = db.Column(db.String)
     done = db.Column(db.Boolean, default=False) 
 
-class Share_Trip(db.Model):
+class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     trip_id = db.Column(db.Integer, db.ForeignKey("trip.id"))
@@ -49,7 +43,7 @@ class Post(db.Model):
     media = db.Column(db.String)
     text = db.Column(db.String)
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
-    traveler = db.relationship(Traveler)
+    traveler = db.relationship("Traveler")
 
 class Comments(db.Model):
     __tablename__ = 'comments'
