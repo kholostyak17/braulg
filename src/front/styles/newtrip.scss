@@ -6,37 +6,9 @@
     overflow-y: scroll;
 }
 
-.main-box, .left-box, .right-box{
-    margin: 0;
-    padding: 0;
-}
-.right-box, .form-div{
-    margin: 0 auto;
-}
-.form-div{
-    width: 80%;
-}
-
-@media only screen and (min-width: 768px) {
-    .image{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-    .left-box {
-        overflow: hidden;
-    }
-}
-
 @media only screen and (max-width: 768px) {
-    .main-box{
+    .newtrip-view{
         background-image: url("../img/pexels-photo-3889987.png");
-        background-repeat: round;
-    }
-    .right-box{
-        background-color: rgba(255, 255, 255, 0.85)
-    }
-    .left-box, .image{
-        width: 0;
+        background-repeat: repeat;
     }
 }
