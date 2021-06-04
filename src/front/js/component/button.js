@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Button = props => {
 	let style = "button ".concat(props.className, " ", props.size, " ", props.color);
 	return (
-		<button className={style} type="button">
+		<button className={style} onClick={props.callBackFunction} type="button">
 			{props.text}
 		</button>
 	);
@@ -16,5 +16,6 @@ Button.propTypes = {
 	className: PropTypes.string,
 	size: PropTypes.string,
 	color: PropTypes.string,
-	text: PropTypes.string
+	text: PropTypes.string,
+	callBackFunction: PropTypes.func
 };

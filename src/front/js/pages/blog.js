@@ -22,7 +22,13 @@ export const Blog = () => {
 				setPostsMap(
 					store.posts.map((post, index) => {
 						return (
-							<CardBlog id={index} key={index.toString()} title={post.title} coloredText={post.text} />
+							<CardBlog
+								id={index}
+								key={index.toString()}
+								postId={post.id}
+								title={post.title}
+								coloredText={post.text}
+							/>
 						);
 					})
 				);

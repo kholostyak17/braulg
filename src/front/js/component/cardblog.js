@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/card-blog.scss";
@@ -6,6 +7,13 @@ import "../../styles/card-blog.scss";
 import Button from "./button.js";
 
 const CardBlog = props => {
+	const { store, actions } = useContext(Context);
+
+	const showMoreData = () => {
+		console.log("test");
+		//insertar funcion para abrir nueva pantalla y añadir use params a la nueva vista
+		actions.getPost(props.postId);
+	};
 	return (
 		<Card className="card--big">
 			<Card.Img className="img--big" src={props.img} />
@@ -25,7 +33,7 @@ const CardBlog = props => {
 					</div>
 				</Card.Body>
 				<div className="big--button">
-					<Button size="m" color="primary" text="Leer" />
+					<Button size="m" color="primary" text="Leer" callBackFunction={showMoreData} />
 				</div>
 			</div>
 		</Card>
@@ -42,6 +50,7 @@ CardBlog.propTypes = {
 	img: PropTypes.string,
 	title: PropTypes.string,
 	name: PropTypes.string,
+	postId: PropTypes.number,
 	coloredText: PropTypes.string,
 	nameBlog: PropTypes.string
 };

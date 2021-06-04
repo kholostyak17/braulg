@@ -12,7 +12,7 @@ $primary-color-hover: rgb(24, 148, 138);
 $secondary-color: #F5B82E;
 $secondary-color-hover: rgb(241, 172, 10);
 $black-color: #141414;
-$grey-color: #C4C4C4;
+$grey-color: #7A7A7A;
 $white-color: #FFFFFF;
 
 
@@ -64,6 +64,7 @@ p{
     color: $black-color;
 }
 
+//estilo de inputs con fondo transparente y borde gris abajo 
 .input-style{
     border: none;
     border-bottom: solid 0.1rem $grey-color;
@@ -71,6 +72,39 @@ p{
     &::placeholder{color: $black-color;}
     margin: 0 0.5rem;
     margin-bottom: 1rem;
-    width: 97.5%;
+    width: 95%;
     
+}
+
+//elementos comunes a todas vistas responsive con column-picture column-content
+
+.main-box, .picture-box, .content-box{
+    margin: 0;
+    padding: 0;
+}
+.content-box, .form-div{
+    margin: 0 auto;
+}
+.form-div{
+    width: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+    .picture{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .picture-box{
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .content-box{
+        background-color: rgba(255, 255, 255, 0.75)
+    }
+    .picture-box, .picture{
+        width: 0;
+    }
 }

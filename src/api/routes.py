@@ -33,5 +33,12 @@ def get_all_posts():
 
     return jsonify({'error': "Posts not found"}), 404
 
- 
+@api.route('/blog/<id>', methods=['GET'])
+def get_post_by_id(id):
+    post = Post.get_by_id(id)
+    if post:
+        return jsonify(post.to_dict()), 200
+    
+
+    return jsonify({'error': "Post not found"}), 404
 

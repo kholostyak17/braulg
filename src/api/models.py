@@ -92,6 +92,11 @@ class Post(db.Model):
         posts = cls.query.all()
         
         return posts
+    
+    @classmethod
+    def get_by_id(cls, id):
+        post_by_id = cls.query.filter_by(id=id).one_or_none()
+        return post_by_id
 
 class Comments(db.Model):
     __tablename__ = 'comments'
