@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-
-import { MyNavbar } from "/workspace/project-solo-travel/src/front/js/component/my-navbar.js";
-import { Footer } from "/workspace/project-solo-travel/src/front/js/component/footer.js";
+import { MyNavbar } from "../component/my-navbar";
+import { Footer } from "../component/footer";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);

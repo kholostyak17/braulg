@@ -3,29 +3,35 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS
-from api.models import db, User
+from api.models import db, Traveler, Post
+
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
+
+
 CORS(api)
 
 
-@api.route('/user/<email>', methods=['GET'])
+@api.route('/profile/<email>', methods=['GET'])
 def get_user_by_email(email):
-    # user = User(
-    #         id= 0,
-    #         name= "Persefone",
-    #         email= "persefone@gmail",
-    #         _password= "1234",
-    #         language= "english",
-    #         age= "30",
-    #         localization = "Cologne (Germany)",
-    #         bio= "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
-    # )
-    # user = user.create()
-    user = User.get_by_email(email)
-    if user:
-        return jsonify(user.to_dict()), 200
+    traveler = Traveler.get_by_email(email)
+    if traveler:
+        return jsonify(traveler.to_dict()), 200
     
+    return jsonify({'error': "Profile not found"}), 404 
 
-    return jsonify({'error': "User not found"}), 404 
+
+@api.route('/blog', methods=['GET'])
+def get_all_posts():
+    
+    posts = Post.get_all_post()
+    print(posts) 
+    if posts:
+        posts_dict = [post.to_dict() for post in posts]
+        return jsonify(posts_dict), 200
+
+    return jsonify({'error': "Posts not found"}), 404
+
+ 
+
