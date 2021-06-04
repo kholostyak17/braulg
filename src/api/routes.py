@@ -2,17 +2,36 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Traveler
+from flask_cors import CORS
+from api.models import db, Traveler, Post
+
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+CORS(api)
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend"
-    }
 
-    return jsonify(response_body), 200
+@api.route('/profile/<email>', methods=['GET'])
+def get_user_by_email(email):
+    traveler = Traveler.get_by_email(email)
+    if traveler:
+        return jsonify(traveler.to_dict()), 200
+    
+    return jsonify({'error': "Profile not found"}), 404 
+
+
+@api.route('/blog', methods=['GET'])
+def get_all_posts():
+    
+    posts = Post.get_all_post()
+    print(posts) 
+    if posts:
+        posts_dict = [post.to_dict() for post in posts]
+        return jsonify(posts_dict), 200
+
+    return jsonify({'error': "Posts not found"}), 404
+
+ 
+

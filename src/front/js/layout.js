@@ -3,7 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
 import { Components } from "./pages/components";
+import { NewTrip } from "./pages/newtrip";
+import { Login } from "./pages/login";
+//import { Blog } from "./pages/blog";
 import injectContext from "./store/appContext";
+
+import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
 
 //create your first component
 const Layout = () => {
@@ -20,6 +25,16 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/components">
 						<Components />
+					</Route>
+					<Route exact path="/newtrip">
+						<NewTrip />
+					</Route>
+
+					<Route exact path="/login">
+						<Login />
+					</Route>
+					<Route exact path="/user/:email">
+						<Profile />
 					</Route>
 					<Route>
 						<h1>Not found!</h1>
