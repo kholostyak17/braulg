@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Table, Enum
+from sqlalchemy import Column, ForeignKey, Integer, String, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -14,13 +14,36 @@ class Traveler(db.Model):
     __tablename__ = 'traveler'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String)
-    email = db.Column(db.String,nullable=False)
+    email = db.Column(db.String)
     _password = db.Column(db.String)
-    language = db.Column(db.Enum("english","spanish", name="language_enum"),nullable=False)
+    language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
+    
+    def _repr_(self):
+        return f'Traveler {self.name} with mail {self.email}'
 
+    def to_dict(self):
+        return{
+            "id":self.id,
+            "name": self.name,
+            "email": self.email,
+            "age": self.age,
+            "language": self.language,
+            "localization": self.localization,
+            "bio": self.bio,
+        }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @classmethod
+    def get_by_email(cls, email):
+        traveler = cls.query.filter_by(email=email).one_or_none()
+        return traveler
 
 class Trip(db.Model):
     __tablename__ = 'trip'
@@ -45,6 +68,23 @@ class Post(db.Model):
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     traveler = db.relationship("Traveler")
 
+    def _repr_(self):
+        return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.traveler_id}, '
+
+    def to_dict(self):
+        return{
+            "id":self.id,
+            "title": self.title,
+            "media": self.media,
+            "text": self.text,
+            "traveler_id": self.traveler_id,
+        }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
 class Comments(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, unique=True, primary_key=True)
@@ -53,7 +93,6 @@ class Comments(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("post.id"))
     traveler = db.relationship(Traveler)
     post = db.relationship(Post)
-
 
 
 class Message(db.Model):

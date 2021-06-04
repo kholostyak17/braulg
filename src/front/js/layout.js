@@ -8,8 +8,7 @@ import { Login } from "./pages/login";
 //import { Blog } from "./pages/blog";
 import injectContext from "./store/appContext";
 
-import { MyNavbar } from "./component/my-navbar";
-import { Footer } from "./component/footer";
+import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
 
 //create your first component
 const Layout = () => {
@@ -30,16 +29,15 @@ const Layout = () => {
 					<Route exact path="/newtrip">
 						<NewTrip />
 					</Route>
-					<Route exact path="/blog">
-						blog
-					</Route>
+
 					<Route exact path="/login">
 						<Login />
 					</Route>
+					<Route exact path="/user/:email">
+						<Profile />
+					</Route>
 					<Route>
-						<MyNavbar />
 						<h1>Not found!</h1>
-						<Footer />
 					</Route>
 				</Switch>
 			</BrowserRouter>
