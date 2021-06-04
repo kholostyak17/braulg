@@ -11,11 +11,11 @@ export const NewTrip = () => {
 	return (
 		<>
 			<MyNavbar />
-			<div className="container-fluid row main-box">
-				<div className="col-sm-12 col-md-5 left-box">
-					<img src={newtripImage} className="image" />
+			<div className="container-fluid row main-box newtrip-view">
+				<div className="col-sm-12 col-md-5 picture-box">
+					<img src={newtripImage} className="picture" />
 				</div>
-				<div className="col-sm-12 col-md-7 right-box">
+				<div className="col-sm-12 col-md-7 content-box">
 					<h1 className="text-center my-4">Proponer un viaje</h1>
 					<form>
 						<div className="form-div">
@@ -261,8 +261,11 @@ export const NewTrip = () => {
 							</select>
 							<h2>Ciudades que vas a visitar:</h2>
 							<input id="city" type="text" className="input-style" placeholder="Escribe ciudades" />
-							<h2>Fecha estimada de inicio de viaje:</h2>
-							<input id="date" type="date" className="input-style" />
+							<h2>Fecha estimada de viaje:</h2>
+							<label>Fecha de inicio</label>
+							<input id="start-date" type="date" className="input-style" />
+							<label>Fecha de regreso</label>
+							<input id="end-date" type="date" className="input-style" />
 							<h2>Actividades que vas a realizar:</h2>
 							<textarea
 								id="activities"
