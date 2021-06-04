@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -18,6 +18,7 @@ class Traveler(db.Model):
     _password = db.Column(db.String)
     language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
+    media = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
     
@@ -51,6 +52,8 @@ class Trip(db.Model):
     country = db.Column(db.String)
     cities = db.Column(db.String) 
     activities = db.Column(db.String)
+    date_time_start = db.Column(db.DateTime, nullable=False)
+    date_time_end = db.Column(db.DateTime, nullable=False)
     done = db.Column(db.Boolean, default=False) 
 
 class Shared_Trip(db.Model):
