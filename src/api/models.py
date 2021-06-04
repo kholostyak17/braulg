@@ -8,27 +8,21 @@ from sqlalchemy import create_engine
 
 db = SQLAlchemy()
 
-association_table = Table('association', db.Model.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('trip_id', db.Integer, db.ForeignKey('trip.id'))
 
-)
 
-class User(db.Model):
-    __tablename__ = 'user'
+class Traveler(db.Model):
+    __tablename__ = 'traveler'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String)
     email = db.Column(db.String)
     _password = db.Column(db.String)
-    language = db.Column(db.Enum("english","spanish", name="language_enum"),nullable=False)
+    language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
-    trip = relationship("Trip",
-        secondary=association_table)
-
+    
     def _repr_(self):
-        return f'User {self.name} with mail {self.email}'
+        return f'Traveler {self.name} with mail {self.email}'
 
     def to_dict(self):
         return{
@@ -48,8 +42,8 @@ class User(db.Model):
 
     @classmethod
     def get_by_email(cls, email):
-        user = cls.query.filter_by(email=email).one_or_none()
-        return user 
+        traveler = cls.query.filter_by(email=email).one_or_none()
+        return traveler
 
 class Trip(db.Model):
     __tablename__ = 'trip'
@@ -59,11 +53,11 @@ class Trip(db.Model):
     activities = db.Column(db.String)
     done = db.Column(db.Boolean, default=False) 
 
-class Share_Trip(db.Model):
+class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     trip_id = db.Column(db.Integer, db.ForeignKey("trip.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id")) 
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id")) 
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -71,11 +65,11 @@ class Post(db.Model):
     title = db.Column(db.String)
     media = db.Column(db.String)
     text = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user = db.relationship("User")
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
+    traveler = db.relationship("Traveler")
 
     def _repr_(self):
-        return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.user_id}, '
+        return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.traveler_id}, '
 
     def to_dict(self):
         return{
@@ -83,8 +77,7 @@ class Post(db.Model):
             "title": self.title,
             "media": self.media,
             "text": self.text,
-            "user_id": self.user_id,
-
+            "traveler_id": self.traveler_id,
         }
 
     def create(self):
@@ -96,18 +89,17 @@ class Comments(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     text = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     post_id = db.Column(db.Integer, db.ForeignKey("post.id"))
-    user = db.relationship(User)
+    traveler = db.relationship(Traveler)
     post = db.relationship(Post)
-
 
 
 class Message(db.Model):
     __tablename__ = 'message'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     chat_id = db.Column(db.Integer, db.ForeignKey("chat.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     message = db.Column(db.String)
 
 class Chat(db.Model):

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 18bce048b46e
+Revision ID: d9057a004dbb
 Revises: 
-Create Date: 2021-06-01 13:33:59.455726
+Create Date: 2021-06-04 09:47:53.440914
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '18bce048b46e'
+revision = 'd9057a004dbb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,6 +24,18 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
+    op.create_table('traveler',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(), nullable=True),
+    sa.Column('email', sa.String(), nullable=True),
+    sa.Column('_password', sa.String(), nullable=True),
+    sa.Column('language', sa.String(), nullable=True),
+    sa.Column('age', sa.Integer(), nullable=True),
+    sa.Column('localization', sa.String(), nullable=True),
+    sa.Column('bio', sa.Text(), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('id')
+    )
     op.create_table('trip',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('country', sa.String(), nullable=True),
@@ -33,31 +45,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
-    op.create_table('user',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
-    sa.Column('mail', sa.String(), nullable=True),
-    sa.Column('_password', sa.String(), nullable=True),
-    sa.Column('language', sa.Enum('english', 'spanish', name='language_enum'), nullable=False),
-    sa.Column('age', sa.Integer(), nullable=True),
-    sa.Column('localization', sa.String(), nullable=True),
-    sa.Column('bio', sa.Text(), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('id')
-    )
-    op.create_table('association',
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('trip_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['trip_id'], ['trip.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], )
-    )
     op.create_table('message',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('chat_id', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('traveler_id', sa.Integer(), nullable=True),
     sa.Column('message', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['chat_id'], ['chat.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['traveler_id'], ['traveler.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
@@ -66,27 +60,27 @@ def upgrade():
     sa.Column('title', sa.String(), nullable=True),
     sa.Column('media', sa.String(), nullable=True),
     sa.Column('text', sa.String(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.Column('traveler_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['traveler_id'], ['traveler.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
     op.create_table('share_trip',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('trip_id', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('traveler_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['traveler_id'], ['traveler.id'], ),
     sa.ForeignKeyConstraint(['trip_id'], ['trip.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('text', sa.String(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('traveler_id', sa.Integer(), nullable=True),
     sa.Column('post_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['post_id'], ['post.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.ForeignKeyConstraint(['traveler_id'], ['traveler.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
@@ -99,8 +93,7 @@ def downgrade():
     op.drop_table('share_trip')
     op.drop_table('post')
     op.drop_table('message')
-    op.drop_table('association')
-    op.drop_table('user')
     op.drop_table('trip')
+    op.drop_table('traveler')
     op.drop_table('chat')
     # ### end Alembic commands ###
