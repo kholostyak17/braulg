@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { useForm } from "../react-hook-form";
 import newtripImage from "../../img/pexels-photo-3889987.png";
 import "../../styles/newtrip.scss";
 import { MyNavbar } from "../component/my-navbar";
@@ -7,7 +8,15 @@ import { Footer } from "../component/footer";
 
 export const NewTrip = () => {
 	const { store, actions } = useContext(Context);
-
+	const { register, handleSubmit } = d => {
+		alert(JSON.stringify(d));
+	};
+	useEffect(
+		() => {
+			console.log(register);
+		},
+		[register]
+	);
 	return (
 		<>
 			<MyNavbar />
@@ -17,10 +26,14 @@ export const NewTrip = () => {
 				</div>
 				<div className="col-sm-12 col-md-7 content-box">
 					<h1 className="text-center my-4">Proponer un viaje</h1>
-					<form>
+					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
 							<h2>País al que vas a viajar:</h2>
-							<select id="country" name="country" className="input-style my-select">
+							<select
+								id="country"
+								name="country"
+								className="input-style my-select"
+								{...register("country")}>
 								<option hidden disabled selected>
 									Elige un país
 								</option>
@@ -260,20 +273,27 @@ export const NewTrip = () => {
 								<option value="ZW">Zimbabue</option>
 							</select>
 							<h2>Ciudades que vas a visitar:</h2>
-							<input id="city" type="text" className="input-style" placeholder="Escribe ciudades" />
+							<input
+								id="city"
+								type="text"
+								className="input-style"
+								placeholder="Escribe ciudades"
+								{...register("city")}
+							/>
 							<h2>Fecha estimada de viaje:</h2>
 							<label>Fecha de inicio</label>
-							<input id="start-date" type="date" className="input-style" />
+							<input id="start-date" type="date" className="input-style" {...register("start-date")} />
 							<label>Fecha de regreso</label>
-							<input id="end-date" type="date" className="input-style" />
+							<input id="end-date" type="date" className="input-style" {...register("end-date")} />
 							<h2>Actividades que vas a realizar:</h2>
 							<textarea
 								id="activities"
 								className="input-style my-textarea"
 								placeholder="Escribe aquí tus planes de viaje"
+								{...register("activities")}
 							/>
 							<div className="text-center">
-								<input
+								<button
 									type="submit"
 									value="PROPONER VIAJE"
 									className="button lm secondary mx-auto my-4"
