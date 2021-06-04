@@ -16,7 +16,7 @@ class Traveler(db.Model):
     name = db.Column(db.String)
     email = db.Column(db.String,nullable=False)
     _password = db.Column(db.String)
-    language = db.Column(db.Enum("english","spanish", name="language_enum"),nullable=False)
+    language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
