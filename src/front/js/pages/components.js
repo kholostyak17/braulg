@@ -27,7 +27,7 @@ export const Components = () => {
 			<Button className="" size="lm" color="secondary" text="button L-m" />
 			<CardHorizontal title="Titulo" img={urlBig} />
 			<CardSmall title="Titulo" img={url} coloredText={coloredText} />
-			<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name="Sergio Carrascal" />
+			<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name={nameBlog} />
 			<div>
 				<CircularLogo size="big" img={Logo} />
 				<CircularLogo size="large" img={Logo} />

@@ -14,8 +14,6 @@ const CardBlog = props => {
 				<Card.Body>
 					<div className="cardText">
 						<Card.Text className="text--colored">{props.coloredText}</Card.Text>
-						<Card.Text className="text--colored">{props.coloredText}</Card.Text>
-						<Card.Text className="text--colored">{props.coloredText}</Card.Text>
 					</div>
 
 					<div className="usuario">
@@ -44,5 +42,6 @@ CardBlog.propTypes = {
 	img: PropTypes.string,
 	title: PropTypes.string,
 	name: PropTypes.string,
-	coloredText: PropTypes.string
+	coloredText: PropTypes.string,
+	nameBlog: PropTypes.string
 };

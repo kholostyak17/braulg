@@ -25,7 +25,7 @@ def get_traveler_by_id(id):
 @api.route('/blog', methods=['GET'])
 def get_all_posts():
     
-    posts = Post.get_all_post()
+    posts = Post.get_all()
     print(posts) 
     if posts:
         posts_dict = [post.to_dict() for post in posts]
