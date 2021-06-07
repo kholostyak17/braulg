@@ -4,6 +4,8 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
+import { Link } from "react-router-dom";
+import Button from "../component/button.js";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -16,6 +18,15 @@ export const Home = () => {
 				<p>
 					<img src={rigoImageUrl} />
 				</p>
+				<Link to="/login">
+					<Button className="m-2" size="lm" color="secondary" text="ACCEDE" />
+				</Link>
+				<Link to="/register">
+					<Button className="m-2" size="lm" color="primary" text="REGISTRATE" />
+				</Link>
+				<Link to="/user/persefone@gmail">
+					<Button className="m-2" size="lm" color="secondary" text="(profile)" />
+				</Link>
 				<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
 				<p>
 					This boilerplate comes with lots of documentation:{" "}
