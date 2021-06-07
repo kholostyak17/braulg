@@ -11,10 +11,6 @@ export const NewTrip = () => {
 	const { register, handleSubmit } = useForm();
 	const onSubmit = data => alert(JSON.stringify(data));
 
-	useEffect(() => {
-		console.log(register);
-	}, [register]);
-
 	return (
 		<>
 			<MyNavbar />
@@ -32,7 +28,7 @@ export const NewTrip = () => {
 								name="country"
 								className="input-style my-select"
 								{...register("country")}>
-								<option hidden disabled selected>
+								<option hidden disabled defaultValue>
 									Elige un país
 								</option>
 								<option value="Elegir" id="AF">
