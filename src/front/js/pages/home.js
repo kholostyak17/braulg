@@ -7,6 +7,7 @@ import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 
+//(ALGUNOS BOTONES SON PROVISIONALES TODAVÍA)
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
@@ -19,7 +20,7 @@ export const Home = () => {
 					<img src={rigoImageUrl} />
 				</p>
 				<Link to="/login">
-					<Button className="m-2" size="lm" color="secondary" text="ACCEDE" />
+					<Button className="m-2" size="lm" color="secondary" text="LOGIN" />
 				</Link>
 				<Link to="/register">
 					<Button className="m-2" size="lm" color="primary" text="REGISTRATE" />
