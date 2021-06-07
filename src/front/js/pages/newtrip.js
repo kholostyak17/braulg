@@ -27,12 +27,10 @@ export const NewTrip = () => {
 								id="country"
 								name="country"
 								className="input-style my-select"
+								required
 								{...register("country")}>
-								<option hidden disabled defaultValue>
+								<option hidden defaultValue value="">
 									Elige un país
-								</option>
-								<option value="Elegir" id="AF">
-									Elegir opción
 								</option>
 								<option value="Afganistán" id="AF">
 									Afganistán
@@ -752,18 +750,34 @@ export const NewTrip = () => {
 								type="text"
 								className="input-style"
 								placeholder="Escribe ciudades"
+								maxLenght="250"
+								title="Máximo 250 caracteres"
+								required
 								{...register("city")}
 							/>
 							<h2>Fecha estimada de viaje:</h2>
 							<label>Fecha de inicio</label>
-							<input id="start-date" type="date" className="input-style" {...register("start-date")} />
+							<input
+								id="start-date"
+								type="date"
+								className="input-style"
+								required
+								{...register("start-date")}
+							/>
 							<label>Fecha de regreso</label>
-							<input id="end-date" type="date" className="input-style" {...register("end-date")} />
+							<input
+								id="end-date"
+								type="date"
+								className="input-style"
+								required
+								{...register("end-date")}
+							/>
 							<h2>Actividades que vas a realizar:</h2>
 							<textarea
 								id="activities"
 								className="input-style my-textarea"
 								placeholder="Escribe aquí tus planes de viaje"
+								required
 								{...register("activities")}
 							/>
 							<div className="text-center">

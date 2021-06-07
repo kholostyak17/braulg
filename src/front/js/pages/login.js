@@ -26,16 +26,18 @@ export const Login = () => {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
 							<h2>Correo electrónico:</h2>
-							<input
-								id="email"
-								type="email"
-								className="input-style"
-								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-								title="Correo electrónico incorrecto"
-								{...register("email")}
-							/>
+							<input id="email" type="email" className="input-style" required {...register("email")} />
 							<h2>Contraseña:</h2>
-							<input id="password" type="password" className="input-style" {...register("password")} />
+							<input
+								id="password"
+								type="password"
+								className="input-style"
+								minLength="6"
+								maxLength="30"
+								placeholder="Entre 6 y 30 caracteres"
+								required
+								{...register("password")}
+							/>
 							<div className="text-center my-4">
 								<input type="submit" value="ACCEDER" className="button lm secondary m-2" />
 								<Link to="/register">
