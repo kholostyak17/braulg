@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			posts: [],
 			post_by_id: [],
-			base_url: "https://3001-amaranth-rook-sb7bs071.ws-eu08.gitpod.io/"
+			base_url: "https://3001-scarlet-coyote-lnzi2lo6.ws-eu08.gitpod.io/"
 		},
 		actions: {
 			getPosts: () => {
@@ -24,7 +24,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getPost: id => {
 				console.log(id);
-				fetch(getStore().base_url.concat("api/blog/1"))
+				fetch(
+					getStore()
+						.base_url.concat("api/blog/")
+						.concat(id)
+				)
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Traveler!");

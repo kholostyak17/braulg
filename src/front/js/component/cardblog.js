@@ -3,12 +3,13 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/card-blog.scss";
+import { Link } from "react-router-dom";
 
 import Button from "./button.js";
 
 const CardBlog = props => {
 	const { store, actions } = useContext(Context);
-
+	const link = "/blog/".concat(props.id);
 	const showMoreData = () => {
 		console.log("test");
 		//insertar funcion para abrir nueva pantalla y añadir use params a la nueva vista
@@ -33,7 +34,9 @@ const CardBlog = props => {
 					</div>
 				</Card.Body>
 				<div className="big--button">
-					<Button size="m" color="primary" text="Leer" callBackFunction={showMoreData} />
+					<Link to={link}>
+						<Button size="m" color="primary" text="Leer" callBackFunction={showMoreData} />
+					</Link>
 				</div>
 			</div>
 		</Card>
@@ -52,5 +55,6 @@ CardBlog.propTypes = {
 	name: PropTypes.string,
 	postId: PropTypes.number,
 	coloredText: PropTypes.string,
-	nameBlog: PropTypes.string
+	nameBlog: PropTypes.string,
+	id: PropTypes.number
 };

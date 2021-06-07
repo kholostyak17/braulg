@@ -1,39 +1,30 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Fragment } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-import Button from "../component/button.js";
-import "../../styles/profile.scss";
 
-import { MyNavbar } from "/workspace/project-solo-travel/src/front/js/component/my-navbar.js";
-import { Footer } from "/workspace/project-solo-travel/src/front/js/component/footer.js";
-
-export const Profile = () => {
+export const Post = () => {
 	const { store, actions } = useContext(Context);
-	const [post, setPost] = useState([]);
+	const [post_by_id, setPost_by_id] = useState([]);
 	const params = useParams();
-	console.log(params);
 
 	useEffect(() => {
-		actions.getUser(params.id);
-		console.log(params.id);
+		actions.getPost(params.id);
 	}, []);
 
-	useEffect(() => {
-		if (store.post_by_id != undefined) {
-			setPost(
-				<>
-	           <p>{store.user.title}</p>
-               <p>{store.user.text}</p>
-				</>
-			);
-		}
-	}, [store.post_by_id]);
-
-	return (
-		<>
-			<MyNavbar />
-			<div className="">{user}</div>
-			<Footer />
-		</>
+	useEffect(
+		() => {
+			if (store.post_by_id != undefined) {
+				setPost_by_id(
+					<>
+						{store.post_by_id.title}
+						{store.post_by_id.text}
+						{store.post_by_id.media}
+					</>
+				);
+			}
+		},
+		[store.post_by_id]
 	);
+
+	return <div className="h1"> {post_by_id}</div>;
 };
