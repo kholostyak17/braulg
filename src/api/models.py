@@ -9,7 +9,6 @@ from sqlalchemy import create_engine
 db = SQLAlchemy()
 
 
-
 class Traveler(db.Model):
     __tablename__ = 'traveler'
     id = db.Column(db.Integer, unique=True, primary_key=True)
@@ -21,13 +20,13 @@ class Traveler(db.Model):
     media = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
-    
+
     def _repr_(self):
         return f'Traveler {self.name} with mail {self.email}'
 
     def to_dict(self):
         return{
-            "id":self.id,
+            "id": self.id,
             "name": self.name,
             "email": self.email,
             "age": self.age,
@@ -35,6 +34,11 @@ class Traveler(db.Model):
             "localization": self.localization,
             "bio": self.bio,
         }
+
+    def traveler_with_token(self, token):
+        traveler = self.to_dict()
+        traveler['token'] = token
+        return traveler
 
     def create(self):
         db.session.add(self)
@@ -46,21 +50,30 @@ class Traveler(db.Model):
         traveler = cls.query.filter_by(email=email).one_or_none()
         return traveler
 
+    def validate_password(self, password):
+        if self._password == password:
+            return True
+        else:
+            return False
+
+
 class Trip(db.Model):
     __tablename__ = 'trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     country = db.Column(db.String)
-    cities = db.Column(db.String) 
+    cities = db.Column(db.String)
     activities = db.Column(db.String)
     date_time_start = db.Column(db.DateTime, nullable=False)
     date_time_end = db.Column(db.DateTime, nullable=False)
-    done = db.Column(db.Boolean, default=False) 
+    done = db.Column(db.Boolean, default=False)
+
 
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     trip_id = db.Column(db.Integer, db.ForeignKey("trip.id"))
-    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id")) 
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -76,7 +89,7 @@ class Post(db.Model):
 
     def to_dict(self):
         return{
-            "id":self.id,
+            "id": self.id,
             "title": self.title,
             "media": self.media,
             "text": self.text,
@@ -87,6 +100,7 @@ class Post(db.Model):
         db.session.add(self)
         db.session.commit()
         return self
+
 
 class Comments(db.Model):
     __tablename__ = 'comments'
@@ -105,14 +119,11 @@ class Message(db.Model):
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     message = db.Column(db.String)
 
+
 class Chat(db.Model):
     __tablename__ = 'chat'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     name = db.Column(db.String)
-
-
-
-   
 
     def to_dict(self):
         return {}
