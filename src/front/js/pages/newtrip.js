@@ -777,6 +777,8 @@ export const NewTrip = () => {
 								id="activities"
 								className="input-style my-textarea"
 								placeholder="Escribe aquí tus planes de viaje"
+								maxLenght="3000"
+								title="Máximo 5000 caracteres"
 								required
 								{...register("activities")}
 							/>
