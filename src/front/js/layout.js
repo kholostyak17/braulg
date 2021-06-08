@@ -5,8 +5,8 @@ import { Components } from "./pages/components";
 import { NewTrip } from "./pages/newtrip";
 import { Login } from "./pages/login";
 import { Blog } from "./pages/blog";
-import TripProposal from "./component/TripProposal";
-import TripProposalId from "./component/TripProposalId";
+import TripProposal from "./pages/tripproposal";
+import TripProposalId from "./pages/tripproposalid";
 
 import CardBlog from "./component/cardblog";
 
@@ -43,20 +43,14 @@ const Layout = () => {
 					<Route exact path="/blog/:id">
 						{<Post />}
 					</Route>
-					<Route exact path="/tripProposals">
-						<MyNavbar />
+					<Route exact path="/trip-proposal">
 						<TripProposal name="Persefone" />
-						<Footer />
 					</Route>
 					<Route exact path="/cardBlogResp">
-						<MyNavbar />
 						<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name="Sergio Carrascal" />
-						<Footer />
 					</Route>
-					<Route exact path="/tripProposalId">
-						<MyNavbar />
+					<Route exact path="/trip-proposal-id">
 						<TripProposalId name="Persefone" />
-						<Footer />
 					</Route>
 					<Route exact path="/login">
 						<Login />

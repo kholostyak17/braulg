@@ -4,15 +4,18 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/trip-proposal-id.scss";
 import { Link } from "react-router-dom";
-import Button from "./button.js";
-import person1 from "./personasImg/imgperson1.jpeg";
-import person2 from "./personasImg/person2.jpeg";
+import Button from "../component/button.js";
+import person1 from "../component/personasImg/imgperson1.jpeg";
+import person2 from "../component/personasImg/person2.jpeg";
+import { MyNavbar } from "../component/my-navbar.js";
+import { Footer } from "../component/footer.js";
 
 const TripProposalId = props => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<Fragment>
+			<MyNavbar />
 			<img
 				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUaQTjXMGyap1TMjUOXKoTRYnhp8f1VU4M9U_-PD3XMbv8SC2bSLa83icqnVIO8FHvrJE&usqp=CAU"
 				alt="bridge"
@@ -59,6 +62,7 @@ const TripProposalId = props => {
 				</div>
 			</Card>
 			<br />
+			<Footer />
 		</Fragment>
 	);
 };
