@@ -56,6 +56,11 @@ class Traveler(db.Model):
         else:
             return False
 
+    def validate_email(self, email):
+        if self.email == email:
+            return True
+        else:
+            return False
 
 class Trip(db.Model):
     __tablename__ = 'trip'

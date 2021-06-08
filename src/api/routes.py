@@ -37,6 +37,39 @@ def login():
     return ({'error':"User and password don't match"}),201
 
 
+@api.route('/traveler', methods=['POST'])
+def create_traveler():
+    name,email,password,age,language = request.json.get(
+            "name",None
+    ), request.json.get(        
+            "email", None
+    ), request.json.get(
+            "password",None
+    ), request.json.get(
+            "age",None
+    ), request.json.get(
+            "language",None
+    )
+    
+    if email:
+        traveler = Traveler.get_by_email(email)
+        if traveler:
+            if traveler.validate_email(email):
+              return ({'error':"Traveler already exist"}),201
+        else:
+            new_traveler = Traveler(name=name,email=email, _password=password, language=language, age=age)  
+            password = generate_password_hash(password, method='pbkdf2:sha256')
+            new_traveler_created= new_traveler.create()
+            new_traveler_dic = new_traveler_created.to_dict()
+
+            if new_traveler_dic: 
+                return jsonify(new_traveler_dic),201
+            else:
+                return ({'error':"Missing info"}), 404
+
+ 
+     
+
 @api.route('/profile/<email>', methods=['GET'])
 def get_user_by_email(email):
     traveler = Traveler.get_by_email(email)
