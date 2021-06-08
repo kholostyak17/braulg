@@ -1,8 +1,12 @@
 .card--big{
-    width: 78.188rem;
-    margin: 3rem auto;
+    width:90%;
+  height:auto;
+  margin: 0 auto;
     flex-direction: row;
-
+max-width:1500px
+}
+#cardSer{
+    margin-top:0.7rem ;
 }
 .img--big{
     width: 40%;
@@ -15,18 +19,33 @@
     justify-content: center;
 }
 
-.title{
+.titleForest{
     color:#16A398;
     font-size: 3rem;
-    margin-top:1rem;
-    position:relative;
-    right:16rem
+    margin:1rem 0 0 3rem;
 }
 .user--name{
     position:relative;
-    bottom:2rem;
+    bottom:1.5rem;
     color:'#000';
-    margin-left:1rem
+    margin-left:1rem;
+    font-size: 34px;
+
+     @media (max-width: 900px) {
+    font-size: 28px;
+  }
+     @media (max-width: 695px) {
+      bottom:3.5rem;
+
+
+  }
+    @media (max-width: 532px) {
+         font-size: 20px;
+
+      bottom:2.7rem;
+
+
+  }
 }
 .subtitle--big{
     color:#16A398;
@@ -39,6 +58,13 @@
     height:6rem;
     width: 6rem;
     object-fit: cover;
+       @media (max-width: 532px) {
+          height:4rem;
+    width: 4rem;
+
+
+
+  }
 }
 .text--colored{
     font-size: 1.4rem;
@@ -47,9 +73,43 @@
 .cardText{
     margin:0rem 2rem
 }
-.usuario{
+.usuario1{
     display: flex;
     align-items: baseline; 
-    margin:2.5rem 0 0 3rem;
+    margin:2rem 0 0 2rem;
 }
+.showOnSmall{
+    display: none;
+}
+.btncsssmall{
+      color:#ffffff;
+    border-radius: 0.15rem;
+    font-weight: 700;
+    font-size: 2rem;
+    width:80%;
+   padding:0.3rem;
+ border: none;
+    background-color: #16A398;
+text-decoration: none;
+text-align: center;
+margin-top: 1rem;
+}
+   @media (max-width: 670px) {
+ 
+.hide{
+    display:none;
+}
+.showOnSmall{
+    display: block;
+      margin-top:-2rem;
+    width:100%;
+       text-align: -webkit-center;
 
+}
+.showOnSmall a {
+    text-decoration: none;
+}
+  }
+   @media (max-width: 400px) {
+ 
+  }

@@ -13,7 +13,7 @@ export const Post = () => {
 
 	useEffect(
 		() => {
-			if (store.post_by_id != undefined) {
+			if (store.post_by_id != null) {
 				setPost_by_id(
 					<>
 						{store.post_by_id.title}
