@@ -31,8 +31,7 @@ def login():
         if traveler:
             if traveler.validate_password(password): 
                 access_token = create_access_token(identity=traveler.to_dict(), expires_delta=timedelta(minutes=100))
-                traveler_with_token = traveler.traveler_with_token(access_token)
-                return jsonify(traveler_with_token),200
+                return jsonify(access_token),200
    
     return ({'error':"User and password don't match"}),201
 
@@ -57,8 +56,8 @@ def create_traveler():
             if traveler.validate_email(email):
               return ({'error':"Traveler already exist"}),201
         else:
+            password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
             new_traveler = Traveler(name=name,email=email, _password=password, language=language, age=age)  
-            password = generate_password_hash(password, method='pbkdf2:sha256')
             new_traveler_created= new_traveler.create()
             new_traveler_dic = new_traveler_created.to_dict()
 
