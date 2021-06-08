@@ -10,7 +10,7 @@ import Button from "../component/button.js";
 //(ALGUNOS BOTONES SON PROVISIONALES TODAVÍA)
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
+	const linkProfile = "/user/".concat(store.email_test);
 	return (
 		<>
 			<MyNavbar />
@@ -25,7 +25,7 @@ export const Home = () => {
 				<Link to="/register">
 					<Button className="m-2" size="lm" color="primary" text="REGISTRATE" />
 				</Link>
-				<Link to="/user/persefone@gmail">
+				<Link to={linkProfile}>
 					<Button className="m-2" size="lm" color="secondary" text="(profile)" />
 				</Link>
 				<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
