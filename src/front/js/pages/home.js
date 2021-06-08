@@ -4,10 +4,13 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
+import { Link } from "react-router-dom";
+import Button from "../component/button.js";
 
+//(ALGUNOS BOTONES SON PROVISIONALES TODAVÍA)
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
+	const linkProfile = "/user/".concat(store.email_test);
 	return (
 		<>
 			<MyNavbar />
@@ -16,6 +19,15 @@ export const Home = () => {
 				<p>
 					<img src={rigoImageUrl} />
 				</p>
+				<Link to="/login">
+					<Button className="m-2" size="lm" color="secondary" text="LOGIN" />
+				</Link>
+				<Link to="/register">
+					<Button className="m-2" size="lm" color="primary" text="REGISTRATE" />
+				</Link>
+				<Link to={linkProfile}>
+					<Button className="m-2" size="lm" color="secondary" text="(profile)" />
+				</Link>
 				<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
 				<p>
 					This boilerplate comes with lots of documentation:{" "}
