@@ -13,13 +13,15 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 
-@api.route('/profile/<email>', methods=['GET'])
-def get_user_by_email(email):
-    traveler = Traveler.get_by_email(email)
+@api.route('/profile/<id>', methods=['GET'])
+def get_user_by_id(id):
+    print("Soy id", id)
+    traveler = Traveler.get_by_id(id)
     if traveler:
         return jsonify(traveler.to_dict()), 200
     
     return jsonify({'error': "Profile not found"}), 404 
+
 
 
 @api.route('/blog', methods=['GET'])

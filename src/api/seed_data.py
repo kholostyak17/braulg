@@ -3,8 +3,8 @@ data = {
         {
             "id": 0,
             "name": "Persefone",
-            "email": "persefone@gmail",
-            "_password": "1234",
+            "email": "persefone@gmail.com",
+            "_password": "123456",
             "language": "english",
             "age": "30",
             "localization" : "Colonia (Alemania)",
@@ -13,8 +13,8 @@ data = {
         {
             "id": 1,
             "name": "Jacques",
-            "email": "jacques@gmail",
-            "_password": "1234",
+            "email": "jacques@gmail.com",
+            "_password": "123456",
             "language": "spanish",
             "age": "25",
             "localization" : "Paris (Francia)",
@@ -23,8 +23,8 @@ data = {
         {
             "id": 2,
             "name": "Manuela",
-            "email": "manuela@gmail",
-            "_password": "1234",
+            "email": "manuela@gmail.com",
+            "_password": "123456",
             "language": "spanish",
             "age": "26",
             "localization" : "Madrid (España)",
