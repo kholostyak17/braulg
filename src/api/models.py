@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Table, Enum
+from sqlalchemy import Column, ForeignKey, Integer, String, Table, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -17,8 +17,12 @@ class Traveler(db.Model):
     _password = db.Column(db.String)
     language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
+    media = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
+    
+    def _repr_(self):
+        return f'Traveler {self.name} with mail {self.email}'
 
     def _repr_(self):
         return f'Traveler {self.name} with mail {self.email}'
@@ -44,15 +48,15 @@ class Traveler(db.Model):
         traveler = cls.query.filter_by(email=email).one_or_none()
         return traveler
 
-
 class Trip(db.Model):
     __tablename__ = 'trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     country = db.Column(db.String)
     cities = db.Column(db.String)
     activities = db.Column(db.String)
-    done = db.Column(db.Boolean, default=False)
-
+    date_time_start = db.Column(db.DateTime, nullable=False)
+    date_time_end = db.Column(db.DateTime, nullable=False)
+    done = db.Column(db.Boolean, default=False) 
 
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
