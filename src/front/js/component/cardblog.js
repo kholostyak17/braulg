@@ -4,10 +4,12 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/card-blog.scss";
 import { Link } from "react-router-dom";
-
+import { MyNavbar } from "../component/my-navbar";
+import { Footer } from "../component/footer";
 import Button from "./button.js";
+import newtripImage from "../../img/pexels-photo-3889987.png";
 
-const CardBlog = props => {
+export const Card_Blog = props => {
 	const { store, actions } = useContext(Context);
 	const link = "/blog/".concat(props.id);
 	const showMoreData = () => {
@@ -17,49 +19,53 @@ const CardBlog = props => {
 	};
 	return (
 		<Fragment>
-			<br />
-
-			<Card className="card--big" id="cardSer">
-				<Card.Img className="img--big" src={props.img} />
-				<div style={{ display: "flex", flexDirection: "column", width: "60%", alignItems: "center" }}>
-					<div style={{ display: "flex", alignSelf: "flex-start" }}>
-						<Card.Title className="titleForest">{props.title}</Card.Title>
-					</div>
-					<Card.Body>
-						<div className="cardText">
-							<Card.Text className="text--colored">{props.coloredText}</Card.Text>
-						</div>
-
-						<div className="usuario1">
-							<Card.Img
-								className="img--round--blog"
-								src="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
-							/>
-							<div className="user--name">{props.name}</div>{" "}
-						</div>
-					</Card.Body>
-					<div className="big--button hide">
-						<Link to={link}>
-							<Button size="m" color="primary" text="Leer" callBackFunction={showMoreData} />
-						</Link>
-					</div>
-					<div className="big--button showOnSmall">
-						<Link to={link}>
-							<div callBackFunction={showMoreData} className="btncsssmall">
-								Leer
-							</div>
-						</Link>
-					</div>
+			<MyNavbar />
+			<div className="blog_container">
+				<div className="img-blog">
+					<img src={newtripImage} className="blog-picture" />
 				</div>
-			</Card>
-			<br />
+				<div>
+					<Card className="card-big content-box m-3">
+						<div style={{ alignItems: "center" }}>
+							<Card.Img className="img-big" src={props.img} />
+							<div className="usuario1">
+								<Card.Img
+									className="img--round--blog"
+									src="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
+								/>
+								<div className="user--name">{props.name}</div>{" "}
+							</div>
+							<Card.Body>
+								<div style={{ display: "flex", alignSelf: "flex-start" }}>
+									<Card.Title className="card_Blog_Title">{props.title}</Card.Title>
+								</div>
+								<div className="cardText">
+									<Card.Text className="text--colored">{props.coloredText}</Card.Text>
+								</div>
+							</Card.Body>
+							<div className="big--button hide">
+								<Link to={link}>
+									<Button size="m" color="primary" text="Leer" callBackFunction={showMoreData} />
+								</Link>
+							</div>
+							<div className="big--button showOnSmall">
+								<Link to={link}>
+									<div callBackFunction={showMoreData} className="btncsssmall">
+										Leer
+									</div>
+								</Link>
+							</div>
+						</div>
+					</Card>
+				</div>
+			</div>
+
+			<Footer />
 		</Fragment>
 	);
 };
 
-export default CardBlog;
-
-CardBlog.propTypes = {
+Card_Blog.propTypes = {
 	className: PropTypes.string,
 	size: PropTypes.string,
 	color: PropTypes.string,

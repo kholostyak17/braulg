@@ -11,20 +11,17 @@ export const Post = () => {
 		actions.getPost(params.id);
 	}, []);
 
-	useEffect(
-		() => {
-			if (store.post_by_id != null) {
-				setPost_by_id(
-					<>
-						{store.post_by_id.title}
-						{store.post_by_id.text}
-						{store.post_by_id.media}
-					</>
-				);
-			}
-		},
-		[store.post_by_id]
-	);
+	useEffect(() => {
+		if (store.post_by_id != null) {
+			setPost_by_id(
+				<>
+					{store.post_by_id.title}
+					{store.post_by_id.text}
+					{store.post_by_id.media}
+				</>
+			);
+		}
+	}, [store.post_by_id]);
 
 	return <div className="h1"> {post_by_id}</div>;
 };

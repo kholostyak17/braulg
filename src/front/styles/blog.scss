@@ -1,0 +1,11 @@
+@import 'index.scss';
+
+@media only screen and (max-width: 768px) {
+    .blog-view{
+        background-image: url("../img/pexels-manuel-2949825.png");
+        background-repeat: repeat;
+    }
+    .card--body{
+        background-color: rgba(255,255,255,0.75);
+    }
+}
