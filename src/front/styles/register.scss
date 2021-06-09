@@ -1,0 +1,12 @@
+@import 'index.scss';
+
+.register-logo{
+    border-radius: 100%;
+    height: 10rem;
+}
+@media only screen and (max-width: 768px) {
+    .register-view{
+        background-image: url("../img/pexels-photo-2178175.png");
+        background-repeat: repeat;
+    }
+}

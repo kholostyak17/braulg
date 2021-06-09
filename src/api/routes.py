@@ -20,10 +20,11 @@ CORS(api)
 
 @api.route('/login', methods=['POST'])
 def login():
+    print("Request json", request.json)
     email,password = request.json.get(
             "email", None
     ), request.json.get(
-            "password",None
+            "password", None
     )
 
     if email and password: 
