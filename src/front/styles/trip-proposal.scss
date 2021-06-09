@@ -1,38 +1,32 @@
 .tripProposalTitle{
     font-family: Nunito;
-font-size: 64px;
-font-style: normal;
-font-weight: 700;
-line-height: 87px;
-letter-spacing: 0em;
-text-align: left;
-margin: 2rem 0 0 2rem;
-color: #17A398;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 87px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 2rem 0 0 2rem;
+    color: #17A398;
 }
 
 .card--big--tripP{
-     width:90%;
-  height:auto;
-  margin: 0 auto;
-//   height: 38.6875rem;
-    
-    
+    width:90%;
+    height:auto;
+    margin: 0 auto;
 }
 .cardResp{
     width: 75.3125rem;
-// margin: 0 2rem 1rem 2rem;
 }
 .img--big{
     width: 40%;
     border-top-right-radius: 0;
     border-bottom-left-radius: calc(0.25rem - 1px);
 }
-
 .button--big{
     display:flex;
     justify-content: center;
 }
-
 .title{
     color:#16A398;
     font-size: 3rem;
@@ -43,44 +37,41 @@ color: #17A398;
 .textTitle{
     $marg: 3px;
     color:#16A398;
-font-family: Nunito;
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: 33px;
-letter-spacing: 0em;
-text-align: left;
-margin-bottom:(-$marg);
+    font-family: Nunito;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom:(-$marg);
 }
 .infoText{
-font-family: Roboto;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 21px;
-letter-spacing: 0em;
-text-align: left;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
 }
 .user-name{
-  font-family: Roboto;
-font-size: 36px;
-font-style: normal;
-font-weight: 400;
-line-height: 42px;
-letter-spacing: 0em;
-text-align: left;
-position: relative;
-bottom:2.1rem;
-left:1rem
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 42px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: relative;
+    bottom:2.1rem;
+    left:1rem
 }
 .subtitle--big{
     color:#16A398;
     font-size: 2rem;
     margin: 2rem 0 0 1rem;
 }
-
-
-
 .cardText{
     margin-bottom: 0.5rem
 }
@@ -95,10 +86,10 @@ left:1rem
 
 }
 .imgPartners{
-width: 35px;
-height: 33px;
-border-radius: 82px;
-margin: 0.5rem 0.5rem 0 0.3rem
+    width: 35px;
+    height: 33px;
+    border-radius: 82px;
+    margin: 0.5rem 0.5rem 0 0.3rem
 }
 
 .join{
@@ -106,40 +97,34 @@ margin: 0.5rem 0.5rem 0 0.3rem
     position: absolute;
     bottom:50px;
     right: 30px;
-height: 58.67857360839844px;
-width: 117px;
-
-// border-radius: 5px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 36px;
-line-height: 42px;
-text-align: center;
- border: none;
-color: #FFFFFF;
-background: #F5B82E;
-border-radius: 5px;
+    height: 58.67857360839844px;
+    width: 117px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    border: none;
+    color: #FFFFFF;
+    background: #F5B82E;
+    border-radius: 5px;
 }
 $breakpoint-tablet: 724px;
 @media (max-width: $breakpoint-tablet) {
   .join{
-width: 80px;
-font-size: 30px;
-height: 48.67857360839844px;
-top: 330px;
-
+    width: 80px;
+    font-size: 30px;
+    height: 48.67857360839844px;
+    top: 330px;
   }
-  .tripProposalTitle{
-    
-font-size: 44px;
-margin: 1rem 0 -1rem 1.5rem;
-
-}
-}
+  .tripProposalTitle {
+    font-size: 44px;
+    margin: 1rem 0 -1rem 1.5rem;
+    }
+ }
 @media (max-width: 576px) {
   .join{
-top: 350px;
-  }
-}
+    top: 350px;
+    }
+ }

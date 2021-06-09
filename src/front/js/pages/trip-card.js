@@ -2,7 +2,7 @@ import React, { useContext, useEffect, Fragment } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
-import "../../styles/trip-proposal-id.scss";
+import "../../styles/trip-card.scss";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import person1 from "../component/personasImg/imgperson1.jpeg";
@@ -10,7 +10,7 @@ import person2 from "../component/personasImg/person2.jpeg";
 import { MyNavbar } from "../component/my-navbar.js";
 import { Footer } from "../component/footer.js";
 
-const TripProposalId = props => {
+const TripCard = props => {
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -27,7 +27,6 @@ const TripProposalId = props => {
 			<Card className="card--bigId">
 				<Card.Body className="cardBodyId">
 					<br />
-
 					<div className="cardText">
 						<h3 className="textTitleId">Cities</h3>
 						<Card.Text className="infoTextId">Milan, Bergamo, Roma, Turín</Card.Text>
@@ -61,14 +60,13 @@ const TripProposalId = props => {
 					<button className="joinId">Join</button>
 				</div>
 			</Card>
-			<br />
 			<Footer />
 		</Fragment>
 	);
 };
 
-export default TripProposalId;
+export default TripCard;
 
-TripProposalId.propTypes = {
+TripCard.propTypes = {
 	name: PropTypes.string
 };
