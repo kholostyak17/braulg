@@ -4,18 +4,14 @@ import { Home } from "./pages/home";
 import { Components } from "./pages/components";
 import { NewTrip } from "./pages/newtrip";
 import { Login } from "./pages/login";
+import { Register } from "./pages/register";
 import { Blog } from "./pages/blog";
-import TripProposal from "./pages/tripproposal";
-import TripProposalId from "./pages/tripproposalid";
-
-import CardBlog from "./component/cardblog";
-
-//import { Blog } from "./pages/blog";
+import TripProposal from "./pages/trip-proposal";
+import TripCard from "./pages/trip-card";
 import injectContext from "./store/appContext";
-import { MyNavbar } from "./component/my-navbar";
-import { Footer } from "./component/footer";
 import { Post } from "./pages/post.js";
-
+import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
+import { MyNavbar } from "./component/my-navbar"; //navbar provisional para error 404
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -37,28 +33,30 @@ const Layout = () => {
 					<Route exact path="/newtrip">
 						<NewTrip />
 					</Route>
+					<Route exact path="/login">
+						<Login />
+					</Route>
+					<Route exact path="/register">
+						<Register />
+					</Route>
 					<Route exact path="/blog">
 						<Blog />
 					</Route>
 					<Route exact path="/blog/:id">
-						{<Post />}
+						<Post />
 					</Route>
 					<Route exact path="/trip-proposal">
 						<TripProposal name="Persefone" />
 					</Route>
-					<Route exact path="/cardBlogResp">
-						<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name="Sergio Carrascal" />
+					<Route exact path="/trip-card">
+						<TripCard name="Persefone" />
 					</Route>
-					<Route exact path="/trip-proposal-id">
-						<TripProposalId name="Persefone" />
-					</Route>
-					<Route exact path="/login">
-						<Login />
+					<Route exact path="/user/:email">
+						<Profile />
 					</Route>
 					<Route>
 						<MyNavbar />
 						<h1>Not found!</h1>
-						<Footer />
 					</Route>
 				</Switch>
 			</BrowserRouter>
