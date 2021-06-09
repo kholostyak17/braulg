@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			trips: [],
+			trips_by_id: [],
 			posts: [],
 			post_by_id: [],
 			user: {},
@@ -18,14 +20,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ posts: responseAsJson });
-						console.log(responseAsJson);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
 			getPost: id => {
-				console.log(id);
 				fetch(
 					getStore()
 						.base_url.concat("api/blog/")
@@ -39,6 +39,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ post_by_id: responseAsJson });
+						console.log(responseAsJson);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getTrips: () => {
+				fetch(getStore().base_url.concat("api/trip/"))
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Trip!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ trips: responseAsJson });
+						console.log(responseAsJson);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getTrip: id => {
+				fetch(
+					getStore()
+						.base_url.concat("api/trip/")
+						.concat(id)
+				)
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Trip!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ trips_by_id: responseAsJson });
 						console.log(responseAsJson);
 					})
 					.catch(function(error) {

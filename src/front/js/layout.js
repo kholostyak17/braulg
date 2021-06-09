@@ -7,7 +7,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Blog } from "./pages/blog";
 import TripProposal from "./pages/trip-proposal";
-import TripCard from "./pages/trip-card";
+import TripDetails from "./pages/trip-details";
 import injectContext from "./store/appContext";
 import { Post } from "./pages/post.js";
 import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
@@ -48,8 +48,8 @@ const Layout = () => {
 					<Route exact path="/trip-proposal">
 						<TripProposal name="Persefone" />
 					</Route>
-					<Route exact path="/trip-card">
-						<TripCard name="Persefone" />
+					<Route exact path="/trip-details">
+						<TripDetails name="Persefone" />
 					</Route>
 					<Route exact path="/user/:email">
 						<Profile />

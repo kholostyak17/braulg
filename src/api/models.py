@@ -58,6 +58,35 @@ class Trip(db.Model):
     date_time_end = db.Column(db.DateTime, nullable=False)
     done = db.Column(db.Boolean, default=False) 
 
+    def _repr_(self):
+        return f'Trip {self.id}, {self.cities}, {self.date}, {self.activities}, '
+
+    def to_dict(self):
+        return{
+            "id": self.id,
+            "country": self.country,
+            "cities": self.cities,
+            "date_time_start": self.date_time_start,
+            "date_time_end": self.date_time_end,
+            "activities": self.activities,
+        }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @classmethod
+    def get_all(cls):
+        trips = cls.query.all()
+        
+        return trips
+    
+    @classmethod
+    def get_by_id(cls, id):
+        trips_by_id = cls.query.filter_by(id=id).one_or_none()
+        return trips_by_id
+
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)

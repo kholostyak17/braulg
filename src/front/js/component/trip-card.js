@@ -4,41 +4,40 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/trip-card.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button.js";
+import Button from "./button.js";
 import person1 from "../component/personasImg/imgperson1.jpeg";
 import person2 from "../component/personasImg/person2.jpeg";
-import { MyNavbar } from "../component/my-navbar.js";
-import { Footer } from "../component/footer.js";
+import { MyNavbar } from "./my-navbar.js";
+import { Footer } from "./footer.js";
 
 const TripCard = props => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<Fragment>
-			<MyNavbar />
-			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUaQTjXMGyap1TMjUOXKoTRYnhp8f1VU4M9U_-PD3XMbv8SC2bSLa83icqnVIO8FHvrJE&usqp=CAU"
-				alt="bridge"
-				className="tripIdBack"
-			/>
-			<h1 className="tripProposalTitleId">Trip (id0001)</h1>
+			<h1 className="tripProposalTitleId">{props.tripsId}</h1>
 			<br />
-
 			<Card className="card--bigId">
 				<Card.Body className="cardBodyId">
 					<br />
 					<div className="cardText">
+						<h3 className="textTitleId">Country</h3>
+						<Card.Text className="infoTextId">{props.country}</Card.Text>
+					</div>
+					<div className="cardText">
 						<h3 className="textTitleId">Cities</h3>
-						<Card.Text className="infoTextId">Milan, Bergamo, Roma, Turín</Card.Text>
+						<Card.Text className="infoTextId">{props.cities}</Card.Text>
 					</div>
 
 					<div className="cardText">
 						<h3 className="textTitleId">Date</h3>
-						<Card.Text className="infoTextId">19th may - 30th may</Card.Text>
+						<Card.Text className="infoTextId">
+							{props.date_time_start} - {props.date_time_end}
+						</Card.Text>
 					</div>
 					<div className="cardText">
 						<h3 className="textTitleId">Activities</h3>
-						<Card.Text className="infoTextId">Go biking, rent a car, take a tour around the city</Card.Text>
+						<Card.Text className="infoTextId">{props.activities}</Card.Text>
 					</div>
 					<div className="cardText">
 						<h3 className="textTitleId">Partners:</h3>
@@ -60,7 +59,6 @@ const TripCard = props => {
 					<button className="joinId">Join</button>
 				</div>
 			</Card>
-			<Footer />
 		</Fragment>
 	);
 };
@@ -68,5 +66,12 @@ const TripCard = props => {
 export default TripCard;
 
 TripCard.propTypes = {
-	name: PropTypes.string
+	name: PropTypes.string,
+	tripsId: PropTypes.number,
+	country: PropTypes.string,
+	cities: PropTypes.string,
+	date_time_start: PropTypes.number,
+	date_time_end: PropTypes.number,
+	activities: PropTypes.string,
+	partners: PropTypes.string
 };

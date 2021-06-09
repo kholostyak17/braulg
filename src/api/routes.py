@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS
-from api.models import db, Traveler, Post
+from api.models import db, Traveler, Post, Trip
 
 from api.utils import generate_sitemap, APIException
 
@@ -41,4 +41,26 @@ def get_post_by_id(id):
     
 
     return jsonify({'error': "Post not found"}), 404
+
+
+
+@api.route('/trip', methods=['GET'])
+def get_all_trips():
+    
+    trips = Trip.get_all()
+    print(trips) 
+    if trips:
+        trips_dict = [trip.to_dict() for trip in trips]
+        return jsonify(trips_dict), 200
+
+    return jsonify({'error': "Trips not found"}), 404
+
+@api.route('/trip/<id>', methods=['GET'])
+def get_trip_by_id(id):
+    trip = Trip.get_by_id(id)
+    if trip:
+        return jsonify(trip.to_dict()), 200
+    
+
+    return jsonify({'error': "Trips not found"}), 404
 
