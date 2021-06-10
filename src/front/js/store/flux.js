@@ -9,7 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getUser: () => {
-				console.log("Token login", localStorage.getItem("tokenID"));
 				fetch(getStore().base_url.concat("api/profile/", localStorage.getItem("tokenID")))
 					.then(function(response) {
 						if (!response.ok) {
@@ -29,13 +28,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(credentials);
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);
-					console.log(decoded);
 					return decoded;
 				};
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
-					console.log(token.sub);
-					console.log("ID definido", token.sub.id);
 				};
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {

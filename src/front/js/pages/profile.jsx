@@ -11,11 +11,9 @@ export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const [user, setUser] = useState([]);
 	const params = useParams();
-	console.log(params);
-	console.log(store.tokenId);
+
 	useEffect(() => {
 		actions.getUser(params.id);
-		console.log(params.id);
 	}, []);
 
 	useEffect(() => {

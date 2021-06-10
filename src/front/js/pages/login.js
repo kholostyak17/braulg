@@ -15,9 +15,6 @@ export const Login = () => {
 
 	const onSubmit = data => {
 		actions.getLogin(JSON.stringify(data));
-		/*if (store.tokenId != "") {
-			location.replace("./user/".concat(store.tokenId));
-		}*/
 	};
 
 	return (
