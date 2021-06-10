@@ -59,15 +59,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getRegister: credentials => {
-				console.log(credentials);
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);
-					console.log(decoded);
 					return decoded;
 				};
 				const setTravelerFromToken = token => {
-					setStore({ traveler: token.sub });
+					localStorage.setItem("tokenID", token.sub.id);
 					console.log(token.sub);
+				};
+				const redirectToProfile = () => {
+					if (localStorage.getItem("tokenID") != null) {
+						location.replace("./user/".concat(localStorage.getItem("tokenID")));
+					}
 				};
 				fetch(getStore().base_url.concat("api/register"), {
 					method: "POST",
@@ -82,9 +85,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(function(responseAsJson) {
-						setStore({ token: responseAsJson });
+						localStorage.setItem("token", responseAsJson);
 						const tokenDecoded = tokenDecode(responseAsJson);
 						setTravelerFromToken(tokenDecoded);
+						redirectToProfile();
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

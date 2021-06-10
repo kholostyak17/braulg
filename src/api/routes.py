@@ -59,11 +59,11 @@ def create_traveler():
         else:
             password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
             new_traveler = Traveler(name=name,email=email, _password=password, language=language, age=age)  
-            new_traveler_created= new_traveler.create()
-            new_traveler_dic = new_traveler_created.to_dict()
+            new_traveler_created= new_traveler.create()            
+            access_token = create_access_token(identity=new_traveler_created.to_dict(), expires_delta=timedelta(minutes=100))
 
-            if new_traveler_dic: 
-                return jsonify(new_traveler_dic),201
+            if access_token: 
+                return jsonify(access_token),201
             else:
                 return ({'error':"Missing info"}), 404
 
