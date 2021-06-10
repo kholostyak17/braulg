@@ -62,8 +62,6 @@ class Traveler(db.Model):
         print(is_valid)
         return is_valid
         
-
-
     def validate_email(self, email):
         if self.email == email:
             return True
@@ -90,7 +88,21 @@ class Trip(db.Model):
     date_time_end = db.Column(db.DateTime, nullable=False)
     done = db.Column(db.Boolean, default=False)
 
+    def to_dict(self):
+        return{
+            "id": self.id,
+            "country": self.country,
+            "cities": self.cities,
+            "activities": self.activities,
+            "date_time_start": self.date_time_start,
+            "date_time_end": self.date_time_end,
+        }
 
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+        
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)

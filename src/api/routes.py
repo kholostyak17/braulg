@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS
-from api.models import db, Traveler, Post
+from api.models import db, Traveler, Post, Trip
 from datetime import timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -68,7 +68,28 @@ def create_traveler():
                 return ({'error':"Missing info"}), 404
 
  
-     
+@api.route('/newtrip', methods=['POST'])
+def create_trip():
+    country = request.json.get('country',None)
+    cities = request.json.get('cities',None)
+    activities = request.json.get('activities',None)
+    date_time_start =  request.json.get('date_time_start',None)
+    date_time_end =  request.json.get('date_time_end',None)
+    
+    new_trip = Trip(
+                country=country,
+                cities=cities,
+                activities=activities,
+                date_time_start=date_time_start,
+                date_time_end=date_time_end
+            )
+    if new_trip: 
+        new_trip.create()
+        return jsonify(new_trip.to_dict()),201
+
+    else:
+        return {'error':'Something went wrong'},409
+    
 
 @api.route('/profile/<id>', methods=['GET'])
 def get_user_by_id(id):

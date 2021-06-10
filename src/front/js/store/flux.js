@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-chocolate-stork-0ozwzx8y.ws-eu08.gitpod.io/"
+			base_url: "https://3001-blush-jellyfish-m03q1jsv.ws-eu09.gitpod.io/"
 		},
 		actions: {
 			getUser: () => {
