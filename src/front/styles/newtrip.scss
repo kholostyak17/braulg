@@ -1,11 +1,5 @@
 @import 'index.scss';
 
-.my-textarea{
-    resize: vertical;
-    height: 4rem;
-    overflow-y: scroll;
-}
-
 @media only screen and (max-width: 768px) {
     .newtrip-view{
         background-image: url("../img/pexels-photo-3889987.png");
