@@ -63,7 +63,7 @@ export const Settings = () => {
 							/>
 							<h2>Modificar idiomas:</h2>
 							<input
-								id="languaje"
+								id="language"
 								type="text"
 								className="input-style"
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
