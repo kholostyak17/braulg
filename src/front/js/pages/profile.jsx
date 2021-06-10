@@ -12,10 +12,10 @@ export const Profile = () => {
 	const [user, setUser] = useState([]);
 	const params = useParams();
 	console.log(params);
-
+	console.log(store.tokenId);
 	useEffect(() => {
-		actions.getUser(params.email);
-		console.log(params.email);
+		actions.getUser(params.id);
+		console.log(params.id);
 	}, []);
 
 	useEffect(() => {

@@ -47,6 +47,11 @@ class Traveler(db.Model):
         return self
 
     @classmethod
+    def get_by_id(cls, id):
+        traveler = cls.query.filter_by(id=id).one_or_none()
+        return traveler
+        
+    @classmethod
     def get_by_email(cls, email):
         traveler = cls.query.filter_by(email=email).one_or_none()
         return traveler

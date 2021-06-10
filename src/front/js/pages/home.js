@@ -10,7 +10,8 @@ import Button from "../component/button.js";
 //(ALGUNOS BOTONES SON PROVISIONALES TODAVÍA)
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-	const linkProfile = "/user/".concat(store.email_test);
+	const linkProfile = "/user/".concat(store.tokenLogin);
+	console.log(store.tokenLogin);
 	return (
 		<>
 			<MyNavbar />

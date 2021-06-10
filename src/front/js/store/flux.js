@@ -4,14 +4,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: {},
-			token: {},
 			traveler: {},
-			email_test: "persefone@gmail",
-			base_url: "https://3001-yellow-porcupine-x74bosv8.ws-eu08.gitpod.io/"
+			base_url: "https://3001-chocolate-stork-0ozwzx8y.ws-eu08.gitpod.io/"
 		},
 		actions: {
 			getUser: () => {
-				fetch(getStore().base_url.concat("api/profile/", getStore().email_test))
+				console.log("Token login", localStorage.getItem("tokenID"));
+				fetch(getStore().base_url.concat("api/profile/", localStorage.getItem("tokenID")))
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load User!");
@@ -34,8 +33,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return decoded;
 				};
 				const setTravelerFromToken = token => {
-					setStore({ traveler: token.sub });
+					localStorage.setItem("tokenID", token.sub.id);
 					console.log(token.sub);
+					console.log("ID definido", token.sub.id);
+				};
+				const redirectToProfile = () => {
+					if (localStorage.getItem("tokenID") != null) {
+						location.replace("./user/".concat(localStorage.getItem("tokenID")));
+					}
 				};
 				fetch(getStore().base_url.concat("api/login"), {
 					method: "POST",
@@ -50,9 +55,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(function(responseAsJson) {
-						setStore({ token: responseAsJson });
+						localStorage.setItem("token", responseAsJson);
 						const tokenDecoded = tokenDecode(responseAsJson);
 						setTravelerFromToken(tokenDecoded);
+						redirectToProfile();
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
