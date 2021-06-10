@@ -12,9 +12,6 @@ export const Footer = () => (
 		<Link to="/aboutus">
 			<div className="link-footer col-12 col-sm-3 col-md-2">Acerca de nosotros</div>
 		</Link>
-		<Link to="/contact">
-			<div className="link-footer col-12 col-sm-4 col-md-2 ">Contacta</div>
-		</Link>
 		<Link to="/faq">
 			<div className="link-footer col-12 col-sm-3 col-md-2 ">Preguntas frecuentes</div>
 		</Link>
