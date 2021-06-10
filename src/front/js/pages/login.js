@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, onSubmit, handleSubmit } from "react";
+import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import logo from "../../img/logo.png";
@@ -12,7 +12,10 @@ import Button from "../component/button.js";
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+
+	const onSubmit = data => {
+		actions.getLogin(JSON.stringify(data));
+	};
 
 	return (
 		<>
