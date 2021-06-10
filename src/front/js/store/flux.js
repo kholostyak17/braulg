@@ -25,7 +25,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getLogin: credentials => {
-				console.log(credentials);
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);
 					return decoded;
@@ -44,7 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" }
 				})
 					.then(function(response) {
-						console.log(response);
 						if (!response.ok) {
 							throw Error("I can't load User!");
 						}
