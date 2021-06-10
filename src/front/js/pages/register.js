@@ -11,7 +11,9 @@ import Button from "../component/button.js";
 export const Register = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const onSubmit = data => {
+		actions.getRegister(JSON.stringify(data));
+	};
 
 	return (
 		<>

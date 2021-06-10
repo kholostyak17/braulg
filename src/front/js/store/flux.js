@@ -57,9 +57,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
 					});
+			},
+			getRegister: credentials => {
+				console.log(credentials);
+				const tokenDecode = token => {
+					let decoded = jwt_decode(token);
+					console.log(decoded);
+					return decoded;
+				};
+				const setTravelerFromToken = token => {
+					setStore({ traveler: token.sub });
+					console.log(token.sub);
+				};
+				fetch(getStore().base_url.concat("api/register"), {
+					method: "POST",
+					body: credentials,
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						console.log(response);
+						if (!response.ok) {
+							throw Error("I can't load User!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ token: responseAsJson });
+						const tokenDecoded = tokenDecode(responseAsJson);
+						setTravelerFromToken(tokenDecoded);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			}
-
-			// getTravelerById fetch a backend que devuelve todos los datos del usuario by id/email
 		}
 	};
 };
