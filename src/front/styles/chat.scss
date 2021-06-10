@@ -1,0 +1,86 @@
+.chat-Container{
+    padding:2rem 3.8rem 1rem 2rem;
+     width:100%;
+       @media(max-width:623px){
+                 padding:0;
+    }
+}
+#users{
+    margin: 1rem 0 0 2rem;
+ @media(max-width:623px){
+                margin:0;
+    }
+}
+.card-chat-title{
+    font-family: Nunito;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 87px;
+    letter-spacing: 0em;
+    margin: 0 0 0 2rem;
+}
+.imgChatPersefone{
+    width: 96px;
+height: 96px;
+ border-radius: 82px;
+
+}
+.chatNames{
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 42px;
+    letter-spacing: 0em;
+    text-align: left;
+    position:relative;
+    bottom:2.2rem;
+    left:3rem;
+
+}
+.chatUser{
+    display:flex;
+    align-items: baseline;
+    width: 70%;
+    position:relative;
+    top:0.6rem;
+
+}
+.chat-btn,.chat-btn1 {
+   float:right;
+    height: 70.77783203125px;
+    width: 301.68994140625px;
+    background: #F5B82E;
+    border-radius: 5px;
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:#ffffff;
+    position:relative;
+    top:1.5rem;
+    @media(max-width:850px){
+             height: 70.77783203125px;
+             width: 151.68994140625px;   
+    }
+}
+
+.chat-btn-container{
+    display: flex;
+    width: 30%;
+    place-content: flex-end;
+}
+.container-user{
+    display: flex;
+}
+.hr{
+    border: 2px solid #C2C2C2;
+    @media(max-width:700px){
+    border: 1px solid #C2C2C2;
+
+    }
+}

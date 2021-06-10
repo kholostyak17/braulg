@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			post_by_id: [],
 			user: {},
 			email_test: "persefone@gmail",
-			base_url: "https://3001-turquoise-planarian-6lkdvdcx.ws-eu08.gitpod.io/"
+			base_url: "https://3001-gold-shrimp-2h7qgm5l.ws-eu08.gitpod.io/"
 		},
 		actions: {
 			getPosts: () => {

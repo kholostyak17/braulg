@@ -12,6 +12,9 @@ import injectContext from "./store/appContext";
 import { Post } from "./pages/post.js";
 import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
 import { MyNavbar } from "./component/my-navbar"; //navbar provisional para error 404
+import { Chat } from "./pages/Chat";
+import { Persefone_Chat } from "./pages/Persefone-Chat";
+import { Jaques_Chat } from "./pages/Jaques-Chat";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -53,6 +56,15 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/user/:email">
 						<Profile />
+					</Route>
+					<Route exact path="/chat">
+						<Chat />
+					</Route>
+					<Route exact path="/chat/Jaques">
+						<Jaques_Chat />
+					</Route>
+					<Route exact path="/chat/Persefone">
+						<Persefone_Chat />
 					</Route>
 					<Route>
 						<MyNavbar />

@@ -45,7 +45,7 @@ const TripDetails = props => {
 						<div id="partners">
 							<div className="chatPartner">
 								<img src={person2} className="imgPartnersId" alt="partners" />
-								<p className="partnerName">Persefone</p>
+								<p className="partnerName">{props.name}</p>
 								<button className="chatButton">Chat</button>{" "}
 							</div>
 							<div className="chatPartner">
