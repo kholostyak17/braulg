@@ -21,6 +21,7 @@ class Traveler(db.Model):
     media = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
+    is_active=db.Column(db.Boolean, default=True)
     
     def _repr_(self):
         return f'Traveler {self.name} with mail {self.email}'
@@ -70,6 +71,7 @@ class Post(db.Model):
     text = db.Column(db.String)
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     traveler = db.relationship("Traveler")
+    is_active=db.Column(db.Boolean, default=True)
 
     def _repr_(self):
         return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.traveler_id}, '
