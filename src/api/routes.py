@@ -83,11 +83,11 @@ def create_trip():
                 date_time_start=date_time_start,
                 date_time_end=date_time_end
             )
-    if new_trip: 
+    try: 
         new_trip.create()
         return jsonify(new_trip.to_dict()),201
 
-    else:
+    except exc.IntegrityError:
         return {'error':'Something went wrong'},409
     
 
