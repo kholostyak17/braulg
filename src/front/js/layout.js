@@ -7,6 +7,7 @@ import { NewTrip } from "./pages/newtrip";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
+import { Settings } from "./pages/settings";
 //import { Blog } from "./pages/blog";
 import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/my-navbar"; //navbar provisional para error 404
@@ -38,6 +39,9 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/user/:id">
 						<Profile />
+					</Route>
+					<Route exact path="/settings">
+						<Settings />
 					</Route>
 					<Route>
 						<MyNavbar />
