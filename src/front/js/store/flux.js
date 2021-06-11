@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-harlequin-chicken-ms6rkftx.ws-eu09.gitpod.io/"
+			base_url: "https://3001-black-donkey-ro2kq8jx.ws-eu09.gitpod.io/"
 		},
 		actions: {
 			getUser: () => {
@@ -33,6 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
+					localStorage.setItem("tokenName", token.sub.name);
 				};
 
 				const redirectToProfile = () => {
@@ -70,6 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
+					localStorage.setItem("tokenName", token.sub.name);
 					console.log(token.sub);
 				};
 				const redirectToProfile = () => {
