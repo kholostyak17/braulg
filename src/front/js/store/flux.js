@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-chocolate-stork-0ozwzx8y.ws-eu08.gitpod.io/"
+			base_url: "https://3001-harlequin-chicken-ms6rkftx.ws-eu09.gitpod.io/"
 		},
 		actions: {
 			getUser: () => {
@@ -24,19 +24,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
+
 			getLogin: credentials => {
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);
 					return decoded;
 				};
+
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
 				};
+
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
+
 				fetch(getStore().base_url.concat("api/login"), {
 					method: "POST",
 					body: credentials,
@@ -58,6 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
+
 			getRegister: credentials => {
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);
@@ -74,8 +79,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetch(getStore().base_url.concat("api/register"), {
 					method: "POST",
-					body: credentials,
-					headers: { "Content-Type": "application/json" }
+					headers: new Headers({
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					}),
+					body: credentials
 				})
 					.then(function(response) {
 						console.log(response);

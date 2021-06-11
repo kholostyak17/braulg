@@ -39,6 +39,7 @@ def login():
 
 @api.route('/register', methods=['POST'])
 def create_traveler():
+    print("Llego", request)
     name,email,password,age,language = request.json.get(
             "name",None
     ), request.json.get(        
