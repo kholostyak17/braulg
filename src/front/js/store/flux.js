@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(getStore().base_url.concat("api/profile/", localStorage.getItem("tokenID")))
 					.then(function(response) {
 						if (!response.ok) {
-							throw Error("I can't load User!");
+							throw Error("I can't load user!");
 						}
 						return response.json();
 						console.log(response);
@@ -75,7 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(function(response) {
 						if (!response.ok) {
-							throw Error("I can't load User!");
+							throw Error("I can't get login!");
 						}
 						return response.json();
 					})
@@ -115,7 +115,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(function(response) {
 						console.log(response);
 						if (!response.ok) {
-							throw Error("I can't load User!");
+							throw Error("I can't register this traveler!");
 						}
 						return response.json();
 					})
