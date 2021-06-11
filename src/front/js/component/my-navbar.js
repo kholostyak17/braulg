@@ -46,7 +46,7 @@ export const MyNavbar = () => {
 								<Dropdown.Item href="/profile" className="text-white menu-hover text-center">
 									Mi perfil
 								</Dropdown.Item>
-								<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
+								<Dropdown.Item href="/settings/:id" className="text-white menu-hover text-center">
 									Ajustes
 								</Dropdown.Item>
 								<Dropdown.Divider />

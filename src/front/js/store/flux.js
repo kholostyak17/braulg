@@ -28,9 +28,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getUpdate: credentials => {
 				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
 				console.log(token);
 				console.log(credentials);
-				fetch(getStore().base_url.concat("api/settings"), {
+				console.log(tokenID);
+				fetch(getStore().base_url.concat("api/settings/<int:"), localStorage.getItem("tokenID").concat(">"), {
 					method: "PATCH",
 					body: credentials,
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }

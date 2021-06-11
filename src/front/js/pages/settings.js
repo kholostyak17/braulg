@@ -8,10 +8,16 @@ import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import Modal from "react-bootstrap/Modal";
+import { useParams } from "react-router-dom";
 
 export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
+	const params = useParams();
+
+	useEffect(() => {
+		actions.getUser(params.id);
+	}, []);
 
 	const onSubmit = data => {
 		actions.getUpdate(JSON.stringify(data));

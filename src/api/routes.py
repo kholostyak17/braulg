@@ -105,7 +105,7 @@ def get_user_by_id(id):
 
 @api.route('/blog', methods=['GET'])
 def get_all_posts():
-    
+
     posts = Post.get_all_post()
     print(posts) 
     if posts:
@@ -115,13 +115,17 @@ def get_all_posts():
     return jsonify({'error': "Posts not found"}), 404
 
  
-@api.route('/settings/<int:id>', methods=['PUT', 'PATCH'])
+@api.route('/settings/<int:id>', methods=['PATCH'])
 @jwt_required()
 def update_traveler(id):
- 
-    current_traveler = get_jwt_identity() #id
+  
+    current_traveler = get_jwt_identity() #
+    keys = current_traveler.keys()
+    print(keys)
+    print("Current traveler",current_traveler)
+    print(id)
 
-    if current_traveler != id:
+    if current_traveler["id"] != id:
         return {'error': 'Invalid action'}, 400
     
     password_without_encrypt = request.json.get("password",None)
