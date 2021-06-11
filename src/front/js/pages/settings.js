@@ -12,7 +12,10 @@ import Modal from "react-bootstrap/Modal";
 export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+
+	const onSubmit = data => {
+		actions.getUpdate(JSON.stringify(data));
+	};
 	//variables para desplegar modal de borrar cuenta
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -27,12 +30,7 @@ export const Settings = () => {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
 							<h2>Imagen de perfil:</h2>
-							<input
-								id="profilepicture"
-								type="file"
-								className="input-style"
-								{...register("profilepicture")}
-							/>
+							<input id="media" type="text" className="input-style" {...register("media")} />
 							<h2>Biografía:</h2>
 							<textarea
 								id="biografía"
@@ -60,6 +58,15 @@ export const Settings = () => {
 								title="Edad no válida"
 								placeholder="Mínimo 16 años"
 								{...register("age")}
+							/>
+							<h2>Modificar ubicacion:</h2>
+							<input
+								id="localization"
+								type="text"
+								className="input-style"
+								title="Edad no válida"
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
+								{...register("localization")}
 							/>
 							<h2>Modificar idiomas:</h2>
 							<input

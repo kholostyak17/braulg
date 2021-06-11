@@ -26,6 +26,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
+			getUpdate: credentials => {
+				const token = localStorage.getItem("token");
+				console.log(token);
+				console.log(credentials);
+				fetch(getStore().base_url.concat("api/settings"), {
+					method: "PATCH",
+					body: credentials,
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't update this traveler!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						setStore({ user: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+
 			getLogin: credentials => {
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);
@@ -112,7 +136,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(function(response) {
 						if (!response.ok) {
-							throw Error("I can't load User!");
+							throw Error("I can't register this trip!");
 						}
 						return response.json();
 						console.log(response);

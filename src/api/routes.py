@@ -95,7 +95,6 @@ def create_trip():
 
 @api.route('/profile/<id>', methods=['GET'])
 def get_user_by_id(id):
-    print("Soy id", id)
     traveler = Traveler.get_by_id(id)
     if traveler:
         return jsonify(traveler.to_dict()), 200
@@ -116,13 +115,14 @@ def get_all_posts():
     return jsonify({'error': "Posts not found"}), 404
 
  
-@api.route('/settings', methods=['PUT', 'PATCH'])
+@api.route('/settings/<int:id>', methods=['PUT', 'PATCH'])
+@jwt_required()
+def update_traveler(id):
+ 
+    current_traveler = get_jwt_identity() #id
 
-def update_traveler(id=3):
-    # current_traveler = get_jwt_identity() #id
-
-    # if current_traveler != id:
-    #     return {'error': 'Invalid action'}, 400
+    if current_traveler != id:
+        return {'error': 'Invalid action'}, 400
     
     password_without_encrypt = request.json.get("password",None)
     password = generate_password_hash(password_without_encrypt, method='pbkdf2:sha256', salt_length=16),
@@ -131,6 +131,7 @@ def update_traveler(id=3):
         'email': request.json.get('email', None),
         '_password': password,
         'name': request.json.get('name', None),
+        'media': request.json.get('media', None),
         'age': request.json.get('age', None),
         'language': request.json.get('language', None),
         'localization': request.json.get('localization', None),
