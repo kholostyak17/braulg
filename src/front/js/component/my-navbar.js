@@ -9,8 +9,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../../styles/mynavbar.scss";
 export const MyNavbar = () => {
-	console.log(localStorage.getItem("tokenID"));
-	console.log(localStorage.getItem("tokenID"));
 	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
 	const userLogedOrNot =
 		localStorage.getItem("tokenID") != null ? (
