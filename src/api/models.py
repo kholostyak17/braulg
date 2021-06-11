@@ -57,6 +57,12 @@ class Traveler(db.Model):
         traveler = cls.query.filter_by(email=email).one_or_none()
         return traveler
 
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        db.session.commit()
+        return self
+
     def validate_password(self,password):
         is_valid = check_password_hash(self._password,password)
         print(is_valid)
@@ -67,16 +73,7 @@ class Traveler(db.Model):
             return True
         else:
             return False
-
-    @classmethod
-    def edit_traveler(cls, id, name, email,age,language,localization,bio):
-        task = cls.query.filter_by(id=id).one_or_none()
-        if task and description:
-            task.description = description
-            db.session.commit()
-            return task 
-        else:
-            return None  
+ 
 
 class Trip(db.Model):
     __tablename__ = 'trip'

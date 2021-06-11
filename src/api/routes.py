@@ -7,7 +7,7 @@ from api.models import db, Traveler, Post, Trip
 from datetime import timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_jwt_extended import JWTManager
 
 
@@ -115,4 +115,37 @@ def get_all_posts():
     return jsonify({'error': "Posts not found"}), 404
 
  
+@api.route('/settings', methods=['PUT', 'PATCH'])
+
+def update_traveler(id=3):
+    # current_traveler = get_jwt_identity() #id
+
+    # if current_traveler != id:
+    #     return {'error': 'Invalid action'}, 400
+    
+    password_without_encrypt = request.json.get("password",None)
+    password = generate_password_hash(password_without_encrypt, method='pbkdf2:sha256', salt_length=16),
+
+    update_info = {
+        'email': request.json.get('email', None),
+        '_password': password,
+        'name': request.json.get('name', None),
+        'age': request.json.get('age', None),
+        'language': request.json.get('language', None),
+        'localization': request.json.get('localization', None),
+        'bio': request.json.get('bio', None),
+
+    }
+
+    traveler = Traveler.get_by_id(id)
+
+    if traveler:
+        updated_traveler =  traveler.update(**{
+                            key:value for key, value in update_info.items() 
+                            if value is not None
+                        })
+        
+        return jsonify(updated_traveler.to_dict()), 200
+
+    return {'error': 'User not found'}, 400
 
