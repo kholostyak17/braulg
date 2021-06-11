@@ -5,9 +5,15 @@ import { Components } from "./pages/components";
 import { NewTrip } from "./pages/newtrip";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+<<<<<<< HEAD
 import { Blog } from "./pages/blog";
 import TripProposal from "./pages/trip-proposal";
 import TripDetails from "./pages/trip-details";
+=======
+import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
+import { Settings } from "./pages/settings";
+//import { Blog } from "./pages/blog";
+>>>>>>> a3aa45651a3d1c3c22fbc6f2cb9afcc0f9ea0cda
 import injectContext from "./store/appContext";
 import { Post } from "./pages/post.js";
 import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
@@ -42,6 +48,7 @@ const Layout = () => {
 					<Route exact path="/register">
 						<Register />
 					</Route>
+<<<<<<< HEAD
 					<Route exact path="/blog">
 						<Blog />
 					</Route>
@@ -65,6 +72,13 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/chat/Persefone">
 						<Persefone_Chat />
+=======
+					<Route exact path="/user/:id">
+						<Profile />
+					</Route>
+					<Route exact path="/settings">
+						<Settings />
+>>>>>>> a3aa45651a3d1c3c22fbc6f2cb9afcc0f9ea0cda
 					</Route>
 					<Route>
 						<MyNavbar />

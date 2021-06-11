@@ -11,7 +11,9 @@ import Button from "../component/button.js";
 export const Register = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const onSubmit = data => {
+		actions.getRegister(JSON.stringify(data));
+	};
 
 	return (
 		<>
@@ -43,9 +45,9 @@ export const Register = () => {
 								required
 								{...register("age")}
 							/>
-							<h2>Idioma:</h2>
+							<h2>Idiomas:</h2>
 							<input
-								id="name"
+								id="language"
 								type="text"
 								className="input-style"
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"

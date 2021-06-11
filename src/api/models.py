@@ -5,6 +5,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Table, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
@@ -20,6 +21,7 @@ class Traveler(db.Model):
     media = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
+    is_active=db.Column(db.Boolean, default=True)
     
     def _repr_(self):
         return f'Traveler {self.name} with mail {self.email}'
@@ -38,15 +40,48 @@ class Traveler(db.Model):
             "bio": self.bio,
         }
 
+    def traveler_with_token(self, token):
+        traveler = self.to_dict()
+        traveler['token'] = token
+        return traveler
+
     def create(self):
         db.session.add(self)
         db.session.commit()
         return self
 
     @classmethod
+    def get_by_id(cls, id):
+        traveler = cls.query.filter_by(id=id).one_or_none()
+        return traveler
+        
+    @classmethod
     def get_by_email(cls, email):
         traveler = cls.query.filter_by(email=email).one_or_none()
         return traveler
+
+    def validate_password(self,password):
+        is_valid = check_password_hash(self._password,password)
+        print(is_valid)
+        return is_valid
+        
+
+
+    def validate_email(self, email):
+        if self.email == email:
+            return True
+        else:
+            return False
+
+    @classmethod
+    def edit_traveler(cls, id, name, email,age,language,localization,bio):
+        task = cls.query.filter_by(id=id).one_or_none()
+        if task and description:
+            task.description = description
+            db.session.commit()
+            return task 
+        else:
+            return None  
 
 class Trip(db.Model):
     __tablename__ = 'trip'
@@ -56,7 +91,8 @@ class Trip(db.Model):
     activities = db.Column(db.String)
     date_time_start = db.Column(db.DateTime, nullable=False)
     date_time_end = db.Column(db.DateTime, nullable=False)
-    done = db.Column(db.Boolean, default=False) 
+    done = db.Column(db.Boolean, default=False)
+
 
     def _repr_(self):
         return f'Trip {self.id}, {self.cities}, {self.date}, {self.activities}, '
@@ -102,6 +138,7 @@ class Post(db.Model):
     text = db.Column(db.String)
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     traveler = db.relationship("Traveler")
+    is_active=db.Column(db.Boolean, default=True)
 
     def _repr_(self):
         return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.traveler_id}, '
