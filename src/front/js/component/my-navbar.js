@@ -8,8 +8,8 @@ import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../../styles/mynavbar.scss";
-
 export const MyNavbar = () => {
+	console.log(localStorage.getItem("tokenID"));
 	console.log(localStorage.getItem("tokenID"));
 	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
 	const userLogedOrNot =
@@ -26,11 +26,10 @@ export const MyNavbar = () => {
 					</Dropdown.Item>
 				</Link>
 				<Dropdown.Divider />
-				<Link to="/">
-					<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
-						Cerrar sesión
-					</Dropdown.Item>
-				</Link>
+
+				<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
+					<span onClick={() => localStorage.clear()}>Cerrar sesión</span>
+				</Dropdown.Item>
 			</>
 		) : (
 			<Link to="/login">
@@ -68,20 +67,11 @@ export const MyNavbar = () => {
 						<Dropdown>
 							<div className="text-center">
 								<Dropdown.Toggle id="dropdown-button-light-example1" className="link-navbar" variant="">
-									<i className="fas fa-user" /> Usuario
+									<i className="fas fa-user" /> {localStorage.getItem("tokenName")}
 								</Dropdown.Toggle>
 							</div>
 							<Dropdown.Menu variant="dark" className="bg-secondary-color mx-4 dropdown-menu-right">
-								<Dropdown.Item href="/profile" className="text-white menu-hover text-center">
-									Mi perfil
-								</Dropdown.Item>
-								<Dropdown.Item href="/settings/:id" className="text-white menu-hover text-center">
-									Ajustes
-								</Dropdown.Item>
-								<Dropdown.Divider />
-								<Dropdown.Item href="#" className="text-danger fw-bold menu-hover text-center">
-									Cerrar sesión
-								</Dropdown.Item>
+								{userLogedOrNot}
 							</Dropdown.Menu>
 						</Dropdown>
 					</Nav>
