@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-blush-jellyfish-m03q1jsv.ws-eu09.gitpod.io/"
+			trips: {},
+			base_url: "https://3001-black-donkey-ro2kq8jx.ws-eu09.gitpod.io/"
 		},
 		actions: {
 			getUser: () => {
@@ -89,6 +90,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const tokenDecoded = tokenDecode(responseAsJson);
 						setTravelerFromToken(tokenDecoded);
 						redirectToProfile();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getNewTrip: credentials => {
+				console.log(credentials);
+				fetch(getStore().base_url.concat("api/newtrip"), {
+					method: "POST",
+					body: credentials,
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load User!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						setStore({ trips: responseAsJson });
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

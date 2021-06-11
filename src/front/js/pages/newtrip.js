@@ -9,7 +9,9 @@ import { Footer } from "../component/footer";
 export const NewTrip = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const onSubmit = data => {
+		actions.getNewTrip(JSON.stringify(data));
+	};
 
 	return (
 		<>

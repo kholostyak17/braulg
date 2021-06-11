@@ -10,6 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import JWTManager
 
+
 from api.utils import generate_sitemap, APIException
 
 
@@ -83,11 +84,11 @@ def create_trip():
                 date_time_start=date_time_start,
                 date_time_end=date_time_end
             )
-    try: 
+    if new_trip: 
         new_trip.create()
         return jsonify(new_trip.to_dict()),201
 
-    except exc.IntegrityError:
+    else:
         return {'error':'Something went wrong'},409
     
 
