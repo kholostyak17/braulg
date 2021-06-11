@@ -60,6 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
+					localStorage.setItem("tokenName", token.sub.name);
 				};
 
 				const redirectToProfile = () => {
@@ -97,6 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
+					localStorage.setItem("tokenName", token.sub.name);
 					console.log(token.sub);
 				};
 				const redirectToProfile = () => {

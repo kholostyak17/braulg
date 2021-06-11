@@ -16,25 +16,25 @@ export const MyNavbar = () => {
 		localStorage.getItem("tokenID") != null ? (
 			<>
 				<Link to={linkProfile}>
-					<Dropdown.Item href="#" className="text-white menu-hover text-center">
+					<Dropdown.Item href={linkProfile} className="text-white menu-hover text-center">
 						Mi perfil
 					</Dropdown.Item>
 				</Link>
 				<Link to="/settings">
-					<Dropdown.Item href="#" className="text-white menu-hover text-center">
+					<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
 						Ajustes
 					</Dropdown.Item>
 				</Link>
 				<Dropdown.Divider />
 				<Link to="/">
-					<Dropdown.Item href="#" className="text-danger fw-bold menu-hover text-center">
+					<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
 						Cerrar sesión
 					</Dropdown.Item>
 				</Link>
 			</>
 		) : (
 			<Link to="/login">
-				<Dropdown.Item href="#" className="text-primary fw-bold menu-hover text-center">
+				<Dropdown.Item href="/login" className="text-primary fw-bold menu-hover text-center">
 					Iniciar sesión
 				</Dropdown.Item>
 			</Link>
