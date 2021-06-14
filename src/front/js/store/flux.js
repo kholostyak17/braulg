@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-blush-chinchilla-vzpoa79i.ws-eu08.gitpod.io/",
+			base_url: "https://3001-gold-gayal-0k7lr869.ws-eu08.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
@@ -100,7 +100,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrips: () => {
-				fetch(getStore().base_url.concat("api/trip/"))
+				fetch(getStore().base_url.concat("api/trips/"), { method: "GET" })
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Trip!");
@@ -116,11 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrip: id => {
-				fetch(
-					getStore()
-						.base_url.concat("api/trip/")
-						.concat(id)
-				)
+				fetch(getStore().base_url.concat("api/trips/", id), { method: "GET" })
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Trip!");

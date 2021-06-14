@@ -15,11 +15,10 @@ export const Trip = () => {
 		{ picture: store.profilePicture, name: "Ricardo" },
 		{ picture: store.profilePicture, name: "Ricardo" }
 	];
-	console.log(store.trip);
 	useEffect(() => {
 		actions.getTrip(params.id);
+		console.log(store.trip);
 	}, []);
-	console.log(store.trip);
 	useEffect(() => {
 		if (store.trip != undefined && store.trip.user != undefined) {
 			setTripDetails(
@@ -63,7 +62,7 @@ export const Trip = () => {
 	return (
 		<>
 			<MyNavbar />
-			<div className="container-fluid row main-box trip-view"></div>
+			<div className="container-fluid row main-box trip-view">{tripDetails}</div>
 			<Footer />
 		</>
 	);
