@@ -31,7 +31,7 @@ def login():
     if email and password: 
         traveler = Traveler.get_by_email(email)
         if traveler:
-            if traveler.validate_password(password): 
+            if traveler.validate_password(password) and traveler.is_active: 
                 access_token = create_access_token(identity=traveler.to_dict(), expires_delta=timedelta(minutes=100))
                 return jsonify(access_token),200
    
@@ -57,7 +57,10 @@ def create_traveler():
         traveler = Traveler.get_by_email(email)
         if traveler:
             if traveler.validate_email(email):
-              return ({'error':"Traveler already exist"}),201
+                password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
+                traveler.reactive_account(name, age, password,language)
+                access_token = create_access_token(identity=traveler.to_dict(), expires_delta=timedelta(minutes=100))
+                return jsonify(access_token), 200
         else:
             password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
             new_traveler = Traveler(name=name,email=email, _password=password, language=language, age=age)  
@@ -119,29 +122,24 @@ def get_all_posts():
 @jwt_required()
 def update_traveler(id):
   
-    current_traveler = get_jwt_identity() #
-    keys = current_traveler.keys()
-    print(keys)
-    print("Current traveler",current_traveler)
-    print(id)
-
+    current_traveler = get_jwt_identity() 
     if current_traveler["id"] != id:
         return {'error': 'Invalid action'}, 400
-    
-    password_without_encrypt = request.json.get("password",None)
-    password = generate_password_hash(password_without_encrypt, method='pbkdf2:sha256', salt_length=16),
-
+           
     update_info = {
         'email': request.json.get('email', None),
-        '_password': password,
+        '_password': request.json.get("password",None),
         'name': request.json.get('name', None),
-        'media': request.json.get('media', None),
+        # 'media': request.json.get('media', None),
         'age': request.json.get('age', None),
         'language': request.json.get('language', None),
         'localization': request.json.get('localization', None),
         'bio': request.json.get('bio', None),
 
     }
+    if update_info["_password"]:
+        password = generate_password_hash(update_info["_password"], method='pbkdf2:sha256', salt_length=16),
+        update_info["_password"] = password
 
     traveler = Traveler.get_by_id(id)
 

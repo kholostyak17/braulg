@@ -29,13 +29,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getUpdate: credentials => {
 				const token = localStorage.getItem("token");
 				const tokenID = localStorage.getItem("tokenID");
+				const redirectToProfile = () => {
+					if (localStorage.getItem("tokenID") != null) {
+						location.replace("./user/".concat(localStorage.getItem("tokenID")));
+					}
+				};
 				console.log(token);
 				console.log(credentials);
 				console.log(tokenID);
 				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
 					method: "PATCH",
 					body: credentials,
-					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+
+					headers: {
+						"Sec-Fetch-Mode": "no-cors",
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`
+					}
 				})
 					.then(function(response) {
 						if (!response.ok) {
@@ -46,6 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ user: responseAsJson });
+						redirectToProfile();
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

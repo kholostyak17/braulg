@@ -59,6 +59,8 @@ class Traveler(db.Model):
 
     def update(self, **kwargs):
         for key, value in kwargs.items():
+            if key == "_password" and not value:
+                continue            
             setattr(self, key, value)
         db.session.commit()
         return self
@@ -77,6 +79,15 @@ class Traveler(db.Model):
     def delete(self):
         self.is_active = False
         db.session.commit()
+    
+    def reactive_account(self, name, age, password,language):
+        self.name = name
+        self.age = age
+        self.language = language
+        self._password = password
+        self.is_active = True
+        db.session.commit()
+        
 
 class Trip(db.Model):
     __tablename__ = 'trip'
