@@ -9,7 +9,9 @@ import { Footer } from "../component/footer";
 export const NewTrip = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const onSubmit = data => {
+		actions.getNewTrip(JSON.stringify(data));
+	};
 
 	return (
 		<>
@@ -758,19 +760,19 @@ export const NewTrip = () => {
 							<h2>Fecha estimada de viaje:</h2>
 							<label>Fecha de inicio</label>
 							<input
-								id="start-date"
+								id="date_time_start"
 								type="date"
 								className="input-style"
 								required
-								{...register("start-date")}
+								{...register("date_time_start")}
 							/>
 							<label>Fecha de regreso</label>
 							<input
-								id="end-date"
+								id="date_time_end"
 								type="date"
 								className="input-style"
 								required
-								{...register("end-date")}
+								{...register("date_time_end")}
 							/>
 							<h2>Actividades que vas a realizar:</h2>
 							<textarea

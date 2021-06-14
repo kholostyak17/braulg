@@ -59,28 +59,37 @@ class Traveler(db.Model):
         traveler = cls.query.filter_by(email=email).one_or_none()
         return traveler
 
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key == "_password" and not value:
+                continue            
+            setattr(self, key, value)
+        db.session.commit()
+        return self
+
     def validate_password(self,password):
         is_valid = check_password_hash(self._password,password)
         print(is_valid)
         return is_valid
         
-
-
     def validate_email(self, email):
         if self.email == email:
             return True
         else:
             return False
-
-    @classmethod
-    def edit_traveler(cls, id, name, email,age,language,localization,bio):
-        task = cls.query.filter_by(id=id).one_or_none()
-        if task and description:
-            task.description = description
-            db.session.commit()
-            return task 
-        else:
-            return None  
+ 
+    def delete(self):
+        self.is_active = False
+        db.session.commit()
+    
+    def reactive_account(self, name, age, password,language):
+        self.name = name
+        self.age = age
+        self.language = language
+        self._password = password
+        self.is_active = True
+        db.session.commit()
+        
 
 
 class Trip(db.Model):
@@ -124,7 +133,21 @@ class Trip(db.Model):
         trips_by_id = cls.query.filter_by(id=id).one_or_none()
         return trips_by_id
 
+    def to_dict(self):
+        return{
+            "id": self.id,
+            "country": self.country,
+            "cities": self.cities,
+            "activities": self.activities,
+            "date_time_start": self.date_time_start,
+            "date_time_end": self.date_time_end,
+        }
 
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+        
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)

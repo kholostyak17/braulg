@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import Button from "../component/button.js";
 import CardHorizontal from "../component/cardhorizontal.js";
 import CardSmall from "../component/cardsmall.js";
-import CardBlog from "../component/cardblog.js";
 import CircularLogo from "../component/circularlogo.js";
 import Logo from "../../img/logo.png";
 
@@ -27,7 +26,6 @@ export const Components = () => {
 			<Button className="" size="lm" color="secondary" text="button L-m" />
 			<CardHorizontal title="Titulo" img={urlBig} />
 			<CardSmall title="Titulo" img={url} coloredText={coloredText} />
-			<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name="Sergio Carrascal" />
 			<div>
 				<CircularLogo size="big" img={Logo} />
 				<CircularLogo size="large" img={Logo} />
@@ -37,3 +35,4 @@ export const Components = () => {
 		</div>
 	);
 };
+//<CardBlog title="Titulo" coloredText={coloredText} img={urlBig} name="Sergio Carrascal" />

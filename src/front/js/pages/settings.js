@@ -8,15 +8,26 @@ import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import Modal from "react-bootstrap/Modal";
+import { useParams } from "react-router-dom";
 
 export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const params = useParams();
+
+	useEffect(() => {
+		actions.getUser(params.id);
+	}, []);
+
+	const onSubmit = data => {
+		actions.getUpdate(JSON.stringify(data));
+	};
 	//variables para desplegar modal de borrar cuenta
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	const startDelete = () => actions.getDelete();
 
 	return (
 		<>
@@ -27,18 +38,14 @@ export const Settings = () => {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
 							<h2>Imagen de perfil:</h2>
-							<input
-								id="profilepicture"
-								type="file"
-								className="input-style"
-								{...register("profilepicture")}
-							/>
+							<input id="media" type="file" className="input-style" {...register("media")} />
 							<h2>Biografía:</h2>
 							<textarea
 								id="biografía"
 								className="input-style"
 								maxLength="500"
 								title="Máximo 500 caracteres"
+								defaultValue={store.user.bio}
 								{...register("bio")}
 							/>
 							<h2>Modificar nombre:</h2>
@@ -47,6 +54,7 @@ export const Settings = () => {
 								type="text"
 								className="input-style"
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
+								defaultValue={store.user.name}
 								title="Máximo 50 caracteres, solo letras"
 								{...register("name")}
 							/>
@@ -58,8 +66,18 @@ export const Settings = () => {
 								min="16"
 								max="99"
 								title="Edad no válida"
-								placeholder="Mínimo 16 años"
+								defaultValue={store.user.age}
 								{...register("age")}
+							/>
+							<h2>Modificar ubicacion:</h2>
+							<input
+								id="localization"
+								type="text"
+								className="input-style"
+								title="Edad no válida"
+								defaultValue={store.user.localization}
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
+								{...register("localization")}
 							/>
 							<h2>Modificar idiomas:</h2>
 							<input
@@ -68,10 +86,17 @@ export const Settings = () => {
 								className="input-style"
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
 								title="Máximo 50 caracteres, solo letras"
+								defaultValue={store.user.language}
 								{...register("language")}
 							/>
 							<h2>Modificar email:</h2>
-							<input id="email" type="email" className="input-style" {...register("email")} />
+							<input
+								id="email"
+								type="email"
+								defaultValue={store.user.email}
+								className="input-style"
+								{...register("email")}
+							/>
 							<h2>Modificar contraseña:</h2>
 							<input
 								id="password"
@@ -79,7 +104,6 @@ export const Settings = () => {
 								className="input-style"
 								minLength="6"
 								maxLength="30"
-								placeholder="Entre 6 y 30 caracteres"
 								{...register("password")}
 							/>
 							<div className="text-center my-4 d-block">
@@ -108,7 +132,7 @@ export const Settings = () => {
 											size="sm"
 											color="primary"
 											text="Eliminar"
-											callBackFunc={handleClose}
+											callBackFunc={startDelete}
 										/>
 									</Modal.Body>
 								</Modal>

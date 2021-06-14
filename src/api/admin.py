@@ -14,6 +14,5 @@ def setup_admin(app):
     admin.add_view(ModelView(Traveler, db.session))
     admin.add_view(ModelView(Post, db.session))
     admin.add_view(ModelView(Trip, db.session))
-
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))
