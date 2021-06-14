@@ -21,7 +21,6 @@ CORS(api)
 
 @api.route('/login', methods=['POST'])
 def login():
-    print("Request json", request.json)
     email,password = request.json.get(
             "email", None
     ), request.json.get(
@@ -40,7 +39,6 @@ def login():
 
 @api.route('/register', methods=['POST'])
 def create_traveler():
-    print("Llego", request)
     name,email,password,age,language = request.json.get(
             "name",None
     ), request.json.get(        
@@ -110,7 +108,6 @@ def get_user_by_id(id):
 def get_all_posts():
 
     posts = Post.get_all_post()
-    print(posts) 
     if posts:
         posts_dict = [post.to_dict() for post in posts]
         return jsonify(posts_dict), 200
@@ -158,7 +155,6 @@ def update_traveler(id):
 @jwt_required()
 def delete_traveler(id):
     current_traveler = get_jwt_identity()
-    print(current_traveler["id"])
 
     if current_traveler["id"] != id:
         return {'error': 'Invalid action'}, 400
