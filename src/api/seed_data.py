@@ -74,7 +74,6 @@ data = {
             "start_date": "21-02-2022",
             "end_date": "28-02-2022",
             "activities": "Quiero ir a pasear por el rio y pescar, tambien podemos ir a caminar por la montaña",
-            "partners": [1, 2],
         },
         {
             "id": 1,
@@ -84,7 +83,6 @@ data = {
             "start_date": "17-08-2021",
             "end_date": "30-08-2021",
             "activities": "Tour por la ciudad e ir a cenar. Quiero visitar museos.",
-            "partners": [2],
         },
         {
             "id": 2,
@@ -94,7 +92,6 @@ data = {
             "start_date": "3-12-2021",
             "end_date": "15-12-2021",
             "activities": "Me gustaría ir a tomar cervezas con amigos y pasear por los lugares mas chulos de la capital.",
-            "partners": [3],
         },
     ],
     "Comments": [
