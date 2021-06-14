@@ -76,15 +76,15 @@ def create_trip():
     country = request.json.get('country',None)
     cities = request.json.get('cities',None)
     activities = request.json.get('activities',None)
-    date_time_start =  request.json.get('date_time_start',None)
-    date_time_end =  request.json.get('date_time_end',None)
+    start_date =  request.json.get('start_date',None)
+    end_date =  request.json.get('end_date',None)
     
     new_trip = Trip(
                 country=country,
                 cities=cities,
                 activities=activities,
-                date_time_start=date_time_start,
-                date_time_end=date_time_end
+                start_date=start_date,
+                end_date=end_date
             )
     if new_trip: 
         new_trip.create()
