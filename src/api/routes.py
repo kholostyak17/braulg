@@ -103,7 +103,7 @@ def get_post_by_id(id):
 
 
 
-@api.route('/trip', methods=['GET'])
+@api.route('/trips', methods=['GET'])
 def get_all_trips():
     
     trips = Trip.get_all()
@@ -114,7 +114,7 @@ def get_all_trips():
 
     return jsonify({'error': "Trips not found"}), 404
 
-@api.route('/trip/<id>', methods=['GET'])
+@api.route('/trips/<id>', methods=['GET'])
 def get_trip_by_id(id):
     trip = Trip.get_by_id(id)
     if trip:

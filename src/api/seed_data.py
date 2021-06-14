@@ -45,39 +45,25 @@ data = {
     "Post": [
         {
             "id": 0,
-            "user": 1,
+            "traveler_id": 1,
             "title": "Viaje a Jerusalen",
             "media": "https://www.vaticannews.va/content/dam/vaticannews/images-multimedia/medio-oriente/Gerusalemme%20panorama%20con%20Moschea%20della%20Rocca.jpg/_jcr_content/renditions/cq5dam.thumbnail.cropped.1000.563.jpeg",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
             "id": 1,
-            "user": 2,
+            "traveler_id": 2,
             "title": "Viaje a Bogotá",
             "media": "https://www.avianca.com/content/dam/avianca_new/destinos/bog/co_bog_porquevisitar2.jpg?lazy=true",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         },
         {
             "id": 2,
-            "user": 0,
+            "traveler_id": 0,
             "title": "Viaje a Hong Kong",
             "media": "https://img.static-kl.com/images/media/4EA8CE28-6BF4-4503-88618BAEF81EE29C?aspect_ratio=1:1&min_width=456",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         }
-    ],
-    "Comments": [
-        {
-            "id": 0,
-            "text": "¡Me ha encantado!",
-        },
-        {
-            "id": 1,
-            "text": "¡Que bueno que viniste!",
-        },
-        {
-            "id": 2,
-            "text": "Soy un robot bioarticulado del año 2023: ¡teneis que salvar a la Presidenta!",
-        },
     ],
     "Trip": [
         {
@@ -110,6 +96,19 @@ data = {
             "activities": "Me gustaría ir a tomar cervezas con amigos y pasear por los lugares mas chulos de la capital.",
             "partners": [3],
         },
-
+    ],
+    "Comments": [
+        {
+            "id": 0,
+            "text": "¡Me ha encantado!",
+        },
+        {
+            "id": 1,
+            "text": "¡Que bueno que viniste!",
+        },
+        {
+            "id": 2,
+            "text": "Soy un robot bioarticulado del año 2023: ¡teneis que salvar a la Presidenta!",
+        },
     ],
 }
