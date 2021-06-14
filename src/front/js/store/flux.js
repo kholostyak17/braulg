@@ -5,7 +5,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-chocolate-stork-0ozwzx8y.ws-eu08.gitpod.io/"
+			base_url: "https://3001-blush-chinchilla-vzpoa79i.ws-eu08.gitpod.io/",
+			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
+			trips: [],
+			trip: [],
+			posts: [],
+			post_by_id: []
 		},
 		actions: {
 			getUser: () => {
@@ -89,6 +94,77 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const tokenDecoded = tokenDecode(responseAsJson);
 						setTravelerFromToken(tokenDecoded);
 						redirectToProfile();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getTrips: () => {
+				fetch(getStore().base_url.concat("api/trip/"))
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Trip!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ trips: responseAsJson });
+						console.log(responseAsJson);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getTrip: id => {
+				fetch(
+					getStore()
+						.base_url.concat("api/trip/")
+						.concat(id)
+				)
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Trip!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ trip: responseAsJson });
+						console.log(responseAsJson);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getPosts: () => {
+				fetch(getStore().base_url.concat("api/blog/"))
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Traveler!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ posts: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getPost: id => {
+				fetch(
+					getStore()
+						.base_url.concat("api/blog/")
+						.concat(id)
+				)
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Traveler!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ post_by_id: responseAsJson });
+						console.log(responseAsJson);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
