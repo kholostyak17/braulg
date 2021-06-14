@@ -34,9 +34,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
-				console.log(token);
-				console.log(credentials);
-				console.log(tokenID);
 				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
 					method: "PATCH",
 					body: credentials,
@@ -68,8 +65,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const redirectToHome = () => {
 					localStorage.clear(), location.replace("./");
 				};
-				console.log(token);
-				console.log(tokenID);
 				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
 					method: "DELETE",
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
@@ -136,7 +131,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
 					localStorage.setItem("tokenName", token.sub.name);
-					console.log(token.sub);
 				};
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {
@@ -169,7 +163,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getNewTrip: credentials => {
-				console.log(credentials);
 				fetch(getStore().base_url.concat("api/newtrip"), {
 					method: "POST",
 					body: credentials,
