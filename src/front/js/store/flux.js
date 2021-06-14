@@ -110,7 +110,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrips: () => {
-				fetch(getStore().base_url.concat("api/trips/"), { method: "GET" })
+				fetch(getStore().base_url.concat("api/trips/"), {
+					method: "GET",
+					mode: "no-cors",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Trip!");
@@ -126,7 +130,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrip: id => {
-				fetch(getStore().base_url.concat("api/trips/", id), { method: "GET" })
+				fetch(getStore().base_url.concat("api/trips/", id), {
+					method: "GET",
+					mode: "no-cors",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Trip!");
@@ -142,7 +150,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPosts: () => {
-				fetch(getStore().base_url.concat("api/blog/"))
+				fetch(getStore().base_url.concat("api/blog/"), {
+					method: "GET",
+					mode: "no-cors",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Traveler!");
@@ -157,11 +169,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPost: id => {
-				fetch(
-					getStore()
-						.base_url.concat("api/blog/")
-						.concat(id)
-				)
+				fetchfetch(getStore().base_url.concat("api/blog/", id), {
+					method: "GET",
+					mode: "no-cors",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load Traveler!");
