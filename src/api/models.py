@@ -133,20 +133,6 @@ class Trip(db.Model):
         trips_by_id = cls.query.filter_by(id=id).one_or_none()
         return trips_by_id
 
-    def to_dict(self):
-        return{
-            "id": self.id,
-            "country": self.country,
-            "cities": self.cities,
-            "activities": self.activities,
-            "date_time_start": self.date_time_start,
-            "date_time_end": self.date_time_end,
-        }
-
-    def create(self):
-        db.session.add(self)
-        db.session.commit()
-        return self
         
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
