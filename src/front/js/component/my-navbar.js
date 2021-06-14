@@ -10,6 +10,36 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import "../../styles/mynavbar.scss";
 
 export const MyNavbar = () => {
+	console.log(localStorage.getItem("tokenID"));
+	console.log(localStorage.getItem("tokenID"));
+	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
+	const userLogedOrNot =
+		localStorage.getItem("tokenID") != null ? (
+			<>
+				<Link to={linkProfile}>
+					<Dropdown.Item href={linkProfile} className="text-white menu-hover text-center">
+						Mi perfil
+					</Dropdown.Item>
+				</Link>
+				<Link to="/settings">
+					<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
+						Ajustes
+					</Dropdown.Item>
+				</Link>
+				<Dropdown.Divider />
+				<Link to="/">
+					<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
+						Cerrar sesión
+					</Dropdown.Item>
+				</Link>
+			</>
+		) : (
+			<Link to="/login">
+				<Dropdown.Item href="/login" className="text-primary fw-bold menu-hover text-center">
+					Iniciar sesión
+				</Dropdown.Item>
+			</Link>
+		);
 	return (
 		<Navbar expand="sm">
 			<div className="container-fluid">
@@ -43,16 +73,7 @@ export const MyNavbar = () => {
 								</Dropdown.Toggle>
 							</div>
 							<Dropdown.Menu variant="dark" className="bg-secondary-color mx-4 dropdown-menu-right">
-								<Dropdown.Item href="/profile" className="text-white menu-hover text-center">
-									Mi perfil
-								</Dropdown.Item>
-								<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
-									Ajustes
-								</Dropdown.Item>
-								<Dropdown.Divider />
-								<Dropdown.Item href="#" className="text-danger fw-bold menu-hover text-center">
-									Cerrar sesión
-								</Dropdown.Item>
+								{userLogedOrNot}
 							</Dropdown.Menu>
 						</Dropdown>
 					</Nav>
