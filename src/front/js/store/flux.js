@@ -51,6 +51,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
+			getDelete: () => {
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
+				const redirectToHome = () => {
+					localStorage.clear(), location.replace("./");
+				};
+				console.log(token);
+				console.log(tokenID);
+				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't delete this traveler!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						redirectToHome();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
 
 			getLogin: credentials => {
 				const tokenDecode = token => {

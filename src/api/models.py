@@ -74,6 +74,9 @@ class Traveler(db.Model):
         else:
             return False
  
+    def delete(self):
+        self.is_active = False
+        db.session.commit()
 
 class Trip(db.Model):
     __tablename__ = 'trip'

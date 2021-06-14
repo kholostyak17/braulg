@@ -155,3 +155,19 @@ def update_traveler(id):
 
     return {'error': 'User not found'}, 400
 
+
+@api.route('/settings/<int:id>', methods=['DELETE'])
+@jwt_required()
+def delete_traveler(id):
+    current_traveler = get_jwt_identity()
+    print(current_traveler["id"])
+
+    if current_traveler["id"] != id:
+        return {'error': 'Invalid action'}, 400
+    
+    traveler = Traveler.get_by_id(id)
+    if traveler:
+        traveler.delete()
+        return jsonify(traveler.to_dict()), 200
+    
+    return {'error': 'traveler not found'}, 400
