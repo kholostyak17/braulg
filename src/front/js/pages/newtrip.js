@@ -748,31 +748,31 @@ export const NewTrip = () => {
 							</select>
 							<h2>Ciudades que vas a visitar:</h2>
 							<input
-								id="city"
+								id="cities"
 								type="text"
 								className="input-style"
 								placeholder="Escribe ciudades"
 								maxLenght="250"
 								title="Máximo 250 caracteres"
 								required
-								{...register("city")}
+								{...register("cities")}
 							/>
 							<h2>Fecha estimada de viaje:</h2>
 							<label>Fecha de inicio</label>
 							<input
-								id="date_time_start"
+								id="start_date"
 								type="date"
 								className="input-style"
 								required
-								{...register("date_time_start")}
+								{...register("start_date")}
 							/>
 							<label>Fecha de regreso</label>
 							<input
-								id="date_time_end"
+								id="end_date"
 								type="date"
 								className="input-style"
 								required
-								{...register("date_time_end")}
+								{...register("end_date")}
 							/>
 							<h2>Actividades que vas a realizar:</h2>
 							<textarea

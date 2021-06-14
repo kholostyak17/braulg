@@ -53,9 +53,9 @@ export const Settings = () => {
 								id="name"
 								type="text"
 								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
 								defaultValue={store.user.name}
-								title="Máximo 50 caracteres, solo letras"
+								title="Máximo 30 caracteres, solo letras"
 								{...register("name")}
 							/>
 							<h2>Modificar edad:</h2>
@@ -67,6 +67,7 @@ export const Settings = () => {
 								max="99"
 								title="Edad no válida"
 								defaultValue={store.user.age}
+								required
 								{...register("age")}
 							/>
 							<h2>Modificar ubicacion:</h2>
@@ -74,9 +75,9 @@ export const Settings = () => {
 								id="localization"
 								type="text"
 								className="input-style"
-								title="Edad no válida"
+								title="Máximo 30 caracteres, solo letras"
 								defaultValue={store.user.localization}
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
 								{...register("localization")}
 							/>
 							<h2>Modificar idiomas:</h2>
@@ -84,8 +85,8 @@ export const Settings = () => {
 								id="language"
 								type="text"
 								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
-								title="Máximo 50 caracteres, solo letras"
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
+								title="Máximo 30 caracteres, solo letras"
 								defaultValue={store.user.language}
 								{...register("language")}
 							/>
