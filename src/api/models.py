@@ -9,7 +9,6 @@ from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
-
 class Traveler(db.Model):
     __tablename__ = 'traveler'
     id = db.Column(db.Integer, unique=True, primary_key=True)
@@ -18,11 +17,14 @@ class Traveler(db.Model):
     _password = db.Column(db.String)
     language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
-    media = db.Column(db.String)
+    picture = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
     is_active=db.Column(db.Boolean, default=True)
     
+    def _repr_(self):
+        return f'Traveler {self.name} with mail {self.email}'
+
     def _repr_(self):
         return f'Traveler {self.name} with mail {self.email}'
 
@@ -80,15 +82,47 @@ class Traveler(db.Model):
         else:
             return None  
 
+
 class Trip(db.Model):
     __tablename__ = 'trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     country = db.Column(db.String)
     cities = db.Column(db.String)
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=False)
     activities = db.Column(db.String)
-    date_time_start = db.Column(db.DateTime, nullable=False)
-    date_time_end = db.Column(db.DateTime, nullable=False)
-    done = db.Column(db.Boolean, default=False)
+    traveler = db.relationship("Traveler")
+    is_active=db.Column(db.Boolean, default=True)
+
+    def _repr_(self):
+        return f'Trip {self.id}, {self.traveler_id}, {self.country}, {self.cities}, {self.start_date}, {self.end_date}, {self.activities}, '
+
+    def to_dict(self):
+        return{
+            "id": self.id,
+            "traveler_id": self.traveler_id,
+            "country": self.country,
+            "cities": self.cities,
+            "start_date": self.start_date,
+            "end_date": self.end_date,
+            "activities": self.activities,
+        }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @classmethod
+    def get_all(cls):
+        trips = cls.query.all()
+        return trips
+    
+    @classmethod
+    def get_by_id(cls, id):
+        trips_by_id = cls.query.filter_by(id=id).one_or_none()
+        return trips_by_id
 
 
 class Shared_Trip(db.Model):
@@ -101,29 +135,39 @@ class Shared_Trip(db.Model):
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, unique=True, primary_key=True)
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     title = db.Column(db.String)
     media = db.Column(db.String)
     text = db.Column(db.String)
-    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     traveler = db.relationship("Traveler")
     is_active=db.Column(db.Boolean, default=True)
 
     def _repr_(self):
-        return f'Post {self.id}, {self.title}, {self.media}, {self.text}{self.traveler_id}, '
+        return f'Post {self.id}, {self.traveler_id}, {self.title}, {self.text}, {self.media},'
 
     def to_dict(self):
         return{
             "id": self.id,
-            "title": self.title,
-            "media": self.media,
-            "text": self.text,
             "traveler_id": self.traveler_id,
+            "title": self.title,
+            "text": self.text,
+            "media": self.media,
         }
 
     def create(self):
         db.session.add(self)
         db.session.commit()
         return self
+
+    @classmethod
+    def get_all(cls):
+        posts = cls.query.all()
+        return posts
+    
+    @classmethod
+    def get_by_id(cls, id):
+        post_by_id = cls.query.filter_by(id=id).one_or_none()
+        return post_by_id
 
 
 class Comments(db.Model):
