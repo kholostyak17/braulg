@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
 import { Components } from "./pages/components";
+import { Trips } from "./pages/trips";
+import { Trip } from "./pages/trip";
 import { NewTrip } from "./pages/newtrip";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
@@ -27,6 +29,12 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/components">
 						<Components />
+					</Route>
+					<Route exact path="/trips">
+						<Trips />
+					</Route>
+					<Route exact path="/trips/:id">
+						<Trip />
 					</Route>
 					<Route exact path="/newtrip">
 						<NewTrip />

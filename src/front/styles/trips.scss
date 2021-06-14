@@ -1,0 +1,8 @@
+@import 'index.scss';
+
+@media only screen and (max-width: 768px) {
+    .trips-view{
+        background-image: url("../img/background-trips.png");
+        background-repeat: repeat;
+    }
+}
