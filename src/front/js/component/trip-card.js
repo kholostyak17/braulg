@@ -16,7 +16,7 @@ export const TripCard = props => {
 				return (
 					<div className="partner" key={index.toString()}>
 						<img src={partner.picture} className="partner-picture"></img>
-						<span>{partner.name}</span>
+						<span className="text-bold">{partner.name}</span>
 					</div>
 				);
 			})
@@ -33,8 +33,8 @@ export const TripCard = props => {
 			</div>
 			<div className="trip-card-body">
 				<h4>Propuesto por:</h4>
-				<img src={props.user.picture} className="user-picture"></img>
-				<span className="user-name">{props.user.name}</span>
+				<img src={props.userpicture} className="user-picture"></img>
+				<span className="user-name">{props.username}</span>
 				<h4 className="mt-2">Ciudades:</h4>
 				<p>{props.cities}</p>
 				<div className="row">
@@ -62,12 +62,13 @@ export const TripCard = props => {
 };
 
 TripCard.propTypes = {
-	user: PropTypes.object,
-	idTrip: PropTypes.string,
+	userpicture: PropTypes.string,
+	username: PropTypes.string,
+	idTrip: PropTypes.number,
 	country: PropTypes.string,
 	cities: PropTypes.string,
-	startDate: PropTypes.number,
-	endDate: PropTypes.number,
+	startDate: PropTypes.string,
+	endDate: PropTypes.string,
 	activities: PropTypes.string,
 	partners: PropTypes.array
 };

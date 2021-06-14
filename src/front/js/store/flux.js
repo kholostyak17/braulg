@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-gold-gayal-0k7lr869.ws-eu08.gitpod.io/",
+			base_url: "https://3001-maroon-gull-cmgcjiow.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
@@ -110,9 +110,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrips: () => {
-				fetch(getStore().base_url.concat("api/trips/"), {
+				fetch(getStore().base_url.concat("api/trips"), {
 					method: "GET",
-					mode: "no-cors",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
 					.then(function(response) {
@@ -132,7 +131,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getTrip: id => {
 				fetch(getStore().base_url.concat("api/trips/", id), {
 					method: "GET",
-					mode: "no-cors",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
 					.then(function(response) {
@@ -152,7 +150,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPosts: () => {
 				fetch(getStore().base_url.concat("api/blog/"), {
 					method: "GET",
-					mode: "no-cors",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
 					.then(function(response) {
@@ -171,7 +168,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPost: id => {
 				fetchfetch(getStore().base_url.concat("api/blog/", id), {
 					method: "GET",
-					mode: "no-cors",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
 					.then(function(response) {

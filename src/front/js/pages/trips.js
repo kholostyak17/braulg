@@ -20,20 +20,21 @@ export const Trips = () => {
 	}, []);
 
 	useEffect(() => {
-		if (store.trips != undefined) {
+		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips.map((trip, index) => {
 					return (
 						<TripCard
 							key={index.toString()}
 							idTrip={trip.id}
-							user={trip.user}
+							username={ARRAYAUX[1].name}
+							userpicture={ARRAYAUX[1].picture}
 							country={trip.country}
 							cities={trip.cities}
-							startDate={trip.startDate}
-							endDate={trip.endDate}
+							startDate={trip.start_date}
+							endDate={trip.end_date}
 							activities={trip.activities}
-							partners={trip.partners}
+							partners={ARRAYAUX}
 						/>
 					);
 				})
@@ -51,17 +52,7 @@ export const Trips = () => {
 				</div>
 				<div className="col-sm-12 col-md-7 content-box">
 					<h1 className="text-center mt-4">Últimos viajes propuestos</h1>
-					<TripCard
-						idTrip="2"
-						user={ARRAYAUX[1]}
-						country="Portugal"
-						cities="Lisboa"
-						startDate="21-02-2022"
-						endDate="28-02-2022"
-						activities="Quiero ir a pasear por el rio y pescar"
-						partners={ARRAYAUX}
-					/>
-					{tripsMap}
+					<div className="d-flex flex-column-reverse">{tripsMap}</div>
 				</div>
 			</div>
 			<Footer />

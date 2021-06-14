@@ -11,46 +11,62 @@ export const Trip = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const [tripDetails, setTripDetails] = useState("");
+
 	const ARRAYAUX = [
 		{ picture: store.profilePicture, name: "Ricardo" },
 		{ picture: store.profilePicture, name: "Ricardo" }
 	];
+	const partners = ARRAYAUX;
+	const [partnersMap, setPartnersMap] = useState("");
+
 	useEffect(() => {
 		actions.getTrip(params.id);
-		console.log(store.trip);
+		setPartnersMap(
+			partners.map((partner, index) => {
+				return (
+					<div className="partner d-flex" key={index.toString()}>
+						<img src={partner.picture} className="partner-picture"></img>
+						<span className="align-middle fw-bold">{partner.name}</span>
+						<Button className="ms-auto me-3" size="sm" color="secondary" text="Chat" />
+					</div>
+				);
+			})
+		);
 	}, []);
+
 	useEffect(() => {
-		if (store.trip != undefined && store.trip.user != undefined) {
+		console.log(store.trip);
+		if (store.trip != undefined || store.trip.user != undefined) {
 			setTripDetails(
 				<>
 					<div className="col-sm-12 col-md-5 picture-box">
-						<img src={store.profilePicture} className="picture" />
+						<img src={tripImage} className="picture" />
 					</div>
-					<div className="col-sm-12 col-md-7 content-box">
+					<div className="col-sm-12 col-md-7 content-box px-5 pb-5">
 						<h1 className="text-center mt-4">
 							Viaje a: <span className="text-dark">{store.trip.country}</span>
 						</h1>
 						<h4>Propuesto por:</h4>
-						<img src={store.trip.user.picture} className="user-picture"></img>
-						<span className="user-name">{store.trip.user.name}</span>
+						<img src={ARRAYAUX[1].picture} className="user-picture"></img>
+						<span className="user-name fw-bold">{ARRAYAUX[1].name}</span>
 						<h4 className="mt-2">Ciudades:</h4>
-						<p>{store.trip.cities}</p>
+						<p className="text-bold">{store.trip.cities}</p>
 						<div className="row">
 							<div className="col-12 col-md-6">
 								<h4>Fecha de inicio:</h4>
-								<p>{store.trip.startDate}</p>
+								<p>{store.trip.start_date}</p>
 							</div>
 							<div className="col-12 col-md-6">
 								<h4>Fecha de regreso:</h4>
-								<p>{store.trip.endDate}</p>
+								<p>{store.trip.end_date}</p>
 							</div>
 						</div>
 						<h4>Actividades:</h4>
 						<p>{store.trip.activities}</p>
 						<h4>Partners:</h4>
-
+						{partnersMap}
 						<div className="text-center my-4">
-							<Button className="m-2" size="lm" color="secondary" text="Apúntate" />
+							<Button className="m-2" size="lm" color="primary" text="APÚNTATE" />
 						</div>
 					</div>
 				</>
