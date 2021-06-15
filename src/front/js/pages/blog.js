@@ -26,12 +26,13 @@ export const Blog = () => {
 	// variables para el hook form
 	const { register, handleSubmit } = useForm();
 	const onSubmit = data => {
-		alert(JSON.stringify(data));
+		actions.getNewPost(JSON.stringify(data));
 	};
 
 	useEffect(() => {
 		actions.getPosts();
 	}, []);
+
 	useEffect(() => {
 		if (store.posts != undefined) {
 			setPostsMap(
@@ -70,9 +71,9 @@ export const Blog = () => {
 							callBackFunc={handleShow}
 						/>
 						<Modal show={show} onHide={handleClose}>
-							<Modal.Header className="text-center d-flex">
-								<Modal.Title className="text-center">Crear un nuevo post</Modal.Title>
-								<div onClick={handleClose} className="ms-auto mt-3" color="primary">
+							<Modal.Header className="d-flex px-4">
+								<Modal.Title className="">Crear un nuevo post</Modal.Title>
+								<div onClick={handleClose} className="ms-auto" color="primary">
 									<CloseIcon className="close-icon" />
 								</div>
 							</Modal.Header>

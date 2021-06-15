@@ -9,15 +9,13 @@ export const PostCard = props => {
 	const linkToPostID = "./blog/".concat(props.postID);
 	const linkToUserID = "./user/".concat(props.userID);
 
-	useEffect(() => {}, []);
-
 	return (
 		<div className="my-card post-card-size row">
 			<div className="media-box col-sm-12 col-md-5">
 				<img className="media-picture" src={props.media}></img>
 			</div>
 			<div className="content-post-box col-sm-12 col-md-7">
-				<div className="my-card-header">
+				<div className="my-card-header py-1 px-3">
 					<Link to={linkToUserID}>
 						<div className="d-flex align-items-center">
 							<img src={props.userpicture} className="user-picture"></img>

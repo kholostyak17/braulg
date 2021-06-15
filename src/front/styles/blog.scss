@@ -9,16 +9,10 @@
 }
 
 .close-icon {
-	position: relative;
-	bottom: 7px;
-	right: 20px;
     cursor: pointer;
-    font-size: 2.5rem !important;
     color: #EF0606;
 }
 .center-file-input {
 	margin-top: 2rem;
 	text-align-last: center;
-	display: flex;
-	flex-direction: column;
 }
