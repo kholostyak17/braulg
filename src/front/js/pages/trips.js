@@ -12,8 +12,9 @@ export const Trips = () => {
 	const { store, actions } = useContext(Context);
 	const [tripsMap, setTripsMap] = useState("");
 	const ARRAYAUX = [
-		{ picture: store.profilePicture, name: "Ricardo" },
-		{ picture: store.profilePicture, name: "Ricardo" }
+		{ id: 2, picture: store.profilePicture, name: "Ricardo" },
+		{ id: 3, picture: store.profilePicture, name: "María" },
+		{ id: 0, picture: store.profilePicture, name: "Persefone" }
 	];
 	useEffect(() => {
 		actions.getTrips();
@@ -26,9 +27,10 @@ export const Trips = () => {
 					return (
 						<TripCard
 							key={index.toString()}
-							idTrip={trip.id}
+							tripID={trip.id}
 							username={ARRAYAUX[1].name}
 							userpicture={ARRAYAUX[1].picture}
+							userID={ARRAYAUX[1].id}
 							country={trip.country}
 							cities={trip.cities}
 							startDate={trip.start_date}

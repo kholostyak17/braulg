@@ -12,22 +12,27 @@ export const Trip = () => {
 	const params = useParams();
 	const [tripDetails, setTripDetails] = useState("");
 	const [partnersMap, setPartnersMap] = useState("");
+
 	const ARRAYAUX = [
-		{ picture: store.profilePicture, name: "Ricardo" },
-		{ picture: store.profilePicture, name: "Ricardo" }
+		{ id: 2, picture: store.profilePicture, name: "Ricardo" },
+		{ id: 3, picture: store.profilePicture, name: "María" },
+		{ id: 0, picture: store.profilePicture, name: "Persefone" }
 	];
 	const partners = ARRAYAUX;
-
+	const linkToUserID = "../user/".concat(ARRAYAUX[1].id);
 	useEffect(() => {
 		actions.getTrip(params.id);
 		setPartnersMap(
 			partners.map((partner, index) => {
+				const linkToPartnerID = "../user/".concat(partner.id);
 				return (
 					<div className="d-flex justify-content-between m-1" key={index.toString()}>
-						<div>
-							<img src={partner.picture} className="partner-picture"></img>
-							<span className="fw-bold ms-2">{partner.name}</span>
-						</div>
+						<Link to={linkToPartnerID}>
+							<div className="d-flex justify-content-start">
+								<img src={partner.picture} className="partner-picture"></img>
+								<p className="fw-bold ms-2">{partner.name}</p>
+							</div>
+						</Link>
 						<div>
 							<Button className="ms-auto me-3" size="sm" color="secondary" text="Chat" />
 						</div>
@@ -43,14 +48,18 @@ export const Trip = () => {
 			setTripDetails(
 				<>
 					<div className="col-sm-12 col-md-12 content-box-trip px-5 py-3">
-						<h1 className="text-center my-2 text-warning">
+						<h1 className="my-2 text-warning">
 							Viaje a: <span className="text-dark fw-bold">{store.trip.country}</span>
 						</h1>
 						<div className="row">
 							<div className="col-12 col-md-6">
 								<h4>Propuesto por:</h4>
-								<img src={ARRAYAUX[1].picture} className="user-picture"></img>
-								<span className="user-name fw-bold">{ARRAYAUX[1].name}</span>
+								<Link to={linkToUserID}>
+									<div className="d-flex align-items-center">
+										<img src={ARRAYAUX[1].picture} className="user-picture"></img>
+										<p className="user-name fw-bold">{ARRAYAUX[1].name}</p>
+									</div>
+								</Link>
 							</div>
 							<div className="col-12 col-md-6">
 								<h4 className="mt-2">Ciudades:</h4>

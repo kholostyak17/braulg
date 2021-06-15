@@ -92,6 +92,24 @@ def create_trip():
 
     else:
         return {'error':'Something went wrong'},409
+
+@api.route('/newpost', methods=['POST'])
+def create_post():
+    title = request.json.get('title',None)
+    text = request.json.get('text',None)
+    media = request.json.get('media',None)
+    
+    new_post = Post(
+                title=title,
+                text=text,
+                media=media
+            )
+    if new_post: 
+        new_post.create()
+        return jsonify(new_post.to_dict()),201
+
+    else:
+        return {'error':'Something went wrong'},409
     
 
 @api.route('/profile/<id>', methods=['GET'])

@@ -35,9 +35,6 @@ export const Login = () => {
 								id="password"
 								type="password"
 								className="input-style"
-								minLength="6"
-								maxLength="30"
-								placeholder="Entre 6 y 30 caracteres"
 								required
 								{...register("password")}
 							/>

@@ -1,0 +1,18 @@
+@import 'index.scss';
+
+.content-box-blog{
+    background-color: rgba(255,255,255,0.75);
+}
+.blog-view{
+    background-image: url("../img/pexels-manuel-2949825.png");
+    background-repeat: repeat;
+}
+
+.close-icon {
+    cursor: pointer;
+    color: #EF0606;
+}
+.center-file-input {
+	margin-top: 2rem;
+	text-align-last: center;
+}
