@@ -115,7 +115,17 @@ def share_trip(id_traveler,id_trip):
 
     else:
         return {'error':'Something went wrong'},409
+
+
+@api.route('/shared_trip/<id>', methods=['GET'])
+def get_shared_trips_by_id(id):
+    trip = Shared_Trip.get_by_id(id)
+    if trip:
+        return jsonify(trip.to_dict()), 200
+    
+    return jsonify({'error': "Shared trip not found"}), 404
         
+
 
 @api.route('/profile/<id>', methods=['GET'])
 def get_user_by_id(id):

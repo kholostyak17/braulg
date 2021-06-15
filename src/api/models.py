@@ -135,6 +135,7 @@ class Trip(db.Model):
         trips_by_id = cls.query.filter_by(id=id).one_or_none()
         return trips_by_id
 
+
         
 class Shared_Trip(db.Model):
     __tablename__ = 'share_trip'
@@ -156,6 +157,12 @@ class Shared_Trip(db.Model):
         db.session.commit()
         return self
 
+    @classmethod
+    def get_by_id(cls, id):
+        shared_trips_by_id = cls.query.filter_by(id=id).one_or_none()
+        return shared_trips_by_id
+
+ 
 
 class Post(db.Model):
     __tablename__ = 'post'
