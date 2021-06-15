@@ -5,12 +5,13 @@
 .preguntas{
     padding: 0 3rem 1rem 3rem;
 }
-.preg-title{
-    font-size:1.4rem !important;
+#preg-title{
+    font-size:1.4rem;
 }
-.preg-answer{
-    font-size:1.2rem !important;
-    line-height: 30px !important;
+#preg-answer{
+    font-size:1.2rem;
+    line-height: 30px;
+    margin-bottom:15px;
 }
 .accordion{
     margin: 1rem 0;
@@ -19,4 +20,8 @@
 }
 .accordion:hover{
     border: 0.3px solid #18A398;
+}
+#accord-details{
+    display:flex;
+    flex-direction: column;
 }
