@@ -20,7 +20,7 @@ export const TripCard = props => {
 							<div className="partner-picture-box">
 								<img src={partner.picture} className="partner-picture"></img>
 							</div>
-							<p className="fw-bold">{partner.name}</p>
+							<p className="">{partner.name}</p>
 						</Link>
 					</div>
 				);
@@ -31,8 +31,8 @@ export const TripCard = props => {
 	console.log(props.partners);
 	return (
 		<div className="my-card">
-			<div className="my-card-header d-flex row">
-				<div className="col-12 col-md-9 me-auto my-auto text-center">
+			<div className="my-card-header d-flex row p-3">
+				<div className="col-12 col-md-9 my-auto">
 					<h2>
 						Viaje a: <span className="text-dark">{props.country}</span>
 					</h2>
