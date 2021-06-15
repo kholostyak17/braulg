@@ -1,0 +1,145 @@
+.media-links{
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100px;
+    right: 50px;
+}
+.home-img{
+    height: 599px;
+    width: 100%;
+}
+.home-media{
+     position: relative;
+}
+.home-title{
+    font-family: Nunito;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 49px;
+    letter-spacing: 0em;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(6, 143, 131);
+}
+.auth-btn{
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0em;
+    width: 196px;
+    font-family: Nunito;
+    font-weight: bold;
+    color: #FFFFFF;
+    height: 46px;
+    border:none;
+    text-align: center;
+    background: #17A398;
+}
+#registrate-btn{
+    margin:2rem 2rem 0 2rem;
+
+}
+
+#login-btn{
+       margin:1.5rem 2rem 0 2rem;
+
+}
+.pregunta-home{
+    text-align: center;
+    border-radius: nullpx;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 65px;
+    color: #F5B82E;
+    margin-top: 2rem;
+}
+.home-text{
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    margin:2rem 0;
+}
+.colored-text{
+    color: #17A398;
+
+}
+.mision{
+    padding: 1rem 5rem 1rem 5rem;
+}
+.viajes-prop{
+    height: 75px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 65px;
+    text-align: center;
+    color: #17A398;
+}
+.see-more{
+    height: 74px;
+    width: 1029px;
+    border-radius: 5px;
+    background: #F5B82E;
+    text-align: center;
+    margin:1rem auto 2rem auto;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 68px;
+    color: #FFFFFF;
+    text-decoration: none !important;
+    @media screen and (max-width:1050px){
+        height: 64px;
+        width: 529px;
+        font-size: 30px;
+    }
+    @media screen and (max-width:569px){
+        height: 64px;
+        width: 329px;
+        font-size: 25px;
+
+    }
+      @media screen and (max-width:460px){
+        height: 64px;
+        width: 189px;
+        font-size: 25px;
+
+    }
+}
+.trips-cards-3{
+    display:flex;
+}
+.mini-cards{
+}
+.mini-cards-comp{
+    display:flex;
+    // justify-content: space-around;
+    width: 100%;
+}
+
+.card-small-1, .card-small-2, .card-small-3{
+    width:33.3%
+}
+@media screen and (max-width:1375px){
+    .card-small-1, .card-small-2 {
+    width:50%;
+    margin:2rem;
+}
+.card-small-3{
+    width:100%
+}
+}
+
+.card-sm{
+    margin: 0 2rem;
+}
