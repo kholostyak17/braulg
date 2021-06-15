@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-scarlet-marmot-xy2mtvg5.ws-eu09.gitpod.io/",
+			base_url: "https://3001-magenta-pelican-kobl5zm2.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
@@ -242,13 +242,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getNewTrip: credentials => {
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
 				const redirectToTrips = () => {
 					location.replace("./trips/");
 				};
-				fetch(getStore().base_url.concat("api/newtrip"), {
+				fetch(getStore().base_url.concat("api/newtrip/", localStorage.getItem("tokenID")), {
 					method: "POST",
 					body: credentials,
-					headers: { "Content-Type": "application/json" }
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
 					.then(function(response) {
 						if (!response.ok) {

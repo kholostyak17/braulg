@@ -71,20 +71,28 @@ def create_traveler():
                 return ({'error':"Missing info"}), 404
 
  
-@api.route('/newtrip', methods=['POST'])
-def create_trip():
+@api.route('/newtrip/<int:id>', methods=['POST'])
+@jwt_required()
+def create_trip(id):
+    
+    traveler_id = get_jwt_identity() 
+    print(traveler_id["id"])
+    print(traveler_id)
+
     country = request.json.get('country',None)
     cities = request.json.get('cities',None)
     activities = request.json.get('activities',None)
     start_date =  request.json.get('start_date',None)
     end_date =  request.json.get('end_date',None)
-    
+
+
     new_trip = Trip(
                 country=country,
                 cities=cities,
                 activities=activities,
                 start_date=start_date,
-                end_date=end_date
+                end_date=end_date,
+                traveler_id = traveler_id["id"]
             )
     if new_trip: 
         new_trip.create()

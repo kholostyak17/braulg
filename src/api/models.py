@@ -95,7 +95,7 @@ class Traveler(db.Model):
 class Trip(db.Model):
     __tablename__ = 'trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
-    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.name"))
     country = db.Column(db.String)
     cities = db.Column(db.String)
     start_date = db.Column(db.Date, nullable=False)

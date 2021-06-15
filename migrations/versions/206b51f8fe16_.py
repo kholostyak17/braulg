@@ -68,7 +68,7 @@ def upgrade():
     sa.Column('end_date', sa.Date(), nullable=False),
     sa.Column('activities', sa.String(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=True),
-    sa.ForeignKeyConstraint(['traveler_id'], ['traveler.id'], ),
+    sa.ForeignKeyConstraint(['traveler_id'], ['traveler.name'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('id')
     )
