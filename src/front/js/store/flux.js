@@ -5,12 +5,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-magenta-pelican-kobl5zm2.ws-eu09.gitpod.io/",
+			base_url: "https://3001-crimson-platypus-ghaewqxg.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
 			posts: [],
-			post_by_id: []
+			post_by_id: [],
+			shared_trips: []
 		},
 		actions: {
 			getUser: () => {
@@ -262,6 +263,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(function(responseAsJson) {
 						setStore({ trips: responseAsJson });
 						redirectToTrips();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getSharedTrip: id_trip => {
+				console.log(id_trip);
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
+				const redirectToTrips = () => {
+					location.replace("./trips/");
+				};
+				fetch(getStore().base_url.concat("api/traveler/", tokenID, "/trip/", id_trip), {
+					method: "POST",
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't share this trip!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						setStore({ shared_trips: responseAsJson });
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

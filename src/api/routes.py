@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_cors import CORS
-from api.models import db, Traveler, Post, Trip
+from api.models import db, Traveler, Post, Trip, Shared_Trip
 from datetime import timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -76,9 +76,6 @@ def create_traveler():
 def create_trip(id):
     
     traveler_id = get_jwt_identity() 
-    print(traveler_id["id"])
-    print(traveler_id)
-
     country = request.json.get('country',None)
     cities = request.json.get('cities',None)
     activities = request.json.get('activities',None)
@@ -100,7 +97,25 @@ def create_trip(id):
 
     else:
         return {'error':'Something went wrong'},409
-    
+
+@api.route('/traveler/<int:id_traveler>/trip/<int:id_trip>', methods=['POST'])
+@jwt_required()
+def share_trip(id_traveler,id_trip):
+
+    trip = Trip.get_by_id(id_trip)
+    traveler_id = get_jwt_identity() 
+
+    new_shared_trip = Shared_Trip(
+                trip_id=trip.id,
+                traveler_id=traveler_id["id"]
+             )
+    if new_shared_trip: 
+        new_shared_trip.create()
+        return jsonify(new_shared_trip.to_dict()),201
+
+    else:
+        return {'error':'Something went wrong'},409
+        
 
 @api.route('/profile/<id>', methods=['GET'])
 def get_user_by_id(id):

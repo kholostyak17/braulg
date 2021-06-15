@@ -95,7 +95,7 @@ class Traveler(db.Model):
 class Trip(db.Model):
     __tablename__ = 'trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
-    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.name"))
+    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
     country = db.Column(db.String)
     cities = db.Column(db.String)
     start_date = db.Column(db.Date, nullable=False)
@@ -108,9 +108,11 @@ class Trip(db.Model):
         return f'Trip {self.id}, {self.traveler_id}, {self.country}, {self.cities}, {self.start_date}, {self.end_date}, {self.activities}, '
 
     def to_dict(self):
+        traveler_name = Traveler.get_by_id(self.traveler_id)
         return{
             "id": self.id,
             "traveler_id": self.traveler_id,
+            "traveler_name":traveler_name.name,
             "country": self.country,
             "cities": self.cities,
             "start_date": self.start_date,
@@ -139,6 +141,20 @@ class Shared_Trip(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     trip_id = db.Column(db.Integer, db.ForeignKey("trip.id"))
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
+
+    def _repr_(self):
+        return f'Shared_trip {self.id}, {self.trip_id}, {self.traveler_id}'
+
+    def to_dict(self):
+        return{
+            "id": self.id,
+            "trip_id": self.trip_id,
+            "traveler_id": self.traveler_id,
+        }
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
 
 
 class Post(db.Model):

@@ -18,6 +18,8 @@ export const Trip = () => {
 	];
 	const partners = ARRAYAUX;
 
+	const startJoin = () => actions.getSharedTrip(params.id);
+
 	useEffect(() => {
 		actions.getTrip(params.id);
 		setPartnersMap(
@@ -75,7 +77,13 @@ export const Trip = () => {
 								{partnersMap}
 							</div>
 							<div className="col-12 col-md-6 text-center my-4 pt-4">
-								<Button className="" size="lm" color="primary" text="APÚNTATE" />
+								<Button
+									className=""
+									size="lm"
+									color="primary"
+									text="APÚNTATE"
+									callBackFunc={startJoin}
+								/>
 							</div>
 						</div>
 					</div>

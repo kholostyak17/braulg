@@ -27,7 +27,7 @@ export const Trips = () => {
 						<TripCard
 							key={index.toString()}
 							idTrip={trip.id}
-							username={trip.traveler_id}
+							username={trip.traveler_name}
 							userpicture={ARRAYAUX[1].picture}
 							country={trip.country}
 							cities={trip.cities}
