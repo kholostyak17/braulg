@@ -223,7 +223,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPost: id => {
-				fetchfetch(getStore().base_url.concat("api/blog/", id), {
+				fetch(getStore().base_url.concat("api/blog/", id), {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
