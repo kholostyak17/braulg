@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState, Fragment } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
 
 import "../../styles/post.scss";
 export const Post = () => {
 	const { store, actions } = useContext(Context);
+	const params = useParams();
 	const [post_by_id, setPost_by_id] = useState([]);
 	const [comments_by_id, setComments_by_id] = useState([]);
-
-	const params = useParams();
+	const linkToUserID = "../user/".concat(store.post_by_id.traveler_id);
 
 	useEffect(() => {
 		actions.getPost(params.id);
@@ -28,6 +29,7 @@ export const Post = () => {
 			);
 		}
 	}, [store.post_by_id]);
+
 	useEffect(() => {
 		if (store.Comments_by_id != null) {
 			console.log("STORE COMMENTS", store.comments_by_id);
@@ -37,26 +39,24 @@ export const Post = () => {
 	return (
 		<>
 			<MyNavbar />
-			<div className="post-container">
-				<div className="division"></div>
-				<div className="content-division">
-					<img src={store.post_by_id.media} alt="hombre caminando por el campo" className="img-river" />
-					<h3 className="post-title">{store.post_by_id.title}</h3>
-					<div className="content">
-						<p className="content-txt">{post_by_id}</p>
-					</div>
-					<div className="social-post">
-						<p className="comments">Comments</p>
-						<div className="user-field">
-							<img src="" alt="user" className="comment-user-img" />
-							<p className="userName">Jacques</p>
-						</div>
-					</div>
-					<div className="user-comment-field">
-						<p className="userComment">Los budas fueron muy simpaticos :)</p>
-					</div>
+			<div className="container">
+				<div>
+					<img src={store.post_by_id.media} className="post-image" />
 				</div>
-				<div className="division2"></div>
+				<h1 className="text-center">{store.post_by_id.title}</h1>
+				<Link to={linkToUserID}>
+					<div className="d-flex align-items-center justify-content-center">
+						<img
+							src="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
+							className="user-picture"></img>
+						<p className="user-name">Sergio Carrascal</p>
+					</div>
+				</Link>
+				<p>{store.post_by_id.text}</p>
+				<h2>Comments:</h2>
+				<img src="" alt="user" className="comment-user-img" />
+				<span className="userName">Jacques</span>
+				<p className="userComment">Los budas fueron muy simpaticos :)</p>
 			</div>
 			<Footer />
 		</>
