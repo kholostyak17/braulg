@@ -40,11 +40,11 @@ export const Faq = () => {
 							expandIcon={<ExpandMoreIcon />}
 							aria-controls="panel1a-content"
 							id="panel1a-header">
-							<Typography className="preg-title">¿Sois una Agencia Online?</Typography>
+							<Typography className="preg-title">¿Sois una Red Social de viajes?</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography className="preg-answer">
-								SI, lo somos. Nuestro sistema de trabajo está pensado para que cómodamente desde nuestra
+								SI. Nuestro sistema de trabajo está pensado para que cómodamente desde nuestra
 								aplicación, cada usuario que se registra pueda publicar una información detallada y
 								fácil de consultar del destino, las fechas y las actividades que desean realizar.
 								<br />
