@@ -1,0 +1,33 @@
+@import 'index.scss';
+
+.post-card-size{
+    height: 25rem;
+}
+.media-box{
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+.media-picture{
+    height: 100%;
+    width: 100%;
+}
+.content-post-box{
+    padding: 0
+}
+.text-post{
+    max-height: 10.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+@media only screen and (max-width: 767px) {
+    .post-card-size{
+        height: 35rem;
+    }
+    .media-box{
+        height: 40%;
+    }
+    .text-post{
+        max-height: 7.5rem;
+    }
+}
