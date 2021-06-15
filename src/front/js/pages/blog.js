@@ -36,11 +36,7 @@ export const Blog = () => {
 					return (
 						<PostCard
 							key={index.toString()}
-<<<<<<< HEAD
 							idPost={post.id}
-=======
-							postId={post.id}
->>>>>>> 0a5da133af2245ce3c257af723f1a30af875b4a0
 							media={post.media}
 							title={post.title}
 							text={post.text}

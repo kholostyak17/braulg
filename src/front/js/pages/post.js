@@ -48,11 +48,7 @@ export const Post = () => {
 					<div className="social-post">
 						<p className="comments">Comments</p>
 						<div className="user-field">
-<<<<<<< HEAD
 							<img src="" alt="user" className="comment-user-img" />
-=======
-							<img src={person} alt="user" className="comment-user-img" />
->>>>>>> 0a5da133af2245ce3c257af723f1a30af875b4a0
 							<p className="userName">Jacques</p>
 						</div>
 					</div>
