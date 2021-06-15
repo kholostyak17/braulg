@@ -11,23 +11,26 @@ export const Trip = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const [tripDetails, setTripDetails] = useState("");
-
+	const [partnersMap, setPartnersMap] = useState("");
 	const ARRAYAUX = [
 		{ picture: store.profilePicture, name: "Ricardo" },
 		{ picture: store.profilePicture, name: "Ricardo" }
 	];
 	const partners = ARRAYAUX;
-	const [partnersMap, setPartnersMap] = useState("");
 
 	useEffect(() => {
 		actions.getTrip(params.id);
 		setPartnersMap(
 			partners.map((partner, index) => {
 				return (
-					<div className="partner d-flex" key={index.toString()}>
-						<img src={partner.picture} className="partner-picture"></img>
-						<span className="align-middle fw-bold">{partner.name}</span>
-						<Button className="ms-auto me-3" size="sm" color="secondary" text="Chat" />
+					<div className="d-flex justify-content-between m-1" key={index.toString()}>
+						<div>
+							<img src={partner.picture} className="partner-picture"></img>
+							<span className="fw-bold ms-2">{partner.name}</span>
+						</div>
+						<div>
+							<Button className="ms-auto me-3" size="sm" color="secondary" text="Chat" />
+						</div>
 					</div>
 				);
 			})
@@ -39,18 +42,21 @@ export const Trip = () => {
 		if (store.trip != undefined || store.trip.user != undefined) {
 			setTripDetails(
 				<>
-					<div className="col-sm-12 col-md-5 picture-box">
-						<img src={tripImage} className="picture" />
-					</div>
-					<div className="col-sm-12 col-md-7 content-box px-5 pb-5">
-						<h1 className="text-center mt-4">
-							Viaje a: <span className="text-dark">{store.trip.country}</span>
+					<div className="col-sm-12 col-md-12 content-box-trip px-5 py-3">
+						<h1 className="text-center my-2 text-warning">
+							Viaje a: <span className="text-dark fw-bold">{store.trip.country}</span>
 						</h1>
-						<h4>Propuesto por:</h4>
-						<img src={ARRAYAUX[1].picture} className="user-picture"></img>
-						<span className="user-name fw-bold">{ARRAYAUX[1].name}</span>
-						<h4 className="mt-2">Ciudades:</h4>
-						<p className="text-bold">{store.trip.cities}</p>
+						<div className="row">
+							<div className="col-12 col-md-6">
+								<h4>Propuesto por:</h4>
+								<img src={ARRAYAUX[1].picture} className="user-picture"></img>
+								<span className="user-name fw-bold">{ARRAYAUX[1].name}</span>
+							</div>
+							<div className="col-12 col-md-6">
+								<h4 className="mt-2">Ciudades:</h4>
+								<p className="fw-bold">{store.trip.cities}</p>
+							</div>
+						</div>
 						<div className="row">
 							<div className="col-12 col-md-6">
 								<h4>Fecha de inicio:</h4>
@@ -63,10 +69,14 @@ export const Trip = () => {
 						</div>
 						<h4>Actividades:</h4>
 						<p>{store.trip.activities}</p>
-						<h4>Partners:</h4>
-						{partnersMap}
-						<div className="text-center my-4">
-							<Button className="m-2" size="lm" color="primary" text="APÚNTATE" />
+						<div className="row">
+							<div className="col-12 col-md-6">
+								<h4>Partners:</h4>
+								{partnersMap}
+							</div>
+							<div className="col-12 col-md-6 text-center my-4 pt-4">
+								<Button className="" size="lm" color="primary" text="APÚNTATE" />
+							</div>
 						</div>
 					</div>
 				</>

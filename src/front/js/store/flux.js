@@ -242,6 +242,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getNewTrip: credentials => {
+				const redirectToTrips = () => {
+					location.replace("./trips/");
+				};
 				fetch(getStore().base_url.concat("api/newtrip"), {
 					method: "POST",
 					body: credentials,
@@ -256,6 +259,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ trips: responseAsJson });
+						redirectToTrips();
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

@@ -1,8 +1,10 @@
 @import 'index.scss';
 
-@media only screen and (max-width: 768px) {
     .trip-view{
         background-image: url("../img/background-trip.png");
-        background-repeat: repeat;
+        background-repeat: none;
+        background-size: cover;
     }
-}
+    .content-box-trip{
+        background-color: rgba(255,255,255,0.9);
+    }
