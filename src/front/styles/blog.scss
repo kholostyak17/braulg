@@ -1,30 +1,13 @@
 @import 'index.scss';
 
-@media only screen and (max-width: 768px) {
-    .blog-view{
-        background-image: url("../img/pexels-manuel-2949825.png");
-        background-repeat: repeat;
-    }
-    .card--body{
-        background-color: rgba(255,255,255,0.75);
-    }
+.content-box-blog{
+    background-color: rgba(255,255,255,0.75);
+}
+.blog-view{
+    background-image: url("../img/pexels-manuel-2949825.png");
+    background-repeat: repeat;
 }
 
-.container-add-post{
-    display:flex;
-    justify-content: space-between;
-}
-.add-post{
-    position:relative;
-    top:7px;
-}
-//modal
-.dialog-title-btn {
-	display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.5rem;
-}
 .close-icon {
 	position: relative;
 	bottom: 7px;
@@ -33,53 +16,9 @@
     font-size: 2.5rem !important;
     color: #EF0606;
 }
-.titles-container {
-	text-align: center;
-	margin: 0 2rem !important;
-}
 .center-file-input {
 	margin-top: 2rem;
 	text-align-last: center;
 	display: flex;
 	flex-direction: column;
-}
-.post-button {
-	margin: 3rem auto 2rem auto !important;
-    font-size: 2rem !important;
-    width: 117px;
-    height: 53px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 42px;
-    text-align: center;
-    color: #FFFFFF;
-/* AMARILLO */
-    background: #F5B82E;
-    border-radius: 5px;
-    border:none;
-}
-#form-dialog-txt {
-	padding-bottom: 0;
-    margin: 2.5rem 0 -1rem 0;
-    font-family: Nunito;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 33px;
-    letter-spacing: 0em;
-
-}
-
-#form-dialog-title{
-    font-family: Nunito;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 49px;
-    letter-spacing: 0em;
-    text-align: center;
-    margin: 1rem 0 0 2rem;
-
 }
