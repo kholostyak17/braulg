@@ -14,7 +14,7 @@ export const TripCard = props => {
 		setPartnersMap(
 			partners.map((partner, index) => {
 				return (
-					<div className="partner" key={index.toString()}>
+					<div className="partner-box-trip-card" key={index.toString()}>
 						<div className="partner-picture-box">
 							<img src={partner.picture} className="partner-picture"></img>
 						</div>
@@ -27,8 +27,8 @@ export const TripCard = props => {
 
 	console.log(props.partners);
 	return (
-		<div className="trip-card">
-			<div className="trip-card-header d-flex row">
+		<div className="my-card">
+			<div className="my-card-header d-flex row">
 				<div className="col-12 col-md-9 me-auto my-auto text-center">
 					<h2>
 						Viaje a: <span className="text-dark">{props.country}</span>
@@ -40,7 +40,7 @@ export const TripCard = props => {
 					</Link>
 				</div>
 			</div>
-			<div className="trip-card-body">
+			<div className="my-card-body">
 				<div className="row">
 					<div className="col-12 col-md-6">
 						<h4>Propuesto por:</h4>
