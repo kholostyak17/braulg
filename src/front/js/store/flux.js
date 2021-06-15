@@ -264,6 +264,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
 					});
+			},
+			getNewPost: credentials => {
+				const redirectToBlog = () => {
+					location.replace("./blog/");
+				};
+				fetch(getStore().base_url.concat("api/newpost"), {
+					method: "POST",
+					body: credentials,
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't register this post!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						setStore({ posts: responseAsJson });
+						redirectToBlog();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			}
 		}
 	};
