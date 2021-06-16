@@ -112,8 +112,10 @@ export const Settings = () => {
 									<Button className="m-2" size="lm" color="primary" text="CANCELAR" />
 								</Link>
 							</div>
-							<div className="d-flex m-5 justify-content-center">
-								<i className="fas fa-trash-alt" onClick={handleShow}></i>
+							<div className="d-flex m-5 justify-content-end text-danger">
+								<span onClick={handleShow}>
+									Eliminar cuenta <i className="fas fa-trash-alt"></i>
+								</span>
 								<Modal show={show} onHide={handleClose}>
 									<Modal.Header className="text-center">
 										<Modal.Title className="text-center">Eliminar cuenta</Modal.Title>
