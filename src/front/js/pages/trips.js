@@ -29,13 +29,13 @@ export const Trips = () => {
 							tripID={trip.id}
 							username={trip.traveler_name}
 							userpicture={ARRAYAUX[1].picture}
-							userID={ARRAYAUX[1].id}
+							userID={trip.traveler_id}
 							country={trip.country}
 							cities={trip.cities}
 							startDate={trip.start_date}
 							endDate={trip.end_date}
 							activities={trip.activities}
-							partners={ARRAYAUX}
+							partners={trip.partners}
 						/>
 					);
 				})

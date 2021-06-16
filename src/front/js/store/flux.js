@@ -14,8 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			shared_trips: []
 		},
 		actions: {
-			getUser: () => {
-				fetch(getStore().base_url.concat("api/profile/", localStorage.getItem("tokenID")))
+			getUser: id => {
+				fetch(getStore().base_url.concat("api/profile/", id))
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load user!");
