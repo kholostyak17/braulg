@@ -109,10 +109,14 @@ class Trip(db.Model):
 
     def to_dict(self):
         traveler_name = Traveler.get_by_id(self.traveler_id)
+        partners = Shared_Trip.get_by_trip_id(self.id)
+        partners_info = [Traveler.get_by_id(partner.traveler_id) for partner in partners]
+        partners_dict = [partner_info.to_dict() for partner_info in partners_info]
         return{
             "id": self.id,
             "traveler_id": self.traveler_id,
             "traveler_name":traveler_name.name,
+            "partners": partners_dict,
             "country": self.country,
             "cities": self.cities,
             "start_date": self.start_date,
@@ -138,7 +142,7 @@ class Trip(db.Model):
 
         
 class Shared_Trip(db.Model):
-    __tablename__ = 'share_trip'
+    __tablename__ = 'shared_trip'
     id = db.Column(db.Integer, unique=True, primary_key=True)
     trip_id = db.Column(db.Integer, db.ForeignKey("trip.id"))
     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
@@ -160,7 +164,13 @@ class Shared_Trip(db.Model):
     @classmethod
     def get_by_id(cls, id):
         shared_trips_by_id = cls.query.filter_by(id=id).one_or_none()
-        return shared_trips_by_id
+        return 
+
+    @classmethod  
+    def get_by_trip_id(cls,id_trip):
+        travelers = cls.query.filter_by(trip_id=id_trip)
+        return travelers
+
 
  
 
