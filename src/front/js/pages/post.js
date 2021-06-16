@@ -20,23 +20,25 @@ export const Post = () => {
 	return (
 		<>
 			<MyNavbar />
-			<div className="container py-2">
-				<div>
-					<img src={store.post_by_id.media} className="post-image" />
-				</div>
-				<div className="d-flex justify-content-between py-2 px-3">
-					<h1 className="text-center">{store.post_by_id.title}</h1>
-					<Link to={linkToUserID}>
-						<div className="d-flex align-items-center justify-content-center">
-							<img
-								src="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
-								className="user-picture-post"></img>
-							<p className="user-name ms-2">Sergio Carrascal</p>
-						</div>
-					</Link>
-				</div>
+			<div className="blog-view">
+				<div className="col-sm-12 col-md-9 content-box scrollable-box p-3">
+					<div>
+						<img src={store.post_by_id.media} className="post-image" />
+					</div>
+					<div className="d-flex justify-content-between py-2 px-3">
+						<h1 className="text-center">{store.post_by_id.title}</h1>
+						<Link to={linkToUserID}>
+							<div className="d-flex align-items-center justify-content-center">
+								<img
+									src="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
+									className="user-picture-post"></img>
+								<p className="user-name ms-2">Sergio Carrascal</p>
+							</div>
+						</Link>
+					</div>
 
-				<p className="px-3">{store.post_by_id.text}</p>
+					<p className="px-3">{store.post_by_id.text}</p>
+				</div>
 			</div>
 			<Footer />
 		</>

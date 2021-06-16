@@ -8,10 +8,6 @@ import Button from "../component/button.js";
 import { PostCard } from "../component/post-card";
 import "../../styles/blog.scss";
 //componentes para el modal
-// import TextField from "@material-ui/core/TextField";
-// import Dialog from "@material-ui/core/Dialog";
-// import DialogContent from "@material-ui/core/DialogContent";
-// import DialogTitle from "@material-ui/core/DialogTitle";
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -61,7 +57,7 @@ export const Blog = () => {
 			<div className="container-fluid row main-box blog-view">
 				<div className="content-box-blog">
 					<div className="d-flex justify-content-between flex-wrap">
-						<h1 className="text-center mt-4 mx-4 ps-3">Blog</h1>
+						<h1 className="text-center mt-4 mx-4 ps-3 blog-title">Blog</h1>
 						<Button
 							className="mx-5 my-4"
 							size="lm"

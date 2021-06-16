@@ -1,11 +1,15 @@
 @import 'index.scss';
 
+.blog-title{
+    color: $secondary-color
+}
 .content-box-blog{
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255,255,255,0.25);
 }
 .blog-view{
-    background-image: url("../img/pexels-manuel-2949825.png");
+    background-image: url("../img/background-blog.jpg");
     background-repeat: repeat;
+    background-size: 100vw 100vh;
 }
 
 .close-icon {
