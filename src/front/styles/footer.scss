@@ -4,14 +4,25 @@ footer{
     color: $white-color;
     background-color: $black-color;
     font-family: $font-family;
+    padding: 0.2rem 1rem;
 }
 .link-footer, .text-footer{
     margin: 0.5rem 0.5rem;
     color: $white-color;
-    text-align: center;
-    display: inline-block;
-    white-space: nowrap
+    white-space: nowrap;
 }
 .link-footer:hover{
     color: $secondary-color;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-element{
+        margin: 0.4rem 0;
+        text-align: center;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .elem-left{
+        text-align: end;
+    }
 }
