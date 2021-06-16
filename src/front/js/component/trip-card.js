@@ -69,12 +69,18 @@ export const TripCard = props => {
 						<p>{props.endDate}</p>
 					</div>
 				</div>
-				<h4>Actividades:</h4>
-				<div className="activities-box">
-					<span>{props.activities}</span>
+				<div className="row">
+					<div className="col-12 col-md-6">
+						<h4>Actividades:</h4>
+						<div className="activities-box">
+							<span>{props.activities}</span>
+						</div>
+					</div>
+					<div className="col-12 col-md-6">
+						<h4>Partners:</h4>
+						{partnersMap}
+					</div>
 				</div>
-				<h4>Partners:</h4>
-				{partnersMap}
 			</div>
 		</div>
 	);

@@ -19,65 +19,35 @@ export const Profile = () => {
 	useEffect(() => {
 		if (store.user != undefined) {
 			setUser(
-				<>
-					<div className="container-fluid container-box">
-						<img
-							className="img-fluid image"
-							alt=""
-							src="https://images.pexels.com/photos/386025/pexels-photo-386025.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-						/>
-						<div className="row profile">
-							<img className="profile-img" alt="" src="https://i.ibb.co/b6k9rXF/circle-cropped.png" />
-						</div>
-						<div className="row title">
-							<div className="col-sm-6">
-								<h2 className="title2">{store.user.name}</h2>
-								<p className="paragraph">{store.user.bio}</p>
-							</div>
-						</div>
-
-						<div className="row body">
-							<div className="col-sm-6 ">
-								<h3>Información básica</h3>
-
-								<div className="row basic-info">
-									<div className="col-sm-2 ">
-										<h5>Edad</h5>
-									</div>
-									<div className="col-sm ">
-										<p className="paragraph">{store.user.age}</p>
-									</div>
-								</div>
-								<div className="row">
-									<div className="col-sm-2 ">
-										<h5>Vive en</h5>
-									</div>
-									<div className="col-sm">
-										<p className="paragraph">{store.user.localization}</p>
-									</div>
-								</div>
-								<h3>Lenguajes</h3>
-								<div className="row">
-									<div className="col-sm-12 ">
-										<p className="paragraph">{store.user.language}</p>
-									</div>
-								</div>
-								<div className="row message">
-									<Button
-										className="message-button"
-										size="m"
-										color="secondary"
-										text="Enviar mensaje"
-									/>
-								</div>
-							</div>
-
-							<div className="col-sm-6">
-								<h3>Siguientes viajes</h3>
-							</div>
+				<div className="container-fluid p-0">
+					<div className="background-image">
+						<img className="profile-img" alt="Profile picture" src={store.profilePicture} />
+					</div>
+					<div className="d-flex justify-content-center p-3">
+						<div className="text-center">
+							<h1 className="text-dark">
+								{store.user.name}
+								<i className="far fa-comments profile-button"></i>
+							</h1>
+							<h5 className="text-dark">{store.user.bio}</h5>
 						</div>
 					</div>
-				</>
+					<div className="row body">
+						<div className="col-12 col-sm-6 text-center mb-4">
+							<h3>Información básica</h3>
+							<h5>Edad:</h5>
+							<span className="text-dark">{store.user.age}</span>
+							<h5>Localización:</h5>
+							<span className="text-dark">{store.user.localization}</span>
+							<h5>Idiomas:</h5>
+							<span className="text-dark">{store.user.language}</span>
+						</div>
+						<div className="col-12 col-sm-6 text-center mb-5">
+							<h3>Siguientes viajes</h3>
+							<div>(...todavía no hay viajes)</div>
+						</div>
+					</div>
+				</div>
 			);
 		}
 	}, [store.user]);
@@ -85,7 +55,7 @@ export const Profile = () => {
 	return (
 		<>
 			<MyNavbar />
-			<div className="">{user}</div>
+			{user}
 			<Footer />
 		</>
 	);

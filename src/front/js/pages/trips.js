@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
-import tripsImage from "../../img/background-trips.png";
 import "../../styles/trips.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
@@ -48,11 +47,8 @@ export const Trips = () => {
 	return (
 		<>
 			<MyNavbar />
-			<div className="container-fluid row main-box trips-view">
-				<div className="col-sm-12 col-md-5 picture-box">
-					<img src={tripsImage} className="picture" />
-				</div>
-				<div className="col-sm-12 col-md-7 content-box">
+			<div className="container-fluid main-box trips-view d-flex">
+				<div className="col-sm-12 col-md-7 content-box mx-auto scrollable-box">
 					<h1 className="text-center mt-4">Últimos viajes propuestos</h1>
 					<div className="d-flex flex-column-reverse">{tripsMap}</div>
 				</div>
