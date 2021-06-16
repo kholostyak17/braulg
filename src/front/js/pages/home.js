@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
 import Button from "../component/button.js";
-import h_picture from "../../img/homeimg.jpeg";
+import h_picture from "../../img/homepic.jpeg";
 import { Link } from "react-router-dom";
 import { TripCard } from "../component/trip-card.js";
 import CardSmall from "../component/cardsmall.js";
@@ -109,7 +108,9 @@ export const Home = () => {
 					</p>
 				</div>
 				<div className="viajes">
-					<h1 className="viajes-prop">VIAJES PROPUESTOS PARA ESTE MES</h1>
+					<h1 className="viajes-prop" id="title-largo">
+						VIAJES PROPUESTOS PARA ESTE MES
+					</h1>
 					<div className="trips-cards-2">
 						<div className="d-flex flex-column-reverse">{tripsMap}</div>
 					</div>

@@ -1,6 +1,13 @@
 .card--small{
     width: 27.438rem;
-    margin:1.3rem auto;
+    margin:0.4rem auto 0.3rem auto;
+     @media screen and (max-width: 1372px){
+       margin:0.4rem auto 0.1rem auto;
+
+    }
+    @media screen and (max-width: 440px){
+        width: 100%;
+    }
 }
 .img--small{
     width: 100%;
