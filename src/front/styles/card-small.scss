@@ -1,6 +1,10 @@
 .card--small{
     width: 27.438rem;
-    margin:1.3rem auto;
+    margin:0.5rem auto 0.5rem auto;
+    @media screen and (max-width:466px){
+        margin:0 0 1.3rem 0;
+        width:100%;
+    }
 }
 .img--small{
     width: 100%;
@@ -15,4 +19,12 @@
 }
 .button--small{
     margin: 0 auto
+}
+.btn-link-post{
+    display:flex;
+    position: relative;
+    left: 150px;
+}
+.body-card{
+    place-content: center;
 }
