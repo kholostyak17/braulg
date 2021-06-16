@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import settingsImage from "../../img/pexels-photo-2422265.png";
 import "../../styles/settings.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
@@ -14,26 +13,26 @@ export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
 	const params = useParams();
-
+	//variables para desplegar modal de borrar cuenta
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 	useEffect(() => {
 		actions.getUser(params.id);
 	}, []);
 
 	const onSubmit = data => {
 		actions.getUpdate(JSON.stringify(data));
+		localStorage.setItem("tokenName", data.name);
 	};
-	//variables para desplegar modal de borrar cuenta
-	const [show, setShow] = useState(false);
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
 
 	const startDelete = () => actions.getDelete();
 
 	return (
 		<>
 			<MyNavbar />
-			<div className="container-fluid row main-box settings-view">
-				<div className="col-sm-12 col-md-7 content-box">
+			<div className="settings-view">
+				<div className="col-sm-12 col-md-7 content-box scrollable-box">
 					<h1 className="text-center my-4">Ajustes del perfil</h1>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
@@ -75,9 +74,9 @@ export const Settings = () => {
 								id="localization"
 								type="text"
 								className="input-style"
-								title="Máximo 30 caracteres, solo letras"
+								title="Máximo 50 caracteres, solo letras"
 								defaultValue={store.user.localization}
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
 								{...register("localization")}
 							/>
 							<h2>Modificar idiomas:</h2>
@@ -85,8 +84,8 @@ export const Settings = () => {
 								id="language"
 								type="text"
 								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
-								title="Máximo 30 caracteres, solo letras"
+								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,100}"
+								title="Máximo 100 caracteres, solo letras"
 								defaultValue={store.user.language}
 								{...register("language")}
 							/>
@@ -140,9 +139,6 @@ export const Settings = () => {
 							</div>
 						</div>
 					</form>
-				</div>
-				<div className="col-sm-12 col-md-5 picture-box">
-					<img src={settingsImage} className="picture" />
 				</div>
 			</div>
 			<Footer />
