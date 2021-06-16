@@ -33,20 +33,17 @@ export const Profile = () => {
 						</div>
 					</div>
 					<div className="row body">
-						<div className="col-12 col-sm-6">
-							<h2>Información básica</h2>
-							<h4>
-								Edad: <span className="text-dark">{store.user.age}</span>
-							</h4>
-							<h4>
-								Localización: <span className="text-dark">{store.user.localization}</span>
-							</h4>
-							<h4>
-								Idiomas: <span className="text-dark">{store.user.language}</span>
-							</h4>
+						<div className="col-12 col-sm-6 text-center mb-4">
+							<h3>Información básica</h3>
+							<h5>Edad:</h5>
+							<span className="text-dark">{store.user.age}</span>
+							<h5>Localización:</h5>
+							<span className="text-dark">{store.user.localization}</span>
+							<h5>Idiomas:</h5>
+							<span className="text-dark">{store.user.language}</span>
 						</div>
-						<div className="col-12 col-sm-6">
-							<h2>Siguientes viajes:</h2>
+						<div className="col-12 col-sm-6 text-center mb-5">
+							<h3>Siguientes viajes</h3>
 							<div>(...todavía no hay viajes)</div>
 						</div>
 					</div>
