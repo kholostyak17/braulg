@@ -9,7 +9,9 @@ import { Footer } from "../component/footer";
 export const NewTrip = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const onSubmit = data => {
+		actions.getNewTrip(JSON.stringify(data));
+	};
 
 	return (
 		<>
@@ -746,31 +748,31 @@ export const NewTrip = () => {
 							</select>
 							<h2>Ciudades que vas a visitar:</h2>
 							<input
-								id="city"
+								id="cities"
 								type="text"
 								className="input-style"
 								placeholder="Escribe ciudades"
 								maxLenght="250"
 								title="Máximo 250 caracteres"
 								required
-								{...register("city")}
+								{...register("cities")}
 							/>
 							<h2>Fecha estimada de viaje:</h2>
 							<label>Fecha de inicio</label>
 							<input
-								id="start-date"
+								id="start_date"
 								type="date"
 								className="input-style"
 								required
-								{...register("start-date")}
+								{...register("start_date")}
 							/>
 							<label>Fecha de regreso</label>
 							<input
-								id="end-date"
+								id="end_date"
 								type="date"
 								className="input-style"
 								required
-								{...register("end-date")}
+								{...register("end_date")}
 							/>
 							<h2>Actividades que vas a realizar:</h2>
 							<textarea

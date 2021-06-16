@@ -3,13 +3,16 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
 import { Components } from "./pages/components";
+import { Trips } from "./pages/trips";
+import { Trip } from "./pages/trip";
 import { NewTrip } from "./pages/newtrip";
-import { Faq } from "./pages/faq";
+import { Blog } from "./pages/blog";
+import { Post } from "./pages/post";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
 import { Settings } from "./pages/settings";
-//import { Blog } from "./pages/blog";
+import { Faq } from "./pages/faq";
 import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/my-navbar"; //navbar provisional para error 404
 
@@ -29,8 +32,20 @@ const Layout = () => {
 					<Route exact path="/components">
 						<Components />
 					</Route>
+					<Route exact path="/trips">
+						<Trips />
+					</Route>
+					<Route exact path="/trips/:id">
+						<Trip />
+					</Route>
 					<Route exact path="/newtrip">
 						<NewTrip />
+					</Route>
+					<Route exact path="/blog">
+						<Blog />
+					</Route>
+					<Route exact path="/blog/:id">
+						<Post />
 					</Route>
 					<Route exact path="/login">
 						<Login />
