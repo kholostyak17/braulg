@@ -224,7 +224,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPost: id => {
-				fetchfetch(getStore().base_url.concat("api/blog/", id), {
+				fetch(getStore().base_url.concat("api/blog/", id), {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
@@ -288,6 +288,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ shared_trips: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+
+			getNewPost: credentials => {
+				const redirectToBlog = () => {
+					location.replace("./blog/");
+				};
+				fetch(getStore().base_url.concat("api/newpost"), {
+					method: "POST",
+					body: credentials,
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't register this post!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						setStore({ posts: responseAsJson });
+						redirectToBlog();
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

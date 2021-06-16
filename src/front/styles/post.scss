@@ -1,0 +1,13 @@
+@import 'index.scss';
+
+.post-image{
+    height: 25rem;
+    width: 100%;
+    border-radius: 1.25rem;
+}
+.user-picture-post{
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 100%;
+    border: solid 1px $grey-color
+}

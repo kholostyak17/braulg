@@ -20,21 +20,15 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
     color: $primary-color;
 }
-h1{font-size: 96}
-h2{font-size: 72}
-h3{font-size: 64}
-h4{font-size: 48}
-h5{font-size: 36}
-h6{font-size: 24}
-
 p{
-    font-family: $font-family; 
-    font-size: 24; 
+    font-size: 18; 
     color: $black-color;
 }
-
 h1, h2, h3, p, span{
     overflow-wrap: break-word;
+}
+a{
+    text-decoration: none;
 }
 
 //estilo de inputs con fondo transparente y borde gris abajo 
@@ -70,10 +64,14 @@ h1, h2, h3, p, span{
         overflow: hidden;
     }
 }
+.content-box{
+    background-color: rgba(255, 255, 255, 0.85);
+}
+.scrollable-box{
+    overflow-y: scroll;
+    height: 100vh;
+}
 @media only screen and (max-width: 768px) {
-    .content-box{
-    background-color: rgba(255, 255, 255, 0.75)
-    }
     .picture-box, .picture{
         width: 0;
     }
@@ -86,9 +84,9 @@ h1, h2, h3, p, span{
     border-radius: 1.25%;
     background-color: $white-color;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.75);
 }
 .my-card-header{
-    padding: 1rem;
     border-bottom: solid 1px $grey-color;
     display: flex;
 }
