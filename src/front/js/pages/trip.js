@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
-import tripImage from "../../img/background-trip.png";
 import "../../styles/trip.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
@@ -34,7 +33,7 @@ export const Trip = () => {
 							</div>
 						</Link>
 						<div>
-							<Button className="ms-auto me-3" size="sm" color="secondary" text="Chat" />
+							<Button className="ms-auto me-3" size="sm" color="primary" text="Chat" />
 						</div>
 					</div>
 				);
@@ -46,9 +45,9 @@ export const Trip = () => {
 		console.log(store.trip);
 		if (store.trip != undefined || store.trip.user != undefined) {
 			setTripDetails(
-				<>
-					<div className="col-sm-12 col-md-12 content-box-trip px-5 py-3">
-						<h1 className="my-2 text-warning">
+				<div className="trips-view">
+					<div className="col-sm-12 col-md-9 content-box scrollable-box px-5 py-3">
+						<h1 className="my-2">
 							Viaje a: <span className="text-dark fw-bold">{store.trip.country}</span>
 						</h1>
 						<div className="row">
@@ -84,11 +83,11 @@ export const Trip = () => {
 								{partnersMap}
 							</div>
 							<div className="col-12 col-md-6 text-center my-4 pt-4">
-								<Button className="" size="lm" color="primary" text="APÚNTATE" />
+								<Button className="" size="lm" color="secondary" text="APÚNTATE" />
 							</div>
 						</div>
 					</div>
-				</>
+				</div>
 			);
 		}
 		console.log(store.trips);
