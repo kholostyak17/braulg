@@ -12,6 +12,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
 import { Settings } from "./pages/settings";
+import { Faq } from "./pages/faq";
 import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/my-navbar"; //navbar provisional para error 404
 
@@ -57,6 +58,9 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/settings">
 						<Settings />
+					</Route>
+					<Route exact path="/faq">
+						<Faq />
 					</Route>
 					<Route>
 						<MyNavbar />
