@@ -1,11 +1,11 @@
 import jwt_decode from "jwt-decode";
 
 const getState = ({ getStore, getActions, setStore }) => {
+    const BASE_URL = "https://travelling-together-prueba.herokuapp.com/"
 	return {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-white-marmot-57j2uohn.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
