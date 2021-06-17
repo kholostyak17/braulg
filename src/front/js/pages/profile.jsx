@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import Button from "../component/button.js";
 import "../../styles/profile.scss";
 
-import { MyNavbar } from "/workspace/project-solo-travel/src/front/js/component/my-navbar.js";
-import { Footer } from "/workspace/project-solo-travel/src/front/js/component/footer.js";
+import { MyNavbar } from "../component/my-navbar.js";
+import { Footer } from "../component/footer.js";
 
 export const Profile = () => {
 	const { store, actions } = useContext(Context);

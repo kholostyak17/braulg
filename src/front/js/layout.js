@@ -10,7 +10,7 @@ import { Blog } from "./pages/blog";
 import { Post } from "./pages/post";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
-import { Profile } from "/workspace/project-solo-travel/src/front/js/pages/profile.jsx";
+import { Profile } from "./pages/profile.jsx";
 import { Settings } from "./pages/settings";
 import { Faq } from "./pages/faq";
 import injectContext from "./store/appContext";
