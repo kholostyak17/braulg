@@ -4,12 +4,19 @@ import Card from "react-bootstrap/Card";
 import "../../styles/trip-card.scss";
 import { Link } from "react-router-dom";
 import Button from "./button.js";
+import { useForm } from "react-hook-form";
+import { Context } from "../store/appContext";
 
 export const TripCard = props => {
 	const linkToTripID = "./trips/".concat(props.tripID);
 	const linkToUserID = "./user/".concat(props.userID);
+	const { store, actions } = useContext(Context);
 	const [partnersMap, setPartnersMap] = useState("");
-
+	// const { register, handleSubmit } = useForm();
+	// const onSubmit = data => {
+	// 	console.log("deleting");
+	// 	actions.deleteTrip(props);
+	// };
 	useEffect(() => {
 		setPartnersMap(
 			props.partners.map((partner, index) => {
@@ -38,6 +45,9 @@ export const TripCard = props => {
 					</h2>
 				</div>
 				<div className="col-12 col-md-3 ms-auto my-auto text-center">
+					{/* <button className="" size="sm" color="secondary" onClick={handleSubmit(onSubmit)} text="Delete">
+						DELETE
+					</button> */}
 					<Link to={linkToTripID}>
 						<Button className="" size="sm" color="secondary" text="Saber más" />
 					</Link>
@@ -96,5 +106,6 @@ TripCard.propTypes = {
 	startDate: PropTypes.string,
 	endDate: PropTypes.string,
 	activities: PropTypes.string,
-	partners: PropTypes.array
+	partners: PropTypes.array,
+	key: PropTypes.string
 };

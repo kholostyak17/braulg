@@ -213,3 +213,13 @@ def delete_traveler(id):
         return jsonify(traveler.to_dict()), 200
     
     return {'error': 'traveler not found'}, 400
+
+# @api.route('api/trips', methods=['GET', 'POST'])
+# @jwt_required()
+# def deleteTrip(id):
+#     trip = Trip.get_by_id(id)
+#     if trip:
+#         trip.delete()
+#         return jsonify(trip.to_dict()), 200
+
+#     return jsonify({'error': "Trips not found"}), 404

@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
-			base_url: "https://3001-scarlet-marmot-xy2mtvg5.ws-eu09.gitpod.io/",
+			base_url: "https://3001-blush-spoonbill-y8o4lwcx.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
@@ -87,7 +87,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
-
+			// deleteTrip: props => {
+			// 	let trips = [];
+			// 	console.log("propsID", props.tripID);
+			// 	fetch(getStore().base_url.concat("api/trips"), {
+			// 		method: "POST",
+			// 		headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+			// 	})
+			// 		.then(function(response) {
+			// 			if (!response.ok) {
+			// 				throw Error("I can't load Trip!");
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(function(responseAsJson) {
+			// 			responseAsJson.filter((trip, index) => {
+			// 				console.log("index", index);
+			// 				if (index !== props.tripID) {
+			// 					trips.push(trip);
+			// 				}
+			// 			});
+			// 			console.log("NEW response", trips);
+			// 			setStore({ trips: trips });
+			// 		})
+			// 		.catch(function(error) {
+			// 			console.log("Looks like there was a problem: \n", error);
+			// 		});
+			// },
 			getLogin: credentials => {
 				const tokenDecode = token => {
 					let decoded = jwt_decode(token);

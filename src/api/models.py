@@ -122,6 +122,10 @@ class Trip(db.Model):
         db.session.add(self)
         db.session.commit()
         return self
+    
+    def delete(self):
+        self.is_active = False
+        db.session.commit()
 
     @classmethod
     def get_all(cls):
