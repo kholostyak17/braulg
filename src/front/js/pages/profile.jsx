@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import Button from "../component/button.js";
+import TripProfileCard from "../component/trip-profile-card.js";
 import "../../styles/profile.scss";
 
 import { MyNavbar } from "/workspace/project-solo-travel/src/front/js/component/my-navbar.js";
@@ -10,11 +11,39 @@ import { Footer } from "/workspace/project-solo-travel/src/front/js/component/fo
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const [user, setUser] = useState([]);
+	const [tripsMap, setTripsMap] = useState("");
+
 	const params = useParams();
 
 	useEffect(() => {
 		actions.getUser(params.id);
+		actions.getTrips();
 	}, []);
+
+	useEffect(() => {
+		traveler_id = actions.getUser(params.id);
+		if (store.trips != undefined || store.trip.user != undefined) {
+			setTripsMap(
+				store.trips
+					.filter(trip => traveler_id)
+					.map((trip, index) => {
+						return (
+							<TripProfileCard
+								key={index.toString()}
+								tripID={trip.id}
+								userID={trip.traveler_id}
+								country={trip.country}
+								cities={trip.cities}
+								startDate={trip.start_date}
+								endDate={trip.end_date}
+								partners={trip.partners}
+							/>
+						);
+					})
+			);
+		}
+		console.log(store.trips);
+	}, [store.trips]);
 
 	useEffect(() => {
 		if (store.user != undefined) {
@@ -44,7 +73,10 @@ export const Profile = () => {
 						</div>
 						<div className="col-12 col-sm-6 text-center mb-5">
 							<h3>Siguientes viajes</h3>
-							<div>(...todavía no hay viajes)</div>
+							<div className="d-flex flex-column-reverse">
+								{tripsMap}
+								<div>(...todavía no hay viajes)</div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -18,7 +18,7 @@ export const Settings = () => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	useEffect(() => {
-		actions.getUser(params.id);
+		actions.getUser(localStorage.getItem("tokenID"));
 	}, []);
 
 	const onSubmit = data => {
