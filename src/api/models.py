@@ -17,9 +17,9 @@ class Traveler(db.Model):
     _password = db.Column(db.String)
     language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
-    picture = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
+    profile_picture = db.Column(db.String, unique=False, nullable=True)
     is_active=db.Column(db.Boolean, default=True)
     
     def _repr_(self):
@@ -37,6 +37,7 @@ class Traveler(db.Model):
             "language": self.language,
             "localization": self.localization,
             "bio": self.bio,
+            "profile_picture": self.profile_picture
         }
 
     def traveler_with_token(self, token):
