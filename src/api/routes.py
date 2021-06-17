@@ -10,15 +10,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_jwt_extended import JWTManager
 
+import cloudinary
+import cloudinary.uploader
 
 from api.utils import generate_sitemap, APIException
 
-
 api = Blueprint('api', __name__)
 
-
 CORS(api)
-
 
 @api.route('/login', methods=['POST'])
 def login():
@@ -236,6 +235,68 @@ def update_traveler(id):
         return jsonify(updated_traveler.to_dict()), 200
 
     return {'error': 'User not found'}, 400
+
+
+@api.route('/profilepicture/<int:id>', methods=['PUT'])
+def update_profile_picture(id):
+    
+    print(request.files,"FILEEEEEEEEEEEEEEEEEEEEEEES")
+    
+    if 'profile_picture' in request.files:
+        result = cloudinary.uploader.upload(request.files['profile_picture'])
+        print(result['secure_url'], "RESUUUUUUUUUUUUUUUUULT")
+        # update the user with the given cloudinary image URL
+        # user1.profile_picture = result['secure_url']
+
+    if 'profile_picture' in request.files:
+        # upload file to uploadcare
+        result = cloudinary.uploader.upload(request.files['profile_picture'])
+        # fetch for the user
+        traveler = Traveler.get_by_id(id)
+        # update the user with the given cloudinary image URL
+        traveler.profile_picture = result['secure_url']
+
+        db.session.add(traveler)
+        db.session.commit()
+
+        return jsonify(traveler.to_dict()), 200
+
+    else:
+        raise APIException('Missing profile_image on the FormData')
+
+"""
+    if update_info['profile_picture']:
+        profile_picture_uploaded = cloudinary.uploader.upload(update_info['profile_picture'])
+        update_info['profile_picture'] = profile_picture_uploaded
+
+    traveler = Traveler.get_by_id(id)
+
+    if traveler:
+        updated_traveler = traveler.update(**{
+            key: value for key, value in update_info.items()
+            if value is not None
+        })
+
+        return jsonify(updated_traveler.to_dict()), 200
+
+    return {'error': 'User not found'}, 400
+
+"""
+"""
+def handle_upload(user_id):
+
+    if 'profile_image' in request.files:
+        result = cloudinary.uploader.upload(request.files['profile_image'])
+        # update the user with the given cloudinary image URL
+        user1.profile_image_url = result['secure_url']
+
+        db.session.add(user1)
+        db.session.commit()
+
+        return jsonify(user1.serialize()), 200
+    else:
+        raise APIException('Missing profile_image on the FormData')
+"""
 
 
 @api.route('/settings/<int:id>', methods=['DELETE'])
