@@ -1,27 +1,32 @@
 .media-links{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 40px;
-    right: 30px;
+    align-self: flex-end;
+    margin: auto;
+    align-items: center;
+    padding: 5rem 2rem;
+    background-color: #00000042;
+    border-radius: .25rem;
+    text-align: center;
 }
-.home-img{
-    height: 550px;
-    width: 100%;
-}
+
 .home-media{
-     position: relative;
+    height: calc(100vh - 20vh);
+    background: #ffffff url(/homepic.jpeg) no-repeat right top;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
-.home-title{
-    font-family: Nunito;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 49px;
-    letter-spacing: 0em;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgb(6, 143, 131);
+
+.home-media > h1 {
+    margin-top: 2rem;
+    font-size: 5rem;
+    font-variant-caps: all-petite-caps;
+    filter: opacity(0.5);
+    color: #f5b82e;
+    -webkit-text-emphasis: triangle;
 }
+
 .auth-btn{
     font-family: Nunito;
     font-size: 25px;
@@ -37,19 +42,9 @@
     border:none;
     text-align: center;
     background: #17A398;
-}
-#registrate-btn{
-    position:relative;
-    left:120px;
-    margin: 1.5rem 0 1rem 0;
-
+    margin: .5rem 0;
 }
 
-#login-btn{
-    position:relative;
-    left:120px;
-
-}
 .pregunta-home{
     text-align: center;
     font-family: Nunito;
