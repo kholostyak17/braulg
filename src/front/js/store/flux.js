@@ -1,7 +1,7 @@
 import jwt_decode from "jwt-decode";
 
 const getState = ({ getStore, getActions, setStore }) => {
-    const BASE_URL = "https://travelling-together-prueba.herokuapp.com/"
+	const BASE_URL = "https://travelling-together-prueba.herokuapp.com/";
 	return {
 		store: {
 			user: {},
