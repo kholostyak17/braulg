@@ -5,10 +5,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
 			// URL: "https://travelling-together-prueba.herokuapp.com/",
-			URL_API: "https://3001-pink-hippopotamus-a0a3chq2.ws-eu08.gitpod.io/api/",
-			URL: "https://3001-pink-hippopotamus-a0a3chq2.ws-eu08.gitpod.io/",
+			URL_API: "https://3001-rose-constrictor-1o1n9726.ws-eu09.gitpod.io/api/",
+			URL: "https://3000-rose-constrictor-1o1n9726.ws-eu09.gitpod.io/",
+			currentUser: {},
 			user: {},
-			traveler: {},
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
@@ -17,6 +17,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			shared_trips: []
 		},
 		actions: {
+			verifyLogin: () => {
+				if (!localStorage.getItem("token")) {
+					location.replace(getStore().URL.concat("login"));
+				}
+			},
 			getUser: id => {
 				fetch(getStore().URL_API.concat("profile/", id))
 					.then(function(response) {
