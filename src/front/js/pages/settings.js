@@ -30,9 +30,9 @@ export const Settings = () => {
 
 	const startDelete = () => actions.getDelete();
 
-	useEffect(() => {
-		console.log(userData);
-		setSettingsPanel(
+	return (
+		<>
+			<MyNavbar />
 			<div className="settings-view">
 				<div className="col-sm-12 col-md-7 content-box scrollable-box">
 					<h1 className="text-center my-4">Ajustes del perfil</h1>
@@ -145,13 +145,6 @@ export const Settings = () => {
 					</form>
 				</div>
 			</div>
-		);
-	}, [userData]);
-
-	return (
-		<>
-			<MyNavbar />
-			{settingsPanel}
 			<Footer />
 		</>
 	);
