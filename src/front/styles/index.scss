@@ -80,14 +80,14 @@ a{
 //estilos referentes al diseño de las card (en trips y en blog)
 .my-card{
     margin: 1rem 2rem;
-    border: solid 1px $grey-color;
+    border: solid 1px rgb(182, 182, 182);
     border-radius: 1.25%;
     background-color: $white-color;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.75);
 }
 .my-card-header{
-    border-bottom: solid 1px $grey-color;
+    border-bottom: solid 1px rgb(182, 182, 182);
     display: flex;
 }
 .my-card-body{

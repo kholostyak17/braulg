@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			traveler: {},
 			base_url: "https://3001-beige-stoat-pmakzl3n.ws-eu08.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
+			base_url: "https://3001-purple-cuckoo-c9dvyuf4.ws-eu08.gitpod.io/",
 			trips: [],
 			trip: [],
 			posts: [],
@@ -31,19 +32,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
-
-			getUpdate: credentials => {
+			getUpdate: (dataUpdated, picture) => {
 				const token = localStorage.getItem("token");
 				const tokenID = localStorage.getItem("tokenID");
+				const changeProfilePicture = picture => {
+					console.log("This are the files", picture);
+					let mybody = new FormData();
+					mybody.append("profile_picture", picture[0]);
+					fetch(getStore().base_url.concat("api/profilepicture/", localStorage.getItem("tokenID")), {
+						body: mybody,
+						method: "POST"
+					})
+						.then(function(response) {
+							if (!response.ok) {
+								throw Error("I can't upload picture!");
+							}
+							return response.json();
+							console.log(response);
+						})
+						.catch(function(error) {
+							console.log("Looks like there was a problem: \n", error);
+						});
+				};
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
+				console.log(dataUpdated, "datos");
 				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
 					method: "PATCH",
-					body: credentials,
-
+					body: dataUpdated,
 					headers: {
 						"Sec-Fetch-Mode": "no-cors",
 						"Content-Type": "application/json",
@@ -59,6 +78,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ user: responseAsJson });
+						changeProfilePicture(picture);
 						redirectToProfile();
 					})
 					.catch(function(error) {

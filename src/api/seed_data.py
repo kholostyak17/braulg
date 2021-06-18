@@ -9,6 +9,7 @@ data = {
             "age": "30",
             "localization": "Colonia (Alemania)",
             "bio": "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+            "profile_picture":"https://img.icons8.com/bubbles/452/flag-person-female.png"
         },
         {
             "id": 1,
@@ -19,6 +20,7 @@ data = {
             "age": "25",
             "localization": "Paris (Francia)",
             "bio": "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+            "profile_picture": "https://alquilerautocaravanaslanzarote.com/wp-content/uploads/icons8-female-user-200.png"
         },
         {
             "id": 2,
@@ -29,6 +31,7 @@ data = {
             "age": "26",
             "localization": "Madrid (España)",
             "bio": "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+            "profile_picture": "https://img.icons8.com/bubbles/2x/see-male-account.png"
         },
         {
             "id": 3,
@@ -39,6 +42,7 @@ data = {
             "age": "31",
             "localization": "Sevilla (España)",
             "bio": "Me gusta mucho la pesca, me he criado siempre cerca del rio y soy muy sociable.",
+            "profile_picture": "https://img.icons8.com/bubbles/2x/user-male.png"
         },
 
     ],

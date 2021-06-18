@@ -27,12 +27,10 @@ export const Post = () => {
 					</div>
 					<div className="d-flex justify-content-between py-2 px-3">
 						<h1 className="text-center">{store.post_by_id.title}</h1>
-						<Link to={linkToUserID}>
+						<Link to="#">
 							<div className="d-flex align-items-center justify-content-center">
-								<img
-									src="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
-									className="user-picture-post"></img>
-								<p className="user-name ms-2">Sergio Carrascal</p>
+								<img src={store.profilePicture} className="user-picture-post"></img>
+								<p className="user-name ms-2">Anónimo</p>
 							</div>
 						</Link>
 					</div>

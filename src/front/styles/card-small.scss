@@ -15,7 +15,10 @@
     margin: 0 auto
 }
 .text--small{
-    margin: 0.4rem 0 0.6rem 0.9rem
+    margin: 0.4rem 0 0.6rem 0.9rem;
+    max-height: 7.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .button--small{
     margin: 0 auto

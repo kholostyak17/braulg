@@ -10,11 +10,7 @@ import { TripCard } from "../component/trip-card.js";
 export const Trips = () => {
 	const { store, actions } = useContext(Context);
 	const [tripsMap, setTripsMap] = useState("");
-	const ARRAYAUX = [
-		{ id: 2, picture: store.profilePicture, name: "Ricardo" },
-		{ id: 3, picture: store.profilePicture, name: "María" },
-		{ id: 0, picture: store.profilePicture, name: "Persefone" }
-	];
+
 	useEffect(() => {
 		actions.getTrips();
 	}, []);
@@ -28,7 +24,7 @@ export const Trips = () => {
 							key={index.toString()}
 							tripID={trip.id}
 							username={trip.traveler_name}
-							userpicture={ARRAYAUX[1].picture}
+							userpicture={trip.traveler_picture}
 							userID={trip.traveler_id}
 							country={trip.country}
 							cities={trip.cities}

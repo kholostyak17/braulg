@@ -10,15 +10,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_jwt_extended import JWTManager
 
+import cloudinary
+import cloudinary.uploader
 
 from api.utils import generate_sitemap, APIException
 
-
 api = Blueprint('api', __name__)
 
-
 CORS(api)
-
 
 @api.route('/login', methods=['POST'])
 def login():
@@ -109,13 +108,19 @@ def create_trip(id):
 @jwt_required()
 def share_trip(id_traveler, id_trip):
 
+    print(id_traveler, "ID TRAVELER")
     trip = Trip.get_by_id(id_trip)
+    print(trip, "TRIP")
+    print(trip.id , "trip.id")
     traveler_id = get_jwt_identity()
+    print(traveler_id, "TR ID")
+    print(traveler_id["id"], "TR ID")
 
     if traveler_id == id_traveler:
         return {'error': 'Something went wrong'}, 405
     elif trip:
         shared = Shared_Trip.get_by_trip_id(trip.id)
+        print(shared,"AQUI")
         if id_traveler in shared:
             return {'error': 'You are on this trip'}, 405
         else:
@@ -132,9 +137,13 @@ def share_trip(id_traveler, id_trip):
 
 @api.route('/newpost', methods=['POST'])
 def create_post():
+
+    # print(request.json.get("postData", None),"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
     title = request.json.get('title',None)
     text = request.json.get('text',None)
     media = request.json.get('media',None)
+    print(media, "MEDIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     
     new_post = Post(
                 title=title,
@@ -236,6 +245,30 @@ def update_traveler(id):
         return jsonify(updated_traveler.to_dict()), 200
 
     return {'error': 'User not found'}, 400
+
+
+@api.route('/profilepicture/<int:id>', methods=['POST'])
+def update_profile_picture(id):
+    
+    print(request.files,"FILEEEEEEEEEEEEEEEEEEEEEEES")
+
+    if 'profile_picture' in request.files:
+        # upload file to uploadcare
+        result = cloudinary.uploader.upload(request.files['profile_picture'])
+        # fetch for the user
+        traveler = Traveler.get_by_id(id)
+        # update the user with the given cloudinary image URL
+        traveler.profile_picture = result['secure_url']
+        print(result['secure_url'], "RESUUUUUUUUUUUUUUUUULT")
+
+        db.session.add(traveler)
+        db.session.commit()
+
+        return jsonify(traveler.to_dict()), 200
+
+    else:
+        raise APIException('Missing profile_image on the FormData')
+
 
 
 @api.route('/settings/<int:id>', methods=['DELETE'])
