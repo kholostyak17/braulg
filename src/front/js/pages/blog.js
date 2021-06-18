@@ -41,8 +41,8 @@ export const Blog = () => {
 							title={post.title}
 							text={post.text}
 							userID="0"
-							username="Sergio Carrascal"
-							userpicture="https://bartist.net/wp-content/uploads/2021/03/smoreira.jpg"
+							username="Anónimo"
+							userpicture={store.profilePicture}
 						/>
 					);
 				})

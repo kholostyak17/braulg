@@ -108,13 +108,19 @@ def create_trip(id):
 @jwt_required()
 def share_trip(id_traveler, id_trip):
 
+    print(id_traveler, "ID TRAVELER")
     trip = Trip.get_by_id(id_trip)
+    print(trip, "TRIP")
+    print(trip.id , "trip.id")
     traveler_id = get_jwt_identity()
+    print(traveler_id, "TR ID")
+    print(traveler_id["id"], "TR ID")
 
     if traveler_id == id_traveler:
         return {'error': 'Something went wrong'}, 405
     elif trip:
         shared = Shared_Trip.get_by_trip_id(trip.id)
+        print(shared,"AQUI")
         if id_traveler in shared:
             return {'error': 'You are on this trip'}, 405
         else:

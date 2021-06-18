@@ -12,13 +12,6 @@ export const Trip = () => {
 	const [tripDetails, setTripDetails] = useState("");
 	const [partnersMap, setPartnersMap] = useState("");
 
-	const ARRAYAUX = [
-		{ id: 2, picture: store.profilePicture, name: "Ricardo" },
-		{ id: 3, picture: store.profilePicture, name: "María" },
-		{ id: 0, picture: store.profilePicture, name: "Persefone" }
-	];
-	const partners = ARRAYAUX;
-
 	const startJoin = () => actions.getSharedTrip(params.id);
 
 	const linkToUserID = "../user/".concat(store.trip.traveler_id);
