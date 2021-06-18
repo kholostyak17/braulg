@@ -112,7 +112,8 @@ export const Home = () => {
 						<h1 className="pregunta-home">QUE HACEMOS?</h1>
 						<p className="home-text">
 							<span className="colored-text">Nuestra misión</span> siempre ha sido ofrecer experiencias
-							inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
+							inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos
+							conseguido!
 						</p>
 						<p className="home-text">
 							<span className="colored-text">
@@ -124,8 +125,8 @@ export const Home = () => {
 						</p>
 						<p className="home-text">
 							{" "}
-							Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en lo
-							que respecta a{" "}
+							Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en
+							lo que respecta a{" "}
 							<span className="colored-text">
 								rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
 							</span>
