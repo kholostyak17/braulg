@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
+import { verifyLogin } from "../component/verify-login";
 import newtripImage from "../../img/pexels-photo-3889987.png";
 import "../../styles/newtrip.scss";
 import { MyNavbar } from "../component/my-navbar";
@@ -12,6 +13,10 @@ export const NewTrip = () => {
 	const onSubmit = data => {
 		actions.getNewTrip(JSON.stringify(data));
 	};
+
+	useEffect(() => {
+		verifyLogin();
+	}, []);
 
 	return (
 		<>

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
+import { verifyLogin } from "../component/verify-login";
 import "../../styles/trips.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
@@ -12,6 +13,7 @@ export const Trips = () => {
 	const [tripsMap, setTripsMap] = useState("");
 
 	useEffect(() => {
+		verifyLogin();
 		actions.getTrips();
 	}, []);
 

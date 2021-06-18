@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import Button from "./button.js";
 
 export const TripCard = props => {
-	const linkToTripID = "./trips/".concat(props.tripID);
-	const linkToUserID = "./user/".concat(props.userID);
+	const linkToTripID = "/trips/".concat(props.tripID);
+	const linkToUserID = "/user/".concat(props.userID);
 	const [partnersMap, setPartnersMap] = useState("");
 
 	useEffect(() => {
 		setPartnersMap(
 			props.partners.map((partner, index) => {
-				const linkToPartnerID = "./user/".concat(partner.id);
+				const linkToPartnerID = "/user/".concat(partner.id);
 				return (
 					<div className="partner-box-trip-card" key={index.toString()}>
 						<Link to={linkToPartnerID}>
