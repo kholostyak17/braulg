@@ -108,19 +108,13 @@ def create_trip(id):
 @jwt_required()
 def share_trip(id_traveler, id_trip):
 
-    print(id_traveler, "ID TRAVELER")
     trip = Trip.get_by_id(id_trip)
-    print(trip, "TRIP")
-    print(trip.id , "trip.id")
     traveler_id = get_jwt_identity()
-    print(traveler_id, "TR ID")
-    print(traveler_id["id"], "TR ID")
 
     if traveler_id == id_traveler:
         return {'error': 'Something went wrong'}, 405
     elif trip:
         shared = Shared_Trip.get_by_trip_id(trip.id)
-        print(shared,"AQUI")
         if id_traveler in shared:
             return {'error': 'You are on this trip'}, 405
         else:
@@ -137,13 +131,9 @@ def share_trip(id_traveler, id_trip):
 
 @api.route('/newpost', methods=['POST'])
 def create_post():
-
-    # print(request.json.get("postData", None),"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-
     title = request.json.get('title',None)
     text = request.json.get('text',None)
     media = request.json.get('media',None)
-    print(media, "MEDIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     
     new_post = Post(
                 title=title,
@@ -269,6 +259,31 @@ def update_profile_picture(id):
     else:
         raise APIException('Missing profile_image on the FormData')
 
+"""
+    if update_info['profile_picture']:
+        profile_picture_uploaded = cloudinary.uploader.upload(update_info['profile_picture'])
+        update_info['profile_picture'] = profile_picture_uploaded
+    traveler = Traveler.get_by_id(id)
+    if traveler:
+        updated_traveler = traveler.update(**{
+            key: value for key, value in update_info.items()
+            if value is not None
+        })
+        return jsonify(updated_traveler.to_dict()), 200
+    return {'error': 'User not found'}, 400
+"""
+"""
+def handle_upload(user_id):
+    if 'profile_image' in request.files:
+        result = cloudinary.uploader.upload(request.files['profile_image'])
+        # update the user with the given cloudinary image URL
+        user1.profile_image_url = result['secure_url']
+        db.session.add(user1)
+        db.session.commit()
+        return jsonify(user1.serialize()), 200
+    else:
+        raise APIException('Missing profile_image on the FormData')
+"""
 
 
 @api.route('/settings/<int:id>', methods=['DELETE'])

@@ -10,7 +10,7 @@ import { Blog } from "./pages/blog";
 import { Post } from "./pages/post";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
-import { Profile } from "./pages/profile.jsx";
+import { Profile } from "./pages/profile";
 import { Settings } from "./pages/settings";
 import { AboutUs } from "./pages/about_us";
 
