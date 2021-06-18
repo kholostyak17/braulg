@@ -101,69 +101,71 @@ export const Home = () => {
 							</button>
 						</Link>
 						<Link to="/login">
-							<button className="auth-btn" id="login-btn">
+							<button className="auth-btn bg-warning" id="login-btn">
 								LOGIN
 							</button>
 						</Link>
 					</div>
 				</div>
-				<div className="mision">
-					<h1 className="pregunta-home">QUE HACEMOS?</h1>
-					<p className="home-text">
-						<span className="colored-text">Nuestra misión</span> siempre ha sido ofrecer experiencias
-						inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
-					</p>
-					<p className="home-text">
-						<span className="colored-text">
-							La finalidad es que nuestro usuarios encuentren con quien viajar!
-						</span>{" "}
-						Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en grupo!
-						También pueden proponer los destinos que les interesen, así como{" "}
-						<span className="colored-text">las fechas y actividades a disfrutar.</span>
-					</p>
-					<p className="home-text">
-						{" "}
-						Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en lo
-						que respecta a{" "}
-						<span className="colored-text">
-							rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
-						</span>
-					</p>
-				</div>
-				<div className="viajes">
-					<h1 className="viajes-prop" id="title-largo">
-						VIAJES PROPUESTOS PARA ESTE MES
-					</h1>
-					<div className="trips-cards-2">
-						<div className="d-flex flex-column-reverse">{tripsMap}</div>
+				<div className="container">
+					<div className="mision">
+						<h1 className="pregunta-home">QUE HACEMOS?</h1>
+						<p className="home-text">
+							<span className="colored-text">Nuestra misión</span> siempre ha sido ofrecer experiencias
+							inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
+						</p>
+						<p className="home-text">
+							<span className="colored-text">
+								La finalidad es que nuestro usuarios encuentren con quien viajar!
+							</span>{" "}
+							Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en grupo!
+							También pueden proponer los destinos que les interesen, así como{" "}
+							<span className="colored-text">las fechas y actividades a disfrutar.</span>
+						</p>
+						<p className="home-text">
+							{" "}
+							Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en lo
+							que respecta a{" "}
+							<span className="colored-text">
+								rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
+							</span>
+						</p>
 					</div>
+					<div className="viajes">
+						<h1 className="viajes-prop" id="title-largo">
+							VIAJES PROPUESTOS PARA ESTE MES
+						</h1>
+						<div className="trips-cards-2">
+							<div className="d-flex flex-column-reverse">{tripsMap}</div>
+						</div>
+					</div>
+					<div className="mini-cards">
+						<h1 className="viajes-prop" id="inspirate">
+							INSPIRATE
+						</h1>
+						<MuiThemeProvider theme={theme}>
+							<Grid container className="card-sm-container">
+								<Grid item xs={12} sm={6} md={4} className="card-sm">
+									{postsMap[0]}
+								</Grid>
+								<Grid item xs={12} sm={6} md={4} className="card-sm">
+									{postsMap[1]}
+								</Grid>
+								<Grid item xs={12} sm={12} md={4} className="card-sm">
+									{postsMap[2]}
+								</Grid>
+							</Grid>
+							{/* <Grid container>
+								<Grid item className="card-sm">
+									{postsMap[0]}
+								</Grid>
+							</Grid> */}
+						</MuiThemeProvider>
+					</div>
+					<Link to="/trips" style={{ textDecoration: "none" }}>
+						<div className="see-more">Ver más posts</div>
+					</Link>
 				</div>
-				<div className="mini-cards">
-					<h1 className="viajes-prop" id="inspirate">
-						INSPIRATE
-					</h1>
-					<MuiThemeProvider theme={theme}>
-						<Grid container className="card-sm-container">
-							<Grid item xs={12} sm={6} md={4} className="card-sm">
-								{postsMap[0]}
-							</Grid>
-							<Grid item xs={12} sm={6} md={4} className="card-sm">
-								{postsMap[1]}
-							</Grid>
-							<Grid item xs={12} sm={12} md={4} className="card-sm">
-								{postsMap[2]}
-							</Grid>
-						</Grid>
-						{/* <Grid container>
-							<Grid item className="card-sm">
-								{postsMap[0]}
-							</Grid>
-						</Grid> */}
-					</MuiThemeProvider>
-				</div>
-				<Link to="/trips" style={{ textDecoration: "none" }}>
-					<div className="see-more">Ver más posts</div>
-				</Link>
 			</div>
 			<Footer />
 		</>
