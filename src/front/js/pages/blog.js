@@ -95,9 +95,7 @@ export const Blog = () => {
 										{...register("text")}
 									/>
 									<h3>Añade una imagen de tu historia:</h3>
-									<div className="center-file-input">
-										<input id="media" type="file" className="input-style" {...register("media")} />
-									</div>
+									<div className="center-file-input"></div>
 									<div className="text-center">
 										<input
 											type="submit"
@@ -117,3 +115,5 @@ export const Blog = () => {
 		</>
 	);
 };
+
+//										<input id="media" type="file" className="input-style" {...register("media")} />

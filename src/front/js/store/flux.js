@@ -1,6 +1,7 @@
 import jwt_decode from "jwt-decode";
 
 const getState = ({ getStore, getActions, setStore }) => {
+	const BASE_URL = "https://travelling-together-prueba.herokuapp.com/";
 	return {
 		store: {
 			user: {},
@@ -10,11 +11,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			trips: [],
 			trip: [],
 			posts: [],
-			post_by_id: []
+			post_by_id: [],
+			shared_trips: []
 		},
 		actions: {
-			getUser: () => {
-				fetch(getStore().base_url.concat("api/profile/", localStorage.getItem("tokenID")))
+			getUser: id => {
+				fetch(getStore().base_url.concat("api/profile/", id))
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load user!");
@@ -242,13 +244,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getNewTrip: credentials => {
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
 				const redirectToTrips = () => {
 					location.replace("./trips/");
 				};
-				fetch(getStore().base_url.concat("api/newtrip"), {
+				fetch(getStore().base_url.concat("api/newtrip/", localStorage.getItem("tokenID")), {
 					method: "POST",
 					body: credentials,
-					headers: { "Content-Type": "application/json" }
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
 					.then(function(response) {
 						if (!response.ok) {
@@ -265,6 +269,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
+			getSharedTrip: id_trip => {
+				console.log(id_trip);
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
+				const redirectToTrips = () => {
+					location.replace("./trips/");
+				};
+				fetch(getStore().base_url.concat("api/traveler/", tokenID, "/trip/", id_trip), {
+					method: "POST",
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't share this trip!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						setStore({ shared_trips: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+
 			getNewPost: credentials => {
 				const redirectToBlog = () => {
 					location.replace("./blog/");

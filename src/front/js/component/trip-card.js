@@ -28,7 +28,6 @@ export const TripCard = props => {
 		);
 	}, []);
 
-	console.log(props.partners);
 	return (
 		<div className="my-card">
 			<div className="my-card-header d-flex row p-3">
