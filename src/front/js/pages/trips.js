@@ -28,7 +28,7 @@ export const Trips = () => {
 							key={index.toString()}
 							tripID={trip.id}
 							username={trip.traveler_name}
-							userpicture={ARRAYAUX[1].picture}
+							userpicture={trip.traveler_picture}
 							userID={trip.traveler_id}
 							country={trip.country}
 							cities={trip.cities}

@@ -38,7 +38,7 @@ export const Trip = () => {
 								<div className="d-flex justify-content-between m-1" key={index.toString()}>
 									<Link to={linkToPartnerID}>
 										<div className="d-flex justify-content-start">
-											<img src={partner.picture} className="partner-picture"></img>
+											<img src={partner.profile_picture} className="partner-picture"></img>
 											<p className="fw-bold ms-2">{partner.name}</p>
 										</div>
 									</Link>
@@ -66,7 +66,7 @@ export const Trip = () => {
 							<h4>Propuesto por:</h4>
 							<Link to={linkToUserID}>
 								<div className="d-flex align-items-center">
-									<img src={ARRAYAUX[1].picture} className="user-picture"></img>
+									<img src={store.trip.traveler_picture} className="user-picture"></img>
 									<p className="user-name fw-bold">{store.trip.traveler_name}</p>
 								</div>
 							</Link>

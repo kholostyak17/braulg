@@ -18,7 +18,7 @@ export const TripCard = props => {
 					<div className="partner-box-trip-card" key={index.toString()}>
 						<Link to={linkToPartnerID}>
 							<div className="partner-picture-box">
-								<img src={partner.picture} className="partner-picture"></img>
+								<img src={partner.profile_picture} className="partner-picture"></img>
 							</div>
 							<p className="">{partner.name}</p>
 						</Link>
