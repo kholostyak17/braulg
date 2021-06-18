@@ -11,23 +11,28 @@ import Modal from "react-bootstrap/Modal";
 export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
+	const [settingsPanel, setSettingsPanel] = useState("");
+	const [userData, setUserData] = useState({});
 	//variables para desplegar modal de borrar cuenta
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
 	useEffect(() => {
 		actions.getUser(localStorage.getItem("tokenID"));
+		setUserData(store.user);
 	}, []);
 
 	const onSubmit = data => {
 		actions.getUpdate(JSON.stringify(data), data.picture);
+		localStorage.setItem("tokenName", data.name);
 	};
 
 	const startDelete = () => actions.getDelete();
 
-	return (
-		<>
-			<MyNavbar />
+	useEffect(() => {
+		console.log(userData);
+		setSettingsPanel(
 			<div className="settings-view">
 				<div className="col-sm-12 col-md-7 content-box scrollable-box">
 					<h1 className="text-center my-4">Ajustes del perfil</h1>
@@ -41,7 +46,7 @@ export const Settings = () => {
 								className="input-style"
 								maxLength="500"
 								title="Máximo 500 caracteres"
-								defaultValue={store.user.bio}
+								defaultValue={userData.bio}
 								{...register("bio")}
 							/>
 							<h2>Modificar nombre:</h2>
@@ -50,7 +55,7 @@ export const Settings = () => {
 								type="text"
 								className="input-style"
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
-								defaultValue={store.user.name}
+								defaultValue={userData.name}
 								title="Máximo 30 caracteres, solo letras"
 								{...register("name")}
 							/>
@@ -62,7 +67,7 @@ export const Settings = () => {
 								min="16"
 								max="99"
 								title="Edad no válida"
-								defaultValue={store.user.age}
+								defaultValue={userData.age}
 								required
 								{...register("age")}
 							/>
@@ -72,7 +77,7 @@ export const Settings = () => {
 								type="text"
 								className="input-style"
 								title="Máximo 50 caracteres, solo letras"
-								defaultValue={store.user.localization}
+								defaultValue={userData.localization}
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
 								{...register("localization")}
 							/>
@@ -83,14 +88,14 @@ export const Settings = () => {
 								className="input-style"
 								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,100}"
 								title="Máximo 100 caracteres, solo letras"
-								defaultValue={store.user.language}
+								defaultValue={userData.language}
 								{...register("language")}
 							/>
 							<h2>Modificar email:</h2>
 							<input
 								id="email"
 								type="email"
-								defaultValue={store.user.email}
+								defaultValue={userData.email}
 								className="input-style"
 								{...register("email")}
 							/>
@@ -140,6 +145,13 @@ export const Settings = () => {
 					</form>
 				</div>
 			</div>
+		);
+	}, [userData]);
+
+	return (
+		<>
+			<MyNavbar />
+			{settingsPanel}
 			<Footer />
 		</>
 	);

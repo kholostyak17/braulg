@@ -237,16 +237,10 @@ def update_traveler(id):
     return {'error': 'User not found'}, 400
 
 
-@api.route('/profilepicture/<int:id>', methods=['PUT'])
+@api.route('/profilepicture/<int:id>', methods=['POST'])
 def update_profile_picture(id):
     
     print(request.files,"FILEEEEEEEEEEEEEEEEEEEEEEES")
-    
-    if 'profile_picture' in request.files:
-        result = cloudinary.uploader.upload(request.files['profile_picture'])
-        print(result['secure_url'], "RESUUUUUUUUUUUUUUUUULT")
-        # update the user with the given cloudinary image URL
-        # user1.profile_picture = result['secure_url']
 
     if 'profile_picture' in request.files:
         # upload file to uploadcare
@@ -255,6 +249,7 @@ def update_profile_picture(id):
         traveler = Traveler.get_by_id(id)
         # update the user with the given cloudinary image URL
         traveler.profile_picture = result['secure_url']
+        print(result['secure_url'], "RESUUUUUUUUUUUUUUUUULT")
 
         db.session.add(traveler)
         db.session.commit()

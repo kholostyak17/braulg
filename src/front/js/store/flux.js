@@ -36,11 +36,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const tokenID = localStorage.getItem("tokenID");
 				const changeProfilePicture = picture => {
 					console.log("This are the files", picture);
-					let body = new FormData();
-					body.append("profile_image", picture[0]);
+					let mybody = new FormData();
+					mybody.append("profile_picture", picture[0]);
 					fetch(getStore().base_url.concat("api/profilepicture/", localStorage.getItem("tokenID")), {
-						body: body,
-						method: "PUT"
+						body: mybody,
+						method: "POST"
 					})
 						.then(function(response) {
 							if (!response.ok) {
@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
-				console.log(dataUpdated);
+				console.log(dataUpdated, "datos");
 				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
 					method: "PATCH",
 					body: dataUpdated,
@@ -78,7 +78,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(function(responseAsJson) {
 						setStore({ user: responseAsJson });
 						changeProfilePicture(picture);
-						localStorage.setItem("tokenName", data.name);
 						redirectToProfile();
 					})
 					.catch(function(error) {
