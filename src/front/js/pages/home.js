@@ -39,8 +39,6 @@ export const Home = () => {
 	});
 	useEffect(() => {
 		actions.getTrips();
-	}, []);
-	useEffect(() => {
 		actions.getPosts();
 	}, []);
 
@@ -62,32 +60,37 @@ export const Home = () => {
 		}
 		console.log(store.posts);
 	}, [store.posts]);
+
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips.slice(0, 2).map((trip, index) => {
 					return (
-						<TripCard
-							key={index.toString()}
-							idTrip={trip.id}
-							username={ARRAYAUX[1].name}
-							userpicture={ARRAYAUX[1].picture}
-							country={trip.country}
-							cities={trip.cities}
-							startDate={trip.start_date}
-							endDate={trip.end_date}
-							activities={trip.activities}
-							partners={ARRAYAUX}
-						/>
+						<div className="col-12 col-md-6" key={index.toString()}>
+							<TripCard
+								tripID={trip.id}
+								username={trip.traveler_name}
+								userpicture={trip.traveler_picture}
+								userID={trip.traveler_id}
+								country={trip.country}
+								cities={trip.cities}
+								startDate={trip.start_date}
+								endDate={trip.end_date}
+								activities={trip.activities}
+								partners={trip.partners}
+							/>
+						</div>
 					);
 				})
 			);
 		}
 		console.log(store.trips);
 	}, [store.trips]);
+
 	return (
 		<>
 			<MyNavbar />
+
 			<div className="home-container">
 				<div className="home-media">
 					<img src={h_picture} alt="home img" className="home-img" />
@@ -107,65 +110,65 @@ export const Home = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="container">
-					<div className="mision">
-						<h1 className="pregunta-home">QUE HACEMOS?</h1>
-						<p className="home-text">
-							<span className="colored-text">Nuestra misión</span> siempre ha sido ofrecer experiencias
-							inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos
-							conseguido!
-						</p>
-						<p className="home-text">
-							<span className="colored-text">
-								La finalidad es que nuestro usuarios encuentren con quien viajar!
-							</span>{" "}
-							Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en grupo!
-							También pueden proponer los destinos que les interesen, así como{" "}
-							<span className="colored-text">las fechas y actividades a disfrutar.</span>
-						</p>
-						<p className="home-text">
-							{" "}
-							Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en
-							lo que respecta a{" "}
-							<span className="colored-text">
-								rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
-							</span>
-						</p>
-					</div>
-					<div className="viajes">
-						<h1 className="viajes-prop" id="title-largo">
-							VIAJES PROPUESTOS PARA ESTE MES
-						</h1>
-						<div className="trips-cards-2">
-							<div className="d-flex flex-column-reverse">{tripsMap}</div>
+				<div className="home-content">
+					<div className="container">
+						<div className="mision">
+							<h1 className="pregunta-home fw-bold">QUE HACEMOS?</h1>
+							<p className="home-text">
+								<span className="colored-text">Nuestra misión</span> siempre ha sido ofrecer
+								experiencias inolvidables a nuestros viajeros y podemos decir con total seguridad que lo
+								hemos conseguido!
+							</p>
+							<p className="home-text">
+								<span className="colored-text">
+									La finalidad es que nuestro usuarios encuentren con quien viajar!
+								</span>{" "}
+								Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en
+								grupo! También pueden proponer los destinos que les interesen, así como{" "}
+								<span className="colored-text">las fechas y actividades a disfrutar.</span>
+							</p>
+							<p className="home-text">
+								{" "}
+								Además estamos en continua evolución para proporcionar un servicio siempre más eficiente
+								en lo que respecta a{" "}
+								<span className="colored-text">
+									rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
+								</span>
+							</p>
 						</div>
-					</div>
-					<div className="mini-cards">
-						<h1 className="viajes-prop" id="inspirate">
-							INSPIRATE
-						</h1>
-						<MuiThemeProvider theme={theme}>
-							<Grid container className="card-sm-container">
-								<Grid item xs={12} sm={6} md={4} className="card-sm">
-									{postsMap[0]}
+						<div className="viajes">
+							<h1 className="viajes-prop fw-bold" id="title-largo">
+								VIAJES PROPUESTOS PARA ESTE MES
+							</h1>
+							<div className="row">{tripsMap}</div>
+						</div>
+						<div className="mini-cards">
+							<h1 className="viajes-prop fw-bold" id="inspirate">
+								INSPIRATE
+							</h1>
+							<MuiThemeProvider theme={theme}>
+								<Grid container className="card-sm-container">
+									<Grid item xs={12} sm={6} md={4} className="card-sm">
+										{postsMap[0]}
+									</Grid>
+									<Grid item xs={12} sm={6} md={4} className="card-sm">
+										{postsMap[1]}
+									</Grid>
+									<Grid item xs={12} sm={12} md={4} className="card-sm">
+										{postsMap[2]}
+									</Grid>
 								</Grid>
-								<Grid item xs={12} sm={6} md={4} className="card-sm">
-									{postsMap[1]}
-								</Grid>
-								<Grid item xs={12} sm={12} md={4} className="card-sm">
-									{postsMap[2]}
-								</Grid>
-							</Grid>
-							{/* <Grid container>
+								{/* <Grid container>
 								<Grid item className="card-sm">
 									{postsMap[0]}
 								</Grid>
 							</Grid> */}
-						</MuiThemeProvider>
+							</MuiThemeProvider>
+							<Link to="/blog" style={{ textDecoration: "none" }}>
+								<div className="see-more my-5 ">Ver más posts</div>
+							</Link>
+						</div>
 					</div>
-					<Link to="/trips" style={{ textDecoration: "none" }}>
-						<div className="see-more">Ver más posts</div>
-					</Link>
 				</div>
 			</div>
 			<Footer />
