@@ -21,7 +21,7 @@ export const Profile = () => {
 			setUser(
 				<div className="container-fluid p-0">
 					<div className="background-image">
-						<img className="profile-img" alt="Profile picture" src={store.profilePicture} />
+						<img className="profile-img" alt="Profile picture" src={store.user.profile_picture} />
 					</div>
 					<div className="d-flex justify-content-center p-3">
 						<div className="text-center">
@@ -50,6 +50,7 @@ export const Profile = () => {
 				</div>
 			);
 		}
+		console.log(store.user);
 	}, [store.user]);
 
 	return (

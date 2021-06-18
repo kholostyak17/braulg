@@ -7,23 +7,20 @@ import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import Modal from "react-bootstrap/Modal";
-import { useParams } from "react-router-dom";
 
 export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const params = useParams();
 	//variables para desplegar modal de borrar cuenta
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	useEffect(() => {
-		actions.getUser(params.id);
+		actions.getUser(localStorage.getItem("tokenID"));
 	}, []);
 
 	const onSubmit = data => {
-		actions.getUpdate(JSON.stringify(data));
-		localStorage.setItem("tokenName", data.name);
+		actions.getUpdate(JSON.stringify(data), data.picture);
 	};
 
 	const startDelete = () => actions.getDelete();
@@ -37,7 +34,7 @@ export const Settings = () => {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
 							<h2>Imagen de perfil:</h2>
-							<input id="media" type="file" className="input-style" {...register("media")} />
+							<input id="picture" type="file" className="input-style" {...register("picture")} />
 							<h2>Biografía:</h2>
 							<textarea
 								id="biografía"
