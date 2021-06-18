@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+.about-us-container {
+  width:100%;
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  justify-content: center;
+  height:100%;
+  background: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
+//   display:flex;
+//   justify-content: space-around;
+  @media screen and (max-width:957px){
+        height:auto;
+//   height:auto;
+
+
+  }
+}
+
+.nav-logo-about{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 1px solid #fff;
+}
+.card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+  max-width: 400px;
+  max-height: 350px;
+  border-radius: 25px;
+//   position: relative;
+}
+
+#card-1{
+  margin: 2rem 1rem 2rem 1rem;
+      
+
+}
+#card-2{
+  margin: 2rem 1rem 1rem 1rem;
+    @media screen and (max-width:958px){
+     margin: 0 1rem 2rem 1rem;
+    }
+}
+#card-3{
+  margin: 2rem 1rem 2rem 1rem;
+}
+#card-3{
+      @media screen and (max-width:1278px){
+     margin: 0 1rem 2rem 1rem;
+
+  }
+}
+
+.card  .name-profile{
+  margin-bottom:1rem;
+  padding: 0 1rem;
+}
+.card .title {
+  padding: 1rem;
+  text-align: right;
+  color: green;
+  font-weight: bold;
+  font-size: 12px;
+}
+.card .desc {
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+   @media screen and (max-width:380px){
+       padding: 0.5rem 0.3rem;
+   }
+}
+.card .actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.img-avatar {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 50%;
+  border: 6px solid white;
+  background: #fff;
+  top: 15px;
+  left: 85px;
+}
+
+.card-text {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.title-total {
+  padding: 2.5em 1.5em 1.5em 1.5em;
+}
+
+path {
+  fill: white;
+}
+
+.img-portada {
+  width: 100%;
+}
+
+.portada {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-position: bottom center;
+  background-size: cover;
+}
+#ivan{
+  background-image: url(../img/tipo.jpeg);
+}
+#andrea{
+  background-image: url(../img/no.png);
+}
+#sergio{
+  background-image: url(../img/no.png);
+
+}
+.links-profile {
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: #18958D;
+  cursor: pointer;
+  transition:.5s;
+ position: relative;
+ top:20px;
+    @media screen and (max-width:380px){
+      top:0px;
+  }
+}
+
+ .links-profile:hover{
+    color: #4CAF50;
+    transform: rotate(22deg)
+  }
+
+.grid-card{
+        display: flex;
+    justify-content: center;
+}
