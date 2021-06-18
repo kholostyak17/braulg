@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			user: {},
 			traveler: {},
+			base_url: "https://3001-beige-stoat-pmakzl3n.ws-eu08.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
