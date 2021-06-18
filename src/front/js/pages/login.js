@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import logo from "../../img/logo.png";
-import loginImage from "../../img/pexels-photo-2132126.png";
+import loginImage from "../../img/background-login.jpg";
 import "../../styles/login.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
@@ -21,7 +21,7 @@ export const Login = () => {
 		<>
 			<MyNavbar />
 			<div className="container-fluid row main-box login-view">
-				<div className="col-sm-12 col-md-7 content-box">
+				<div className="col-sm-12 col-md-6 content-box">
 					<h1 className="text-center mt-4">Accede a tu cuenta</h1>
 					<div className="text-center mb-4">
 						<img src={logo} className="login-logo" />
@@ -47,7 +47,7 @@ export const Login = () => {
 						</div>
 					</form>
 				</div>
-				<div className="col-sm-12 col-md-5 picture-box">
+				<div className="col-sm-12 col-md-6 picture-box">
 					<img src={loginImage} className="picture" />
 				</div>
 			</div>

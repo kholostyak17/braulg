@@ -2,7 +2,7 @@ import React, { useContext, useEffect, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import { verifyLogin } from "../component/verify-login";
-import newtripImage from "../../img/pexels-photo-3889987.png";
+import newtripImage from "../../img/background-newtrip.jpg";
 import "../../styles/newtrip.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";

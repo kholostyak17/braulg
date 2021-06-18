@@ -59,9 +59,11 @@ a{
         height: 100%;
         width: 100%;
         object-fit: cover;
+        size: 100vw 100vh;
     }
     .picture-box{
         overflow: hidden;
+        height: 100vh;
     }
 }
 .content-box{
