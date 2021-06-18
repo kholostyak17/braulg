@@ -93,11 +93,9 @@ export const Home = () => {
 
 			<div className="home-container">
 				<div className="home-media">
-					<img src={h_picture} alt="home img" className="home-img" />
+					<h1>Travelling together</h1>
 					<div className="media-links">
-						<h1 className="home-title">
-							ENCUENTRA CON <br /> QUIEN VIAJAR!
-						</h1>
+						<h2 className="home-title">ENCUENTRA CON QUIEN VIAJAR!</h2>
 						<Link to="/register">
 							<button className="auth-btn" id="registrate-btn">
 								REGISTRATE
