@@ -4,41 +4,56 @@ data = {
             "id": 0,
             "name": "Persefone",
             "email": "persefone@gmail.com",
-            "_password": "123456",
-            "language": "english",
+            "_password": "pbkdf2:sha256:260000$j7pcevHanlLByBzx$342fe2aa15a125d56514457636c1e2878c4027083340dc7b9d29d26717505259",
+            "language": "english and little sumerian",
             "age": "30",
             "localization": "Colonia (Alemania)",
             "bio": "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+            "profile_picture":""
         },
         {
             "id": 1,
             "name": "Jacques",
             "email": "jacques@gmail.com",
-            "_password": "123456",
-            "language": "spanish",
+            "_password": "pbkdf2:sha256:260000$j7pcevHanlLByBzx$342fe2aa15a125d56514457636c1e2878c4027083340dc7b9d29d26717505259",
+            "language": "french",
             "age": "25",
             "localization": "Paris (Francia)",
             "bio": "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+            "profile_picture": "https://img.icons8.com/bubbles/2x/ffffff/administrator-male.png"
         },
         {
             "id": 2,
             "name": "Manuela",
             "email": "manuela@gmail.com",
-            "_password": "123456",
+            "_password": "pbkdf2:sha256:260000$j7pcevHanlLByBzx$342fe2aa15a125d56514457636c1e2878c4027083340dc7b9d29d26717505259",
             "language": "spanish",
             "age": "26",
             "localization": "Madrid (España)",
             "bio": "Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.Aenean laoreet malesuada purus vitae imperdiet. Praesent id ligula quis leo ornare venenatis id sit amet erat.",
+            "profile_picture": "https://img.icons8.com/bubbles/452/flag-person-female.png"
         },
         {
             "id": 3,
             "name": "Ricardo",
             "email": "ricardo@gmail.com",
-            "_password": "123456",
+            "_password": "pbkdf2:sha256:260000$j7pcevHanlLByBzx$342fe2aa15a125d56514457636c1e2878c4027083340dc7b9d29d26717505259",
             "language": "spanish and english",
             "age": "31",
             "localization": "Sevilla (España)",
             "bio": "Me gusta mucho la pesca, me he criado siempre cerca del rio y soy muy sociable.",
+            "profile_picture": "https://img.icons8.com/bubbles/2x/user-male.png"
+        },
+        {
+            "id": 4,
+            "name": "Daisy",
+            "email": "daisy@gmail.com",
+            "_password": "pbkdf2:sha256:260000$CWol9qhle664ghiD$fbe7d97fb62c6cf7529aba392cfb1fbe649a0bd3cd8e9b381b43496de1c164f2",
+            "language": "Gatuno",
+            "age": "20",
+            "localization": "",
+            "bio": "miauuuu))) 🐈",
+            "profile_picture": "https://res.cloudinary.com/travelling-together/image/upload/v1624013126/rs9prtryqslopgtiq4kf.jpg"
         },
 
     ],
@@ -92,20 +107,6 @@ data = {
             "start_date": "2021-12-03",
             "end_date": "2021-12-15",
             "activities": "Me gustaría ir a tomar cervezas con amigos y pasear por los lugares mas chulos de la capital.",
-        },
-    ],
-    "Comments": [
-        {
-            "id": 0,
-            "text": "¡Me ha encantado!",
-        },
-        {
-            "id": 1,
-            "text": "¡Que bueno que viniste!",
-        },
-        {
-            "id": 2,
-            "text": "Soy un robot bioarticulado del año 2023: ¡teneis que salvar a la Presidenta!",
         },
     ],
 }

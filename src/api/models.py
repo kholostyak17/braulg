@@ -17,9 +17,9 @@ class Traveler(db.Model):
     _password = db.Column(db.String)
     language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
-    picture = db.Column(db.String)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
+    profile_picture = db.Column(db.String, unique=False, nullable=True)
     is_active=db.Column(db.Boolean, default=True)
     
     def _repr_(self):
@@ -37,6 +37,7 @@ class Traveler(db.Model):
             "language": self.language,
             "localization": self.localization,
             "bio": self.bio,
+            "profile_picture": self.profile_picture
         }
 
     def traveler_with_token(self, token):
@@ -108,14 +109,15 @@ class Trip(db.Model):
         return f'Trip {self.id}, {self.traveler_id}, {self.country}, {self.cities}, {self.start_date}, {self.end_date}, {self.activities}, '
 
     def to_dict(self):
-        traveler_name = Traveler.get_by_id(self.traveler_id)
+        traveler = Traveler.get_by_id(self.traveler_id)
         partners = Shared_Trip.get_by_trip_id(self.id)
         partners_info = [Traveler.get_by_id(partner.traveler_id) for partner in partners]
         partners_dict = [partner_info.to_dict() for partner_info in partners_info]
         return{
             "id": self.id,
             "traveler_id": self.traveler_id,
-            "traveler_name":traveler_name.name,
+            "traveler_name":traveler.name,
+            "traveler_picture":traveler.profile_picture,
             "partners": partners_dict,
             "country": self.country,
             "cities": self.cities,

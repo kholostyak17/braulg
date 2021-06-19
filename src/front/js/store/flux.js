@@ -3,9 +3,12 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
+			// URL: "https://travelling-together-prueba.herokuapp.com/",
+			URL_API: "https://3001-rose-constrictor-1o1n9726.ws-eu09.gitpod.io/api/",
+			URL: "https://3000-rose-constrictor-1o1n9726.ws-eu09.gitpod.io/",
+			currentUser: {},
 			user: {},
-			traveler: {},
-			base_url: "https://3001-indigo-beaver-5fr8yk60.ws-eu08.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
 			trip: [],
@@ -14,8 +17,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			shared_trips: []
 		},
 		actions: {
-			getUser: id => {
-				fetch(getStore().base_url.concat("api/profile/", id))
+			verifyLogin: () => {
+				if (!localStorage.getItem("token")) {
+					location.replace(getStore().URL.concat("login"));
+				}
+			},
+			getUser: (id, user) => {
+				fetch(getStore().URL_API.concat("profile/", id))
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load user!");
@@ -24,25 +32,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(response);
 					})
 					.then(function(responseAsJson) {
-						setStore({ user: responseAsJson });
+						if (user == true) {
+							setStore({ currentUser: responseAsJson });
+						} else {
+							setStore({ user: responseAsJson });
+						}
+						console.log("joder", getStore().user, getStore().currentUser);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
-
-			getUpdate: credentials => {
+			getUpdate: (dataUpdated, picture) => {
 				const token = localStorage.getItem("token");
 				const tokenID = localStorage.getItem("tokenID");
+				const changeProfilePicture = picture => {
+					console.log("This are the files", picture);
+					let mybody = new FormData();
+					mybody.append("profile_picture", picture[0]);
+					fetch(getStore().URL_API.concat("profilepicture/", localStorage.getItem("tokenID")), {
+						body: mybody,
+						method: "POST"
+					})
+						.then(function(response) {
+							if (!response.ok) {
+								throw Error("I can't upload picture!");
+							}
+							return response.json();
+							console.log(response);
+						})
+						.catch(function(error) {
+							console.log("Looks like there was a problem: \n", error);
+						});
+				};
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
-				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
+				console.log(dataUpdated, "datos");
+				fetch(getStore().URL_API.concat("settings/", localStorage.getItem("tokenID")), {
 					method: "PATCH",
-					body: credentials,
-
+					body: dataUpdated,
 					headers: {
 						"Sec-Fetch-Mode": "no-cors",
 						"Content-Type": "application/json",
@@ -58,6 +89,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ user: responseAsJson });
+						changeProfilePicture(picture);
 						redirectToProfile();
 					})
 					.catch(function(error) {
@@ -70,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const redirectToHome = () => {
 					localStorage.clear(), location.replace("./");
 				};
-				fetch(getStore().base_url.concat("api/settings/", localStorage.getItem("tokenID")), {
+				fetch(getStore().URL_API.concat("settings/", localStorage.getItem("tokenID")), {
 					method: "DELETE",
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
@@ -106,7 +138,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 
-				fetch(getStore().base_url.concat("api/login"), {
+				fetch(getStore().URL_API.concat("login"), {
 					method: "POST",
 					body: credentials,
 					headers: { "Content-Type": "application/json" }
@@ -142,7 +174,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
-				fetch(getStore().base_url.concat("api/register"), {
+				fetch(getStore().URL_API.concat("register"), {
 					method: "POST",
 					headers: new Headers({
 						"Content-Type": "application/json",
@@ -168,7 +200,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrips: () => {
-				fetch(getStore().base_url.concat("api/trips"), {
+				fetch(getStore().URL_API.concat("trips"), {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
@@ -187,7 +219,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getTrip: id => {
-				fetch(getStore().base_url.concat("api/trips/", id), {
+				fetch(getStore().URL_API.concat("trips/", id), {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
@@ -206,7 +238,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPosts: () => {
-				fetch(getStore().base_url.concat("api/blog/"), {
+				fetch(getStore().URL_API.concat("blog/"), {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
@@ -224,7 +256,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPost: id => {
-				fetch(getStore().base_url.concat("api/blog/", id), {
+				fetch(getStore().URL_API.concat("blog/", id), {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
@@ -248,7 +280,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const redirectToTrips = () => {
 					location.replace("./trips/");
 				};
-				fetch(getStore().base_url.concat("api/newtrip/", localStorage.getItem("tokenID")), {
+				fetch(getStore().URL_API.concat("newtrip/", localStorage.getItem("tokenID")), {
 					method: "POST",
 					body: credentials,
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
@@ -275,7 +307,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const redirectToTrips = () => {
 					location.replace("./trips/");
 				};
-				fetch(getStore().base_url.concat("api/traveler/", tokenID, "/trip/", id_trip), {
+				fetch(getStore().URL_API.concat("traveler/", tokenID, "/trip/", id_trip), {
 					method: "POST",
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
@@ -298,7 +330,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const redirectToBlog = () => {
 					location.replace("./blog/");
 				};
-				fetch(getStore().base_url.concat("api/newpost"), {
+				fetch(getStore().URL_API.concat("newpost"), {
 					method: "POST",
 					body: credentials,
 					headers: { "Content-Type": "application/json" }

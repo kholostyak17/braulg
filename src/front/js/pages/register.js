@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import registerImage from "../../img/pexels-photo-2178175.png";
+import registerImage from "../../img/background-register.jpg";
 import "../../styles/register.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";

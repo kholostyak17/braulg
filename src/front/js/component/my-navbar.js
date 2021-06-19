@@ -54,9 +54,7 @@ export const MyNavbar = () => {
 						<Nav.Link href="/newtrip">
 							<div className="link-navbar text-center">Proponer un viaje</div>
 						</Nav.Link>
-						<Nav.Link href="/chat">
-							<div className="link-navbar text-center">Chat</div>
-						</Nav.Link>
+
 						<Nav.Link href="/blog">
 							<div className="link-navbar text-center">Blog</div>
 						</Nav.Link>
@@ -78,3 +76,7 @@ export const MyNavbar = () => {
 		</Navbar>
 	);
 };
+
+// <Nav.Link href="/chat">
+// 	<div className="link-navbar text-center">Chat</div>
+// </Nav.Link>

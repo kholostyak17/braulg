@@ -1,0 +1,193 @@
+.media-links{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin: auto;
+    align-items: center;
+    padding: 5rem 2rem;
+    background-color: #00000042;
+    border-radius: .25rem;
+    text-align: center;
+}
+
+.home-media{
+    height: calc(100vh - 20vh);
+    background: #ffffff url(/homepic.jpeg) no-repeat right top;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-media > h1 {
+    margin-top: 2rem;
+    font-size: 5rem;
+    font-variant-caps: all-petite-caps;
+    filter: opacity(0.5);
+    color: #f5b82e;
+    -webkit-text-emphasis: triangle;
+}
+
+.auth-btn{
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0em;
+    width: 196px;
+    font-family: Nunito;
+    font-weight: bold;
+    color: #FFFFFF;
+    height: 46px;
+    border:none;
+    text-align: center;
+    background: #17A398;
+    margin: .5rem 0;
+}
+
+.pregunta-home{
+    text-align: center;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 65px;
+    color: #F5B82E;
+    margin: 0.7rem 0 -0.3rem 0;
+    white-space: nowrap;
+    font-size: 53px;
+    @media screen and (max-width: 1300px){
+        font-size: 53px;
+    }
+     @media screen and (max-width:1040px){
+        font-size: 40px;
+    }
+      @media screen and (max-width:400px){
+        font-size: 35px;
+    }
+}
+.home-text{
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: justify;
+    text-justify: inter-word;
+    margin:1.2rem 0;
+        @media screen and (max-width:700px){
+    margin:1rem 0;
+    }
+}
+.colored-text{
+    color: #17A398;
+
+}
+.mision{
+    padding: 0.5rem 3rem 0.5rem 3rem;
+        @media screen and (max-width:900px){
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    }
+        @media screen and (max-width:480px){
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+}
+.viajes-prop{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+    color: #17A398;
+    margin: 0.5rem 1rem;
+    font-size: 53px;
+    @media screen and (min-width: 1300px){
+        font-size: 53px;
+    }
+     @media screen and (max-width:1040px){
+        font-size: 40px;
+    }
+      @media screen and (max-width:400px){
+        font-size: 35px;
+    }
+}
+#title-largo{
+    @media screen and (max-width:788px){
+
+    }
+}
+.see-more{
+    height: 60px;
+    width: 829px;
+    border-radius: 5px;
+    background: #F5B82E;
+    text-align: center;
+    margin:0.5rem auto 1rem auto;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 58px;
+    color: #FFFFFF;
+    text-decoration: none !important;
+    @media screen and (max-width:1050px){
+        height: 60px;
+        width: 529px;
+        font-size: 33px;
+        line-height: 60px;
+        margin:0.4rem auto 1rem auto;
+
+    }
+    @media screen and (max-width:569px){
+        height: 50px;
+        width: 329px;
+        font-size: 25px;
+        line-height: 50px;
+        margin:0.4rem auto 1rem auto;
+
+    }
+      @media screen and (max-width:460px){
+        height: 50px;
+        width: 189px;
+        font-size: 25px;
+        margin:-0.4rem auto 0.8rem auto;
+
+    }
+}
+.trips-cards-3{
+    display:flex;
+}
+.mini-cards-comp{
+    display:flex;
+    width: 100%;
+}
+
+.card-small-1, .card-small-2, .card-small-3{
+    width:33.3%
+}
+@media screen and (max-width:1375px){
+    .card-small-1, .card-small-2 {
+    width:50%;
+    margin:2rem;
+    
+}
+    .card-small-3{
+    width:100%
+    }
+}
+.card-sm{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    @media screen and  (max-width:1356px){
+        flex-direction: column;
+    }
+}
+.card-sm-container{
+    margin-top:-1rem;
+}
+#inspirate{
+    margin-bottom: 1.8rem;
+       @media screen and (max-width:466px){
+        margin:-0.3rem 0 1.4rem 0;
+    }
+}

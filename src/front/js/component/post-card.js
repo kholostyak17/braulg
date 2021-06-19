@@ -16,7 +16,7 @@ export const PostCard = props => {
 			</div>
 			<div className="content-post-box col-sm-12 col-md-7">
 				<div className="my-card-header py-1 px-3">
-					<Link to={linkToUserID}>
+					<Link to="#">
 						<div className="d-flex align-items-center">
 							<img src={props.userpicture} className="user-picture"></img>
 							<p className="user-name">{props.username}</p>

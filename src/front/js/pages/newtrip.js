@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import newtripImage from "../../img/pexels-photo-3889987.png";
+import newtripImage from "../../img/background-newtrip.jpg";
 import "../../styles/newtrip.scss";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
@@ -12,6 +12,10 @@ export const NewTrip = () => {
 	const onSubmit = data => {
 		actions.getNewTrip(JSON.stringify(data));
 	};
+
+	useEffect(() => {
+		actions.verifyLogin();
+	}, []);
 
 	return (
 		<>
@@ -24,7 +28,7 @@ export const NewTrip = () => {
 					<h1 className="text-center my-4">Proponer un viaje</h1>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
-							<h2>País al que vas a viajar:</h2>
+							<h3>País al que vas a viajar:</h3>
 							<select
 								id="country"
 								name="country"
@@ -746,7 +750,7 @@ export const NewTrip = () => {
 									Zimbabue
 								</option>
 							</select>
-							<h2>Ciudades que vas a visitar:</h2>
+							<h3>Ciudades que vas a visitar:</h3>
 							<input
 								id="cities"
 								type="text"
@@ -757,7 +761,7 @@ export const NewTrip = () => {
 								required
 								{...register("cities")}
 							/>
-							<h2>Fecha estimada de viaje:</h2>
+							<h3>Fecha estimada de viaje:</h3>
 							<label>Fecha de inicio</label>
 							<input
 								id="start_date"
@@ -774,7 +778,7 @@ export const NewTrip = () => {
 								required
 								{...register("end_date")}
 							/>
-							<h2>Actividades que vas a realizar:</h2>
+							<h3>Actividades que vas a realizar:</h3>
 							<textarea
 								id="activities"
 								className="input-style my-textarea"
