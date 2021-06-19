@@ -16,6 +16,8 @@ export const Profile = () => {
 	const params = useParams();
 
 	useEffect(() => {
+		actions.verifyLogin();
+		actions.getTrips();
 		actions.getUser(params.id, false);
 	}, []);
 
