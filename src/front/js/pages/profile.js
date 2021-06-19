@@ -20,11 +20,11 @@ export const Profile = () => {
 	}, []);
 
 	useEffect(() => {
-		traveler_id = actions.getUser(params.id);
+		// traveler_id = actions.getUser(params.id);
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips
-					.filter(trip => traveler_id)
+					// .filter(trip => traveler_id)
 					.map((trip, index) => {
 						return (
 							<TripProfileCard
