@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const TripProfileCard = props => {
-	const linkToTripID = "./trips/".concat(props.tripID);
+	const linkToTripID = "../trips/".concat(props.tripID);
 	const [partnersMap, setPartnersMap] = useState("");
 
 	useEffect(() => {
@@ -39,7 +39,9 @@ const TripProfileCard = props => {
 				Compañeros
 				<div className="">{partnersMap}</div>
 				<div>
-					<Button className="ms-auto me-3" size="s" color="secondary" text="Únete" />
+					<Link to={linkToTripID}>
+						<Button className="ms-auto me-3" size="s" color="secondary" text="Únete" />
+					</Link>
 				</div>
 			</div>
 		</div>
