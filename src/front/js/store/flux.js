@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location.replace(getStore().URL.concat("login"));
 				}
 			},
-			getUser: id => {
+			getUser: (id, user) => {
 				fetch(getStore().URL_API.concat("profile/", id))
 					.then(function(response) {
 						if (!response.ok) {
@@ -32,7 +32,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(response);
 					})
 					.then(function(responseAsJson) {
-						setStore({ user: responseAsJson });
+						if (user == true) {
+							setStore({ currentUser: responseAsJson });
+						} else {
+							setStore({ user: responseAsJson });
+						}
+						console.log("joder", getStore().user, getStore().currentUser);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

@@ -12,23 +12,106 @@ export const Settings = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
 	const [settingsPanel, setSettingsPanel] = useState("");
-	const [userData, setUserData] = useState({});
 	//variables para desplegar modal de borrar cuenta
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-
-	useEffect(() => {
-		actions.getUser(localStorage.getItem("tokenID"));
-		setUserData(store.user);
-	}, []);
-
+	//funcion onsubmit, envio de datos del formulario
 	const onSubmit = data => {
 		actions.getUpdate(JSON.stringify(data), data.picture);
 		localStorage.setItem("tokenName", data.name);
 	};
 
-	const startDelete = () => actions.getDelete();
+	useEffect(() => {
+		actions.getUser(localStorage.getItem("tokenID"), true);
+	}, []);
+
+	useEffect(() => {
+		if (store.currentUser && store.currentUser.age != undefined) {
+			setSettingsPanel(
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<div className="form-div">
+						<h2>Imagen de perfil:</h2>
+						<input id="picture" type="file" className="input-style" {...register("picture")} />
+						<h2>Biografía:</h2>
+						<textarea
+							id="biografía"
+							className="input-style"
+							maxLength="500"
+							title="Máximo 500 caracteres"
+							defaultValue={store.currentUser.bio}
+							{...register("bio")}
+						/>
+						<h2>Modificar nombre:</h2>
+						<input
+							id="name"
+							type="text"
+							className="input-style"
+							pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
+							defaultValue={store.currentUser.name}
+							title="Máximo 30 caracteres, solo letras"
+							{...register("name")}
+						/>
+						<h2>Modificar edad:</h2>
+						<input
+							id="age"
+							type="number"
+							className="input-style"
+							min="16"
+							max="99"
+							title="Edad no válida"
+							defaultValue={store.currentUser.age}
+							required
+							{...register("age")}
+						/>
+						<h2>Modificar ubicacion:</h2>
+						<input
+							id="localization"
+							type="text"
+							className="input-style"
+							title="Máximo 50 caracteres, solo letras"
+							defaultValue={store.currentUser.localization}
+							pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
+							{...register("localization")}
+						/>
+						<h2>Modificar idiomas:</h2>
+						<input
+							id="language"
+							type="text"
+							className="input-style"
+							pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,100}"
+							title="Máximo 100 caracteres, solo letras"
+							defaultValue={store.currentUser.language}
+							{...register("language")}
+						/>
+						<h2>Modificar email:</h2>
+						<input
+							id="email"
+							type="email"
+							defaultValue={store.currentUser.email}
+							className="input-style"
+							{...register("email")}
+						/>
+						<h2>Modificar contraseña:</h2>
+						<input
+							id="password"
+							type="password"
+							className="input-style"
+							minLength="6"
+							maxLength="30"
+							{...register("password")}
+						/>
+						<div className="text-center my-4 d-block">
+							<input type="submit" value="GUARDAR" className="button lm secondary m-2" />
+							<Link to="/">
+								<Button className="m-2" size="lm" color="primary" text="CANCELAR" />
+							</Link>
+						</div>
+					</div>
+				</form>
+			);
+		}
+	}, [store.currentUser]);
 
 	return (
 		<>
@@ -36,113 +119,36 @@ export const Settings = () => {
 			<div className="settings-view">
 				<div className="col-sm-12 col-md-7 content-box scrollable-box">
 					<h1 className="text-center my-4">Ajustes del perfil</h1>
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<div className="form-div">
-							<h2>Imagen de perfil:</h2>
-							<input id="picture" type="file" className="input-style" {...register("picture")} />
-							<h2>Biografía:</h2>
-							<textarea
-								id="biografía"
-								className="input-style"
-								maxLength="500"
-								title="Máximo 500 caracteres"
-								defaultValue={userData.bio}
-								{...register("bio")}
-							/>
-							<h2>Modificar nombre:</h2>
-							<input
-								id="name"
-								type="text"
-								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
-								defaultValue={userData.name}
-								title="Máximo 30 caracteres, solo letras"
-								{...register("name")}
-							/>
-							<h2>Modificar edad:</h2>
-							<input
-								id="age"
-								type="number"
-								className="input-style"
-								min="16"
-								max="99"
-								title="Edad no válida"
-								defaultValue={userData.age}
-								required
-								{...register("age")}
-							/>
-							<h2>Modificar ubicacion:</h2>
-							<input
-								id="localization"
-								type="text"
-								className="input-style"
-								title="Máximo 50 caracteres, solo letras"
-								defaultValue={userData.localization}
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
-								{...register("localization")}
-							/>
-							<h2>Modificar idiomas:</h2>
-							<input
-								id="language"
-								type="text"
-								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,100}"
-								title="Máximo 100 caracteres, solo letras"
-								defaultValue={userData.language}
-								{...register("language")}
-							/>
-							<h2>Modificar email:</h2>
-							<input
-								id="email"
-								type="email"
-								defaultValue={userData.email}
-								className="input-style"
-								{...register("email")}
-							/>
-							<h2>Modificar contraseña:</h2>
-							<input
-								id="password"
-								type="password"
-								className="input-style"
-								minLength="6"
-								maxLength="30"
-								{...register("password")}
-							/>
-							<div className="text-center my-4 d-block">
-								<input type="submit" value="GUARDAR" className="button lm secondary m-2" />
-								<Link to="/">
-									<Button className="m-2" size="lm" color="primary" text="CANCELAR" />
-								</Link>
-							</div>
-							<div className="d-flex m-5 justify-content-end text-danger">
-								<span onClick={handleShow}>
-									Eliminar cuenta <i className="fas fa-trash-alt"></i>
-								</span>
-								<Modal show={show} onHide={handleClose}>
-									<Modal.Header className="text-center">
-										<Modal.Title className="text-center">Eliminar cuenta</Modal.Title>
-									</Modal.Header>
-									<Modal.Body className="text-center">
-										<p>¿Seguro que deseas eliminar tu cuenta defininitivamente?</p>
-										<Button
-											className="m-2"
-											size="sm"
-											color="secondary"
-											text="Cancelar"
-											callBackFunc={handleClose}
-										/>
-										<Button
-											className="m-2"
-											size="sm"
-											color="primary"
-											text="Eliminar"
-											callBackFunc={startDelete}
-										/>
-									</Modal.Body>
-								</Modal>
-							</div>
-						</div>
-					</form>
+					{settingsPanel}
+					<div className="d-flex m-5 justify-content-end text-danger">
+						<span onClick={handleShow}>
+							Eliminar cuenta <i className="fas fa-trash-alt"></i>
+						</span>
+						<Modal show={show} onHide={handleClose}>
+							<Modal.Header className="text-center">
+								<Modal.Title className="text-center">Eliminar cuenta</Modal.Title>
+							</Modal.Header>
+							<Modal.Body className="text-center">
+								<p>¿Seguro que deseas eliminar tu cuenta defininitivamente?</p>
+								<Button
+									className="m-2"
+									size="sm"
+									color="secondary"
+									text="Cancelar"
+									callBackFunc={handleClose}
+								/>
+								<Button
+									className="m-2"
+									size="sm"
+									color="primary"
+									text="Eliminar"
+									callBackFunc={() => {
+										actions.getDelete();
+									}}
+								/>
+							</Modal.Body>
+						</Modal>
+					</div>
 				</div>
 			</div>
 			<Footer />

@@ -13,7 +13,7 @@ export const Profile = () => {
 	const params = useParams();
 
 	useEffect(() => {
-		actions.getUser(params.id);
+		actions.getUser(params.id, false);
 	}, []);
 
 	useEffect(() => {
