@@ -21,12 +21,19 @@ export const Profile = () => {
 		actions.getUser(params.id, false);
 	}, []);
 
+	console.log(params.id, "ID");
+
 	useEffect(() => {
 		// traveler_id = actions.getUser(params.id);
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips
-					// .filter(trip => traveler_id)
+					// .filter((_, trip) => {
+					// 	for (let i = 0; i < store.trips.length; i++) {
+					// 		store.trips[i].traveler_id == params.id;
+					// 	}
+					// })
+					// .filter(trip => traveler_id == params.id)
 					.map((trip, index) => {
 						return (
 							<TripProfileCard
@@ -44,6 +51,7 @@ export const Profile = () => {
 			);
 		}
 		console.log(store.trips);
+		console.log(store.trips.traveler_id);
 	}, [store.trips]);
 
 	useEffect(() => {

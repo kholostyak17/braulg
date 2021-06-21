@@ -28,17 +28,19 @@ const TripProfileCard = props => {
 	return (
 		<div className="my-card">
 			<div className="my-card-header d-flex row p-3">
-				<div className="">
-					<h2>
+				<div className="col-12 col-md-9 my-auto">
+					<h5>
 						{props.country}
 						{props.cities}
 						{props.startDate}
 						{props.endDate}
-					</h2>
+					</h5>
 				</div>
-				Compañeros
-				<div className="">{partnersMap}</div>
-				<div>
+			</div>
+			<div className="col-12 col-md-9 my-auto">
+				<div className="col-1  my-auto">Compañeros:</div>
+				<div className="col-6">{partnersMap}</div>
+				<div className="col-3">
 					<Link to={linkToTripID}>
 						<Button className="ms-auto me-3" size="s" color="secondary" text="Únete" />
 					</Link>

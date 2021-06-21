@@ -115,6 +115,7 @@ def share_trip(id_traveler, id_trip):
         return {'error': 'Something went wrong'}, 405
     elif trip:
         shared = Shared_Trip.get_by_trip_id(trip.id)
+        print(shared)
         if id_traveler in shared:
             return {'error': 'You are on this trip'}, 405
         else:
