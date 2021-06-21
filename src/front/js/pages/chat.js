@@ -30,10 +30,12 @@ firebase.initializeApp(firebaseConfig);
 
 export const Chat = () => {
 	const { store, actions } = useContext(Context);
-	const author = store.currentUser.id;
+	const author = store.currentUser;
 	const [message, setMessage] = useState("");
 	const [conversation, setConversation] = useState([]);
+	const [conversationMap, setConversationMap] = useState("");
 	useEffect(() => {
+		actions.getUser(localStorage.getItem("tokenID"), true);
 		//	actions.verifyLogin();
 	}, []);
 
@@ -50,6 +52,11 @@ export const Chat = () => {
 
 	useEffect(() => {
 		console.log(conversation);
+		setConversationMap(
+			conversation.map((onemessage, index) => {
+				return <li key={index.toString()}>{onemessage.author.name.concat(": ", onemessage.message)}</li>;
+			})
+		);
 	}, [conversation]);
 
 	return (
@@ -59,11 +66,10 @@ export const Chat = () => {
 				<div className="col-sm-12 col-md-7 content-box mx-auto scrollable-box">
 					<h1 className="text-center mt-4">Chat</h1>
 					<div className="d-flex flex-column-reverse">
-						<form action="">
-							<p>id</p>
-							<input type="text" id="id" />
-							<p>message</p>
+						<ul>{conversationMap}</ul>
 
+						<form action="">
+							<p>message</p>
 							<input
 								id="message"
 								type="message"
