@@ -30,15 +30,27 @@ firebase.initializeApp(firebaseConfig);
 
 export const Chat = () => {
 	const { store, actions } = useContext(Context);
-	let text = "";
+	const author = store.currentUser.id;
 	const [message, setMessage] = useState("");
+	const [conversation, setConversation] = useState([]);
 	useEffect(() => {
 		//	actions.verifyLogin();
 	}, []);
 
 	useEffect(() => {
 		console.log(message);
+		const fullMessage = {
+			author: author,
+			message: message
+		};
+		if (fullMessage.message != "") {
+			setConversation([...conversation, fullMessage]);
+		}
 	}, [message]);
+
+	useEffect(() => {
+		console.log(conversation);
+	}, [conversation]);
 
 	return (
 		<>
@@ -58,16 +70,18 @@ export const Chat = () => {
 								placeholder="message here"
 								onKeyPress={event => {
 									if (event.key == "Enter") {
-										text = event.target.value;
-										setMessage(text);
-										event.target.value = "";
+										if (event.target.value != "") {
+											setMessage(event.target.value);
+											event.target.value = "";
+										}
 									}
 								}}></input>
 							<span
 								onClick={() => {
-									text = document.querySelector("#message").value;
-									setMessage(text);
-									document.querySelector("#message").value = "";
+									if (document.querySelector("#message").value != "") {
+										setMessage(document.querySelector("#message").value);
+										document.querySelector("#message").value = "";
+									}
 								}}>
 								cabron
 							</span>
