@@ -30,6 +30,9 @@ h1, h2, h3, p, span{
 a{
     text-decoration: none;
 }
+.secondary-color{
+    color: $secondary-color
+}
 
 //estilo de inputs con fondo transparente y borde gris abajo 
 .input-style{

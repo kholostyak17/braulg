@@ -58,9 +58,11 @@ export const Chat = () => {
 			.on("value", snapshot => {
 				let allMessages = Object.values(snapshot.val());
 				setConversationMap(
-					allMessages.map((onemessage, index) => {
+					allMessages.map((element, index) => {
 						return (
-							<li key={index.toString()}>{onemessage.author.name.concat(": ", onemessage.message)}</li>
+							<div className="chat-message" key={index.toString()}>
+								{element.author.name.concat(": ", element.message)}
+							</div>
 						);
 					})
 				);
@@ -71,32 +73,33 @@ export const Chat = () => {
 		<>
 			<MyNavbar />
 			<div className="container-fluid main-box chat-view d-flex">
-				<div className="col-sm-12 col-md-7 content-box mx-auto">
-					<h1 className="text-center mt-4 ">Chat</h1>
-					<div className="d-flex flex-column-reverse">{conversationMap}</div>
-					<div className="mt-auto">
-						<input
-							id="message"
-							type="text"
-							className="input-style"
-							placeholder="message here"
-							onKeyPress={event => {
-								if (event.key == "Enter") {
-									if (event.target.value != "") {
-										setMessage(event.target.value);
-										event.target.value = "";
+				<div className="col-sm-12 col-md-7 content-box-chat mx-auto row">
+					<div className="col-12 chat-box">
+						<div className="d-flex flex-column-reverse messages-box">{conversationMap}</div>
+						<div className="input-box">
+							<input
+								id="message"
+								type="text"
+								className="input-style bg-white"
+								placeholder="message here"
+								onKeyPress={event => {
+									if (event.key == "Enter") {
+										if (event.target.value != "") {
+											setMessage(event.target.value);
+											event.target.value = "";
+										}
 									}
-								}
-							}}></input>
-						<span
-							onClick={() => {
-								if (document.querySelector("#message").value != "") {
-									setMessage(document.querySelector("#message").value);
-									document.querySelector("#message").value = "";
-								}
-							}}>
-							<button>send</button>
-						</span>
+								}}></input>
+							<button
+								onClick={() => {
+									if (document.querySelector("#message").value != "") {
+										setMessage(document.querySelector("#message").value);
+										document.querySelector("#message").value = "";
+									}
+								}}>
+								send
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
