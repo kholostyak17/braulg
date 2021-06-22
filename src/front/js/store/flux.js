@@ -11,9 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: {},
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
-			trip: [],
+			trip: {},
 			posts: [],
-			post_by_id: [],
+			post_by_id: {},
 			shared_trips: []
 		},
 		actions: {
