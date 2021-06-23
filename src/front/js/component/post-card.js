@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import Button from "./button.js";
 
 export const PostCard = props => {
-	const linkToPostID = "./blog/".concat(props.postID);
-	const linkToUserID = "./user/".concat(props.userID);
+	const linkToPostID = "/blog/".concat(props.postID);
+	const linkToUserID = "/user/".concat(props.userID);
 
 	return (
 		<div className="my-card post-card-size row">
