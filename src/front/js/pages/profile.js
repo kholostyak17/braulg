@@ -39,10 +39,10 @@ export const Profile = () => {
 							</div>
 							<h5>Edad:</h5>
 							<span className="text-dark">{store.user.age}</span>
-							<h5>Localización:</h5>
-							<span className="text-dark">{store.user.localization}</span>
 							<h5>Idiomas:</h5>
 							<span className="text-dark">{store.user.language}</span>
+							<h5>Localización:</h5>
+							<span className="text-dark">{store.user.localization}</span>
 						</div>
 						<div className="col-12 col-sm-6 text-center mb-5">
 							<h2>Siguientes viajes</h2>

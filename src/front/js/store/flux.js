@@ -5,15 +5,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
 			// URL: "https://travelling-together-prueba.herokuapp.com/",
-			URL_API: "https://3001-rose-constrictor-1o1n9726.ws-eu09.gitpod.io/api/",
-			URL: "https://3000-rose-constrictor-1o1n9726.ws-eu09.gitpod.io/",
+			URL_API: "https://3001-green-penguin-p8szoez7.ws-eu08.gitpod.io/api/",
+			URL: "https://3000-green-penguin-p8szoez7.ws-eu08.gitpod.io/",
 			currentUser: {},
 			user: {},
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			trips: [],
-			trip: [],
+			trip: {},
 			posts: [],
-			post_by_id: [],
+			post_by_id: {},
 			shared_trips: []
 		},
 		actions: {
