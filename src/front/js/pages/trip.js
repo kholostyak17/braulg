@@ -12,45 +12,46 @@ export const Trip = () => {
 	const [trip, setTrip] = useState({});
 	const [tripDetails, setTripDetails] = useState("");
 	const [partnersMap, setPartnersMap] = useState("");
-
-	const startJoin = () => actions.getSharedTrip(params.id);
-
 	const linkToUserID = "../user/".concat(trip.traveler_id);
+	const startJoin = () => actions.getSharedTrip(params.id);
 
 	useEffect(() => {
 		actions.getTrip(params.id);
-		setTrip(store.trip);
 	}, []);
 
-	// useEffect(() => {
-	// 	if (trip.partners != undefined) {
-	// 		if (trip.partners.length != 0) {
-	// 			setPartnersMap(
-	// 				trip.partners.map((partner, index) => {
-	// 					const linkToPartnerID = "../user/".concat(partner.id);
-	// 					return (
-	// 						<div className="d-flex justify-content-between m-1" key={index.toString()}>
-	// 							<Link to={linkToPartnerID}>
-	// 								<div className="d-flex justify-content-start">
-	// 									<img src={partner.profile_picture} className="partner-picture"></img>
-	// 									<p className="fw-bold ms-2">{partner.name}</p>
-	// 								</div>
-	// 							</Link>
-	// 							<div>
-	// 								<Button className="ms-auto me-3" size="sm" color="primary" text="Chat" />
-	// 							</div>
-	// 						</div>
-	// 					);
-	// 				})
-	// 			);
-	// 		}
-	// 	}
-	// 	console.log(trip);
-	// }, [trip]);
+	useEffect(() => {
+		setTrip(store.trip);
+	}, [store.trip]);
 
 	useEffect(() => {
-		console.log(partnersMap, "partners");
-		if (trip != undefined) {
+		if (trip.partners != undefined) {
+			if (trip.partners.length != 0) {
+				setPartnersMap(
+					trip.partners.map((partner, index) => {
+						const linkToPartnerID = "../user/".concat(partner.id);
+						return (
+							<div className="d-flex justify-content-between m-1" key={index.toString()}>
+								<Link to={linkToPartnerID}>
+									<div className="d-flex justify-content-start">
+										<img src={partner.profile_picture} className="partner-picture"></img>
+										<p className="fw-bold ms-2">{partner.name}</p>
+									</div>
+								</Link>
+								<div>
+									<Button className="ms-auto me-3" size="sm" color="primary" text="Chat" />
+								</div>
+							</div>
+						);
+					})
+				);
+			}
+		}
+		console.log(trip);
+	}, [trip]);
+
+	useEffect(() => {
+		console.log(trip, "trippppppppp");
+		if (trip != undefined && trip.id != undefined) {
 			setTripDetails(
 				<div className="trips-view">
 					<div className="col-sm-12 col-md-9 content-box scrollable-box px-5 py-3">
