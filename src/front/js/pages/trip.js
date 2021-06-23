@@ -16,6 +16,7 @@ export const Trip = () => {
 	const startJoin = () => actions.getSharedTrip(params.id);
 
 	useEffect(() => {
+		actions.verifyLogin();
 		actions.getTrip(params.id);
 	}, []);
 

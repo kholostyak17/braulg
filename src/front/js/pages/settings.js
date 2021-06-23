@@ -23,6 +23,7 @@ export const Settings = () => {
 	};
 
 	useEffect(() => {
+		actions.verifyLogin();
 		actions.getUser(localStorage.getItem("tokenID"), true);
 	}, []);
 
