@@ -28,8 +28,8 @@ export const Register = () => {
 								id="name"
 								type="text"
 								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
-								title="Máximo 50 caracteres, solo letras"
+								minLength="2"
+								maxLength="35"
 								required
 								{...register("name")}
 							/>
@@ -39,7 +39,7 @@ export const Register = () => {
 								type="number"
 								className="input-style"
 								min="16"
-								max="99"
+								max="110"
 								title="Edad no válida"
 								placeholder="Mínimo 16 años"
 								required
@@ -50,8 +50,8 @@ export const Register = () => {
 								id="language"
 								type="text"
 								className="input-style"
-								pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
-								title="Máximo 50 caracteres, solo letras"
+								minLength="2"
+								maxLength="100"
 								required
 								{...register("language")}
 							/>
