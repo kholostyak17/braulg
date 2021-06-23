@@ -105,7 +105,7 @@ export const Trip = () => {
 				</div>
 			);
 		}
-	}, [trip]);
+	}, [partnersMap]);
 
 	return (
 		<>

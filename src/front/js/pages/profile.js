@@ -20,41 +20,43 @@ export const Profile = () => {
 	useEffect(() => {
 		if (store.user != undefined) {
 			setUser(
-				<div className="container-fluid p-0">
+				<>
 					<div className="background-image">
 						<img className="profile-img" src={store.user.profile_picture} />
 					</div>
-					<div className="container">
-						<div className="d-flex justify-content-center p-3">
-							<div className="text-center">
-								<h1 className="text-dark">
-									{store.user.name}
-									<i className="far fa-comments-null profile-button"></i>
-								</h1>
-								<div className="container">
-									<h5 className="bio text-dark">{store.user.bio}</h5>
-								</div>
-							</div>
-						</div>
-						<div className="row body">
-							<div className="col-12 col-sm-6 mb-4">
+					<div className="profile-view">
+						<div className="col-sm-12 col-md-7 content-box">
+							<div className="d-flex justify-content-center p-3">
 								<div className="text-center">
-									<h2>Información básica</h2>
+									<h1 className="text-dark">
+										{store.user.name}
+										<i className="far fa-comments-null profile-button"></i>
+									</h1>
+									<div className="container">
+										<h5 className="bio text-dark">{store.user.bio}</h5>
+									</div>
 								</div>
-								<h5 className="mt-2">Edad:</h5>
-								<span className="text-dark">{store.user.age}</span>
-								<h5 className="mt-2">Idiomas:</h5>
-								<span className="text-dark">{store.user.language}</span>
-								<h5 className="mt-2">Localización:</h5>
-								<span className="text-dark">{store.user.localization}</span>
 							</div>
-							<div className="col-12 col-sm-6 text-center mb-5">
-								<h2>Siguientes viajes</h2>
-								<div>(...todavía no hay viajes)</div>
+							<div className="row body">
+								<div className="col-12 col-sm-6 mb-4">
+									<div className="text-center">
+										<h2>Información básica</h2>
+									</div>
+									<h5 className="mt-2">Edad:</h5>
+									<span className="text-dark">{store.user.age}</span>
+									<h5 className="mt-2">Idiomas:</h5>
+									<span className="text-dark">{store.user.language}</span>
+									<h5 className="mt-2">Localización:</h5>
+									<span className="text-dark">{store.user.localization}</span>
+								</div>
+								<div className="col-12 col-sm-6 text-center mb-5">
+									<h2>Siguientes viajes</h2>
+									<div>(...todavía no hay viajes)</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</>
 			);
 		}
 		console.log(store.user);
