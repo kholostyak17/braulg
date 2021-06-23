@@ -60,8 +60,14 @@ export const Chat = () => {
 				setConversationMap(
 					allMessages.map((element, index) => {
 						return (
-							<div className="chat-message" key={index.toString()}>
-								{element.author.name.concat(": ", element.message)}
+							<div key={index.toString()} className="full-message">
+								<Link to={"/user/".concat(element.author.id)}>
+									<img className="chat-user-picture" src={element.author.profile_picture} />
+								</Link>
+								<div className="chat-text">
+									<span className="fw-bold">{element.author.name.concat(": ")}</span>
+									<span>{element.message}</span>
+								</div>
 							</div>
 						);
 					})
@@ -69,37 +75,42 @@ export const Chat = () => {
 			});
 	}, [conversation]);
 
+	useEffect(() => {
+		// window.scrollTo(0, document.querySelector("#conversation").scrollHeight);
+		let objDiv = document.querySelector("#conversation");
+		objDiv.scrollTop = objDiv.scrollHeight;
+	}, [conversationMap]);
+
 	return (
 		<>
 			<MyNavbar />
 			<div className="container-fluid main-box chat-view d-flex">
-				<div className="col-sm-12 col-md-7 content-box-chat mx-auto row">
-					<div className="col-12 chat-box">
-						<div className="d-flex flex-column-reverse messages-box">{conversationMap}</div>
-						<div className="input-box">
-							<input
-								id="message"
-								type="text"
-								className="input-style bg-white"
-								placeholder="message here"
-								onKeyPress={event => {
-									if (event.key == "Enter") {
-										if (event.target.value != "") {
-											setMessage(event.target.value);
-											event.target.value = "";
-										}
+				<div className="col-sm-12 col-md-7 content-box-chat mx-auto">
+					<div className=" messages-box" id="conversation">
+						{conversationMap}
+					</div>
+					<div className="input-box">
+						<input
+							id="message"
+							type="text"
+							className="input-style"
+							placeholder="Escribe aquí tu mensaje..."
+							onKeyPress={event => {
+								if (event.key == "Enter") {
+									if (event.target.value != "") {
+										setMessage(event.target.value);
+										event.target.value = "";
 									}
-								}}></input>
-							<button
-								onClick={() => {
-									if (document.querySelector("#message").value != "") {
-										setMessage(document.querySelector("#message").value);
-										document.querySelector("#message").value = "";
-									}
-								}}>
-								send
-							</button>
-						</div>
+								}
+							}}></input>
+						<i
+							className="fas fa-paper-plane send-icon"
+							onClick={() => {
+								if (document.querySelector("#message").value != "") {
+									setMessage(document.querySelector("#message").value);
+									document.querySelector("#message").value = "";
+								}
+							}}></i>
 					</div>
 				</div>
 			</div>
