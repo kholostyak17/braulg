@@ -32,7 +32,7 @@ def login():
         if traveler:
             if traveler.validate_password(password) and traveler.is_active:
                 access_token = create_access_token(
-                    identity=traveler.to_dict(), expires_delta=timedelta(minutes=100))
+                    identity=traveler.to_dict(), expires_delta=timedelta(minutes=43800))
                 return jsonify(access_token), 200
 
     return ({'error': "User and password don't match"}), 201
