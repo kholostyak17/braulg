@@ -12,7 +12,7 @@ export const Trip = () => {
 	const [trip, setTrip] = useState({});
 	const [tripDetails, setTripDetails] = useState("");
 	const [partnersMap, setPartnersMap] = useState("");
-	const linkToUserID = "../user/".concat(trip.traveler_id);
+	const linkToUserID = "/user/".concat(trip.traveler_id);
 	const startJoin = () => actions.getSharedTrip(params.id);
 
 	useEffect(() => {
@@ -29,18 +29,13 @@ export const Trip = () => {
 			if (trip.partners.length != 0) {
 				setPartnersMap(
 					trip.partners.map((partner, index) => {
-						const linkToPartnerID = "../user/".concat(partner.id);
+						const linkToPartnerID = "/user/".concat(partner.id);
 						return (
-							<div className="d-flex justify-content-between m-1" key={index.toString()}>
+							<div className="partner-element" key={index.toString}>
 								<Link to={linkToPartnerID}>
-									<div className="d-flex justify-content-start">
-										<img src={partner.profile_picture} className="partner-picture"></img>
-										<p className="fw-bold ms-2">{partner.name}</p>
-									</div>
+									<img src={partner.profile_picture} className="partner-picture"></img>
+									<p className="fw-bold">{partner.name}</p>
 								</Link>
-								<div>
-									<Button className="ms-auto me-3" size="sm" color="primary" text="Chat" />
-								</div>
 							</div>
 						);
 					})
@@ -84,14 +79,12 @@ export const Trip = () => {
 								<p>{trip.end_date}</p>
 							</div>
 						</div>
-						<h4>Actividades:</h4>
-						<p>{trip.activities}</p>
 						<div className="row">
 							<div className="col-12 col-md-6">
-								<h4>Partners:</h4>
-								{partnersMap}
+								<h4>Actividades:</h4>
+								<p>{trip.activities}</p>
 							</div>
-							<div className="col-12 col-md-6 text-center my-4 pt-4">
+							<div className="col-12 col-md-6 text-center my-1 pt-2">
 								<Button
 									className=""
 									size="lm"
@@ -101,6 +94,8 @@ export const Trip = () => {
 								/>
 							</div>
 						</div>
+						<h4>Partners:</h4>
+						{partnersMap}
 					</div>
 				</div>
 			);

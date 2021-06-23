@@ -21,18 +21,18 @@ export const Profile = () => {
 		if (store.user != undefined) {
 			setUser(
 				<>
-					<div className="background-image">
-						<img className="profile-img" src={store.user.profile_picture} />
-					</div>
 					<div className="profile-view">
 						<div className="col-sm-12 col-md-7 content-box">
+							<div className="background-image">
+								<img className="profile-img" src={store.user.profile_picture} />
+							</div>
 							<div className="d-flex justify-content-center p-3">
 								<div className="text-center">
 									<h1 className="text-dark">
 										{store.user.name}
 										<i className="far fa-comments-null profile-button"></i>
 									</h1>
-									<div className="container">
+									<div className="container-bio">
 										<h5 className="bio text-dark">{store.user.bio}</h5>
 									</div>
 								</div>
