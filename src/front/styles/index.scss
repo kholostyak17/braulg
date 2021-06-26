@@ -24,11 +24,17 @@ p{
     font-size: 18; 
     color: $black-color;
 }
+span, p{
+    font-family: $font-family;
+}
 h1, h2, h3, p, span{
     overflow-wrap: break-word;
 }
 a{
     text-decoration: none;
+}
+.secondary-color{
+    color: $secondary-color
 }
 
 //estilo de inputs con fondo transparente y borde gris abajo 

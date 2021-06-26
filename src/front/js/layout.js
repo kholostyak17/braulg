@@ -6,6 +6,7 @@ import { Components } from "./pages/components";
 import { Trips } from "./pages/trips";
 import { Trip } from "./pages/trip";
 import { NewTrip } from "./pages/newtrip";
+import { Chat } from "./pages/chat";
 import { Blog } from "./pages/blog";
 import { Post } from "./pages/post";
 import { Login } from "./pages/login";
@@ -42,6 +43,9 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/newtrip">
 						<NewTrip />
+					</Route>
+					<Route exact path="/chat">
+						<Chat />
 					</Route>
 					<Route exact path="/blog">
 						<Blog />

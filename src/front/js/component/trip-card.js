@@ -61,11 +61,11 @@ export const TripCard = props => {
 				<div className="row">
 					<div className="col-12 col-md-6">
 						<h4>Fecha de inicio:</h4>
-						<p>{props.startDate}</p>
+						<p>{props.startDate.slice(0, -12)}</p>
 					</div>
 					<div className="col-12 col-md-6">
 						<h4>Fecha de regreso:</h4>
-						<p>{props.endDate}</p>
+						<p>{props.endDate.slice(0, -12)}</p>
 					</div>
 				</div>
 				<div className="row">

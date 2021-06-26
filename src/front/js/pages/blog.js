@@ -57,7 +57,7 @@ export const Blog = () => {
 			<div className="container-fluid row main-box blog-view">
 				<div className="content-box-blog">
 					<div className="d-flex justify-content-between flex-wrap">
-						<h1 className="text-center mt-4 mx-4 ps-3 blog-title">Blog</h1>
+						<h1 className="text-center mt-4 mx-4 ps-3 secondary-color">Blog</h1>
 						<Button
 							className="mx-5 my-4"
 							size="lm"
@@ -95,7 +95,9 @@ export const Blog = () => {
 										{...register("text")}
 									/>
 									<h3>Añade una imagen de tu historia:</h3>
-									<div className="center-file-input"></div>
+									<div className="center-file-input">
+										<input id="media" type="text" className="input-style" {...register("media")} />
+									</div>
 									<div className="text-center">
 										<input
 											type="submit"
@@ -115,5 +117,3 @@ export const Blog = () => {
 		</>
 	);
 };
-
-//										<input id="media" type="file" className="input-style" {...register("media")} />

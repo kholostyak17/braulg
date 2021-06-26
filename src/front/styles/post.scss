@@ -1,9 +1,15 @@
 @import 'index.scss';
 
 .post-image{
-    height: 25rem;
-    width: 100%;
-    border-radius: 1.25rem;
+  width: 100%;
+  height: 25rem;
+}
+@supports(object-fit: cover){
+    .post-image{
+      height: 25rem;
+      object-fit: cover;
+      object-position: center center;
+    }
 }
 .user-picture-post{
     height: 2.5rem;
@@ -11,3 +17,4 @@
     border-radius: 100%;
     border: solid 1px $grey-color
 }
+

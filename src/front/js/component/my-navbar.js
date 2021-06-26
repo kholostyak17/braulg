@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
+// import logoNameNavbar from "../../img/logo-name-navbar.png";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -54,7 +55,9 @@ export const MyNavbar = () => {
 						<Nav.Link href="/newtrip">
 							<div className="link-navbar text-center">Proponer un viaje</div>
 						</Nav.Link>
-
+						<Nav.Link href="/chat">
+							<div className="link-navbar text-center">Chat</div>
+						</Nav.Link>
 						<Nav.Link href="/blog">
 							<div className="link-navbar text-center">Blog</div>
 						</Nav.Link>
@@ -63,7 +66,8 @@ export const MyNavbar = () => {
 						<Dropdown>
 							<div className="text-center">
 								<Dropdown.Toggle id="dropdown-button-light-example1" className="link-navbar" variant="">
-									<i className="fas fa-user" /> {localStorage.getItem("tokenName")}
+									<i className="fas fa-user" />
+									<span className="fw-bold ms-1">{localStorage.getItem("tokenName")}</span>
 								</Dropdown.Toggle>
 							</div>
 							<Dropdown.Menu variant="dark" className="bg-secondary-color mx-4 dropdown-menu-right">
@@ -77,6 +81,4 @@ export const MyNavbar = () => {
 	);
 };
 
-// <Nav.Link href="/chat">
-// 	<div className="link-navbar text-center">Chat</div>
-// </Nav.Link>
+//  <img src={logoNameNavbar} className="nav-logo-name" />

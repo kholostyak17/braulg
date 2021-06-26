@@ -26,6 +26,7 @@ export const Settings = () => {
 	};
 
 	useEffect(() => {
+		actions.verifyLogin();
 		actions.getUser(localStorage.getItem("tokenID"), true);
 	}, []);
 
@@ -39,9 +40,9 @@ export const Settings = () => {
 						<h2>Biografía:</h2>
 						<textarea
 							id="biografía"
-							className="input-style"
-							maxLength="500"
-							title="Máximo 500 caracteres"
+							className="input-style my-textarea"
+							maxLength="1000"
+							title="Máximo 1000 caracteres"
 							defaultValue={store.currentUser.bio}
 							{...register("bio")}
 						/>
@@ -50,9 +51,9 @@ export const Settings = () => {
 							id="name"
 							type="text"
 							className="input-style"
-							pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,30}"
+							minLength="2"
+							maxLength="35"
 							defaultValue={store.currentUser.name}
-							title="Máximo 30 caracteres, solo letras"
 							{...register("name")}
 						/>
 						<h2>Modificar edad:</h2>
@@ -61,31 +62,31 @@ export const Settings = () => {
 							type="number"
 							className="input-style"
 							min="16"
-							max="99"
+							max="110"
 							title="Edad no válida"
 							defaultValue={store.currentUser.age}
 							required
 							{...register("age")}
-						/>
-						<h2>Modificar ubicacion:</h2>
-						<input
-							id="localization"
-							type="text"
-							className="input-style"
-							title="Máximo 50 caracteres, solo letras"
-							defaultValue={store.currentUser.localization}
-							pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,50}"
-							{...register("localization")}
 						/>
 						<h2>Modificar idiomas:</h2>
 						<input
 							id="language"
 							type="text"
 							className="input-style"
-							pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1,. ]{2,100}"
-							title="Máximo 100 caracteres, solo letras"
+							minLength="2"
+							maxLength="100"
 							defaultValue={store.currentUser.language}
 							{...register("language")}
+						/>
+						<h2>Modificar ubicación:</h2>
+						<input
+							id="localization"
+							type="text"
+							className="input-style"
+							minLength="2"
+							maxLength="100"
+							defaultValue={store.currentUser.localization}
+							{...register("localization")}
 						/>
 						<h2>Modificar email:</h2>
 						<input
@@ -105,10 +106,10 @@ export const Settings = () => {
 							{...register("password")}
 						/>
 						<div className="text-center my-4 d-block">
-							<input type="submit" value="GUARDAR" className="button lm secondary m-2" />
 							<Link to="/">
 								<Button className="m-2" size="lm" color="primary" text="CANCELAR" />
 							</Link>
+							<input type="submit" value="GUARDAR" className="button lm secondary m-2" />
 						</div>
 					</div>
 				</form>

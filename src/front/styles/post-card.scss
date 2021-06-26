@@ -8,10 +8,21 @@
     overflow: hidden;
     padding: 0;
 }
+
+//repaired images finally
 .media-picture{
-    height: 100%;
-    width: 100%;
+  width: 100%;
+  height: auto;
 }
+@supports(object-fit: cover){
+    .media-picture{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+//------
+
 .content-post-box{
     padding: 0;
     background-color: rgba(255,255,255,0.25);
