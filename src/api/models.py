@@ -51,6 +51,11 @@ class Traveler(db.Model):
         return self
 
     @classmethod
+    def get_all(cls):
+        users = cls.query.all()
+        return users
+
+    @classmethod
     def get_by_id(cls, id):
         traveler = cls.query.filter_by(id=id).one_or_none()
         return traveler

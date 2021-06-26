@@ -33,11 +33,12 @@ export const Chat = () => {
 	const [conversationMap, setConversationMap] = useState("");
 	useEffect(() => {
 		actions.getUser(localStorage.getItem("tokenID"), true);
+		actions.getUsers();
 		actions.verifyLogin();
 	}, []);
 
 	useEffect(() => {
-		const author = store.currentUser;
+		const author = store.currentUser.id;
 		const fullMessage = {
 			author: author,
 			message: message
@@ -52,28 +53,33 @@ export const Chat = () => {
 	}, [message]);
 
 	useEffect(() => {
-		firebase
-			.database()
-			.ref("chat")
-			.on("value", snapshot => {
-				let allMessages = Object.values(snapshot.val());
-				setConversationMap(
-					allMessages.map((element, index) => {
-						return (
-							<div key={index.toString()} className="full-message">
-								<Link to={"/user/".concat(element.author.id)}>
-									<img className="chat-user-picture" src={element.author.profile_picture} />
-								</Link>
-								<div className="chat-text">
-									<span className="fw-bold">{element.author.name.concat(": ")}</span>
-									<span>{element.message}</span>
+		if (store.users != []) {
+			firebase
+				.database()
+				.ref("chat")
+				.on("value", snapshot => {
+					let allMessages = Object.values(snapshot.val());
+					setConversationMap(
+						allMessages.map((element, index) => {
+							return (
+								<div key={index.toString()} className="full-message">
+									<Link to={"/user/".concat(store.users[element.author].id)}>
+										<img
+											className="chat-user-picture"
+											src={store.users[element.author].profile_picture}
+										/>
+									</Link>
+									<div className="chat-text">
+										<span className="fw-bold">{store.users[element.author].name.concat(": ")}</span>
+										<span>{element.message}</span>
+									</div>
 								</div>
-							</div>
-						);
-					})
-				);
-			});
-	}, [conversation]);
+							);
+						})
+					);
+				});
+		}
+	}, [conversation, store.users]);
 
 	useEffect(() => {
 		// window.scrollTo(0, document.querySelector("#conversation").scrollHeight);

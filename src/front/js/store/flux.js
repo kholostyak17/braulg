@@ -5,11 +5,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
 			// URL: "https://travelling-together-prueba.herokuapp.com/",
-			URL_API: "https://3001-green-penguin-p8szoez7.ws-eu08.gitpod.io/api/",
-			URL: "https://3000-green-penguin-p8szoez7.ws-eu08.gitpod.io/",
-			currentUser: {},
-			user: {},
+			URL_API: "https://3001-green-penguin-p8szoez7.ws-eu09.gitpod.io/api/",
+			URL: "https://3000-green-penguin-p8szoez7.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
+			currentUser: {},
+			users: [],
+			user: {},
 			trips: [],
 			trip: {},
 			posts: [],
@@ -23,7 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			getUser: (id, user) => {
-				fetch(getStore().URL_API.concat("profile/", id))
+				fetch(getStore().URL_API.concat("users/", id))
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load user!");
@@ -37,7 +38,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						} else {
 							setStore({ user: responseAsJson });
 						}
-						console.log("joder", getStore().user, getStore().currentUser);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
@@ -194,6 +194,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const tokenDecoded = tokenDecode(responseAsJson);
 						setTravelerFromToken(tokenDecoded);
 						redirectToProfile();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			getUsers: () => {
+				fetch(getStore().URL_API.concat("users/"), {
+					method: "GET",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load Traveler!");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ users: responseAsJson });
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

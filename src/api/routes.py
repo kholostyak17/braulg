@@ -148,7 +148,18 @@ def create_post():
         return {'error':'Something went wrong'},409
     
 
-@api.route('/profile/<id>', methods=['GET'])
+@api.route('/users', methods=['GET'])
+def get_all_users():
+
+    users = Traveler.get_all()
+    print(users)
+    if users:
+        users_dict = [user.to_dict() for user in users]
+        return jsonify(users_dict), 200
+
+    return jsonify({'error': "Users not found"}), 404
+
+@api.route('/users/<id>', methods=['GET'])
 def get_user_by_id(id):
     traveler = Traveler.get_by_id(id)
     if traveler:
