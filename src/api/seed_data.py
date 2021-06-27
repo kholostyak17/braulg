@@ -26,13 +26,13 @@ data = {
             "email": "ricardo@gmail.com", 
             "id": 2, 
             "language": "spanish and english", 
-            "localization": "Sevilla (Espa\u00f1a)", 
+            "localization": "Sevilla (España)", 
             "name": "Ricardo", 
             "profile_picture": "https://img.icons8.com/bubbles/2x/user-male.png"
         },
         {
             "age": 20, 
-            "bio": "miauuuu))) \ud83d\udc08", 
+            "bio": "miauuuu)))", 
             "email": "daisy@gmail.com", 
             "id": 3, 
             "language": "Gatuno", 
@@ -42,13 +42,13 @@ data = {
         },
         {
             "age": 22, 
-            "bio": "Hola qu\u00e9 tal", 
+            "bio": "Hola qué tal", 
             "email": "paulina.ciechanowskaa@gmail.com", 
             "id": 4, 
-            "language": "Polaco, espa\u00f1ol, portugu\u00e9s", 
+            "language": "Polaco, español, portugués", 
             "localization": "Lisboa", 
             "name": "Paulinka", 
-            "profile_picture": null
+            "profile_picture": "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"
         },
         {
             "age": 18, 
@@ -103,7 +103,7 @@ data = {
         {
             "activities": "Ir a museos, bucear, beber tequila", 
             "cities": "Todos que existen ", 
-            "country": "M\u00e9xico", 
+            "country": "México", 
             "end_date": "Fri, 20 Aug 2021 00:00:00 GMT", 
             "id": 6, 
             "partners": [
@@ -121,7 +121,7 @@ data = {
             "start_date": "Fri, 13 Aug 2021 00:00:00 GMT", 
             "traveler_id": 8, 
             "traveler_name": "Paulinka", 
-            "traveler_picture": null
+            "traveler_picture": "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"
         }, 
     ],
 
