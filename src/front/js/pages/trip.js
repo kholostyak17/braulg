@@ -14,6 +14,7 @@ export const Trip = () => {
 	const [partnersMap, setPartnersMap] = useState("");
 	const linkToUserID = "/user/".concat(trip.traveler_id);
 	const startJoin = () => actions.getSharedTrip(params.id);
+	const deleteTrip = () => actions.getDeleteTrip(params.id);
 
 	useEffect(() => {
 		actions.verifyLogin();
@@ -40,14 +41,15 @@ export const Trip = () => {
 						);
 					})
 				);
+			} else {
+				setPartnersMap(<p>Todavía nadie se ha unido, ten paciencia!</p>);
 			}
 		}
-		console.log(trip);
 	}, [trip]);
 
 	useEffect(() => {
 		console.log(trip, "trippppppppp");
-		if (trip != undefined && trip.id != undefined) {
+		if (trip != undefined && trip.id == params.id) {
 			setTripDetails(
 				<div className="trips-view">
 					<div className="col-sm-12 col-md-9 content-box scrollable-box px-5 py-3">
@@ -72,11 +74,11 @@ export const Trip = () => {
 						<div className="row">
 							<div className="col-12 col-md-6">
 								<h4>Fecha de inicio:</h4>
-								<p>{trip.start_date}</p>
+								<p>{trip.start_date.slice(0, -12)}</p>
 							</div>
 							<div className="col-12 col-md-6">
 								<h4>Fecha de regreso:</h4>
-								<p>{trip.end_date}</p>
+								<p>{trip.end_date.slice(0, -12)}</p>
 							</div>
 						</div>
 						<div className="row">
@@ -92,6 +94,7 @@ export const Trip = () => {
 									text="APÚNTATE"
 									callBackFunc={startJoin}
 								/>
+								<button onClick={deleteTrip}>Eliminar viaje</button>
 							</div>
 						</div>
 						<h4>Partners:</h4>
@@ -99,6 +102,9 @@ export const Trip = () => {
 					</div>
 				</div>
 			);
+		}
+		if (trip.is_active == false) {
+			setTripDetails(<h2 className="text-center my-3">Parece que este viaje ha sido borrado... :(</h2>);
 		}
 	}, [partnersMap]);
 

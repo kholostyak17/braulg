@@ -311,3 +311,23 @@ def delete_traveler(id):
         return jsonify(traveler.to_dict()), 200
 
     return {'error': 'traveler not found'}, 400
+
+@api.route('/deletetrip/<int:id>', methods=['DELETE'])
+def delete_trip(id):
+
+    trip = Trip.get_by_id(id)
+    if trip:
+        trip.delete()
+        return jsonify(trip.to_dict()), 200
+
+    return {'error': 'trip not found'}, 400
+
+@api.route('/deletepost/<int:id>', methods=['DELETE'])
+def delete_post(id):
+
+    post = Post.get_by_id(id)
+    if post:
+        post.delete()
+        return jsonify(post.to_dict()), 200
+
+    return {'error': 'post not found'}, 400

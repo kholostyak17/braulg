@@ -367,6 +367,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
 					});
+			},
+
+			getDeleteTrip: tripID => {
+				const redirectToTrips = () => {
+					location.replace("../");
+				};
+				fetch(getStore().URL_API.concat("deletetrip/", tripID), {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't delete this trip!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						redirectToTrips();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+
+			getDeletePost: postID => {
+				const redirectToBlog = () => {
+					location.replace("../");
+				};
+				fetch(getStore().URL_API.concat("deletepost/", tripID), {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't delete this post!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.then(function(responseAsJson) {
+						redirectTo();
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			}
 		}
 	};
