@@ -80,7 +80,6 @@ def create_traveler():
 @api.route('/newtrip/<int:id>', methods=['POST'])
 @jwt_required()
 def create_trip(id):
-
     traveler_id = get_jwt_identity()
     country = request.json.get('country', None)
     cities = request.json.get('cities', None)
@@ -89,12 +88,13 @@ def create_trip(id):
     end_date = request.json.get('end_date', None)
 
     new_trip = Trip(
+        traveler_id=traveler_id["id"],
         country=country,
         cities=cities,
         activities=activities,
         start_date=start_date,
         end_date=end_date,
-        traveler_id=traveler_id["id"]
+       
     )
     if new_trip:
         new_trip.create()
@@ -129,13 +129,16 @@ def share_trip(id_traveler, id_trip):
         return {'error': 'Something went wrong'}, 404
 
 
-@api.route('/newpost', methods=['POST'])
-def create_post():
+@api.route('/newpost/<int:id>', methods=['POST'])
+@jwt_required()
+def create_post(id):
+    traveler_id = get_jwt_identity()
     title = request.json.get('title',None)
     text = request.json.get('text',None)
     media = request.json.get('media',None)
     
     new_post = Post(
+                traveler_id=traveler_id["id"],
                 title=title,
                 text=text,
                 media=media

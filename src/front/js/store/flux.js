@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
 			// URL: "https://travelling-together-prueba.herokuapp.com/",
-			URL_API: "https://3001-green-penguin-p8szoez7.ws-eu09.gitpod.io/api/",
-			URL: "https://3000-green-penguin-p8szoez7.ws-eu09.gitpod.io/",
+			URL_API: "https://3001-orange-coyote-rzhac1rk.ws-eu09.gitpod.io/api/",
+			URL: "https://3000-orange-coyote-rzhac1rk.ws-eu09.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			currentUser: {},
 			users: [],
@@ -345,13 +345,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getNewPost: credentials => {
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
 				const redirectToBlog = () => {
 					location.replace("./blog/");
 				};
-				fetch(getStore().URL_API.concat("newpost"), {
+				fetch(getStore().URL_API.concat("newpost", localStorage.getItem("tokenID")), {
 					method: "POST",
 					body: credentials,
-					headers: { "Content-Type": "application/json" }
+					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
 					.then(function(response) {
 						if (!response.ok) {
