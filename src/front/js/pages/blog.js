@@ -33,18 +33,22 @@ export const Blog = () => {
 		if (store.posts != undefined) {
 			setPostsMap(
 				store.posts.map((post, index) => {
-					return (
-						<PostCard
-							key={index.toString()}
-							postID={post.id}
-							media={post.media}
-							title={post.title}
-							text={post.text}
-							userID="0"
-							username="Anónimo"
-							userpicture={store.profilePicture}
-						/>
-					);
+					if (post.is_active == true) {
+						return (
+							<PostCard
+								key={index.toString()}
+								postID={post.id}
+								media={post.media}
+								title={post.title}
+								text={post.text}
+								userID={post.traveler_id}
+								username={localStorage.getItem("token") ? post.traveler_name : "Usuario"}
+								userpicture={
+									localStorage.getItem("token") ? post.traveler_picture : store.profilePicture
+								}
+							/>
+						);
+					}
 				})
 			);
 		}

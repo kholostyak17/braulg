@@ -304,7 +304,6 @@ def handle_upload(user_id):
 @jwt_required()
 def delete_traveler(id):
     current_traveler = get_jwt_identity()
-
     if current_traveler["id"] != id:
         return {'error': 'Invalid action'}, 400
 
@@ -315,8 +314,12 @@ def delete_traveler(id):
 
     return {'error': 'traveler not found'}, 400
 
-@api.route('/deletetrip/<int:id>', methods=['DELETE'])
-def delete_trip(id):
+@api.route('/deletetrip/<int:id>/user/<int:id_user>', methods=['DELETE'])
+@jwt_required()
+def delete_trip(id,id_user):
+    current_traveler = get_jwt_identity()
+    if current_traveler["id"] != id_user:
+        return {'error': 'Invalid action'}, 400
 
     trip = Trip.get_by_id(id)
     if trip:
@@ -325,8 +328,12 @@ def delete_trip(id):
 
     return {'error': 'trip not found'}, 400
 
-@api.route('/deletepost/<int:id>', methods=['DELETE'])
-def delete_post(id):
+@api.route('/deletepost/<int:id>/user/<int:id_user>', methods=['DELETE'])
+@jwt_required()
+def delete_post(id,id_user):
+    current_traveler = get_jwt_identity()
+    if current_traveler["id"] != id_user:
+        return {'error': 'Invalid action'}, 400
 
     post = Post.get_by_id(id)
     if post:

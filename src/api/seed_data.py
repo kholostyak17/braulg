@@ -75,7 +75,7 @@ data = {
     "Trip": [
         {
             "id": 0,
-            "traveler_id": 3,
+            "traveler_id": 2,
             "country": "Portugal",
             "cities": "Lisboa, Porto",
             "start_date": "2022-02-21",
@@ -105,7 +105,7 @@ data = {
             "cities": "Todos que existen ", 
             "country": "México", 
             "end_date": "Fri, 20 Aug 2021 00:00:00 GMT", 
-            "id": 6, 
+            "id": 3, 
             "partners": [
             {
                 "age": 110, 
@@ -119,40 +119,40 @@ data = {
             },
             ],
             "start_date": "Fri, 13 Aug 2021 00:00:00 GMT", 
-            "traveler_id": 8, 
+            "traveler_id": 4, 
             "traveler_name": "Paulinka", 
             "traveler_picture": "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"
         }, 
     ],
 
-    # "Post": [
-    #     {
-    #         "id": 0,
-    #         "traveler_id": 1,
-    #         "title": "Viaje a Jerusalen",
-    #         "media": "https://www.vaticannews.va/content/dam/vaticannews/images-multimedia/medio-oriente/Gerusalemme%20panorama%20con%20Moschea%20della%20Rocca.jpg/_jcr_content/renditions/cq5dam.thumbnail.cropped.1000.563.jpeg",
-    #         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    #     },
-    #     {
-    #         "id": 1,
-    #         "traveler_id": 2,
-    #         "title": "Viaje a Bogotá",
-    #         "media": "https://www.avianca.com/content/dam/avianca_new/destinos/bog/co_bog_porquevisitar2.jpg?lazy=true",
-    #         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    #     },
-    #     {
-    #         "id": 2,
-    #         "traveler_id": 0,
-    #         "title": "Viaje a Hong Kong",
-    #         "media": "https://img.static-kl.com/images/media/4EA8CE28-6BF4-4503-88618BAEF81EE29C?aspect_ratio=1:1&min_width=456",
-    #         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    #     }
-    #     {
-    #         "id": 3, 
-    #         "media": null, 
-    #         "text": "Es un lugar precioso, lo recomiendo much\u00edsimo. Hay muchas playas con agua muy limpia, los monumentos interesantes y muchos bares con sangr\u00eda s\u00faper rica. Adem\u00e1s, la gente es muy amable y siempre intenta ayudar:)", 
-    #         "title": "Viaje a Mallorca", 
-    #         "traveler_id": null
-    #     }, 
-    # ],
+    "Post": [
+        {
+            "id": 0,
+            "traveler_id": 0,
+            "title": "Viaje a Jerusalen",
+            "media": "https://www.vaticannews.va/content/dam/vaticannews/images-multimedia/medio-oriente/Gerusalemme%20panorama%20con%20Moschea%20della%20Rocca.jpg/_jcr_content/renditions/cq5dam.thumbnail.cropped.1000.563.jpeg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+        {
+            "id": 1,
+            "traveler_id": 1,
+            "title": "Viaje a Bogotá",
+            "media": "https://www.avianca.com/content/dam/avianca_new/destinos/bog/co_bog_porquevisitar2.jpg?lazy=true",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+        {
+            "id": 2,
+            "traveler_id": 2,
+            "title": "Viaje a Hong Kong",
+            "media": "https://img.static-kl.com/images/media/4EA8CE28-6BF4-4503-88618BAEF81EE29C?aspect_ratio=1:1&min_width=456",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        },
+        {
+            "id": 3, 
+            "traveler_id": 4,
+            "media": "", 
+            "text": "Es un lugar precioso, lo recomiendo muchísimo. Hay muchas playas con agua muy limpia, los monumentos interesantes y muchos bares con sangría súper rica. Además, la gente es muy amable y siempre intenta ayudar:)", 
+            "title": "Viaje a Mallorca", 
+        }, 
+    ],
 }
