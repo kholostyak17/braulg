@@ -16,7 +16,6 @@ export const Profile = () => {
 	const params = useParams();
 
 	useEffect(() => {
-		// traveler_id = actions.getUser(params.id);
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips.map((trip, index) => {
@@ -34,10 +33,7 @@ export const Profile = () => {
 							/>
 						);
 					} else {
-						console.log("HOLA@@@@@@@@");
 						for (let x = 0; x < trip.partners.length; x++) {
-							console.log("TRIP PARTNERS", trip.partners[x].id);
-							console.log("PARAMS ID ADASDF", params.id);
 							if (trip.partners[x].id == params.id) {
 								return (
 									<TripProfileCard
@@ -57,7 +53,6 @@ export const Profile = () => {
 				})
 			);
 		}
-		console.log(store.trips);
 	}, [store.trips]);
 
 	useEffect(() => {
@@ -65,8 +60,6 @@ export const Profile = () => {
 		actions.getTrips();
 		actions.getUser(params.id, false);
 	}, []);
-
-	console.log(params.id, "ID");
 
 	useEffect(() => {
 		if (store.user != undefined) {
@@ -111,7 +104,6 @@ export const Profile = () => {
 				</>
 			);
 		}
-		console.log(store.user);
 	}, [store.user]);
 
 	return (

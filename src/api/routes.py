@@ -110,11 +110,10 @@ def share_trip(id_traveler, id_trip):
 
     trip = Trip.get_by_id(id_trip)
     traveler_id = get_jwt_identity()
-    print("idtraveler",id_traveler)
+
     if traveler_id == id_traveler:
         return {'error': 'Something went wrong'}, 405
     elif trip:
-
         shared = Shared_Trip.get_by_trip_id(trip.id).first()
         if shared is not None and id_traveler == shared.traveler_id:
             return {'error': 'You are on this trip'}, 405
