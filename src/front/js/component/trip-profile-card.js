@@ -11,7 +11,7 @@ const TripProfileCard = props => {
 		if (props.partners.length != 0) {
 			setPartnersMap(
 				props.partners.map((partner, index) => {
-					const linkToPartnerID = "./user/".concat(partner.id);
+					const linkToPartnerID = "../user/".concat(partner.id);
 					return (
 						<>
 							<div className="col-1">Compañeros:</div>
