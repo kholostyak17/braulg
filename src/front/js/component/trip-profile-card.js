@@ -8,21 +8,28 @@ const TripProfileCard = props => {
 	const [partnersMap, setPartnersMap] = useState("");
 
 	useEffect(() => {
-		setPartnersMap(
-			props.partners.map((partner, index) => {
-				const linkToPartnerID = "./user/".concat(partner.id);
-				return (
-					<div className="partner-box-trip-card" key={index.toString}>
-						<Link to={linkToPartnerID}>
-							<div className="partner-picture-box">
-								<img src={partner.picture} className="partner-picture"></img>
+		if (props.partners.length != 0) {
+			setPartnersMap(
+				props.partners.map((partner, index) => {
+					const linkToPartnerID = "./user/".concat(partner.id);
+					return (
+						<>
+							<div className="col-1">Compañeros:</div>
+							<div className="partner-box-trip-card" key={index.toString}>
+								<Link to={linkToPartnerID}>
+									<div className="partner-picture-box">
+										<img src={partner.picture} className="partner-picture"></img>
+									</div>
+									<p className="">{partner.name}</p>
+								</Link>
 							</div>
-							<p className="">{partner.name}</p>
-						</Link>
-					</div>
-				);
-			})
-		);
+						</>
+					);
+				})
+			);
+		} else {
+			setPartnersMap(<p>Todavía nadie se ha unido nadie</p>);
+		}
 	}, []);
 
 	return (
@@ -37,9 +44,8 @@ const TripProfileCard = props => {
 				</div>
 			</div>
 			<div className="my-card-body col-12 d-flex row ">
-				<div className="col-2">Compañeros:</div>
-				<div className="col-6">{partnersMap}</div>
-				<div className="col-4">
+				<div className="col-7">{partnersMap}</div>
+				<div className="col-5">
 					<Link to={linkToTripID}>
 						<Button className="ms-auto me-3" size="s" color="secondary" text="Saber más" />
 					</Link>
