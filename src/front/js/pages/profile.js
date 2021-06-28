@@ -21,31 +21,37 @@ export const Profile = () => {
 				store.trips.map((trip, index) => {
 					if (trip.traveler_id == params.id && trip.is_active == true) {
 						return (
-							<TripProfileCard
-								key={index.toString()}
-								tripID={trip.id}
-								userID={trip.traveler_id}
-								country={trip.country}
-								cities={trip.cities}
-								startDate={trip.start_date}
-								endDate={trip.end_date}
-								partners={trip.partners}
-							/>
+							<>
+								<h2>Próximos viajes organizados:</h2>
+								<TripProfileCard
+									key={index.toString()}
+									tripID={trip.id}
+									userID={trip.traveler_id}
+									country={trip.country}
+									cities={trip.cities}
+									startDate={trip.start_date}
+									endDate={trip.end_date}
+									partners={trip.partners}
+								/>
+							</>
 						);
 					} else {
 						for (let x = 0; x < trip.partners.length; x++) {
 							if (trip.partners[x].id == params.id) {
 								return (
-									<TripProfileCard
-										key={index.toString()}
-										tripID={trip.id}
-										userID={trip.traveler_id}
-										country={trip.country}
-										cities={trip.cities}
-										startDate={trip.start_date}
-										endDate={trip.end_date}
-										partners={trip.partners}
-									/>
+									<>
+										<h2>Viajes a los que se ha unido:</h2>
+										<TripProfileCard
+											key={index.toString()}
+											tripID={trip.id}
+											userID={trip.traveler_id}
+											country={trip.country}
+											cities={trip.cities}
+											startDate={trip.start_date}
+											endDate={trip.end_date}
+											partners={trip.partners}
+										/>
+									</>
 								);
 							}
 						}
@@ -93,11 +99,7 @@ export const Profile = () => {
 									<h5 className="mt-2">Localización:</h5>
 									<span className="text-dark">{store.user.localization}</span>
 								</div>
-								<div className="col-12 col-sm-6 text-center mb-5">
-									<h2>Siguientes viajes</h2>
-									{tripsMap}
-									<div>(...todavía no hay viajes)</div>
-								</div>
+								<div className="col-12 col-sm-6 text-center mb-5">{tripsMap}</div>
 							</div>
 						</div>
 					</div>
