@@ -32,8 +32,8 @@ const TripProfileCard = props => {
 					<h5>
 						{props.country}
 						{props.cities}
-						{props.startDate}
-						{props.endDate}
+						{props.startDate.slice(0, -12)}
+						{props.endDate.slice(0, -12)}
 					</h5>
 				</div>
 			</div>
