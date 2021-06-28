@@ -19,7 +19,7 @@ export const Profile = () => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips.map((trip, index) => {
-					if (trip.traveler_id == params.id) {
+					if (trip.traveler_id == params.id && trip.is_active == true) {
 						return (
 							<TripProfileCard
 								key={index.toString()}

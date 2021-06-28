@@ -12,7 +12,7 @@ const TripProfileCard = props => {
 			props.partners.map((partner, index) => {
 				const linkToPartnerID = "./user/".concat(partner.id);
 				return (
-					<div className="partner-box-trip-card" key={index.toString()}>
+					<div className="partner-box-trip-card" key={index.toString}>
 						<Link to={linkToPartnerID}>
 							<div className="partner-picture-box">
 								<img src={partner.picture} className="partner-picture"></img>

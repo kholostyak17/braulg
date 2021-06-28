@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
 			// URL: "https://travelling-together-prueba.herokuapp.com/",
-			URL_API: "https://3001-orange-cattle-fouaxndo.ws-eu09.gitpod.io/api/",
-			URL: "https://3001-orange-cattle-fouaxndo.ws-eu09.gitpod.io/",
+			URL_API: "https://3001-apricot-walrus-4ayu7ya2.ws-eu08.gitpod.io/api/",
+			URL: "https://3001-apricot-walrus-4ayu7ya2.ws-eu08.gitpod.io/",
 			currentUser: {},
 			users: [],
 			user: {},
