@@ -155,6 +155,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						redirectToProfile();
 					})
 					.catch(function(error) {
+						alert("Usuario o contraseña incorrectos");
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},

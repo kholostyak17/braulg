@@ -36,7 +36,7 @@ const TripProfileCard = props => {
 					</p>
 				</div>
 			</div>
-			<div className="col-12 d-flex row ">
+			<div className="my-card-body col-12 d-flex row ">
 				<div className="col-2">Compañeros:</div>
 				<div className="col-6">{partnersMap}</div>
 				<div className="col-4">
