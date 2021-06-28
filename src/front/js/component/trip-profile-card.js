@@ -28,7 +28,7 @@ const TripProfileCard = props => {
 				})
 			);
 		} else {
-			setPartnersMap(<p>Todavía nadie se ha unido nadie</p>);
+			setPartnersMap(<p>Todavía no se ha unido nadie</p>);
 		}
 	}, []);
 
