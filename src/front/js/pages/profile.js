@@ -19,14 +19,8 @@ export const Profile = () => {
 		// traveler_id = actions.getUser(params.id);
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
-				store.trips
-					// .filter((_, trip) => {
-					// 	for (let i = 0; i < store.trips.length; i++) {
-					// 		store.trips[i].traveler_id == params.id;
-					// 	}
-					// })
-					// .filter(trip => traveler_id == params.id)
-					.map((trip, index) => {
+				store.trips.map((trip, index) => {
+					if (trip.traveler_id == params.id) {
 						return (
 							<TripProfileCard
 								key={index.toString()}
@@ -39,7 +33,28 @@ export const Profile = () => {
 								partners={trip.partners}
 							/>
 						);
-					})
+					} else {
+						console.log("HOLA@@@@@@@@");
+						for (let x = 0; x < trip.partners.length; x++) {
+							console.log("TRIP PARTNERS", trip.partners[x].id);
+							console.log("PARAMS ID ADASDF", params.id);
+							if (trip.partners[x].id == params.id) {
+								return (
+									<TripProfileCard
+										key={index.toString()}
+										tripID={trip.id}
+										userID={trip.traveler_id}
+										country={trip.country}
+										cities={trip.cities}
+										startDate={trip.start_date}
+										endDate={trip.end_date}
+										partners={trip.partners}
+									/>
+								);
+							}
+						}
+					}
+				})
 			);
 		}
 		console.log(store.trips);
