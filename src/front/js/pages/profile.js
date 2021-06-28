@@ -16,14 +16,6 @@ export const Profile = () => {
 	const params = useParams();
 
 	useEffect(() => {
-		actions.verifyLogin();
-		actions.getTrips();
-		actions.getUser(params.id, false);
-	}, []);
-
-	console.log(params.id, "ID");
-
-	useEffect(() => {
 		// traveler_id = actions.getUser(params.id);
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
@@ -51,8 +43,15 @@ export const Profile = () => {
 			);
 		}
 		console.log(store.trips);
-		console.log(store.trips.traveler_id);
 	}, [store.trips]);
+
+	useEffect(() => {
+		actions.verifyLogin();
+		actions.getTrips();
+		actions.getUser(params.id, false);
+	}, []);
+
+	console.log(params.id, "ID");
 
 	useEffect(() => {
 		if (store.user != undefined) {
