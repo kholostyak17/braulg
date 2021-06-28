@@ -51,6 +51,11 @@ class Traveler(db.Model):
         return self
 
     @classmethod
+    def get_all(cls):
+        users = cls.query.all()
+        return users
+
+    @classmethod
     def get_by_id(cls, id):
         traveler = cls.query.filter_by(id=id).one_or_none()
         return traveler
@@ -124,12 +129,17 @@ class Trip(db.Model):
             "start_date": self.start_date,
             "end_date": self.end_date,
             "activities": self.activities,
+            "is_active": self.is_active,
         }
 
     def create(self):
         db.session.add(self)
         db.session.commit()
         return self
+    
+    def delete(self):
+        self.is_active = False
+        db.session.commit()
 
     @classmethod
     def get_all(cls):
@@ -158,6 +168,7 @@ class Shared_Trip(db.Model):
             "trip_id": self.trip_id,
             "traveler_id": self.traveler_id,
         }
+        
     def create(self):
         db.session.add(self)
         db.session.commit()
@@ -190,18 +201,26 @@ class Post(db.Model):
         return f'Post {self.id}, {self.traveler_id}, {self.title}, {self.text}, {self.media},'
 
     def to_dict(self):
+        traveler = Traveler.get_by_id(self.traveler_id)
         return{
             "id": self.id,
             "traveler_id": self.traveler_id,
+            "traveler_name":traveler.name,
+            "traveler_picture":traveler.profile_picture,
             "title": self.title,
             "text": self.text,
             "media": self.media,
+            "is_active": self.is_active,
         }
 
     def create(self):
         db.session.add(self)
         db.session.commit()
         return self
+
+    def delete(self):
+        self.is_active = False
+        db.session.commit()
 
     @classmethod
     def get_all(cls):
@@ -214,28 +233,12 @@ class Post(db.Model):
         return post_by_id
 
 
-class Comments(db.Model):
-    __tablename__ = 'comments'
-    id = db.Column(db.Integer, unique=True, primary_key=True)
-    text = db.Column(db.String)
-    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
-    post_id = db.Column(db.Integer, db.ForeignKey("post.id"))
-    traveler = db.relationship(Traveler)
-    post = db.relationship(Post)
+# class Comments(db.Model):
+#     __tablename__ = 'comments'
+#     id = db.Column(db.Integer, unique=True, primary_key=True)
+#     text = db.Column(db.String)
+#     traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
+#     post_id = db.Column(db.Integer, db.ForeignKey("post.id"))
+#     traveler = db.relationship(Traveler)
+#     post = db.relationship(Post)
 
-
-class Message(db.Model):
-    __tablename__ = 'message'
-    id = db.Column(db.Integer, unique=True, primary_key=True)
-    chat_id = db.Column(db.Integer, db.ForeignKey("chat.id"))
-    traveler_id = db.Column(db.Integer, db.ForeignKey("traveler.id"))
-    message = db.Column(db.String)
-
-
-class Chat(db.Model):
-    __tablename__ = 'chat'
-    id = db.Column(db.Integer, unique=True, primary_key=True)
-    name = db.Column(db.String)
-
-    def to_dict(self):
-        return {}

@@ -88,21 +88,9 @@ export const Profile = () => {
 								</div>
 								<div className="col-12 col-sm-6 text-center mb-5">
 									<h2>Siguientes viajes</h2>
+									{tripsMap}
 									<div>(...todavía no hay viajes)</div>
 								</div>
-							</div>
-							<h5>Edad:</h5>
-							<span className="text-dark">{store.user.age}</span>
-							<h5>Localización:</h5>
-							<span className="text-dark">{store.user.localization}</span>
-							<h5>Idiomas:</h5>
-							<span className="text-dark">{store.user.language}</span>
-						</div>
-						<div className="col-12 col-sm-6 text-center mb-5">
-							<h3>Siguientes viajes</h3>
-							<div className="d-flex flex-column-reverse">
-								{tripsMap}
-								<div>(...todavía no hay viajes)</div>
 							</div>
 						</div>
 					</div>

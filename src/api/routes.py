@@ -80,7 +80,6 @@ def create_traveler():
 @api.route('/newtrip/<int:id>', methods=['POST'])
 @jwt_required()
 def create_trip(id):
-
     traveler_id = get_jwt_identity()
     country = request.json.get('country', None)
     cities = request.json.get('cities', None)
@@ -89,12 +88,13 @@ def create_trip(id):
     end_date = request.json.get('end_date', None)
 
     new_trip = Trip(
+        traveler_id=traveler_id["id"],
         country=country,
         cities=cities,
         activities=activities,
         start_date=start_date,
         end_date=end_date,
-        traveler_id=traveler_id["id"]
+       
     )
     if new_trip:
         new_trip.create()
@@ -130,13 +130,16 @@ def share_trip(id_traveler, id_trip):
         return {'error': 'Something went wrong'}, 404
 
 
-@api.route('/newpost', methods=['POST'])
-def create_post():
+@api.route('/newpost/<int:id>', methods=['POST'])
+@jwt_required()
+def create_post(id):
+    traveler_id = get_jwt_identity()
     title = request.json.get('title',None)
     text = request.json.get('text',None)
     media = request.json.get('media',None)
     
     new_post = Post(
+                traveler_id=traveler_id["id"],
                 title=title,
                 text=text,
                 media=media
@@ -149,7 +152,18 @@ def create_post():
         return {'error':'Something went wrong'},409
     
 
-@api.route('/profile/<id>', methods=['GET'])
+@api.route('/users', methods=['GET'])
+def get_all_users():
+
+    users = Traveler.get_all()
+    print(users)
+    if users:
+        users_dict = [user.to_dict() for user in users]
+        return jsonify(users_dict), 200
+
+    return jsonify({'error': "Users not found"}), 404
+
+@api.route('/users/<id>', methods=['GET'])
 def get_user_by_id(id):
     traveler = Traveler.get_by_id(id)
     if traveler:
@@ -291,7 +305,6 @@ def handle_upload(user_id):
 @jwt_required()
 def delete_traveler(id):
     current_traveler = get_jwt_identity()
-
     if current_traveler["id"] != id:
         return {'error': 'Invalid action'}, 400
 
@@ -301,3 +314,31 @@ def delete_traveler(id):
         return jsonify(traveler.to_dict()), 200
 
     return {'error': 'traveler not found'}, 400
+
+@api.route('/deletetrip/<int:id>/user/<int:id_user>', methods=['DELETE'])
+@jwt_required()
+def delete_trip(id,id_user):
+    current_traveler = get_jwt_identity()
+    if current_traveler["id"] != id_user:
+        return {'error': 'Invalid action'}, 400
+
+    trip = Trip.get_by_id(id)
+    if trip:
+        trip.delete()
+        return jsonify(trip.to_dict()), 200
+
+    return {'error': 'trip not found'}, 400
+
+@api.route('/deletepost/<int:id>/user/<int:id_user>', methods=['DELETE'])
+@jwt_required()
+def delete_post(id,id_user):
+    current_traveler = get_jwt_identity()
+    if current_traveler["id"] != id_user:
+        return {'error': 'Invalid action'}, 400
+
+    post = Post.get_by_id(id)
+    if post:
+        post.delete()
+        return jsonify(post.to_dict()), 200
+
+    return {'error': 'post not found'}, 400

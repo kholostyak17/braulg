@@ -20,21 +20,23 @@ export const Trips = () => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
 				store.trips.map((trip, index) => {
-					return (
-						<TripCard
-							key={index.toString()}
-							tripID={trip.id}
-							username={trip.traveler_name}
-							userpicture={trip.traveler_picture}
-							userID={trip.traveler_id}
-							country={trip.country}
-							cities={trip.cities}
-							startDate={trip.start_date}
-							endDate={trip.end_date}
-							activities={trip.activities}
-							partners={trip.partners}
-						/>
-					);
+					if (trip.is_active == true) {
+						return (
+							<TripCard
+								key={index.toString()}
+								tripID={trip.id}
+								username={trip.traveler_name}
+								userpicture={trip.traveler_picture}
+								userID={trip.traveler_id}
+								country={trip.country}
+								cities={trip.cities}
+								startDate={trip.start_date}
+								endDate={trip.end_date}
+								activities={trip.activities}
+								partners={trip.partners}
+							/>
+						);
+					}
 				})
 			);
 		}
