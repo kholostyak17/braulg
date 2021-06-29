@@ -230,7 +230,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ trips: responseAsJson });
-						console.log(responseAsJson);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

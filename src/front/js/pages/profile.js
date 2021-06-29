@@ -12,58 +12,61 @@ export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const [user, setUser] = useState([]);
 	const [tripsMap, setTripsMap] = useState("");
-
 	const params = useParams();
 
 	useEffect(() => {
-		if (store.trips != undefined || store.trip.user != undefined) {
-			setTripsMap(
-				store.trips.map((trip, index) => {
-					if (trip.traveler_id == params.id && trip.is_active == true) {
-						return (
-							<>
-								<TripProfileCard
-									key={index.toString()}
-									tripID={trip.id}
-									userID={trip.traveler_id}
-									country={trip.country}
-									cities={trip.cities}
-									startDate={trip.start_date}
-									endDate={trip.end_date}
-									partners={trip.partners}
-								/>
-							</>
-						);
-					} else {
-						for (let x = 0; x < trip.partners.length; x++) {
-							if (trip.partners[x].id == params.id) {
-								return (
-									<>
-										<TripProfileCard
-											key={index.toString()}
-											tripID={trip.id}
-											userID={trip.traveler_id}
-											country={trip.country}
-											cities={trip.cities}
-											startDate={trip.start_date}
-											endDate={trip.end_date}
-											partners={trip.partners}
-										/>
-									</>
-								);
-							}
-						}
-					}
-				})
-			);
-		}
-	}, [store.trips]);
+		actions.verifyLogin();
+		actions.getUser(params.id, false);
+		actions.getTrips();
+	}, []);
 
 	useEffect(() => {
-		actions.verifyLogin();
-		actions.getTrips();
-		actions.getUser(params.id, false);
-	}, []);
+		if (store.trips != undefined || store.trip.user != undefined) {
+			console.log(store.trips, "map de store trips");
+			if (store.trips[0] != undefined) {
+				console.log("estoy dentro del map");
+				setTripsMap(
+					store.trips.map((trip, index) => {
+						if (trip.traveler_id == params.id && trip.is_active == true) {
+							return (
+								<>
+									<TripProfileCard
+										key={index.toString()}
+										tripID={trip.id}
+										userID={trip.traveler_id}
+										country={trip.country}
+										cities={trip.cities}
+										startDate={trip.start_date}
+										endDate={trip.end_date}
+										partners={trip.partners}
+									/>
+								</>
+							);
+						} else {
+							for (let x = 0; x < trip.partners.length; x++) {
+								if (trip.partners[x].id == params.id) {
+									return (
+										<>
+											<TripProfileCard
+												key={index.toString()}
+												tripID={trip.id}
+												userID={trip.traveler_id}
+												country={trip.country}
+												cities={trip.cities}
+												startDate={trip.start_date}
+												endDate={trip.end_date}
+												partners={trip.partners}
+											/>
+										</>
+									);
+								}
+							}
+						}
+					})
+				);
+			}
+		}
+	}, [store.trips]);
 
 	useEffect(() => {
 		if (store.user != undefined) {
@@ -99,8 +102,7 @@ export const Profile = () => {
 								</div>
 								<div className="col-12 col-sm-6 text-center mb-5">
 									<h2>Siguientes viajes</h2>
-
-									<div>{tripsMap != "" ? tripsMap : "(...todavía no hay viajes)"}</div>
+									<div>{tripsMap != "" ? tripsMap : "Todavía no hay viajes..."}</div>
 								</div>
 							</div>
 						</div>
@@ -108,7 +110,7 @@ export const Profile = () => {
 				</>
 			);
 		}
-	}, [store.user]);
+	}, [store.user, tripsMap]);
 
 	return (
 		<>

@@ -14,11 +14,11 @@ export const MyNavbar = () => {
 	const userLogedOrNot =
 		localStorage.getItem("tokenID") != null ? (
 			<>
-				<Link to={linkProfile}>
+				<a href={linkProfile}>
 					<Dropdown.Item href={linkProfile} className="text-white menu-hover text-center">
 						Mi perfil
 					</Dropdown.Item>
-				</Link>
+				</a>
 				<Link to="/settings">
 					<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
 						Ajustes
