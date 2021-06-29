@@ -16,7 +16,7 @@ export const Settings = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-	//funcion onsubmit, envio de datos del formulario
+
 	const onSubmit = data => {
 		if (data.picture != undefined) {
 			console.log("Se ha cargado una imagen, lo proximo: fetch POST");

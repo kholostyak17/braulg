@@ -19,6 +19,7 @@ api = Blueprint('api', __name__)
 
 CORS(api)
 
+
 @api.route('/login', methods=['POST'])
 def login():
     email, password = request.json.get(
@@ -94,7 +95,7 @@ def create_trip(id):
         activities=activities,
         start_date=start_date,
         end_date=end_date,
-       
+
     )
     if new_trip:
         new_trip.create()
@@ -114,8 +115,8 @@ def share_trip(id_traveler, id_trip):
     if traveler_id == id_traveler:
         return {'error': 'Something went wrong'}, 405
     elif trip:
-        shared = Shared_Trip.get_by_trip_id(trip.id)
-        if id_traveler in shared:
+        shared = Shared_Trip.get_by_trip_id(trip.id).first()
+        if shared is not None and id_traveler == shared.traveler_id:
             return {'error': 'You are on this trip'}, 405
         else:
             new_shared_trip = Shared_Trip(
@@ -125,8 +126,26 @@ def share_trip(id_traveler, id_trip):
             new_shared_trip.create()
 
             return jsonify(new_shared_trip.to_dict()), 201
-        
+
         return {'error': 'Something went wrong'}, 404
+
+
+# @api.route('/partner/<int:id_partner>/trip/<int:id_trip>', methods=['DELETE'])
+# @jwt_required()
+# def delete_partner(id_partner, id_trip):
+
+#     trip = Trip.get_by_id(id_trip)
+#     partner_id = get_jwt_identity()
+
+#     shared = Shared_Trip.get_by_trip_id(trip.id).first()
+
+#     if shared is not None and partner_id['id'] == shared.traveler_id:
+#         partner = Shared_Trip.get_by_id(id_partner)
+#         if partner:
+#             partner.delete_partner()
+#             return {'Bien': 'Something went wrong'},200       
+#     return {'error': 'Something went wrong'}, 400
+
 
 
 @api.route('/newpost/<int:id>', methods=['POST'])

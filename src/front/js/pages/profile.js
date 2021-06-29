@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import Button from "../component/button.js";
+import TripProfileCard from "../component/trip-profile-card.js";
 import "../../styles/profile.scss";
 
 import { MyNavbar } from "../component/my-navbar.js";
@@ -10,12 +11,62 @@ import { Footer } from "../component/footer.js";
 export const Profile = () => {
 	const { store, actions } = useContext(Context);
 	const [user, setUser] = useState([]);
+	const [tripsMap, setTripsMap] = useState("");
 	const params = useParams();
 
 	useEffect(() => {
 		actions.verifyLogin();
 		actions.getUser(params.id, false);
+		actions.getTrips();
 	}, []);
+
+	useEffect(() => {
+		if (store.trips != undefined || store.trip.user != undefined) {
+			console.log(store.trips, "map de store trips");
+			if (store.trips[0] != undefined) {
+				console.log("estoy dentro del map");
+				setTripsMap(
+					store.trips.map((trip, index) => {
+						if (trip.traveler_id == params.id && trip.is_active == true) {
+							return (
+								<>
+									<TripProfileCard
+										key={index.toString()}
+										tripID={trip.id}
+										userID={trip.traveler_id}
+										country={trip.country}
+										cities={trip.cities}
+										startDate={trip.start_date}
+										endDate={trip.end_date}
+										partners={trip.partners}
+									/>
+								</>
+							);
+						} else {
+							for (let x = 0; x < trip.partners.length; x++) {
+								if (trip.partners[x].id == params.id) {
+									return (
+										<>
+											<TripProfileCard
+												key={index.toString()}
+												tripID={trip.id}
+												userID={trip.traveler_id}
+												country={trip.country}
+												cities={trip.cities}
+												startDate={trip.start_date}
+												endDate={trip.end_date}
+												partners={trip.partners}
+											/>
+										</>
+									);
+								}
+							}
+						}
+					})
+				);
+			}
+		}
+	}, [store.trips]);
 
 	useEffect(() => {
 		if (store.user != undefined) {
@@ -51,7 +102,9 @@ export const Profile = () => {
 								</div>
 								<div className="col-12 col-sm-6 text-center mb-5">
 									<h2>Siguientes viajes</h2>
-									<div>(...todavía no hay viajes)</div>
+									<div className="trip-cards">
+										{tripsMap != "" ? tripsMap : "Todavía no hay viajes..."}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -59,8 +112,7 @@ export const Profile = () => {
 				</>
 			);
 		}
-		console.log(store.user);
-	}, [store.user]);
+	}, [store.user, tripsMap]);
 
 	return (
 		<>
