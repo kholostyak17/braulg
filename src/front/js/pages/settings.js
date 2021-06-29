@@ -18,7 +18,11 @@ export const Settings = () => {
 	const handleShow = () => setShow(true);
 	//funcion onsubmit, envio de datos del formulario
 	const onSubmit = data => {
-		actions.getUpdate(JSON.stringify(data), data.picture);
+		if (data.picture != undefined) {
+			console.log("Se ha cargado una imagen, lo proximo: fetch POST");
+			actions.getNewPicture(data.picture);
+		}
+		actions.getUpdate(JSON.stringify(data));
 		localStorage.setItem("tokenName", data.name);
 	};
 

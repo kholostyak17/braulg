@@ -16,7 +16,6 @@ export const Home = () => {
 	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
 	const [posts, setPosts] = useState([]);
 	const [postsMap, setPostsMap] = useState("");
-	console.log(postsMap);
 	const [tripsMap, setTripsMap] = useState("");
 	const url =
 		"https://media-exp1.licdn.com/dms/image/C5616AQHycuoK6FWNow/profile-displaybackgroundimage-shrink_350_1400/0/1603134843668?e=1628121600&v=beta&t=7x8fDBnqPNyLxIogi9dEK4ccrQaxHelXQF48vUUY8t4";
@@ -56,7 +55,6 @@ export const Home = () => {
 				})
 			);
 		}
-		console.log(store.posts);
 	}, [store.posts]);
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
@@ -79,7 +77,6 @@ export const Home = () => {
 				})
 			);
 		}
-		console.log(store.trips);
 	}, [store.trips]);
 	return (
 		<>

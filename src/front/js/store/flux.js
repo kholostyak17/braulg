@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://braulg.herokuapp.com/api/",
 			// URL: "https://braulg.herokuapp.com/",
-			URL_API: "https://3001-fuchsia-dinosaur-8t98mo05.ws-eu09.gitpod.io/api/",
-			URL: "https://3000-fuchsia-dinosaur-8t98mo05.ws-eu09.gitpod.io/",
+			URL_API: "https://3001-fuchsia-dinosaur-8t98mo05.ws-eu08.gitpod.io/api/",
+			URL: "https://3000-fuchsia-dinosaur-8t98mo05.ws-eu08.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			currentUser: {},
 			users: [],
@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location.replace(getStore().URL.concat("login"));
 				}
 			},
-			getUser: (id, user) => {
+			getUser: (id, currentUser) => {
 				fetch(getStore().URL_API.concat("users/", id))
 					.then(function(response) {
 						if (!response.ok) {
@@ -33,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(response);
 					})
 					.then(function(responseAsJson) {
-						if (user == true) {
+						if (currentUser == true) {
 							setStore({ currentUser: responseAsJson });
 						} else {
 							setStore({ user: responseAsJson });
@@ -43,28 +43,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
+			getNewPicture: picture => {
+				const token = localStorage.getItem("token");
+				const tokenID = localStorage.getItem("tokenID");
+				console.log("This are the files", picture);
+				let mybody = new FormData();
+				mybody.append("profile_picture", picture[0]);
+				fetch(getStore().URL_API.concat("profilepicture/", localStorage.getItem("tokenID")), {
+					body: mybody,
+					method: "POST"
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't upload picture!");
+						}
+						return response.json();
+						console.log(response);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
 			getUpdate: (dataUpdated, picture) => {
 				const token = localStorage.getItem("token");
 				const tokenID = localStorage.getItem("tokenID");
-				const changeProfilePicture = picture => {
-					console.log("This are the files", picture);
-					let mybody = new FormData();
-					mybody.append("profile_picture", picture[0]);
-					fetch(getStore().URL_API.concat("profilepicture/", localStorage.getItem("tokenID")), {
-						body: mybody,
-						method: "POST"
-					})
-						.then(function(response) {
-							if (!response.ok) {
-								throw Error("I can't upload picture!");
-							}
-							return response.json();
-							console.log(response);
-						})
-						.catch(function(error) {
-							console.log("Looks like there was a problem: \n", error);
-						});
-				};
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
@@ -89,7 +91,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ user: responseAsJson });
-						changeProfilePicture(picture);
 						redirectToProfile();
 					})
 					.catch(function(error) {
