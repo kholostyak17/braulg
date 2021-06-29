@@ -102,7 +102,9 @@ export const Profile = () => {
 								</div>
 								<div className="col-12 col-sm-6 text-center mb-5">
 									<h2>Siguientes viajes</h2>
-									<div>{tripsMap != "" ? tripsMap : "Todavía no hay viajes..."}</div>
+									<div className="trip-cards">
+										{tripsMap != "" ? tripsMap : "Todavía no hay viajes..."}
+									</div>
 								</div>
 							</div>
 						</div>

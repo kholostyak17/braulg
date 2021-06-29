@@ -4,38 +4,33 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const TripProfileCard = props => {
-	const linkToTripID = "../trips/".concat(props.tripID);
+	const linkToTripID = "/trips/".concat(props.tripID);
 	const [partnersMap, setPartnersMap] = useState("");
 
 	useEffect(() => {
-		if (props.partners.length != 0) {
-			setPartnersMap(
-				props.partners.map((partner, index) => {
-					const linkToPartnerID = "../user/".concat(partner.id);
-					return (
-						<>
-							<div className="col-1">Compañeros:</div>
-							<div className="partner-box-trip-card" key={index.toString}>
-								<Link to={linkToPartnerID}>
-									<div className="partner-picture-box">
-										<img src={partner.picture} className="partner-picture"></img>
-									</div>
-									<p className="">{partner.name}</p>
-								</Link>
-							</div>
-						</>
-					);
-				})
-			);
-		} else {
-			setPartnersMap(<p>Todavía no se ha unido nadie</p>);
-		}
+		setPartnersMap(
+			props.partners.map((partner, index) => {
+				const linkToPartnerID = "/user/".concat(partner.id);
+				return (
+					<>
+						<div className="partner-box-trip-card" key={index.toString}>
+							<Link to={linkToPartnerID}>
+								<div className="partner-picture-box">
+									<img src={partner.picture} className="partner-picture"></img>
+								</div>
+								<p className="">{partner.name}</p>
+							</Link>
+						</div>
+					</>
+				);
+			})
+		);
 	}, []);
 
 	return (
-		<div className="my-card">
+		<div className="my-card m-2 p-2">
 			<div className="my-card-header d-flex row">
-				<div className="col-12 ">
+				<div className="col-12">
 					<p>
 						<h5>
 							{props.country},{props.startDate.slice(4, -18)} - {props.endDate.slice(4, -18)}
@@ -43,11 +38,12 @@ const TripProfileCard = props => {
 					</p>
 				</div>
 			</div>
-			<div className="my-card-body col-12 d-flex row ">
-				<div className="col-7">{partnersMap}</div>
-				<div className="col-5">
+			<div className="my-card-body2">
+				<p>{partnersMap != [] ? "Compañeros:" : "Todavía no hay compañeros"}</p>
+				<div className="">{partnersMap}</div>
+				<div className="">
 					<Link to={linkToTripID}>
-						<Button className="ms-auto me-3" size="s" color="secondary" text="Saber más" />
+						<Button className="text-center" size="sm" color="secondary" text="Saber más" />
 					</Link>
 				</div>
 			</div>

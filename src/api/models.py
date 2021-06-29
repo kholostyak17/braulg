@@ -184,7 +184,15 @@ class Shared_Trip(db.Model):
         travelers = cls.query.filter_by(trip_id=id_trip)
         return travelers
 
-
+    @classmethod
+    def delete_partner(cls, id_partner):
+        partner = cls.query.filter_by(traveler_id=id_partner).one_or_none()
+        if partner:
+            db.session.delete(partner)
+            db.session.commit()
+            return partner.to_dict()  
+        else:
+            return None 
  
 
 class Post(db.Model):
