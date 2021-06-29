@@ -16,7 +16,7 @@ export const Settings = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-	//funcion onsubmit, envio de datos del formulario
+
 	const onSubmit = data => {
 		actions.getUpdate(JSON.stringify(data), data.picture);
 		localStorage.setItem("tokenName", data.name);

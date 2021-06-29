@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import Button from "../component/button.js";
+import TripProfileCard from "../component/trip-profile-card.js";
 import CardHorizontal from "../component/cardhorizontal.js";
 import CardSmall from "../component/cardsmall.js";
 import CircularLogo from "../component/circularlogo.js";
@@ -24,6 +25,7 @@ export const Components = () => {
 			<Button className="" size="l" color="secondary" text="button L" />
 			<Button className="" size="sm" color="primary" text="button S-m" />
 			<Button className="" size="lm" color="secondary" text="button L-m" />
+			<TripProfileCard />
 			<CardHorizontal title="Titulo" img={urlBig} />
 			<CardSmall title="Titulo" img={url} coloredText={coloredText} />
 			<div>

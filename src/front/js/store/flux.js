@@ -3,11 +3,10 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			// URL_API: "https://braulg.herokuapp.com/api/",
-			// URL: "https://braulg.herokuapp.com/",
-			URL_API: "https://3001-fuchsia-dinosaur-8t98mo05.ws-eu09.gitpod.io/api/",
-			URL: "https://3000-fuchsia-dinosaur-8t98mo05.ws-eu09.gitpod.io/",
-			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
+			// URL_API: "https://travelling-together-prueba.herokuapp.com/api/",
+			// URL: "https://travelling-together-prueba.herokuapp.com/",
+			URL_API: "https://3001-amber-roundworm-i4o72618.ws-eu08.gitpod.io/api/",
+			URL: "https://3001-amber-roundworm-i4o72618.ws-eu08.gitpod.io/",
 			currentUser: {},
 			users: [],
 			user: {},
@@ -156,6 +155,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						redirectToProfile();
 					})
 					.catch(function(error) {
+						alert("Usuario o contraseña incorrectos");
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
@@ -230,7 +230,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(function(responseAsJson) {
 						setStore({ trips: responseAsJson });
-						console.log(responseAsJson);
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
