@@ -22,7 +22,6 @@ export const Profile = () => {
 					if (trip.traveler_id == params.id && trip.is_active == true) {
 						return (
 							<>
-								<h2>Próximos viajes organizados:</h2>
 								<TripProfileCard
 									key={index.toString()}
 									tripID={trip.id}
@@ -40,7 +39,6 @@ export const Profile = () => {
 							if (trip.partners[x].id == params.id) {
 								return (
 									<>
-										<h2>Viajes a los que se ha unido:</h2>
 										<TripProfileCard
 											key={index.toString()}
 											tripID={trip.id}
@@ -99,7 +97,11 @@ export const Profile = () => {
 									<h5 className="mt-2">Localización:</h5>
 									<span className="text-dark">{store.user.localization}</span>
 								</div>
-								<div className="col-12 col-sm-6 text-center mb-5">{tripsMap}</div>
+								<div className="col-12 col-sm-6 text-center mb-5">
+									<h2>Siguientes viajes</h2>
+
+									<div>{tripsMap != "" ? tripsMap : "(...todavía no hay viajes)"}</div>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -16,9 +16,6 @@ export const Settings = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-	useEffect(() => {
-		actions.getUser(localStorage.getItem("tokenID"));
-	}, []);
 
 	const onSubmit = data => {
 		actions.getUpdate(JSON.stringify(data), data.picture);
