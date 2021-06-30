@@ -42,10 +42,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
 db.init_app(app)
 
-#upload images to cloudinary
-app.config['CLOUDINARY_URL'] = os.environ.get('CLOUDINARY_URL=cloudinary://496662581431228:6uzkudEr2iDsR-5lD5vWojcrTP0@braulg')
-
-
 # Allow CORS requests to this API
 CORS(app)
 
