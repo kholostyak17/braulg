@@ -72,7 +72,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
-				console.log(dataUpdated, "datos");
 				fetch(getStore().URL_API.concat("settings/", localStorage.getItem("tokenID")), {
 					method: "PATCH",
 					body: dataUpdated,
@@ -321,7 +320,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getSharedTrip: id_trip => {
-				console.log(id_trip);
 				const token = localStorage.getItem("token");
 				const tokenID = localStorage.getItem("tokenID");
 				const redirectToTrips = () => {
@@ -350,7 +348,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getNewPost: (postData, media) => {
 				const token = localStorage.getItem("token");
 				const getNewMediaPost = (media, id) => {
-					console.log("This are the files", media);
 					let mybody = new FormData();
 					mybody.append("media", media[0]);
 					fetch(getStore().URL_API.concat("newmediapost/", id), {
@@ -386,7 +383,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(function(responseAsJson) {
 						getNewMediaPost(media, responseAsJson.id);
 						setStore({ posts: responseAsJson });
-						console.log(responseAsJson.id, "maricon");
 						redirectToBlog();
 					})
 					.catch(function(error) {
