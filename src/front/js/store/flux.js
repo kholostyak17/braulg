@@ -386,7 +386,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(function(responseAsJson) {
 						getNewMediaPost(media, responseAsJson.id);
 						setStore({ posts: responseAsJson });
-						console.log(responseAsJson.id, "maricon");
 						redirectToBlog();
 					})
 					.catch(function(error) {

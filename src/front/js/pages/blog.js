@@ -52,7 +52,6 @@ export const Blog = () => {
 				})
 			);
 		}
-		console.log(store.posts);
 	}, [store.posts]);
 
 	return (

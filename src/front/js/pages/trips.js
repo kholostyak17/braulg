@@ -40,7 +40,6 @@ export const Trips = () => {
 				})
 			);
 		}
-		console.log(store.trips);
 	}, [store.trips]);
 
 	return (

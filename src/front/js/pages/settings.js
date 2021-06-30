@@ -19,7 +19,6 @@ export const Settings = () => {
 
 	const onSubmit = data => {
 		if (data.picture != undefined) {
-			console.log("Se ha cargado una imagen, lo proximo: fetch POST");
 			actions.getNewPicture(data.picture);
 		}
 		actions.getUpdate(JSON.stringify(data));

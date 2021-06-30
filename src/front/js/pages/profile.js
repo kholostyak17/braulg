@@ -22,9 +22,7 @@ export const Profile = () => {
 
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
-			console.log(store.trips, "map de store trips");
 			if (store.trips[0] != undefined) {
-				console.log("estoy dentro del map");
 				setTripsMap(
 					store.trips.map((trip, index) => {
 						if (trip.traveler_id == params.id && trip.is_active == true) {
