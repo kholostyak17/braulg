@@ -3,10 +3,10 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			URL_API: "https://braulg.herokuapp.com/api/",
-			URL: "https://braulg.herokuapp.com/",
-			// URL_API: "https://3001-fuchsia-dinosaur-8t98mo05.ws-eu08.gitpod.io/api/",
-			// URL: "https://3000-fuchsia-dinosaur-8t98mo05.ws-eu08.gitpod.io/",
+			// URL_API: "https://braulg.herokuapp.com/api/",
+			// URL: "https://braulg.herokuapp.com/",
+			URL_API: "https://3001-olive-harrier-u60dtvc2.ws-eu08.gitpod.io/api/",
+			URL: "https://3000-olive-harrier-u60dtvc2.ws-eu08.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			currentUser: {},
 			users: [],
@@ -293,7 +293,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
-			getNewTrip: credentials => {
+			getNewTrip: tripData => {
 				const token = localStorage.getItem("token");
 				const tokenID = localStorage.getItem("tokenID");
 				const redirectToTrips = () => {
@@ -301,7 +301,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetch(getStore().URL_API.concat("newtrip/", localStorage.getItem("tokenID")), {
 					method: "POST",
-					body: credentials,
+					body: tripData,
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
 					.then(function(response) {
@@ -319,6 +319,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
+
 			getSharedTrip: id_trip => {
 				console.log(id_trip);
 				const token = localStorage.getItem("token");
@@ -346,15 +347,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			getNewPost: credentials => {
+			getNewPost: (postData, media) => {
 				const token = localStorage.getItem("token");
-				const tokenID = localStorage.getItem("tokenID");
+				const getNewMediaPost = (media, id) => {
+					console.log("This are the files", media);
+					let mybody = new FormData();
+					mybody.append("media", media[0]);
+					fetch(getStore().URL_API.concat("newmediapost/", id), {
+						body: mybody,
+						method: "POST"
+					})
+						.then(function(response) {
+							if (!response.ok) {
+								throw Error("I can't upload media!");
+							}
+							return response.json();
+							console.log(response);
+						})
+						.catch(function(error) {
+							console.log("Looks like there was a problem: \n", error);
+						});
+				};
 				const redirectToBlog = () => {
-					location.replace("./blog/");
+					location.replace("/blog/");
 				};
 				fetch(getStore().URL_API.concat("newpost/", localStorage.getItem("tokenID")), {
 					method: "POST",
-					body: credentials,
+					body: postData,
 					headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
 				})
 					.then(function(response) {
@@ -365,7 +384,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(response);
 					})
 					.then(function(responseAsJson) {
+						getNewMediaPost(media, responseAsJson.id);
 						setStore({ posts: responseAsJson });
+						console.log(responseAsJson.id, "maricon");
 						redirectToBlog();
 					})
 					.catch(function(error) {

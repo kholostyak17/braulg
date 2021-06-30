@@ -22,7 +22,7 @@ export const Blog = () => {
 	// variables para el hook form
 	const { register, handleSubmit } = useForm();
 	const onSubmit = data => {
-		actions.getNewPost(JSON.stringify(data));
+		actions.getNewPost(JSON.stringify(data), data.media);
 	};
 
 	useEffect(() => {
@@ -82,6 +82,7 @@ export const Blog = () => {
 									<h3>Titulo de tu entrada de blog:</h3>
 									<input
 										id="title"
+										name="title"
 										type="text"
 										className="input-style"
 										maxLength="100"
@@ -90,7 +91,8 @@ export const Blog = () => {
 									/>
 									<h3>Escribe tus experiencias:</h3>
 									<textarea
-										id="activities"
+										id="text"
+										name="text"
 										className="input-style my-textarea"
 										placeholder="Cuentanos que fue lo más emocionante..."
 										maxLenght="25000"
@@ -100,7 +102,7 @@ export const Blog = () => {
 									/>
 									<h3>Añade una imagen de tu historia:</h3>
 									<div className="center-file-input">
-										<input id="media" type="text" className="input-style" {...register("media")} />
+										<input id="media" type="file" className="input-style" {...register("media")} />
 									</div>
 									<div className="text-center">
 										<input
