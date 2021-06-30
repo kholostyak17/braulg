@@ -19,7 +19,7 @@ class Traveler(db.Model):
     age = db.Column(db.Integer, nullable=True)
     localization = db.Column(db.String, nullable=True)
     bio = db.Column(db.Text, nullable=True)
-    profile_picture = db.Column(db.String, unique=False, nullable=True)
+    profile_picture = db.Column(db.String, unique=False, nullable=True, default="https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png")
     is_active=db.Column(db.Boolean, default=True)
     
     def _repr_(self):
