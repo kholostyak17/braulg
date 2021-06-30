@@ -18,13 +18,18 @@
     flex-direction: column;
 }
 
-.home-media > h1 {
+.home-media >h1 {
     margin-top: 2rem;
-    font-size: 5rem;
-    font-variant-caps: all-petite-caps;
+    // font-size: 5rem;
+    // font-variant-caps: all-petite-caps;
     filter: opacity(0.5);
-    color: #f5b82e;
-    -webkit-text-emphasis: triangle;
+    // color: #f5b82e;
+    // -webkit-text-emphasis: triangle;
+}
+
+.logobraulg {
+    height: 7rem;
+    width: 7rem;
 }
 
 .auth-btn{

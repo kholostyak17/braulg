@@ -1,6 +1,7 @@
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import React, { useContext, useState, useEffect } from "react";
+import logo from "../../img/logo.png";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
 import Button from "../component/button.js";
@@ -83,16 +84,19 @@ export const Home = () => {
 			<MyNavbar />
 			<div className="home-container">
 				<div className="home-media">
-					<h1>Travelling together</h1>
+					<div className="d-flex justify-content-center align-center mt-3">
+						<img className="logobraulg" src={logo} />
+						<h1 className="secondary-color m-4">Braulg</h1>
+					</div>
 					<div className="media-links">
-						<h2 className="home-title">ENCUENTRA CON QUIEN VIAJAR!</h2>
+						<h2 className="home-title">¡Encuentra con quién viajar!</h2>
 						<Link to="/register">
-							<button className="auth-btn" id="registrate-btn">
+							<button className="button lm primary m-2" id="registrate-btn">
 								REGISTRATE
 							</button>
 						</Link>
 						<Link to="/login">
-							<button className="auth-btn" id="login-btn">
+							<button className="button lm secondary m-2" id="login-btn">
 								LOGIN
 							</button>
 						</Link>
