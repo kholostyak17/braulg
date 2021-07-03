@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// URL: "https://braulg.herokuapp.com/",
 			URL_API: "https://3001-crimson-elephant-hsxdt78x.ws-eu11.gitpod.io/api/",
 			URL: "https://3000-crimson-elephant-hsxdt78x.ws-eu11.gitpod.io/",
-			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
+			profilePicture: "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png",
 			currentUser: {},
 			users: [],
 			user: {},
