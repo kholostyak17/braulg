@@ -3,10 +3,10 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			URL_API: "https://braulg.herokuapp.com/api/",
-			URL: "https://braulg.herokuapp.com/",
-			// URL_API: "https://3001-olive-harrier-u60dtvc2.ws-eu08.gitpod.io/api/",
-			// URL: "https://3000-olive-harrier-u60dtvc2.ws-eu08.gitpod.io/",
+			// URL_API: "https://braulg.herokuapp.com/api/",
+			// URL: "https://braulg.herokuapp.com/",
+			URL_API: "https://3001-crimson-elephant-hsxdt78x.ws-eu11.gitpod.io/api/",
+			URL: "https://3000-crimson-elephant-hsxdt78x.ws-eu11.gitpod.io/",
 			profilePicture: "https://img.icons8.com/bubbles/2x/user-male.png",
 			currentUser: {},
 			users: [],
