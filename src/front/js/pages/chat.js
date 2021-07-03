@@ -91,7 +91,15 @@ export const Chat = () => {
 			<div className="container-fluid main-box chat-view d-flex">
 				<div className="col-sm-12 col-md-7 content-box-chat mx-auto">
 					<div className=" messages-box" id="conversation">
-						{conversationMap}
+						{conversationMap != "" ? (
+							conversationMap
+						) : (
+							<div className="d-flex justify-content-center ">
+								<div className="spinner-border text-warning my-5" role="status">
+									<span className="sr-only">Loading...</span>
+								</div>
+							</div>
+						)}
 					</div>
 					<div className="input-box">
 						<input
