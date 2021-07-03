@@ -38,7 +38,7 @@ export const Chat = () => {
 	}, []);
 
 	useEffect(() => {
-		const author = store.currentUser;
+		const author = store.currentUser.id;
 		const fullMessage = {
 			author: author,
 			message: message
@@ -61,16 +61,14 @@ export const Chat = () => {
 					let allMessages = Object.values(snapshot.val());
 					setConversationMap(
 						allMessages.map((element, index) => {
+							const myUser = store.users[element.author];
 							return (
 								<div key={index.toString()} className="full-message">
-									<Link to={"/user/".concat(element.author.id)}>
-										<img
-											className="chat-user-picture"
-											src={element.author.profile_picture}
-										/>
+									<Link to={"/user/".concat(myUser.id)}>
+										<img className="chat-user-picture" src={myUser.profile_picture} />
 									</Link>
 									<div className="chat-text">
-										<span className="fw-bold">{element.author.name.concat(": ")}</span>
+										<span className="fw-bold">{myUser.name.concat(": ")}</span>
 										<span>{element.message}</span>
 									</div>
 								</div>
