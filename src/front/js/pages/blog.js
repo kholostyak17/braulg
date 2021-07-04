@@ -61,14 +61,18 @@ export const Blog = () => {
 				<div className="content-box-blog">
 					<div className="d-flex justify-content-between flex-wrap">
 						<h1 className="text-center mt-4 mx-4 ps-3 secondary-color">Blog</h1>
-						<Button
-							className="mx-5 my-4"
-							size="lm"
-							color="secondary"
-							text="AÑADIR NUEVO POST"
-							data-toggle="modal"
-							callBackFunc={handleShow}
-						/>
+						{localStorage.getItem("token") != undefined ? (
+							<Button
+								className="mx-5 my-4"
+								size="lm"
+								color="secondary"
+								text="AÑADIR NUEVO POST"
+								data-toggle="modal"
+								callBackFunc={handleShow}
+							/>
+						) : (
+							""
+						)}
 						<Modal show={show} onHide={handleClose}>
 							<Modal.Header className="d-flex px-4">
 								<Modal.Title className="">Crear un nuevo post</Modal.Title>

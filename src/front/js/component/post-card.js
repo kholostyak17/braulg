@@ -12,7 +12,13 @@ export const PostCard = props => {
 	return (
 		<div className="my-card post-card-size row">
 			<div className="media-box col-sm-12 col-md-5">
-				<img className="media-picture" src={props.media}></img>
+				{props.media ? (
+					<img className="media-picture" src={props.media}></img>
+				) : (
+					<div className="d-flex h-100">
+						<i className="fas fa-route secondary-color m-auto icon-no-photo"></i>
+					</div>
+				)}
 			</div>
 			<div className="content-post-box col-sm-12 col-md-7">
 				<div className="my-card-header py-1 px-3">

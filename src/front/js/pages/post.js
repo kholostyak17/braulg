@@ -61,9 +61,14 @@ export const Post = () => {
 			<MyNavbar />
 			<div className="blog-view">
 				<div className="col-sm-12 col-md-9 content-box scrollable-box p-3">
-					<div>
-						<img src={store.post_by_id.media} className="post-image" />
-					</div>
+					{store.post_by_id.media ? (
+						<div>
+							<img src={store.post_by_id.media} className="post-image" />
+						</div>
+					) : (
+						""
+					)}
+
 					<div className="d-flex justify-content-between py-2 px-3">
 						<h1 className="text-center">{store.post_by_id.title}</h1>
 						<Link to={linkToUserID}>
