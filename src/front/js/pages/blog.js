@@ -98,7 +98,7 @@ export const Blog = () => {
 										name="text"
 										className="input-style my-textarea"
 										placeholder="Cuentanos que fue lo más emocionante..."
-										maxLenght="25000"
+										maxlenght="25000"
 										title="Máximo 25000 caracteres"
 										required
 										{...register("text")}

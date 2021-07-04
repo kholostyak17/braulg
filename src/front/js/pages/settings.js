@@ -21,7 +21,7 @@ export const Settings = () => {
 		if (data.picture != undefined) {
 			actions.getNewPicture(data.picture);
 		}
-		actions.getUpdate(JSON.stringify(data));
+		actions.getUpdate(JSON.stringify(data), data.picture);
 		localStorage.setItem("tokenName", data.name);
 	};
 
@@ -106,7 +106,7 @@ export const Settings = () => {
 							{...register("password")}
 						/>
 						<div className="text-center my-4 d-block">
-							<Link to="/">
+							<Link to={"/user/".concat(store.currentUser.id)}>
 								<Button className="m-2" size="lm" color="primary" text="CANCELAR" />
 							</Link>
 							<input type="submit" value="GUARDAR" className="button lm secondary m-2" />
