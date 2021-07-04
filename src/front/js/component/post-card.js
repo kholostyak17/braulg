@@ -16,7 +16,7 @@ export const PostCard = props => {
 					<img className="media-picture" src={props.media}></img>
 				) : (
 					<div className="d-flex h-100">
-						<i className="fas fa-route secondary-color m-auto icon-no-photo"></i>
+						<i className="fas fa-umbrella-beach secondary-color m-auto icon-no-photo"></i>
 					</div>
 				)}
 			</div>
