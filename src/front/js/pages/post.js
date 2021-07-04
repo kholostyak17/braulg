@@ -69,8 +69,8 @@ export const Post = () => {
 						""
 					)}
 
-					<div className="d-flex justify-content-between py-2 px-3">
-						<h1 className="text-center">{store.post_by_id.title}</h1>
+					<div className="py-2 px-3">
+						<h1 className="text-center d-block">{store.post_by_id.title}</h1>
 						<Link to={linkToUserID}>
 							<div className="d-flex align-items-center justify-content-center">
 								<img
