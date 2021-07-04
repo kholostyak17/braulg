@@ -25,7 +25,6 @@ export const MyNavbar = () => {
 					</Dropdown.Item>
 				</Link>
 				<Dropdown.Divider />
-
 				<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
 					<span onClick={() => localStorage.clear()}>Cerrar sesión</span>
 				</Dropdown.Item>
@@ -49,18 +48,31 @@ export const MyNavbar = () => {
 				/>
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
-						<Nav.Link href="/trips">
-							<div className="link-navbar text-center">Viajes propuestos</div>
-						</Nav.Link>
-						<Nav.Link href="/newtrip">
-							<div className="link-navbar text-center">Proponer un viaje</div>
-						</Nav.Link>
-						<Nav.Link href="/chat">
-							<div className="link-navbar text-center">Chat</div>
-						</Nav.Link>
-						<Nav.Link href="/blog">
-							<div className="link-navbar text-center">Blog</div>
-						</Nav.Link>
+						{localStorage.getItem("tokenID") != null ? (
+							<>
+								<Nav.Link href="/trips">
+									<div className="link-navbar text-center">Viajes propuestos</div>
+								</Nav.Link>
+								<Nav.Link href="/newtrip">
+									<div className="link-navbar text-center">Proponer un viaje</div>
+								</Nav.Link>
+								<Nav.Link href="/chat">
+									<div className="link-navbar text-center">Chat</div>
+								</Nav.Link>
+								<Nav.Link href="/blog">
+									<div className="link-navbar text-center">Blog</div>
+								</Nav.Link>
+							</>
+						) : (
+							<>
+								<Nav.Link href="/blog">
+									<div className="link-navbar text-center">Blog</div>
+								</Nav.Link>
+								<Nav.Link href="/register">
+									<div className="link-navbar text-center">Registrate para ver más</div>
+								</Nav.Link>
+							</>
+						)}
 					</Nav>
 					<Nav>
 						<Dropdown>
