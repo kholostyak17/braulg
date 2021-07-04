@@ -61,7 +61,7 @@ def create_traveler():
                     password, method='pbkdf2:sha256', salt_length=16)
                 traveler.reactive_account(name, age, password, language)
                 access_token = create_access_token(
-                    identity=traveler.to_dict(), expires_delta=timedelta(minutes=100))
+                    identity=traveler.to_dict(), expires_delta=timedelta(minutes=43800))
                 return jsonify(access_token), 200
         else:
             password = generate_password_hash(
@@ -70,7 +70,7 @@ def create_traveler():
                 name=name, email=email, _password=password, language=language, age=age)
             new_traveler_created = new_traveler.create()
             access_token = create_access_token(
-                identity=new_traveler_created.to_dict(), expires_delta=timedelta(minutes=100))
+                identity=new_traveler_created.to_dict(), expires_delta=timedelta(minutes=43800))
 
             if access_token:
                 return jsonify(access_token), 201
