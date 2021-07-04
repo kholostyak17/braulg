@@ -69,7 +69,7 @@ export const MyNavbar = () => {
 									<div className="link-navbar text-center">Blog</div>
 								</Nav.Link>
 								<Nav.Link href="/register">
-									<div className="link-navbar text-center">Registrate para ver más</div>
+									<div className="link-navbar text-center">Regístrate para ver más</div>
 								</Nav.Link>
 							</>
 						)}

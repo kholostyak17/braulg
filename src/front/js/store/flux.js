@@ -23,6 +23,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location.replace(getStore().URL.concat("login"));
 				}
 			},
+			isLoggedUser: () => {
+				if (localStorage.getItem("token")) {
+					location.replace(getStore().URL.concat("user/", localStorage.getItem("tokenID")));
+				}
+			},
 			getUser: (id, currentUser) => {
 				fetch(getStore().URL_API.concat("users/", id))
 					.then(function(response) {

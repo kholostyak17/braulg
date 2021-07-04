@@ -33,6 +33,9 @@ h1, h2, h3, p, span{
 a{
     text-decoration: none;
 }
+.primary-color{
+    color: $primary-color
+}
 .secondary-color{
     color: $secondary-color
 }

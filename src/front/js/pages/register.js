@@ -15,12 +15,16 @@ export const Register = () => {
 		actions.getRegister(JSON.stringify(data));
 	};
 
+	useEffect(() => {
+		actions.isLoggedUser();
+	}, []);
+
 	return (
 		<>
 			<MyNavbar />
 			<div className="container-fluid row main-box register-view">
 				<div className="col-sm-12 col-md-7 content-box">
-					<h1 className="text-center my-4">Registrate</h1>
+					<h1 className="text-center my-4">Registro</h1>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
 							<h2>Nombre:</h2>
@@ -69,10 +73,7 @@ export const Register = () => {
 								{...register("password")}
 							/>
 							<div className="text-center my-4">
-								<input type="submit" value="REGISTRARSE" className="button lm secondary m-2" />
-								<Link to="/">
-									<Button className="m-2" size="lm" color="primary" text="CANCELAR" />
-								</Link>
+								<input type="submit" value="REGÍSTRATE" className="button lm secondary m-2" />
 							</div>
 						</div>
 					</form>

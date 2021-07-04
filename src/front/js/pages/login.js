@@ -12,10 +12,13 @@ import Button from "../component/button.js";
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-
 	const onSubmit = data => {
 		actions.getLogin(JSON.stringify(data));
 	};
+
+	useEffect(() => {
+		actions.isLoggedUser();
+	}, []);
 
 	return (
 		<>
@@ -41,7 +44,10 @@ export const Login = () => {
 							<div className="text-center my-4">
 								<input type="submit" value="ACCEDER" className="button lm secondary m-2" />
 								<Link to="/register">
-									<Button className="m-2" size="lm" color="primary" text="REGISTRARSE" />
+									<p className="mt-4">
+										¿No tienes una cuenta?{" "}
+										<span className="fw-bold primary-color">¡Regístrate!</span>
+									</p>
 								</Link>
 							</div>
 						</div>
