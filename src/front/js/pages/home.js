@@ -104,7 +104,7 @@ export const Home = () => {
 				</div>
 				<div className="home-background">
 					<div className="home-body container">
-						<h2 className="title-home my-0 py-3">¿Cómo funciona Braulg?</h2>
+						<h1 className="title-home my-0 py-3 secondary-color">¿Cómo funciona Braulg?</h1>
 						<p className="">
 							<span className="">Nuestra misión</span> siempre ha sido ofrecer experiencias inolvidables a
 							nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
@@ -124,11 +124,15 @@ export const Home = () => {
 							</span>
 						</p>
 						<div className="">
-							<h2 className="title-home">Algunos de nuestros últimos viajes propuestos</h2>
+							<h2 className="title-home secondary-color">
+								Algunos de nuestros últimos viajes propuestos
+							</h2>
 							<div className="row d-flex flex-row-reverse ">{tripsMap}</div>
 						</div>
 						<div className="mini-cards">
-							<h2 className="title-home">Inspírate con las historias de nuestros usuarios</h2>
+							<h2 className="title-home secondary-color">
+								Inspírate con las historias de nuestros usuarios
+							</h2>
 							<MuiThemeProvider theme={theme}>
 								<Grid container className="card-sm-container">
 									<Grid item xs={12} sm={6} md={4} className="card-sm">
