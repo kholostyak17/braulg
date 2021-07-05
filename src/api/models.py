@@ -17,8 +17,8 @@ class Traveler(db.Model):
     _password = db.Column(db.String)
     language = db.Column(db.String)
     age = db.Column(db.Integer, nullable=True)
-    localization = db.Column(db.String, nullable=True)
-    bio = db.Column(db.Text, nullable=True)
+    localization = db.Column(db.String, nullable=True, default="desconocida")
+    bio = db.Column(db.Text, nullable=True, default="¡Hola a todos!")
     profile_picture = db.Column(db.String, unique=False, nullable=True, default="https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png")
     is_active=db.Column(db.Boolean, default=True)
     
