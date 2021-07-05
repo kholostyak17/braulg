@@ -23,7 +23,7 @@ export const Register = () => {
 		<>
 			<MyNavbar />
 			<div className="container-fluid row main-box register-view">
-				<div className="col-sm-12 col-md-7 content-box">
+				<div className="col-sm-12 col-md-6 content-box">
 					<h1 className="text-center my-4">Registro</h1>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-div">
@@ -78,7 +78,7 @@ export const Register = () => {
 						</div>
 					</form>
 				</div>
-				<div className="col-sm-12 col-md-5 picture-box">
+				<div className="col-sm-12 col-md-6 picture-box">
 					<img src={registerImage} className="picture" />
 				</div>
 			</div>

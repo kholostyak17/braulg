@@ -42,7 +42,7 @@ export const Login = () => {
 								{...register("password")}
 							/>
 							<div className="text-center my-4">
-								<input type="submit" value="ACCEDER" className="button lm secondary m-2" />
+								<input type="submit" value="INICIAR SESIÓN" className="button lm secondary m-2" />
 								<Link to="/register">
 									<p className="mt-4">
 										¿No tienes una cuenta?{" "}
