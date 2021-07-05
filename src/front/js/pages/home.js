@@ -1,27 +1,25 @@
-import { Context } from "../store/appContext";
-import "../../styles/home.scss";
 import React, { useContext, useState, useEffect } from "react";
-import logo from "../../img/logo.png";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
 import Button from "../component/button.js";
-import h_picture from "../../img/homepic.jpeg";
-import { Link } from "react-router-dom";
+import "../../styles/home.scss";
+import logo from "../../img/logo.png";
+import logoBraulg from "../../img/logo-braulg.png";
+import pictureHome from "../../img/picture-home.jpg";
+import backgroundHome from "../../img/background-home.jpg";
 import { TripCard } from "../component/trip-card.js";
 import CardSmall from "../component/cardsmall.js";
 import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-//(ALGUNOS BOTONES SON PROVISIONALES TODAVÍA)
+
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
 	const [posts, setPosts] = useState([]);
 	const [postsMap, setPostsMap] = useState("");
 	const [tripsMap, setTripsMap] = useState("");
-	const url =
-		"https://media-exp1.licdn.com/dms/image/C5616AQHycuoK6FWNow/profile-displaybackgroundimage-shrink_350_1400/0/1603134843668?e=1628121600&v=beta&t=7x8fDBnqPNyLxIogi9dEK4ccrQaxHelXQF48vUUY8t4";
-	const coloredText =
-		"Repellat dolorem dolores sapiente laborum eligendi illo culpa!, praesentium excepturi vero animi, Modi molestiae aperiam.";
 	const theme = createMuiTheme({
 		breakpoints: {
 			values: {
@@ -33,10 +31,9 @@ export const Home = () => {
 			}
 		}
 	});
+
 	useEffect(() => {
 		actions.getTrips();
-	}, []);
-	useEffect(() => {
 		actions.getPosts();
 	}, []);
 
@@ -57,39 +54,42 @@ export const Home = () => {
 			);
 		}
 	}, [store.posts]);
+
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
-				store.trips.slice(0, 2).map((trip, index) => {
+				store.trips.slice(0, 3).map((trip, index) => {
 					return (
-						<TripCard
-							key={index.toString()}
-							idTrip={trip.id}
-							username={trip.traveler_name}
-							userpicture={trip.traveler_picture}
-							country={trip.country}
-							cities={trip.cities}
-							startDate={trip.start_date}
-							endDate={trip.end_date}
-							activities={trip.activities}
-							partners={trip.partners}
-						/>
+						<div className="col-12 col-md-4" key={index.toString()}>
+							<TripCard
+								idTrip={trip.id}
+								username="Usuario"
+								userpicture={store.profilePicture}
+								country={trip.country}
+								cities={trip.cities}
+								startDate={trip.start_date}
+								endDate={trip.end_date}
+								activities={trip.activities}
+								partners={trip.partners}
+							/>
+						</div>
 					);
 				})
 			);
 		}
 	}, [store.trips]);
+
 	return (
 		<>
 			<MyNavbar />
 			<div className="home-container">
-				<div className="home-media">
-					<div className="d-flex justify-content-center align-center mt-3">
+				<div className="home-header">
+					<div className="logo-box">
 						<img className="logobraulg" src={logo} />
-						<h1 className="secondary-color m-4">Braulg</h1>
+						<img className="logotextbraulg" src={logoBraulg} />
 					</div>
-					<div className="media-links">
-						<h2 className="home-title">¡Encuentra con quién viajar!</h2>
+					<div className="links-box">
+						<h3 className="secondary-color">¡Encuentra compañeros de viaje!</h3>
 						<Link to="/register">
 							<button className="button lm primary m-2" id="registrate-btn">
 								REGISTRATE
@@ -97,68 +97,57 @@ export const Home = () => {
 						</Link>
 						<Link to="/login">
 							<button className="button lm secondary m-2" id="login-btn">
-								LOGIN
+								INICIA SESIÓN
 							</button>
 						</Link>
 					</div>
 				</div>
-				<div className="mision">
-					<h1 className="pregunta-home">QUE HACEMOS?</h1>
-					<p className="home-text">
-						<span className="colored-text">Nuestra misión</span> siempre ha sido ofrecer experiencias
-						inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
-					</p>
-					<p className="home-text">
-						<span className="colored-text">
-							La finalidad es que nuestro usuarios encuentren con quien viajar!
-						</span>{" "}
-						Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en grupo!
-						También pueden proponer los destinos que les interesen, así como{" "}
-						<span className="colored-text">las fechas y actividades a disfrutar.</span>
-					</p>
-					<p className="home-text">
-						{" "}
-						Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en lo
-						que respecta a{" "}
-						<span className="colored-text">
-							rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
-						</span>
-					</p>
-				</div>
-				<div className="viajes">
-					<h1 className="viajes-prop" id="title-largo">
-						VIAJES PROPUESTOS PARA ESTE MES
-					</h1>
-					<div className="trips-cards-2">
-						<div className="d-flex flex-column-reverse">{tripsMap}</div>
+				<div className="home-background">
+					<div className="home-body container">
+						<h2 className="title-home my-0 py-3">¿Cómo funciona Braulg?</h2>
+						<p className="">
+							<span className="">Nuestra misión</span> siempre ha sido ofrecer experiencias inolvidables a
+							nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
+						</p>
+						<p className="">
+							<span className="">La finalidad es que nuestro usuarios encuentren con quien viajar!</span>{" "}
+							Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en grupo!
+							También pueden proponer los destinos que les interesen, así como{" "}
+							<span className="">las fechas y actividades a disfrutar.</span>
+						</p>
+						<p className="">
+							{" "}
+							Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en
+							lo que respecta a{" "}
+							<span className="">
+								rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
+							</span>
+						</p>
+						<div className="">
+							<h2 className="title-home">Algunos de nuestros últimos viajes propuestos</h2>
+							<div className="row d-flex flex-row-reverse ">{tripsMap}</div>
+						</div>
+						<div className="mini-cards">
+							<h2 className="title-home">Inspírate con las historias de nuestros usuarios</h2>
+							<MuiThemeProvider theme={theme}>
+								<Grid container className="card-sm-container">
+									<Grid item xs={12} sm={6} md={4} className="card-sm">
+										{postsMap[0]}
+									</Grid>
+									<Grid item xs={12} sm={6} md={4} className="card-sm">
+										{postsMap[1]}
+									</Grid>
+									<Grid item xs={12} sm={12} md={4} className="card-sm">
+										{postsMap[2]}
+									</Grid>
+								</Grid>
+							</MuiThemeProvider>
+						</div>
+						<Link to="/blog">
+							<Button className=" my-4" size="lm" color="secondary" text="Ver publicaciones del blog" />
+						</Link>
 					</div>
 				</div>
-				<div className="mini-cards">
-					<h1 className="viajes-prop" id="inspirate">
-						INSPIRATE
-					</h1>
-					<MuiThemeProvider theme={theme}>
-						<Grid container className="card-sm-container">
-							<Grid item xs={12} sm={6} md={4} className="card-sm">
-								{postsMap[0]}
-							</Grid>
-							<Grid item xs={12} sm={6} md={4} className="card-sm">
-								{postsMap[1]}
-							</Grid>
-							<Grid item xs={12} sm={12} md={4} className="card-sm">
-								{postsMap[2]}
-							</Grid>
-						</Grid>
-						{/* <Grid container>
-							<Grid item className="card-sm">
-								{postsMap[0]}
-							</Grid>
-						</Grid> */}
-					</MuiThemeProvider>
-				</div>
-				<Link to="/trips" style={{ textDecoration: "none" }}>
-					<div className="see-more">Ver más posts</div>
-				</Link>
 			</div>
 			<Footer />
 		</>

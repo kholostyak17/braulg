@@ -1,6 +1,7 @@
 .card--small{
-    width: 27.438rem;
-    margin:0.5rem auto 0.5rem auto;
+    overflow: hidden;
+    width: 30rem;
+    margin: 1.5rem auto;
     @media screen and (max-width:466px){
         margin:0 0 1.3rem 0;
         width:100%;
@@ -12,13 +13,15 @@
 }
 .title--small{
     color:#16A398;
-    margin: 0 auto
+    margin: 0 auto;
+    width: 100%;
 }
 .text--small{
     margin: 0.4rem 0 0.6rem 0.9rem;
     max-height: 7.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
+    width: 100%;
 }
 .button--small{
     margin: 0 auto

@@ -88,8 +88,8 @@ export const Blog = () => {
 										name="title"
 										type="text"
 										className="input-style"
-										maxLength="100"
-										title="Máximo 100 caracteres, solo letras"
+										maxLength="65"
+										title="Máximo 65 caracteres"
 										{...register("title")}
 									/>
 									<h3>Escribe tus experiencias:</h3>
