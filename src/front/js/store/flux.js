@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			// URL_API: "https://braulg.herokuapp.com/api/",
 			// URL: "https://braulg.herokuapp.com/",
-			URL_API: "https://3001-crimson-elephant-hsxdt78x.ws-eu10.gitpod.io/api/",
-			URL: "https://3000-crimson-elephant-hsxdt78x.ws-eu10.gitpod.io/",
+			URL_API: "https://3001-crimson-elephant-hsxdt78x.ws-eu11.gitpod.io/api/",
+			URL: "https://3000-crimson-elephant-hsxdt78x.ws-eu11.gitpod.io/",
 			profilePicture: "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png",
 			currentUser: {},
 			users: [],
@@ -137,18 +137,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let decoded = jwt_decode(token);
 					return decoded;
 				};
-
 				const setTravelerFromToken = token => {
 					localStorage.setItem("tokenID", token.sub.id);
 					localStorage.setItem("tokenName", token.sub.name);
 				};
-
 				const redirectToProfile = () => {
 					if (localStorage.getItem("tokenID") != null) {
 						location.replace("./user/".concat(localStorage.getItem("tokenID")));
 					}
 				};
-
 				fetch(getStore().URL_API.concat("login"), {
 					method: "POST",
 					body: credentials,
@@ -168,6 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(function(error) {
 						alert("Usuario o contraseña incorrectos");
+						localStorage.removeItem("token");
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
