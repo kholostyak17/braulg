@@ -62,6 +62,9 @@
        padding: 0.5rem 0.3rem;
    }
 }
+.desc{
+    height: 6rem;
+}
 .card .actions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -102,10 +105,10 @@ path {
 #ivan{
   background-image: url(../img/ivan.jpeg);
 }
-#andrea{
-  background-image: url(../img/no.png);
-}
 #sergio{
+  background-image: url(../img/sergio.jpg);
+}
+#andrea{
   background-image: url(../img/no.png);
 
 }

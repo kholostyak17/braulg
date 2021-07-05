@@ -1,12 +1,20 @@
 @import 'index.scss';
 
 .profile-view{
-        background-image: url("../img/background-profile.jpg");
-        // background-color: rgb(90, 90, 240);
-        background-repeat: repeat;
-        background-size: 100vw 100vh;
+    background-image: url("../img/background-profile.jpg");
+    // background-color: rgb(90, 90, 240);
+    background-repeat: repeat;
+    background-size: 100vw 100vh;
+    @media only screen and (min-width: 768px) {
+        height: 100vh;
     }
-
+}
+.content-box-profile{
+    @media only screen and (min-width: 768px) {
+    height: 100vh;
+    overflow: hidden;
+    }
+}
 .background-image{
     width: 100%;
     background-image: url("../img/background-profile-2.jpg");

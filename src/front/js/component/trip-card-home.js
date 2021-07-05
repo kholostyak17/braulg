@@ -5,7 +5,7 @@ import "../../styles/trip-card.scss";
 import { Link } from "react-router-dom";
 import Button from "./button.js";
 
-export const TripCard = props => {
+export const TripCardHome = props => {
 	const linkToTripID = "/trips/".concat(props.tripID);
 	const linkToUserID = "/user/".concat(props.userID);
 	const [partnersMap, setPartnersMap] = useState("");
@@ -35,11 +35,6 @@ export const TripCard = props => {
 					<h2>
 						Viaje a: <span className="text-dark">{props.country}</span>
 					</h2>
-				</div>
-				<div className="col-12 col-md-3 ms-auto my-auto text-center">
-					<Link to={linkToTripID}>
-						<Button className="" size="sm" color="secondary" text="Saber más" />
-					</Link>
 				</div>
 			</div>
 			<div className="my-card-body">
@@ -85,7 +80,7 @@ export const TripCard = props => {
 	);
 };
 
-TripCard.propTypes = {
+TripCardHome.propTypes = {
 	userpicture: PropTypes.string,
 	username: PropTypes.string,
 	userID: PropTypes.number,

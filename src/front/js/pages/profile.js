@@ -71,7 +71,7 @@ export const Profile = () => {
 			setUser(
 				<>
 					<div className="profile-view">
-						<div className="col-sm-12 col-md-7 content-box">
+						<div className="col-sm-12 col-md-7 content-box content-box-profile">
 							<div className="background-image">
 								<img className="profile-img" src={store.user.profile_picture} />
 							</div>

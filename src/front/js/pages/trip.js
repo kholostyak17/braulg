@@ -137,8 +137,8 @@ export const Trip = () => {
 							</div>
 						)}
 					</div>
-					<h4>Partners:</h4>
-					{partnersMap}
+					<h4>Compañeros:</h4>
+					{partnersMap != "" ? partnersMap : "Todavía no hay compañeros"}
 				</>
 			);
 		}

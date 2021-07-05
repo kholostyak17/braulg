@@ -54,7 +54,8 @@
     }
 }
 .home-background{
-    background: url(/background-home.jpg) no-repeat;
+    // background: url(/background-home.jpg) no-repeat;
+    background-color: rgb(184, 184, 184);
     background-size: cover;
 }
 .home-body{
@@ -117,4 +118,8 @@
 }
 .card-sm-container{
     margin-top:-1rem;
+}
+
+.blog-button{
+    margin-top: 2rem;
 }

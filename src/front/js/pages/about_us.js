@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import logo from "../../img/logo.png";
 import ivan from "../../img/ivan.jpeg";
+import sergio from "../../img/sergio.jpg";
 import Grid from "@material-ui/core/Grid";
 export const AboutUs = () => {
 	return (
@@ -21,10 +22,7 @@ export const AboutUs = () => {
 						<div className="title-total">
 							<div className="title">kholostyak17@gmail.com</div>
 							<h2 className="name-profile">Iván Jaén Trujillo</h2>
-							<div className="desc">
-								Texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-								texto texto texto texto texto texto texto.
-							</div>
+							<div className="desc"></div>
 							<div className="actions">
 								<a target="_blank" rel="noopener noreferrer" href="https://github.com/kholostyak17">
 									<button className="links-profile">
@@ -34,7 +32,7 @@ export const AboutUs = () => {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://www.linkedin.com/in/ivan-jaen-21a030207/">
+									href="https://www.linkedin.com/in/ivan-jaen-kholostyak17/">
 									<button className="links-profile">
 										<i className="fab fa-linkedin"></i>
 									</button>
@@ -55,12 +53,9 @@ export const AboutUs = () => {
 					<div className="card-text">
 						<div className="portada" id="sergio"></div>
 						<div className="title-total">
-							<div className="title">email@email.com</div>
+							<div className="title">sergiocarrascal000@gmail.com</div>
 							<h2 className="name-profile">Sergio Carrascal </h2>
-							<div className="desc">
-								Texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-								texto texto texto texto texto texto texto.
-							</div>
+							<div className="desc"></div>
 							<div className="actions">
 								<a target="_blank" rel="noopener noreferrer" href="https://github.com/scsanchez">
 									<button className="links-profile">
@@ -91,12 +86,9 @@ export const AboutUs = () => {
 					<div className="card-text">
 						<div className="portada" id="andrea"></div>
 						<div className="title-total">
-							<div className="title">email@email.com</div>
+							<div className="title">-</div>
 							<h2 className="name-profile">Andrea García</h2>
-							<div className="desc">
-								Texto texto texto texto texto texto texto texto texto texto texto texto texto texto
-								texto texto texto texto texto texto texto.
-							</div>
+							<div className="desc"></div>
 							<div className="actions">
 								<a target="_blank" rel="noopener noreferrer" href="https://github.com/Andreagar28">
 									<button className="links-profile">

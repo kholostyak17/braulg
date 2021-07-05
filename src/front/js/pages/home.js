@@ -9,7 +9,7 @@ import logo from "../../img/logo.png";
 import logoBraulg from "../../img/logo-braulg.png";
 import pictureHome from "../../img/picture-home.jpg";
 import backgroundHome from "../../img/background-home.jpg";
-import { TripCard } from "../component/trip-card.js";
+import { TripCardHome } from "../component/trip-card-home.js";
 import CardSmall from "../component/cardsmall.js";
 import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
@@ -58,10 +58,10 @@ export const Home = () => {
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
-				store.trips.slice(0, 3).map((trip, index) => {
+				store.trips.slice(0, 2).map((trip, index) => {
 					return (
-						<div className="col-12 col-md-4" key={index.toString()}>
-							<TripCard
+						<div className="col-12 col-md-6" key={index.toString()}>
+							<TripCardHome
 								idTrip={trip.id}
 								username="Usuario"
 								userpicture={store.profilePicture}
@@ -88,49 +88,59 @@ export const Home = () => {
 						<img className="logobraulg" src={logo} />
 						<img className="logotextbraulg" src={logoBraulg} />
 					</div>
-					<div className="links-box">
-						<h3 className="secondary-color">¡Encuentra compañeros de viaje!</h3>
-						<Link to="/register">
-							<button className="button lm primary m-2" id="registrate-btn">
-								REGISTRATE
-							</button>
-						</Link>
-						<Link to="/login">
-							<button className="button lm secondary m-2" id="login-btn">
-								INICIA SESIÓN
-							</button>
-						</Link>
-					</div>
+					{!localStorage.getItem("token") ? (
+						<div className="links-box">
+							<h3 className="secondary-color">¡Encuentra compañeros de viaje!</h3>
+							<Link to="/register">
+								<button className="button lm primary m-2" id="registrate-btn">
+									REGISTRATE
+								</button>
+							</Link>
+							<Link to="/login">
+								<button className="button lm secondary m-2" id="login-btn">
+									INICIA SESIÓN
+								</button>
+							</Link>
+						</div>
+					) : (
+						""
+					)}
 				</div>
 				<div className="home-background">
 					<div className="home-body container">
-						<h1 className="title-home my-0 py-3 secondary-color">¿Cómo funciona Braulg?</h1>
-						<p className="">
-							<span className="">Nuestra misión</span> siempre ha sido ofrecer experiencias inolvidables a
-							nuestros viajeros y podemos decir con total seguridad que lo hemos conseguido!
-						</p>
-						<p className="">
-							<span className="">La finalidad es que nuestro usuarios encuentren con quien viajar!</span>{" "}
-							Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en grupo!
-							También pueden proponer los destinos que les interesen, así como{" "}
-							<span className="">las fechas y actividades a disfrutar.</span>
-						</p>
-						<p className="">
-							{" "}
-							Además estamos en continua evolución para proporcionar un servicio siempre más eficiente en
-							lo que respecta a{" "}
-							<span className="">
-								rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
-							</span>
-						</p>
+						<h1 className="title-home my-0 py-3 primary-color">¿Cómo funciona Braulg?</h1>
+						<div className="mx-2">
+							<p className="">
+								<span className="">Nuestra misión</span> siempre ha sido ofrecer experiencias
+								inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos
+								conseguido!
+							</p>
+							<p className="">
+								<span className="">
+									La finalidad es que nuestro usuarios encuentren con quien viajar!
+								</span>{" "}
+								Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en
+								grupo! También pueden proponer los destinos que les interesen, así como{" "}
+								<span className="">las fechas y actividades a disfrutar.</span>
+							</p>
+							<p className="">
+								{" "}
+								Además estamos en continua evolución para proporcionar un servicio siempre más eficiente
+								en lo que respecta a{" "}
+								<span className="">
+									rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
+								</span>
+							</p>
+						</div>
+
 						<div className="">
-							<h2 className="title-home secondary-color">
+							<h2 className="title-home primary-color my-4">
 								Algunos de nuestros últimos viajes propuestos
 							</h2>
-							<div className="row d-flex flex-row-reverse ">{tripsMap}</div>
+							<div className="row d-flex flex-row ">{tripsMap}</div>
 						</div>
 						<div className="mini-cards">
-							<h2 className="title-home secondary-color">
+							<h2 className="title-home primary-color my-4">
 								Inspírate con las historias de nuestros usuarios
 							</h2>
 							<MuiThemeProvider theme={theme}>
@@ -147,9 +157,16 @@ export const Home = () => {
 								</Grid>
 							</MuiThemeProvider>
 						</div>
-						<Link to="/blog">
-							<Button className=" my-4" size="lm" color="secondary" text="Ver publicaciones del blog" />
-						</Link>
+						<div className="text-center blog-button">
+							<Link to="/blog">
+								<Button
+									className="mb-5"
+									size="lm"
+									color="secondary"
+									text="Ver publicaciones del blog"
+								/>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>

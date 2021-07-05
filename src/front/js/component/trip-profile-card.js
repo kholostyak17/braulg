@@ -14,12 +14,12 @@ const TripProfileCard = props => {
 				return (
 					<>
 						<div className="partner-box-trip-card" key={index.toString}>
-							<Link to={linkToPartnerID}>
+							<a href={linkToPartnerID}>
 								<div className="partner-picture-box">
-									<img src={partner.picture} className="partner-picture"></img>
+									<img src={partner.profile_picture} className="partner-picture"></img>
 								</div>
 								<p className="">{partner.name}</p>
-							</Link>
+							</a>
 						</div>
 					</>
 				);
@@ -39,7 +39,7 @@ const TripProfileCard = props => {
 				</div>
 			</div>
 			<div className="my-card-body2">
-				<p>{partnersMap != [] ? "Compañeros:" : "Todavía no hay compañeros"}</p>
+				<p>{partnersMap != "" ? "Compañeros:" : "Todavía no hay compañeros"}</p>
 				<div className="">{partnersMap}</div>
 				<div className="">
 					<Link to={linkToTripID}>
