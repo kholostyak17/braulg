@@ -48,7 +48,17 @@ export const Trips = () => {
 			<div className="container-fluid main-box trips-view d-flex">
 				<div className="col-sm-12 col-md-7 content-box mx-auto scrollable-box">
 					<h1 className="text-center mt-4">Últimos viajes propuestos</h1>
-					<div className="d-flex flex-column-reverse">{tripsMap}</div>
+					<div className="d-flex flex-column-reverse">
+						{tripsMap != "" ? (
+							tripsMap
+						) : (
+							<div className="d-flex justify-content-center ">
+								<div className="spinner-border text-warning my-5" role="status">
+									<span className="sr-only">Loading...</span>
+								</div>
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 			<Footer />

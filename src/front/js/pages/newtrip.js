@@ -10,7 +10,11 @@ export const NewTrip = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
 	const onSubmit = data => {
-		actions.getNewTrip(JSON.stringify(data));
+		if (data.start_date > data.end_date) {
+			alert("La fecha es inválida");
+		} else {
+			actions.getNewTrip(JSON.stringify(data));
+		}
 	};
 
 	useEffect(() => {
@@ -766,6 +770,8 @@ export const NewTrip = () => {
 							<input
 								id="start_date"
 								type="date"
+								min="2021-07-06"
+								max="2041-07-06"
 								className="input-style"
 								required
 								{...register("start_date")}
@@ -774,6 +780,8 @@ export const NewTrip = () => {
 							<input
 								id="end_date"
 								type="date"
+								min="2021-07-06"
+								max="2041-07-06"
 								className="input-style"
 								required
 								{...register("end_date")}

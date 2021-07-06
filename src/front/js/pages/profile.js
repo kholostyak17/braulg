@@ -88,15 +88,15 @@ export const Profile = () => {
 							</div>
 							<div className="row body">
 								<div className="col-12 col-sm-6 mb-4">
-									<div className="text-center">
-										<h2>Información básica</h2>
+									<h2 className="text-center">Información básica</h2>
+									<div className="basic-info">
+										<h5 className="mt-2">Edad:</h5>
+										<span className="text-dark">{store.user.age}</span>
+										<h5 className="mt-2">Idiomas:</h5>
+										<span className="text-dark">{store.user.language}</span>
+										<h5 className="mt-2">Localización:</h5>
+										<span className="text-dark">{store.user.localization}</span>
 									</div>
-									<h5 className="mt-2">Edad:</h5>
-									<span className="text-dark">{store.user.age}</span>
-									<h5 className="mt-2">Idiomas:</h5>
-									<span className="text-dark">{store.user.language}</span>
-									<h5 className="mt-2">Localización:</h5>
-									<span className="text-dark">{store.user.localization}</span>
 								</div>
 								<div className="col-12 col-sm-6 text-center mb-5">
 									<h2>Siguientes viajes</h2>

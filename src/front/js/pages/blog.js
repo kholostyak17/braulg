@@ -119,7 +119,17 @@ export const Blog = () => {
 							</Modal.Body>
 						</Modal>
 					</div>
-					<div className="d-flex flex-column-reverse">{postsMap}</div>
+					<div className="d-flex flex-column-reverse">
+						{postsMap != "" ? (
+							postsMap
+						) : (
+							<div className="d-flex justify-content-center ">
+								<div className="spinner-border text-warning my-5" role="status">
+									<span className="sr-only">Loading...</span>
+								</div>
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 			<Footer />

@@ -108,28 +108,28 @@ export const Home = () => {
 				</div>
 				<div className="home-background">
 					<div className="home-body container">
-						<h1 className="title-home my-0 py-3 primary-color">¿Cómo funciona Braulg?</h1>
+						<h1 className="title-home my-0 py-3 primary-color">¿Qué es Braulg?</h1>
 						<div className="mx-2">
 							<p className="">
-								<span className="">Nuestra misión</span> siempre ha sido ofrecer experiencias
-								inolvidables a nuestros viajeros y podemos decir con total seguridad que lo hemos
-								conseguido!
+								Braulg es una red social pensada para conectar personas con la finalidad de realizar
+								viajes en compañía.
 							</p>
 							<p className="">
-								<span className="">
-									La finalidad es que nuestro usuarios encuentren con quien viajar!
-								</span>{" "}
-								Pueden conocer otros viajeros por nuestra plataforma y conocer lugares del mundo en
-								grupo! También pueden proponer los destinos que les interesen, así como{" "}
-								<span className="">las fechas y actividades a disfrutar.</span>
+								Si eres un usuario que ya tiene en mente un plan de viaje, puedes publicar un aviso de
+								viaje donde cuentes al resto de usuarios dónde deseas viajar, en que fecha piensas
+								hacerlo, y que actividades te apetece realizar.
 							</p>
-							<p className="">
-								{" "}
-								Además estamos en continua evolución para proporcionar un servicio siempre más eficiente
-								en lo que respecta a{" "}
-								<span className="">
-									rapidez de respuesta, claridad, exhaustividad y herramientas tecnológicas.
-								</span>
+							<p>
+								En cambio, si todavía no tienes un plan en mente pero te apetece unirte a algún viaje
+								propuesto por otro usuario podrás ver la lista de viajes propuestos por los otros
+								usuarios y añadirte a ellos como compañero. En el chat de nuestra apliación podreís
+								mantener contacto para que os pongaís de acuerdo respecto a todos los detalles del
+								viaje.
+							</p>
+							<p>
+								Además nuestra aplicación cuenta con un blog dónde los usuarios pueden compartir sus
+								experiencias de viaje, para que el resto de usuarios puedan tomar inpiración para sus
+								futuros planes :)
 							</p>
 						</div>
 

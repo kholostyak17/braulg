@@ -61,7 +61,9 @@ export const Chat = () => {
 					let allMessages = Object.values(snapshot.val());
 					setConversationMap(
 						allMessages.map((element, index) => {
-							const myUser = store.users[element.author];
+							console.log(store.users);
+							// const myUser = store.users[element.author - 1];
+							const myUser = store.users.find(elementarray => elementarray.id == element.author);
 							return (
 								<div key={index.toString()} className="full-message">
 									<Link to={"/user/".concat(myUser.id)}>
