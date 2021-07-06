@@ -14,10 +14,12 @@ const TripProfileCard = props => {
 				return (
 					<>
 						<div className="partner-box-trip-card" key={index.toString}>
-							<div className="partner-picture-box">
-								<img src={partner.profile_picture} className="partner-picture"></img>
-							</div>
-							<p className="">{partner.name}</p>
+							<a href={linkToPartnerID}>
+								<div className="partner-picture-box">
+									<img src={partner.profile_picture} className="partner-picture"></img>
+								</div>
+								<p className="">{partner.name}</p>
+							</a>
 						</div>
 					</>
 				);

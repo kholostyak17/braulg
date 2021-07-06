@@ -58,7 +58,7 @@ export const Home = () => {
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
-				store.trips.slice(0, 2).map((trip, index) => {
+				store.trips.slice(store.trips.length - 2, store.trips.length).map((trip, index) => {
 					return (
 						<div className="col-12 col-md-6" key={index.toString()}>
 							<TripCardHome
@@ -137,7 +137,7 @@ export const Home = () => {
 							<h2 className="title-home primary-color my-4">
 								Algunos de nuestros últimos viajes propuestos
 							</h2>
-							<div className="row d-flex flex-row ">{tripsMap}</div>
+							<div className="row d-flex flex-row-reverse">{tripsMap}</div>
 						</div>
 						<div className="mini-cards">
 							<h2 className="title-home primary-color my-4">

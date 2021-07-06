@@ -16,12 +16,10 @@ export const TripCardHome = props => {
 				const linkToPartnerID = "/user/".concat(partner.id);
 				return (
 					<div className="partner-box-trip-card" key={index.toString()}>
-						<Link to={linkToPartnerID}>
-							<div className="partner-picture-box">
-								<img src={partner.profile_picture} className="partner-picture"></img>
-							</div>
-							<p className="">{partner.name}</p>
-						</Link>
+						<div className="partner-picture-box">
+							<img src={partner.profile_picture} className="partner-picture"></img>
+						</div>
+						<p className="">{partner.name}</p>
 					</div>
 				);
 			})
@@ -41,12 +39,10 @@ export const TripCardHome = props => {
 				<div className="row">
 					<div className="col-12 col-md-6">
 						<h4>Propuesto por:</h4>
-						<Link to={linkToUserID}>
-							<div className="d-flex align-items-center">
-								<img src={props.userpicture} className="user-picture"></img>
-								<p className="user-name">{props.username}</p>
-							</div>
-						</Link>
+						<div className="d-flex align-items-center">
+							<img src={props.userpicture} className="user-picture"></img>
+							<p className="user-name">{props.username}</p>
+						</div>
 					</div>
 					<div className="col-12 col-md-6">
 						<h4 className="mt-2">Ciudades:</h4>
