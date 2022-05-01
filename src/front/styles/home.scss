@@ -1,5 +1,5 @@
 .home-header{
-    background: url(/picture-home.jpg) no-repeat;
+    background: url(../img/picture-home.jpg) no-repeat;
     background-size: cover;
     display: flex;
     @media only screen and (min-width: 768px) {
@@ -54,7 +54,6 @@
     }
 }
 .home-background{
-    // background: url(/background-home.jpg) no-repeat;
     background-color: #d6dfe0;
     background-size: cover;
 }

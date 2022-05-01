@@ -6,11 +6,8 @@
   justify-content: center;
   height:100%;
   background: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
-//   display:flex;
-//   justify-content: space-around;
   @media screen and (max-width:957px){
         height:auto;
-//   height:auto;
   }
 }
 .nav-logo-about{
@@ -25,7 +22,6 @@
   max-height: 350px;
   border-radius: 25px;
   overflow: hidden;
-//   position: relative;
 }
 #card-1{
   margin: 2rem 1rem 2rem 1rem;
@@ -103,14 +99,10 @@ path {
   background-size: cover;
 }
 #ivan{
-  background-image: url(../img/ivan.jpeg);
+  background-image: url("../img/ivan.jpeg");
 }
 #sergio{
-  background-image: url(../img/sergio.jpg);
-}
-#andrea{
-  background-image: url(../img/no.png);
-
+  background-image: url("../img/sergio.jpg");
 }
 .links-profile {
   border: none;

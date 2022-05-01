@@ -8,15 +8,15 @@ export const Footer = () => (
 			<div className="footer-element">
 				<Link to="/aboutus">
 					<span className="link-footer">
-						Made with <i className="fa fa-heart text-danger" /> by Iván, Sergio &amp; Andrea
+						Made with <i className="fa fa-heart text-danger" /> by Iván &amp; Sergio
 					</span>
 				</Link>
 			</div>
-			<div className="footer-element">
+			{/* <div className="footer-element">
 				<Link to="/faq">
 					<span className="link-footer">Preguntas frecuentes</span>
 				</Link>
-			</div>
+			</div> */}
 		</div>
 	</footer>
 );

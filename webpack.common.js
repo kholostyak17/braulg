@@ -17,21 +17,28 @@ module.exports = {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader']
+          use: ['babel-loader']
         },
         {
-          test: /\.(css|scss)$/, use: [{
-              loader: "style-loader" // creates style nodes from JS strings
+          test: /\.(css|scss)$/, 
+          use: [{
+            loader: "style-loader" // creates style nodes from JS strings
           }, {
-              loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader" // translates CSS into CommonJS
+          // },{
+          //   loader: "resolve-url-loader" // translates CSS into CommonJS
           }, {
-              loader: "sass-loader" // compiles Sass to CSS
-          }]
+              loader: "sass-loader", // compiles Sass to CSS
+              // options: {
+              //   sourceMap: true,
+              // }
+          }],
         }, //css only files
         {
-          test: /\.(png|svg|jpg|gif|jpeg|webp)$/, use: {
+          test: /\.(png|svg|jpg|gif|jpeg|webp)$/, 
+          use: {
             loader: 'file-loader',
-            options: { name: '[name].[ext]' }
+            options: { name: '[name].[ext]', }
           }
         }, //for images
         { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
@@ -41,14 +48,6 @@ module.exports = {
     extensions: ['*', '.js']
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      Popper: 'popper.js',
-      jQuery: 'jquery',
-      // In case you imported plugins individually, you must also require them here:
-      Util: "exports-loader?Util!bootstrap/js/dist/util",
-      Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
-    }),
     new HtmlWebpackPlugin({
         favicon: 'braulg.ico',
         template: 'template.html'

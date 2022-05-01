@@ -79,36 +79,6 @@ export const AboutUs = () => {
 						</div>
 					</div>
 				</div>
-				<div className="card" id="card-3">
-					<div className="img-avatar">
-						<img src={logo} className="nav-logo-about" viewBox="0 0 100 100" />
-					</div>
-					<div className="card-text">
-						<div className="portada" id="andrea"></div>
-						<div className="title-total">
-							<div className="title">-</div>
-							<h2 className="name-profile">Andrea García</h2>
-							<div className="desc"></div>
-							<div className="actions">
-								<a target="_blank" rel="noopener noreferrer" href="https://github.com/Andreagar28">
-									<button className="links-profile">
-										<i className="fab fa-github"></i>
-									</button>
-								</a>
-								<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/">
-									<button className="links-profile">
-										<i className="fab fa-linkedin"></i>
-									</button>
-								</a>
-								<a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/">
-									<button className="links-profile">
-										<i className="fab fa-facebook"></i>
-									</button>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
 			</Grid>
 			<Footer />
 		</>

@@ -3,8 +3,8 @@ import jwt_decode from "jwt-decode";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			URL_API: "https://braulg.herokuapp.com/api/",
-			URL: "https://braulg.herokuapp.com/",
+			URL_API: process.env.API_URL || "https://braulg.herokuapp.com/api/",
+			URL: process.env.FRONT_URL || "https://braulg.herokuapp.com/",
 			// URL_API: "https://3001-lime-bedbug-h58dduyo.ws-eu10.gitpod.io/api/",
 			// URL: "https://3000-lime-bedbug-h58dduyo.ws-eu10.gitpod.io/",
 			profilePicture: "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png",

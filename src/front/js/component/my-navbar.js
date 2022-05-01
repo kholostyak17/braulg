@@ -39,9 +39,9 @@ export const MyNavbar = () => {
 	return (
 		<Navbar expand="sm">
 			<div className="container-fluid">
-				<Nav.Link href="/">
+				<Link to="/">
 					<img src={logo} className="nav-logo" />
-				</Nav.Link>
+				</Link>
 				<Navbar.Toggle
 					aria-controls="basic-navbar-nav"
 					className="toggle-button bg-secondary-color me-2 px-2"
@@ -50,27 +50,27 @@ export const MyNavbar = () => {
 					<Nav className="me-auto">
 						{localStorage.getItem("tokenID") != null ? (
 							<>
-								<Nav.Link href="/trips">
-									<div className="link-navbar text-center">Viajes propuestos</div>
-								</Nav.Link>
-								<Nav.Link href="/newtrip">
-									<div className="link-navbar text-center">Proponer un viaje</div>
-								</Nav.Link>
-								<Nav.Link href="/chat">
-									<div className="link-navbar text-center">Chat</div>
-								</Nav.Link>
-								<Nav.Link href="/blog">
-									<div className="link-navbar text-center">Blog</div>
-								</Nav.Link>
+								<Link to="/trips">
+									<div className="px-2 py-2 link-navbar text-center">Viajes propuestos</div>
+								</Link>
+								<Link to="/newtrip">
+									<div className="px-2 py-2 link-navbar text-center">Proponer un viaje</div>
+								</Link>
+								<Link to="/chat">
+									<div className="px-2 py-2 link-navbar text-center">Chat</div>
+								</Link>
+								<Link to="/blog">
+									<div className="px-2 py-2 link-navbar text-center">Blog</div>
+								</Link>
 							</>
 						) : (
 							<>
-								<Nav.Link href="/blog">
-									<div className="link-navbar text-center">Blog</div>
-								</Nav.Link>
-								<Nav.Link href="/register">
-									<div className="link-navbar text-center">Regístrate para ver más</div>
-								</Nav.Link>
+								<Link to="/blog">
+									<div className="px-2 py-2 link-navbar text-center">Blog</div>
+								</Link>
+								<Link to="/register">
+									<div className="px-2 py-2 link-navbar text-center">Regístrate para ver más</div>
+								</Link>
 							</>
 						)}
 					</Nav>
