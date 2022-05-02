@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import logo from "../../img/logo.png";
+import logo from "../../img/logo-kochanie.jpeg";
 import loginImage from "../../img/background-login.jpg";
 import "../../styles/login.scss";
 import { MyNavbar } from "../component/my-navbar";

@@ -4,7 +4,7 @@ import { MyNavbar } from "../component/my-navbar";
 import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
-import logo from "../../img/logo.png";
+import logo from "../../img/logo-kochanie.jpeg";
 import ivan from "../../img/ivan.jpeg";
 import sergio from "../../img/sergio.jpg";
 import Grid from "@material-ui/core/Grid";

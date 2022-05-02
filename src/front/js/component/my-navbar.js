@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import logo from "../../img/logo.png";
+import logo from "../../img/logo-kochanie.jpeg";
 // import logoNameNavbar from "../../img/logo-name-navbar.png";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";

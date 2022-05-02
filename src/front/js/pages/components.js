@@ -5,7 +5,7 @@ import TripProfileCard from "../component/trip-profile-card.js";
 import CardHorizontal from "../component/cardhorizontal.js";
 import CardSmall from "../component/cardsmall.js";
 import CircularLogo from "../component/circularlogo.js";
-import Logo from "../../img/logo.png";
+import Logo from "../../img/logo-kochanie.jpeg";
 
 import "../../styles/button.scss";
 import "../../styles/circular-logo.scss";
