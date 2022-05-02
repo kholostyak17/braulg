@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
 // import logoNameNavbar from "../../img/logo-name-navbar.png";
@@ -9,10 +9,18 @@ import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "../../styles/mynavbar.scss";
+import { useLocation } from 'react-router-dom';
+
 export const MyNavbar = () => {
+	const location = useLocation();
+    const [isUserSignedIn, setIsUserSignedIn] = useState(false)
+    useEffect(() => {
+        localStorage.getItem("tokenID") ? setIsUserSignedIn(true) : setIsUserSignedIn(false);
+    }, [location]);
+
 	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
 	const userLogedOrNot =
-		localStorage.getItem("tokenID") != null ? (
+		isUserSignedIn ? (
 			<>
 				<a href={linkProfile}>
 					<Dropdown.Item href={linkProfile} className="text-white menu-hover text-center">
@@ -48,28 +56,28 @@ export const MyNavbar = () => {
 				/>
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
-						{localStorage.getItem("tokenID") != null ? (
+						{ isUserSignedIn ? (
 							<>
 								<Link to="/trips">
-									<div className="px-2 py-2 link-navbar text-center">Viajes propuestos</div>
+									<div className="link-navbar text-center">Viajes propuestos</div>
 								</Link>
 								<Link to="/newtrip">
-									<div className="px-2 py-2 link-navbar text-center">Proponer un viaje</div>
+									<div className="link-navbar text-center">Proponer un viaje</div>
 								</Link>
 								<Link to="/chat">
-									<div className="px-2 py-2 link-navbar text-center">Chat</div>
+									<div className="link-navbar text-center">Chat</div>
 								</Link>
 								<Link to="/blog">
-									<div className="px-2 py-2 link-navbar text-center">Blog</div>
+									<div className="link-navbar text-center">Blog</div>
 								</Link>
 							</>
 						) : (
 							<>
 								<Link to="/blog">
-									<div className="px-2 py-2 link-navbar text-center">Blog</div>
+									<div className="link-navbar text-center">Blog</div>
 								</Link>
 								<Link to="/register">
-									<div className="px-2 py-2 link-navbar text-center">Regístrate para ver más</div>
+									<div className="link-navbar text-center">Regístrate para ver más</div>
 								</Link>
 							</>
 						)}

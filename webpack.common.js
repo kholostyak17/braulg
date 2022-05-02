@@ -25,9 +25,7 @@ module.exports = {
             loader: "style-loader" // creates style nodes from JS strings
           }, {
             loader: "css-loader" // translates CSS into CommonJS
-          // },{
-          //   loader: "resolve-url-loader" // translates CSS into CommonJS
-          }, {
+          },{
               loader: "sass-loader", // compiles Sass to CSS
               // options: {
               //   sourceMap: true,
@@ -36,10 +34,12 @@ module.exports = {
         }, //css only files
         {
           test: /\.(png|svg|jpg|gif|jpeg|webp)$/, 
-          use: {
-            loader: 'file-loader',
-            options: { name: '[name].[ext]', }
-          }
+          type: "asset",
+          parser: {
+            dataUrlCondition: {
+              maxSize: 8192,
+            },
+          },
         }, //for images
         { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
     ]

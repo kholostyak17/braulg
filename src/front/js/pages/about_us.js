@@ -23,7 +23,7 @@ export const AboutUs = () => {
 							<div className="title">kholostyak17@gmail.com</div>
 							<h2 className="name-profile">Iván Jaén Trujillo</h2>
 							<div className="desc"></div>
-							<div className="actions">
+							<div className="actions d-flex flex-row justify-content-around">
 								<a target="_blank" rel="noopener noreferrer" href="https://github.com/kholostyak17">
 									<button className="links-profile">
 										<i className="fab fa-github"></i>
@@ -32,14 +32,9 @@ export const AboutUs = () => {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://www.linkedin.com/in/ivan-jaen-kholostyak17/">
+									href="https://www.linkedin.com/in/ivan-jaen-trujillo/">
 									<button className="links-profile">
 										<i className="fab fa-linkedin"></i>
-									</button>
-								</a>
-								<a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/">
-									<button className="links-profile">
-										<i className="fab fa-facebook"></i>
 									</button>
 								</a>
 							</div>
@@ -56,7 +51,7 @@ export const AboutUs = () => {
 							<div className="title">sergiocarrascal000@gmail.com</div>
 							<h2 className="name-profile">Sergio Carrascal </h2>
 							<div className="desc"></div>
-							<div className="actions">
+							<div className="actions d-flex flex-row justify-content-around">
 								<a target="_blank" rel="noopener noreferrer" href="https://github.com/scsanchez">
 									<button className="links-profile">
 										<i className="fab fa-github"></i>
@@ -68,11 +63,6 @@ export const AboutUs = () => {
 									href="https://www.linkedin.com/in/sergio-carrascal-sanchez/">
 									<button className="links-profile">
 										<i className="fab fa-linkedin"></i>
-									</button>
-								</a>
-								<a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/">
-									<button className="links-profile">
-										<i className="fab fa-facebook"></i>
 									</button>
 								</a>
 							</div>

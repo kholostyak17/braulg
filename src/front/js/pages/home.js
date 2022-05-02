@@ -108,39 +108,39 @@ export const Home = () => {
 				</div>
 				<div className="home-background">
 					<div className="home-body container">
-						<h1 className="title-home my-0 py-3 primary-color">¿Qué es Braulg?</h1>
-						<div className="mx-2">
+						<h1 className="title-home my-0 py-3 landing-color fw-bold">¿Qué es Braulg?</h1>
+						<div className="mx-2 resume-container">
 							<p className="">
-								Braulg es una red social pensada para conectar personas con la finalidad de realizar
+								Braulg es una red social para conectar con personas con la finalidad de realizar
 								viajes en compañía.
 							</p>
 							<p className="">
-								Si eres un usuario que ya tiene en mente un plan de viaje, puedes publicar un aviso de
-								viaje donde cuentes al resto de usuarios dónde deseas viajar, en que fecha piensas
+								Si eres un usuario que ya tiene en mente algún plan de viaje, puedes publicar un aviso de
+								viaje donde le cuentes al resto de usuarios dónde deseas viajar, en que fecha piensas
 								hacerlo, y que actividades te apetece realizar.
 							</p>
 							<p>
-								En cambio, si todavía no tienes un plan en mente pero te apetece unirte a algún viaje
+								En cambio, si todavía no tienes ningún plan en mente pero te apetece unirte a algún viaje
 								propuesto por otro usuario podrás ver la lista de viajes propuestos por los otros
-								usuarios y añadirte a ellos como compañero. En el chat de nuestra apliación podreís
-								mantener contacto para que os pongaís de acuerdo respecto a todos los detalles del
+								usuarios y unirte a ellos como compañero. En el chat de nuestra apliación podréis
+								mantener contacto para ponerse de acuerdo respecto a todos los detalles del
 								viaje.
 							</p>
 							<p>
-								Además nuestra aplicación cuenta con un blog dónde los usuarios pueden compartir sus
-								experiencias de viaje, para que el resto de usuarios puedan tomar inpiración para sus
-								futuros planes :)
+								Además, nuestra aplicación cuenta con un blog donde los usuarios pueden compartir sus
+								experiencias para que el resto de usuarios puedan tomar inspiración para sus
+								futuros planes :).
 							</p>
 						</div>
 
 						<div className="">
-							<h2 className="title-home primary-color my-4">
+							<h2 className="title-home landing-color my-4">
 								Algunos de nuestros últimos viajes propuestos
 							</h2>
 							<div className="row d-flex flex-row-reverse">{tripsMap}</div>
 						</div>
 						<div className="mini-cards">
-							<h2 className="title-home primary-color my-4">
+							<h2 className="title-home landing-color my-4">
 								Inspírate con las historias de nuestros usuarios
 							</h2>
 							<MuiThemeProvider theme={theme}>

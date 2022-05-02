@@ -8,8 +8,11 @@
 $font-family: 'Nunito', sans-serif;
 $font-family-secondary: 'Roboto', sans-serif;
 $primary-color: #17A398;
+// $primary-color: #075C76; //color de kochanie
 $primary-color-hover: rgb(24, 148, 138);
 $secondary-color: #F5B82E;
+// $secondary-color: #CFAC5C; //color de kochanie
+// $secondary-color: #CCB174; //color de kochanie0
 $secondary-color-hover: rgb(241, 172, 10);
 $black-color: #141414;
 $grey-color: #7A7A7A;
@@ -38,6 +41,9 @@ a{
 }
 .secondary-color{
     color: $secondary-color
+}
+.landing-color{
+    color: #075C76;
 }
 
 //estilo de inputs con fondo transparente y borde gris abajo 
@@ -91,8 +97,7 @@ a{
 //estilos referentes al diseño de las card (en trips y en blog)
 .my-card{
     margin: 1rem 2rem;
-    border: solid 1px rgb(182, 182, 182);
-    border-radius: 1.25%;
+    border-radius: 0.5rem;
     background-color: $white-color;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.75);
