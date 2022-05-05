@@ -4,7 +4,7 @@ import React, {
 import { Context } from "../store/appContext";
 import "../../styles/chat.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button.js";
+import Button from "../component/button";
 
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import firebase from "firebase/app";
@@ -90,7 +90,7 @@ export const Chat = () => {
       <div className="col-sm-12 col-md-7 content-box-chat mx-auto">
         <div className=" messages-box" id="conversation">
           {conversationMap != "" ? (
-						  conversationMap
+            conversationMap
           ) : (
             <div className="d-flex justify-content-center ">
               <div className="spinner-border text-warning my-5" role="status">
@@ -106,21 +106,21 @@ export const Chat = () => {
             className="input-style textarea-chat"
             placeholder="Escribe aquí tu mensaje..."
             onKeyPress={(event) => {
-							  if (event.key == "Enter") {
-							    if (event.target.value != "") {
-							      setMessage(event.target.value);
-							      event.target.value = "";
-							    }
-							  }
+              if (event.key == "Enter") {
+                if (event.target.value != "") {
+                  setMessage(event.target.value);
+                  event.target.value = "";
+                }
+              }
             }}
           />
           <i
             className="fas fa-paper-plane send-icon"
             onClick={() => {
-							  if (document.querySelector("#message").value != "") {
-							    setMessage(document.querySelector("#message").value);
-							    document.querySelector("#message").value = "";
-							  }
+              if (document.querySelector("#message").value != "") {
+                setMessage(document.querySelector("#message").value);
+                document.querySelector("#message").value = "";
+              }
             }}
           />
         </div>

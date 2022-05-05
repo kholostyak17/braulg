@@ -13,13 +13,13 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Profile } from "./pages/profile";
 import { Settings } from "./pages/settings";
-import { AboutUs } from "./pages/about_us";
+import { AboutUs } from "./pages/about-us";
 
 import injectContext from "./store/appContext";
 import { MyNavbar } from "./component/my-navbar";
 import { Footer } from "./component/footer";
 
-const Layout = () => {
+const Router = () => {
   // the basename is used when your project is published in a subdirectory and not in the root of the domain
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
   const basename = process.env.BASENAME || "";
@@ -65,12 +65,12 @@ const Layout = () => {
           <Route exact path="/settings">
             <Settings />
           </Route>
-          {/* <Route exact path="/faq">
-							<Faq />
-						</Route> */}
           <Route exact path="/about-us">
             <AboutUs />
           </Route>
+          {/* <Route exact path="/faq">
+							<Faq />
+						</Route> */}
           <Route>
             <h1 className="m-4">
               Código 404: Ruta no encontrada... :(
@@ -83,4 +83,4 @@ const Layout = () => {
   );
 };
 
-export default injectContext(Layout);
+export default injectContext(Router);

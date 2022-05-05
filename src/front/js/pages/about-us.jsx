@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/about_us.scss";
+import "../../styles/about-us.scss";
 import logo from "../../img/logo.png";
 
 export const AboutUs = () => (

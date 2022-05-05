@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/card-horizontal.scss";
 
-import Button from "./button.js";
+import Button from "./button";
 
 const CardHorizontal = (props) => (
   <Card className="card--big">

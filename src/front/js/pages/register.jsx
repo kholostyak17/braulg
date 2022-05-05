@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import registerImage from "../../img/background-register.jpg";
 import "../../styles/register.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button.js";
+import Button from "../component/button";
 
 export const Register = () => {
   const { store, actions } = useContext(Context);

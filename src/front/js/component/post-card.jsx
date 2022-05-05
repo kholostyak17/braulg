@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/post-card.scss";
 import { Link } from "react-router-dom";
-import Button from "./button.js";
+import Button from "./button";
 
 export const PostCard = (props) => {
   const linkToPostID = "/blog/".concat(props.postID);

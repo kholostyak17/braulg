@@ -3,7 +3,7 @@ import React, {
 } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import Button from "./button.js";
+import Button from "./button";
 
 const TripProfileCard = (props) => {
   const linkToTripID = "/trips/".concat(props.tripID);

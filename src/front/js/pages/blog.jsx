@@ -4,7 +4,7 @@ import React, {
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import Button from "../component/button.js";
+import Button from "../component/button";
 import { PostCard } from "../component/post-card";
 import "../../styles/blog.scss";
 // componentes para el modal
@@ -44,8 +44,8 @@ export const Blog = () => {
                 userID={post.traveler_id}
                 username={localStorage.getItem("token") ? post.traveler_name : "Usuario"}
                 userpicture={
-									localStorage.getItem("token") ? post.traveler_picture : store.profilePicture
-								}
+                  localStorage.getItem("token") ? post.traveler_picture : store.profilePicture
+                }
               />
             );
           }
@@ -69,7 +69,7 @@ export const Blog = () => {
               callBackFunc={handleShow}
             />
           ) : (
-						  ""
+            ""
           )}
           <Modal show={show} onHide={handleClose}>
             <Modal.Header className="d-flex px-4">
@@ -107,11 +107,11 @@ export const Blog = () => {
                 </div>
                 <div className="text-center">
                   <input
-                  type="submit"
-                  value="AÑADIR POST"
-                  className="button lm secondary mx-auto my-4"
-                  onClick={handleClose}
-                />
+                    type="submit"
+                    value="AÑADIR POST"
+                    className="button lm secondary mx-auto my-4"
+                    onClick={handleClose}
+                  />
                 </div>
               </form>
             </Modal.Body>
@@ -119,7 +119,7 @@ export const Blog = () => {
         </div>
         <div className="container d-flex flex-column-reverse">
           {postsMap != "" ? (
-						  postsMap
+            postsMap
           ) : (
             <div className="d-flex justify-content-center ">
               <div className="spinner-border text-warning my-5" role="status">

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import Button from "../component/button.js";
-import TripProfileCard from "../component/trip-profile-card.js";
-import CardHorizontal from "../component/cardhorizontal.js";
-import CardSmall from "../component/cardsmall.js";
-import CircularLogo from "../component/circularlogo.js";
+import Button from "../component/button";
+import TripProfileCard from "../component/trip-profile-card";
+import CardHorizontal from "../component/cardhorizontal";
+import CardSmall from "../component/cardsmall";
+import CircularLogo from "../component/circularlogo";
 import Logo from "../../img/logo.png";
 
 import "../../styles/button.scss";
@@ -12,9 +12,9 @@ import "../../styles/circular-logo.scss";
 
 export const Components = () => {
   const { store, actions } = useContext(Context);
-  const url =		"https://media-exp1.licdn.com/dms/image/C5616AQHycuoK6FWNow/profile-displaybackgroundimage-shrink_350_1400/0/1603134843668?e=1628121600&v=beta&t=7x8fDBnqPNyLxIogi9dEK4ccrQaxHelXQF48vUUY8t4";
+  const url = "https://media-exp1.licdn.com/dms/image/C5616AQHycuoK6FWNow/profile-displaybackgroundimage-shrink_350_1400/0/1603134843668?e=1628121600&v=beta&t=7x8fDBnqPNyLxIogi9dEK4ccrQaxHelXQF48vUUY8t4";
   const urlBig = "https://wallpaperaccess.com/full/335666.jpg";
-  const coloredText =		"Repellat dolorem dolores sapiente laborum eligendi illo culpa!, praesentium excepturi vero animi, Modi molestiae aperiam.";
+  const coloredText = "Repellat dolorem dolores sapiente laborum eligendi illo culpa!, praesentium excepturi vero animi, Modi molestiae aperiam.";
 
   return (
     <div className="d-flex flex-column">

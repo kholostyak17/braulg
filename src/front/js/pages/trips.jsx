@@ -4,8 +4,8 @@ import React, {
 import { Context } from "../store/appContext";
 import "../../styles/trips.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button.js";
-import { TripCard } from "../component/trip-card.js";
+import Button from "../component/button";
+import { TripCard } from "../component/trip-card";
 
 export const Trips = () => {
   const { store, actions } = useContext(Context);
@@ -48,7 +48,7 @@ export const Trips = () => {
         <h1 className="text-center mt-4">Últimos viajes propuestos</h1>
         <div className="d-flex flex-column-reverse">
           {tripsMap != "" ? (
-						  tripsMap
+            tripsMap
           ) : (
             <div className="d-flex justify-content-center ">
               <div className="spinner-border text-warning my-5" role="status">

@@ -7,7 +7,7 @@ import logo from "../../img/logo.png";
 import loginImage from "../../img/background-login.jpg";
 import "../../styles/login.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button.js";
+import Button from "../component/button";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
@@ -43,7 +43,7 @@ export const Login = () => {
               <input type="submit" value="INICIAR SESIÓN" className="button lm secondary m-2" />
               <p className="mt-5">
                 ¿No tienes una cuenta?
-{" "}
+                {" "}
                 <Link to="/register">
                   <span className="fw-bold primary-color">¡Regístrate!</span>
                 </Link>

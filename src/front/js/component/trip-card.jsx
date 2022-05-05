@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import "../../styles/trip-card.scss";
 import { Link } from "react-router-dom";
-import Button from "./button.js";
+import Button from "./button";
 
 export const TripCard = (props) => {
   const linkToTripID = "/trips/".concat(props.tripID);

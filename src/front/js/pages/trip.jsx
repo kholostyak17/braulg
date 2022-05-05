@@ -4,7 +4,7 @@ import React, {
 import { Context } from "../store/appContext";
 import "../../styles/trip.scss";
 import { Link, useParams } from "react-router-dom";
-import Button from "../component/button.js";
+import Button from "../component/button";
 import Modal from "react-bootstrap/Modal";
 
 export const Trip = () => {
@@ -47,7 +47,7 @@ export const Trip = () => {
                 color="primary"
                 text="Eliminar"
                 callBackFunc={() => {
-								  actions.getDeleteTrip(params.id);
+                  actions.getDeleteTrip(params.id);
                 }}
               />
             </Modal.Body>
@@ -128,7 +128,7 @@ export const Trip = () => {
               <p>{trip.activities}</p>
             </div>
             {trip.traveler_id == localStorage.getItem("tokenID") ? (
-						  ""
+              ""
             ) : (
               <div className="col-12 col-md-6 text-center my-1 pt-2">
                 <Button

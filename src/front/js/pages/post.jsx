@@ -3,7 +3,7 @@ import React, {
 } from "react";
 import { useParams, Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import Button from "../component/button.js";
+import Button from "../component/button";
 import { Context } from "../store/appContext";
 
 import "../../styles/post.scss";
@@ -44,7 +44,7 @@ export const Post = () => {
                 color="primary"
                 text="Eliminar"
                 callBackFunc={() => {
-								  actions.getDeletePost(params.id);
+                  actions.getDeletePost(params.id);
                 }}
               />
             </Modal.Body>
@@ -66,7 +66,7 @@ export const Post = () => {
             <img src={store.post_by_id.media} className="post-image" />
           </div>
         ) : (
-					  ""
+          ""
         )}
 
         <div className="py-2 px-3">
@@ -75,12 +75,12 @@ export const Post = () => {
             <div className="d-flex align-items-center justify-content-center">
               <img
                 src={
-										localStorage.getItem("token")
-										  ? store.post_by_id.traveler_picture
-										  : store.profilePicture
-									}
+                  localStorage.getItem("token")
+                    ? store.post_by_id.traveler_picture
+                    : store.profilePicture
+                }
                 className="user-picture-post"
-               />
+              />
               <p className="user-name ms-2">
                 {localStorage.getItem("token") ? store.post_by_id.traveler_name : "Usuario"}
               </p>

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import "../../styles/settings.scss";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import Button from "../component/button.js";
+import Button from "../component/button";
 
 export const Settings = () => {
   const { store, actions } = useContext(Context);
@@ -147,7 +147,7 @@ export const Settings = () => {
                 color="primary"
                 text="Eliminar"
                 callBackFunc={() => {
-									  actions.getDelete();
+                  actions.getDelete();
                 }}
               />
             </Modal.Body>

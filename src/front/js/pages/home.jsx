@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Context } from "../store/appContext";
-import Button from "../component/button.js";
+import Button from "../component/button";
 import "../../styles/home.scss";
 import logo from "../../img/logo.png";
 import logoBraulg from "../../img/logo-braulg.png";
 import pictureHome from "../../img/picture-home.jpg";
 import backgroundHome from "../../img/background-home.jpg";
-import { TripCardHome } from "../component/trip-card-home.js";
-import CardSmall from "../component/cardsmall.js";
+import { TripCardHome } from "../component/trip-card-home";
+import CardSmall from "../component/cardsmall";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -96,7 +96,7 @@ export const Home = () => {
             </Link>
           </div>
         ) : (
-					  ""
+          ""
         )}
       </div>
       <div className="home-background">
