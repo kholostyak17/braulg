@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-import Button from "../component/button.js";
 import TripProfileCard from "../component/trip-profile-card.js";
 import "../../styles/profile.scss";
 
-import { MyNavbar } from "../component/my-navbar.js";
-import { Footer } from "../component/footer.js";
+import { useLocation } from 'react-router-dom';
 
 export const Profile = () => {
+	const location = useLocation();
 	const { store, actions } = useContext(Context);
 	const [user, setUser] = useState([]);
 	const [tripsMap, setTripsMap] = useState("");
@@ -18,7 +17,7 @@ export const Profile = () => {
 		actions.verifyLogin();
 		actions.getUser(params.id, false);
 		actions.getTrips();
-	}, []);
+	}, [location]);
 
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
@@ -114,9 +113,7 @@ export const Profile = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			{user}
-			<Footer />
 		</>
 	);
 };

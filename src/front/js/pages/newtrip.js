@@ -3,8 +3,6 @@ import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import newtripImage from "../../img/background-newtrip.jpg";
 import "../../styles/newtrip.scss";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 
 export const NewTrip = () => {
 	const { store, actions } = useContext(Context);
@@ -23,7 +21,6 @@ export const NewTrip = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="container-fluid row main-box newtrip-view">
 				<div className="col-sm-12 col-md-5 picture-box">
 					<img src={newtripImage} className="picture" />
@@ -807,7 +804,6 @@ export const NewTrip = () => {
 					</form>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

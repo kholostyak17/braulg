@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState, Fragment } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import Button from "../component/button.js";
 import Modal from "react-bootstrap/Modal";
 
@@ -19,7 +17,7 @@ export const Post = () => {
 	const modalDeletePost = () => {
 		if (store.post_by_id.traveler_id == localStorage.getItem("tokenID")) {
 			return (
-				<div className="d-flex m-5 justify-content-end text-danger">
+				<div role="button" className="d-flex m-5 justify-content-end text-danger">
 					<span onClick={handleShow}>
 						Eliminar post <i className="fas fa-trash-alt"></i>
 					</span>
@@ -58,7 +56,6 @@ export const Post = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="blog-view">
 				<div className="col-sm-12 col-md-9 content-box scrollable-box p-3">
 					{store.post_by_id.media ? (
@@ -90,7 +87,6 @@ export const Post = () => {
 					{modalDeletePost()}
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

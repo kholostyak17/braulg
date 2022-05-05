@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import { PostCard } from "../component/post-card";
@@ -56,11 +54,10 @@ export const Blog = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="container-fluid row main-box blog-view">
 				<div className="content-box-blog">
-					<div className="d-flex justify-content-between flex-wrap">
-						<h1 className="text-center mt-4 mx-4 ps-3 secondary-color">Blog</h1>
+					<div className="container d-flex justify-content-between flex-wrap">
+						<h1 className="text-center mt-4 mx-4 secondary-color">Blog</h1>
 						{localStorage.getItem("token") != undefined ? (
 							<Button
 								className="mx-5 my-4"
@@ -119,7 +116,7 @@ export const Blog = () => {
 							</Modal.Body>
 						</Modal>
 					</div>
-					<div className="d-flex flex-column-reverse">
+					<div className="container d-flex flex-column-reverse">
 						{postsMap != "" ? (
 							postsMap
 						) : (
@@ -132,7 +129,6 @@ export const Blog = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

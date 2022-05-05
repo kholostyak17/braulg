@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import Button from "../component/button.js";
 import "../../styles/home.scss";
 import logo from "../../img/logo.png";
@@ -23,9 +21,9 @@ export const Home = () => {
 	const theme = createMuiTheme({
 		breakpoints: {
 			values: {
-				xs: 0,
-				sm: 900,
-				md: 1370,
+				xs: 768,
+				sm: 1000,
+				md: 1450,
 				lg: 1480,
 				xl: 1920
 			}
@@ -58,9 +56,10 @@ export const Home = () => {
 	useEffect(() => {
 		if (store.trips != undefined || store.trip.user != undefined) {
 			setTripsMap(
-				store.trips.slice(store.trips.length - 2, store.trips.length).map((trip, index) => {
+				store.trips.slice(store.trips.length - 3, store.trips.length).map((trip, index) => {
 					return (
-						<div className="col-12 col-md-6" key={index.toString()}>
+						
+						<Grid item xs={12} sm={6} md={4} className="m-auto" key={index.toString()}>
 							<TripCardHome
 								idTrip={trip.id}
 								username="Usuario"
@@ -72,7 +71,7 @@ export const Home = () => {
 								activities={trip.activities}
 								partners={trip.partners}
 							/>
-						</div>
+						</Grid>
 					);
 				})
 			);
@@ -81,7 +80,6 @@ export const Home = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="home-container">
 				<div className="home-header">
 					<div className="logo-box">
@@ -170,7 +168,6 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

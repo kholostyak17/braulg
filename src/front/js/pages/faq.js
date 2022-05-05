@@ -1,6 +1,4 @@
 import React, { Fragment } from "react";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import "../../styles/faq.scss";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -10,7 +8,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 export const Faq = () => {
 	return (
 		<Fragment>
-			<MyNavbar />
 			<div className="faq-container">
 				<h1 className="faq-title">Preguntas Frecuentes</h1>
 				<div className="preguntas">
@@ -124,7 +121,6 @@ export const Faq = () => {
 					</Accordion>
 				</div>
 			</div>
-			<Footer />
 		</Fragment>
 	);
 };

@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/chat.scss";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 
@@ -87,7 +85,6 @@ export const Chat = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="container-fluid main-box chat-view d-flex">
 				<div className="col-sm-12 col-md-7 content-box-chat mx-auto">
 					<div className=" messages-box" id="conversation">
@@ -102,10 +99,10 @@ export const Chat = () => {
 						)}
 					</div>
 					<div className="input-box">
-						<input
+						<textarea
 							id="message"
 							type="text"
-							className="input-style"
+							className="input-style textarea-chat"
 							placeholder="Escribe aquí tu mensaje..."
 							onKeyPress={event => {
 								if (event.key == "Enter") {
@@ -114,7 +111,7 @@ export const Chat = () => {
 										event.target.value = "";
 									}
 								}
-							}}></input>
+							}}></textarea>
 						<i
 							className="fas fa-paper-plane send-icon"
 							onClick={() => {
@@ -126,7 +123,6 @@ export const Chat = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

@@ -6,7 +6,7 @@ export const Footer = () => (
 	<footer className="footer mt-auto">
 		<div className="d-flex flex-wrap justify-content-between">
 			<div className="footer-element">
-				<Link to="/aboutus">
+				<Link to="/about-us">
 					<span className="link-footer">
 						Made with <i className="fa fa-heart text-danger" /> by Iván &amp; Sergio
 					</span>

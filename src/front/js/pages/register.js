@@ -3,8 +3,6 @@ import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import registerImage from "../../img/background-register.jpg";
 import "../../styles/register.scss";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 
@@ -21,7 +19,6 @@ export const Register = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="container-fluid row main-box register-view">
 				<div className="col-sm-12 col-md-6 content-box">
 					<h1 className="text-center my-4">Registro</h1>
@@ -82,7 +79,6 @@ export const Register = () => {
 					<img src={registerImage} className="picture" />
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import logo from "../../img/logo.png";
 import loginImage from "../../img/background-login.jpg";
 import "../../styles/login.scss";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 
@@ -22,7 +20,6 @@ export const Login = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="container-fluid row main-box login-view">
 				<div className="col-sm-12 col-md-6 content-box">
 					<h1 className="text-center mt-4">Accede a tu cuenta</h1>
@@ -43,12 +40,12 @@ export const Login = () => {
 							/>
 							<div className="text-center my-4">
 								<input type="submit" value="INICIAR SESIÓN" className="button lm secondary m-2" />
-								<Link to="/register">
-									<p className="mt-4">
+									<p className="mt-5">
 										¿No tienes una cuenta?{" "}
-										<span className="fw-bold primary-color">¡Regístrate!</span>
+										<Link to="/register">
+											<span className="fw-bold primary-color">¡Regístrate!</span>
+										</Link>
 									</p>
-								</Link>
 							</div>
 						</div>
 					</form>
@@ -57,7 +54,6 @@ export const Login = () => {
 					<img src={loginImage} className="picture" />
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

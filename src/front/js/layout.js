@@ -17,7 +17,8 @@ import { AboutUs } from "./pages/about_us";
 
 import { Faq } from "./pages/faq";
 import injectContext from "./store/appContext";
-import { MyNavbar } from "./component/my-navbar"; //navbar provisional para error 404
+import { MyNavbar } from "./component/my-navbar";
+import { Footer } from "./component/footer";
 
 //create your first component
 const Layout = () => {
@@ -28,54 +29,57 @@ const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
-				<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
-					<Route exact path="/components">
-						<Components />
-					</Route>
-					<Route exact path="/trips">
-						<Trips />
-					</Route>
-					<Route exact path="/trips/:id">
-						<Trip />
-					</Route>
-					<Route exact path="/newtrip">
-						<NewTrip />
-					</Route>
-					<Route exact path="/chat">
-						<Chat />
-					</Route>
-					<Route exact path="/blog">
-						<Blog />
-					</Route>
-					<Route exact path="/blog/:id">
-						<Post />
-					</Route>
-					<Route exact path="/login">
-						<Login />
-					</Route>
-					<Route exact path="/register">
-						<Register />
-					</Route>
-					<Route exact path="/user/:id">
-						<Profile />
-					</Route>
-					<Route exact path="/settings">
-						<Settings />
-					</Route>
-					<Route exact path="/faq">
-						<Faq />
-					</Route>
-					<Route exact path="/aboutus">
-						<AboutUs />
-					</Route>
-					<Route>
-						<MyNavbar />
-						<h1>Not found!</h1>
-					</Route>
-				</Switch>
+				<MyNavbar />
+					<Switch>
+						<Route exact path="/">
+							<Home />
+						</Route>
+						<Route exact path="/components">
+							<Components />
+						</Route>
+						<Route exact path="/trips">
+							<Trips />
+						</Route>
+						<Route exact path="/trips/:id">
+							<Trip />
+						</Route>
+						<Route exact path="/newtrip">
+							<NewTrip />
+						</Route>
+						<Route exact path="/chat">
+							<Chat />
+						</Route>
+						<Route exact path="/blog">
+							<Blog />
+						</Route>
+						<Route exact path="/blog/:id">
+							<Post />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/user/:id">
+							<Profile />
+						</Route>
+						<Route exact path="/settings">
+							<Settings />
+						</Route>
+						{/* <Route exact path="/faq">
+							<Faq />
+						</Route> */}
+						<Route exact path="/about-us">
+							<AboutUs />
+						</Route>
+						<Route>
+							<h1 className="m-4">
+								Código 404: Ruta no encontrada... :(
+							</h1>
+						</Route>
+					</Switch>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);

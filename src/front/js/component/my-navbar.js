@@ -21,29 +21,39 @@ export const MyNavbar = () => {
 	const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
 	const userLogedOrNot =
 		isUserSignedIn ? (
-			<>
-				<a href={linkProfile}>
-					<Dropdown.Item href={linkProfile} className="text-white menu-hover text-center">
-						Mi perfil
+			<Dropdown>
+				<div className="text-center">
+					<Dropdown.Toggle id="dropdown-button-light-example1" className="link-navbar" variant="">
+						<i className="fas fa-user" />
+						<span className="fw-bold ms-1">{localStorage.getItem("tokenName")}</span>
+					</Dropdown.Toggle>
+				</div>
+				<Dropdown.Menu variant="dark" className="bg-secondary-color mx-4 dropdown-menu-right">
+					<Link to={linkProfile}>
+						<Dropdown.Item href={linkProfile} className="text-white menu-hover text-center fw-bold">
+							Mi perfil
+						</Dropdown.Item>
+					</Link>
+					<Link to="/settings">
+						<Dropdown.Item href="/settings" className="text-white menu-hover text-center fw-bold">
+							Ajustes
+						</Dropdown.Item>
+					</Link>
+					<Dropdown.Divider />
+					<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
+						<span onClick={() => localStorage.clear()}>Cerrar sesión</span>
 					</Dropdown.Item>
-				</a>
-				<Link to="/settings">
-					<Dropdown.Item href="/settings" className="text-white menu-hover text-center">
-						Ajustes
-					</Dropdown.Item>
-				</Link>
-				<Dropdown.Divider />
-				<Dropdown.Item href="/" className="text-danger fw-bold menu-hover text-center">
-					<span onClick={() => localStorage.clear()}>Cerrar sesión</span>
-				</Dropdown.Item>
-			</>
+				</Dropdown.Menu>
+			</Dropdown>
+
 		) : (
 			<Link to="/login">
-				<Dropdown.Item href="/login" className="text-primary fw-bold menu-hover text-center">
+				<div className="link-navbar text-center fw-bold">
 					Iniciar sesión
-				</Dropdown.Item>
+				</div>
 			</Link>
 		);
+
 	return (
 		<Navbar expand="sm">
 			<div className="container-fluid">
@@ -83,17 +93,7 @@ export const MyNavbar = () => {
 						)}
 					</Nav>
 					<Nav>
-						<Dropdown>
-							<div className="text-center">
-								<Dropdown.Toggle id="dropdown-button-light-example1" className="link-navbar" variant="">
-									<i className="fas fa-user" />
-									<span className="fw-bold ms-1">{localStorage.getItem("tokenName")}</span>
-								</Dropdown.Toggle>
-							</div>
-							<Dropdown.Menu variant="dark" className="bg-secondary-color mx-4 dropdown-menu-right">
-								{userLogedOrNot}
-							</Dropdown.Menu>
-						</Dropdown>
+						{userLogedOrNot}
 					</Nav>
 				</Navbar.Collapse>
 			</div>

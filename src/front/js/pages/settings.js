@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect, onSubmit, handleSubmit } from "
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import "../../styles/settings.scss";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import { Link } from "react-router-dom";
 import Button from "../component/button.js";
 import Modal from "react-bootstrap/Modal";
@@ -119,14 +117,13 @@ export const Settings = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="settings-view">
 				<div className="col-sm-12 col-md-7 content-box scrollable-box">
 					<h1 className="text-center my-4">Ajustes del perfil</h1>
 					{settingsPanel}
-					<div className="d-flex m-5 justify-content-end text-danger">
+					<div role="button" className="d-flex m-5 justify-content-end text-danger">
 						<span onClick={handleShow}>
-							Eliminar cuenta <i className="fas fa-trash-alt"></i>
+							Eliminar cuenta <i className="fas fa-trash-alt cursor-pointer"></i>
 						</span>
 						<Modal show={show} onHide={handleClose}>
 							<Modal.Header className="text-center">
@@ -155,7 +152,6 @@ export const Settings = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };

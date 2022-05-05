@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState, onSubmit, handleSubmit } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/trip.scss";
-import { MyNavbar } from "../component/my-navbar";
-import { Footer } from "../component/footer";
 import { Link, useParams } from "react-router-dom";
 import Button from "../component/button.js";
 import Modal from "react-bootstrap/Modal";
@@ -22,7 +20,7 @@ export const Trip = () => {
 	const modalDeleteTrip = () => {
 		if (trip.traveler_id == localStorage.getItem("tokenID")) {
 			return (
-				<div className="d-flex m-5 justify-content-end text-danger">
+				<div role="button" className="d-flex m-5 justify-content-end text-danger">
 					<span onClick={handleShow}>
 						Eliminar propuesta de viaje <i className="fas fa-trash-alt"></i>
 					</span>
@@ -149,7 +147,6 @@ export const Trip = () => {
 
 	return (
 		<>
-			<MyNavbar />
 			<div className="container-fluid row main-box trip-view">
 				<div className="trips-view">
 					<div className="col-sm-12 col-md-9 content-box scrollable-box px-5 py-3">
@@ -158,7 +155,6 @@ export const Trip = () => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 };
