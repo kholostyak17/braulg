@@ -10,11 +10,11 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    actions.getLogin(JSON.stringify(data));
+    actions.signIn(JSON.stringify(data));
   };
 
   useEffect(() => {
-    actions.isLoggedUser();
+    actions.checkIfIsSignedIn();
   }, []);
 
   return (

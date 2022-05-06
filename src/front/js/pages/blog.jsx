@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import Button from "../component/button";
-import { PostCard } from "../component/post-card";
+import Button from "../components/button";
+import { PostCard } from "../components/post-card";
 import "../../styles/blog.scss";
 // componentes para el modal
 import Modal from "react-bootstrap/Modal";
@@ -19,7 +19,7 @@ export const Blog = () => {
   // variables para el hook form
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    actions.getNewPost(JSON.stringify(data), data.media);
+    actions.createPost(JSON.stringify(data), data.media);
   };
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/trip.scss";
 import { Link, useParams } from "react-router-dom";
-import Button from "../component/button";
+import Button from "../components/button";
 import Modal from "react-bootstrap/Modal";
 
 export const Trip = () => {
@@ -12,7 +12,7 @@ export const Trip = () => {
   const [tripDetails, setTripDetails] = useState("");
   const [partnersMap, setPartnersMap] = useState("");
   const linkToUserID = "/user/".concat(trip.traveler_id);
-  const startJoin = () => actions.getSharedTrip(params.id);
+  const joinTrip = () => actions.joinTrip(params.id);
   // variables para desplegar modal de borrar trip
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -48,7 +48,7 @@ export const Trip = () => {
                 color="primary"
                 text="Eliminar"
                 callBackFunc={() => {
-                  actions.getDeleteTrip(params.id);
+                  actions.deleteTrip(params.id);
                 }}
               />
             </Modal.Body>
@@ -138,7 +138,7 @@ export const Trip = () => {
                   size="lm"
                   color="secondary"
                   text="APÚNTATE"
-                  callBackFunc={startJoin}
+                  callBackFunc={joinTrip}
                 />
               </div>
             )}

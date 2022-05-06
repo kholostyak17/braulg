@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/trips.scss";
-import { TripCard } from "../component/trip-card";
+import { TripCard } from "../components/trip-card";
 
 export const Trips = () => {
   const { store, actions } = useContext(Context);

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
-import TripProfileCard from "../component/trip-profile-card";
+import TripProfileCard from "../components/trip-profile-card";
 import "../../styles/profile.scss";
 
 export const Profile = () => {

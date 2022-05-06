@@ -15,8 +15,8 @@ import { Settings } from "./pages/settings";
 import { AboutUs } from "./pages/about-us";
 
 import injectContext from "./store/appContext";
-import { MyNavbar } from "./component/my-navbar";
-import { Footer } from "./component/footer";
+import { MyNavbar } from "./components/my-navbar";
+import { Footer } from "./components/footer";
 
 const Router = () => {
   // the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -65,9 +65,7 @@ const Router = () => {
             <AboutUs />
           </Route>
           <Route>
-            <h1 className="m-4">
-              Código 404: Ruta no encontrada... :(
-            </h1>
+            <h1 className="m-4">Código 404: Ruta no encontrada... :(</h1>
           </Route>
         </Switch>
         <Footer />

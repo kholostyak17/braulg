@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Context } from "../store/appContext";
-import Button from "../component/button";
+import Button from "../components/button";
 import logo from "../../img/logo.png";
 import logoBraulg from "../../img/logo-braulg.png";
-import { TripCardLanding } from "../component/trip-card-landing";
-import CardSmall from "../component/cardsmall";
+import { TripCardLanding } from "../components/trip-card-landing";
+import CardSmall from "../components/cardsmall";
 import "../../styles/landing.scss";
 
 export const Landing = () => {

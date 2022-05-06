@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import "../../styles/settings.scss";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import Button from "../component/button";
+import Button from "../components/button";
 
 export const Settings = () => {
   const { store, actions } = useContext(Context);
@@ -17,9 +17,9 @@ export const Settings = () => {
 
   const onSubmit = (data) => {
     if (data.picture != undefined) {
-      actions.getNewPicture(data.picture);
+      actions.setNewPicture(data.picture);
     }
-    actions.getUpdate(JSON.stringify(data), data.picture);
+    actions.updateProfileData(JSON.stringify(data), data.picture);
     localStorage.setItem("tokenName", data.name);
   };
 
@@ -161,7 +161,7 @@ export const Settings = () => {
                 color="primary"
                 text="Eliminar"
                 callBackFunc={() => {
-                  actions.getDelete();
+                  actions.deleteUser();
                 }}
               />
             </Modal.Body>

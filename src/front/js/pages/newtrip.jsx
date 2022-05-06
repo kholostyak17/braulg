@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 import newtripImage from "../../img/background-newtrip.jpg";
-import countriesList from "./countries.json";
+import countriesList from "../resources/countries.json";
 import "../../styles/newtrip.scss";
 
 export const NewTrip = () => {
@@ -21,7 +21,7 @@ export const NewTrip = () => {
     if (data.start_date > data.end_date) {
       alert("La fecha es inválida");
     } else {
-      actions.getNewTrip(JSON.stringify(data));
+      actions.createTrip(JSON.stringify(data));
     }
   };
 

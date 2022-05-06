@@ -8,11 +8,11 @@ export const Register = () => {
   const { store, actions } = useContext(Context);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    actions.getRegister(JSON.stringify(data));
+    actions.signUp(JSON.stringify(data));
   };
 
   useEffect(() => {
-    actions.isLoggedUser();
+    actions.checkIfIsSignedIn();
   }, []);
 
   return (

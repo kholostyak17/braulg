@@ -4,8 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => ({
   store: {
     URL_API: process.env.API_URL || "https://braulg.herokuapp.com/api/",
     URL: process.env.FRONT_URL || "https://braulg.herokuapp.com/",
-    // URL_API: "https://3001-lime-bedbug-h58dduyo.ws-eu10.gitpod.io/api/",
-    // URL: "https://3000-lime-bedbug-h58dduyo.ws-eu10.gitpod.io/",
     profilePicture: "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png",
     currentUser: {},
     users: [],
@@ -22,53 +20,89 @@ const getState = ({ getStore, getActions, setStore }) => ({
         location.replace(getStore().URL.concat("login"));
       }
     },
-    isLoggedUser: () => {
+    checkIfIsSignedIn: () => {
       if (localStorage.getItem("token")) {
         location.replace(getStore().URL.concat("user/", localStorage.getItem("tokenID")));
       }
     },
-    getUser: (id, currentUser) => {
-      fetch(getStore().URL_API.concat("users/", id))
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't load user!");
-          }
-          return response.json();
-          console.log(response);
-        })
-        .then(function (responseAsJson) {
-          if (currentUser == true) {
-            setStore({ currentUser: responseAsJson });
-          } else {
-            setStore({ user: responseAsJson });
-          }
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
-    },
-    getNewPicture: (picture) => {
-      const token = localStorage.getItem("token");
-      const tokenID = localStorage.getItem("tokenID");
-      console.log("This are the files", picture);
-      const mybody = new FormData();
-      mybody.append("profile_picture", picture[0]);
-      fetch(getStore().URL_API.concat("profilepicture/", localStorage.getItem("tokenID")), {
-        body: mybody,
+    signIn: (credentials) => {
+      const tokenDecode = (token) => {
+        const decoded = jwt_decode(token);
+        return decoded;
+      };
+      const setTravelerFromToken = (token) => {
+        localStorage.setItem("tokenID", token.sub.id);
+        localStorage.setItem("tokenName", token.sub.name);
+      };
+      const redirectToProfile = () => {
+        if (localStorage.getItem("tokenID") != null) {
+          location.replace("./user/".concat(localStorage.getItem("tokenID")));
+        }
+      };
+      fetch(getStore().URL_API.concat("login"), {
         method: "POST",
+        body: credentials,
+        headers: { "Content-Type": "application/json" },
       })
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't upload picture!");
+            throw Error("I can't get login!");
           }
           return response.json();
+        })
+        .then(function (responseAsJson) {
+          localStorage.setItem("token", responseAsJson);
+          const tokenDecoded = tokenDecode(responseAsJson);
+          setTravelerFromToken(tokenDecoded);
+          redirectToProfile();
+        })
+        .catch(function (error) {
+          alert("Usuario o contraseña incorrectos");
+          localStorage.removeItem("token");
+          console.log("Looks like there was a problem: \n", error);
+        });
+    },
+    signUp: (credentials) => {
+      const tokenDecode = (token) => {
+        const decoded = jwt_decode(token);
+        return decoded;
+      };
+      const setTravelerFromToken = (token) => {
+        localStorage.setItem("tokenID", token.sub.id);
+        localStorage.setItem("tokenName", token.sub.name);
+      };
+      const redirectToProfile = () => {
+        if (localStorage.getItem("tokenID") != null) {
+          location.replace("./user/".concat(localStorage.getItem("tokenID")));
+        }
+      };
+      fetch(getStore().URL_API.concat("register"), {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Sec-Fetch-Mode": "no-cors",
+        }),
+        body: credentials,
+      })
+        .then(function (response) {
           console.log(response);
+          if (!response.ok) {
+            throw Error("I can't register this traveler!");
+          }
+          return response.json();
+        })
+        .then(function (responseAsJson) {
+          localStorage.setItem("token", responseAsJson);
+          const tokenDecoded = tokenDecode(responseAsJson);
+          setTravelerFromToken(tokenDecoded);
+          redirectToProfile();
         })
         .catch(function (error) {
           console.log("Looks like there was a problem: \n", error);
         });
     },
-    getUpdate: (dataUpdated, picture) => {
+
+    updateProfileData: (dataUpdated, picture) => {
       const token = localStorage.getItem("token");
       const tokenID = localStorage.getItem("tokenID");
       const redirectToProfile = () => {
@@ -106,103 +140,43 @@ const getState = ({ getStore, getActions, setStore }) => ({
           console.log("Looks like there was a problem: \n", error);
         });
     },
-    getDelete: () => {
+    setNewPicture: (picture) => {
       const token = localStorage.getItem("token");
       const tokenID = localStorage.getItem("tokenID");
-      const redirectToHome = () => {
-        localStorage.clear(), location.replace("./");
-      };
-      fetch(getStore().URL_API.concat("settings/", localStorage.getItem("tokenID")), {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      console.log("This are the files", picture);
+      const mybody = new FormData();
+      mybody.append("profile_picture", picture[0]);
+      fetch(getStore().URL_API.concat("profilepicture/", localStorage.getItem("tokenID")), {
+        body: mybody,
+        method: "POST",
       })
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't delete this traveler!");
+            throw Error("I can't upload picture!");
           }
           return response.json();
           console.log(response);
-        })
-        .then(function (responseAsJson) {
-          redirectToHome();
         })
         .catch(function (error) {
           console.log("Looks like there was a problem: \n", error);
         });
     },
 
-    getLogin: (credentials) => {
-      const tokenDecode = (token) => {
-        const decoded = jwt_decode(token);
-        return decoded;
-      };
-      const setTravelerFromToken = (token) => {
-        localStorage.setItem("tokenID", token.sub.id);
-        localStorage.setItem("tokenName", token.sub.name);
-      };
-      const redirectToProfile = () => {
-        if (localStorage.getItem("tokenID") != null) {
-          location.replace("./user/".concat(localStorage.getItem("tokenID")));
-        }
-      };
-      fetch(getStore().URL_API.concat("login"), {
-        method: "POST",
-        body: credentials,
-        headers: { "Content-Type": "application/json" },
-      })
+    getUser: (id, currentUser) => {
+      fetch(getStore().URL_API.concat("users/", id))
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't get login!");
+            throw Error("I can't load user!");
           }
           return response.json();
-        })
-        .then(function (responseAsJson) {
-          localStorage.setItem("token", responseAsJson);
-          const tokenDecoded = tokenDecode(responseAsJson);
-          setTravelerFromToken(tokenDecoded);
-          redirectToProfile();
-        })
-        .catch(function (error) {
-          alert("Usuario o contraseña incorrectos");
-          localStorage.removeItem("token");
-          console.log("Looks like there was a problem: \n", error);
-        });
-    },
-
-    getRegister: (credentials) => {
-      const tokenDecode = (token) => {
-        const decoded = jwt_decode(token);
-        return decoded;
-      };
-      const setTravelerFromToken = (token) => {
-        localStorage.setItem("tokenID", token.sub.id);
-        localStorage.setItem("tokenName", token.sub.name);
-      };
-      const redirectToProfile = () => {
-        if (localStorage.getItem("tokenID") != null) {
-          location.replace("./user/".concat(localStorage.getItem("tokenID")));
-        }
-      };
-      fetch(getStore().URL_API.concat("register"), {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          "Sec-Fetch-Mode": "no-cors",
-        }),
-        body: credentials,
-      })
-        .then(function (response) {
           console.log(response);
-          if (!response.ok) {
-            throw Error("I can't register this traveler!");
-          }
-          return response.json();
         })
         .then(function (responseAsJson) {
-          localStorage.setItem("token", responseAsJson);
-          const tokenDecoded = tokenDecode(responseAsJson);
-          setTravelerFromToken(tokenDecoded);
-          redirectToProfile();
+          if (currentUser == true) {
+            setStore({ currentUser: responseAsJson });
+          } else {
+            setStore({ user: responseAsJson });
+          }
         })
         .catch(function (error) {
           console.log("Looks like there was a problem: \n", error);
@@ -300,7 +274,8 @@ const getState = ({ getStore, getActions, setStore }) => ({
           console.log("Looks like there was a problem: \n", error);
         });
     },
-    getNewTrip: (tripData) => {
+
+    createTrip: (tripData) => {
       const token = localStorage.getItem("token");
       const tokenID = localStorage.getItem("tokenID");
       const redirectToTrips = () => {
@@ -326,36 +301,9 @@ const getState = ({ getStore, getActions, setStore }) => ({
           console.log("Looks like there was a problem: \n", error);
         });
     },
-
-    getSharedTrip: (id_trip) => {
+    createPost: (postData, media) => {
       const token = localStorage.getItem("token");
-      const tokenID = localStorage.getItem("tokenID");
-      const redirectToTrips = () => {
-        location.replace("./trips/");
-      };
-      fetch(getStore().URL_API.concat("traveler/", tokenID, "/trip/", id_trip), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't share this trip!");
-          }
-          return response.json();
-          console.log(response);
-        })
-        .then(function (responseAsJson) {
-          setStore({ shared_trips: responseAsJson });
-          location.replace("../trips");
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
-    },
-
-    getNewPost: (postData, media) => {
-      const token = localStorage.getItem("token");
-      const getNewMediaPost = (media, id) => {
+      const createMediaPost = (media, id) => {
         const mybody = new FormData();
         mybody.append("media", media[0]);
         fetch(getStore().URL_API.concat("newmediapost/", id), {
@@ -389,7 +337,7 @@ const getState = ({ getStore, getActions, setStore }) => ({
           console.log(response);
         })
         .then(function (responseAsJson) {
-          getNewMediaPost(media, responseAsJson.id);
+          createMediaPost(media, responseAsJson.id);
           setStore({ posts: responseAsJson });
           if (media[0]) {
             setTimeout(() => {
@@ -404,7 +352,31 @@ const getState = ({ getStore, getActions, setStore }) => ({
         });
     },
 
-    getDeleteTrip: (tripID) => {
+    deleteUser: () => {
+      const token = localStorage.getItem("token");
+      const tokenID = localStorage.getItem("tokenID");
+      const redirectToHome = () => {
+        localStorage.clear(), location.replace("./");
+      };
+      fetch(getStore().URL_API.concat("settings/", localStorage.getItem("tokenID")), {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw Error("I can't delete this traveler!");
+          }
+          return response.json();
+          console.log(response);
+        })
+        .then(function (responseAsJson) {
+          redirectToHome();
+        })
+        .catch(function (error) {
+          console.log("Looks like there was a problem: \n", error);
+        });
+    },
+    deleteTrip: (tripID) => {
       const token = localStorage.getItem("token");
       const tokenID = localStorage.getItem("tokenID");
       const redirectToTrips = () => {
@@ -428,8 +400,7 @@ const getState = ({ getStore, getActions, setStore }) => ({
           console.log("Looks like there was a problem: \n", error);
         });
     },
-
-    getDeletePost: (postID) => {
+    deletePost: (postID) => {
       const token = localStorage.getItem("token");
       const tokenID = localStorage.getItem("tokenID");
       const redirectToBlog = () => {
@@ -454,5 +425,32 @@ const getState = ({ getStore, getActions, setStore }) => ({
         });
     },
   },
+
+  joinTrip: (id_trip) => {
+    const token = localStorage.getItem("token");
+    const tokenID = localStorage.getItem("tokenID");
+    const redirectToTrips = () => {
+      location.replace("./trips/");
+    };
+    fetch(getStore().URL_API.concat("traveler/", tokenID, "/trip/", id_trip), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error("I can't share this trip!");
+        }
+        return response.json();
+        console.log(response);
+      })
+      .then(function (responseAsJson) {
+        setStore({ shared_trips: responseAsJson });
+        location.replace("../trips");
+      })
+      .catch(function (error) {
+        console.log("Looks like there was a problem: \n", error);
+      });
+  },
 });
+
 export default getState;

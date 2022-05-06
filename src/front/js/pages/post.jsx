@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import Button from "../component/button";
+import Button from "../components/button";
 import { Context } from "../store/appContext";
 import "../../styles/post.scss";
 
@@ -43,7 +43,7 @@ export const Post = () => {
                 color="primary"
                 text="Eliminar"
                 callBackFunc={() => {
-                  actions.getDeletePost(params.id);
+                  actions.deletePost(params.id);
                 }}
               />
             </Modal.Body>
