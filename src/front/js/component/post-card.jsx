@@ -1,8 +1,5 @@
-import React, {
-  useState, useContext, useEffect, Fragment,
-} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import Card from "react-bootstrap/Card";
 import "../../styles/post-card.scss";
 import { Link } from "react-router-dom";
 import Button from "./button";
@@ -36,7 +33,12 @@ export const PostCard = (props) => {
           <p className="text-post">{props.text}</p>
           <div className="mt-auto mb-3 text-center">
             <Link to={linkToPostID}>
-              <Button className="" size="sm" color="secondary" text="Leer más" />
+              <Button
+                className=""
+                size="sm"
+                color="secondary"
+                text="Leer más"
+              />
             </Link>
           </div>
         </div>

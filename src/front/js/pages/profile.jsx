@@ -52,7 +52,7 @@ export const Profile = () => {
                 );
               }
             }
-          }),
+          })
         );
       }
     }
@@ -97,14 +97,10 @@ export const Profile = () => {
               </div>
             </div>
           </div>
-        </div>,
+        </div>
       );
     }
   }, [store.user, tripsMap]);
 
-  return (
-    <>
-      {user}
-    </>
-  );
+  return <>{user}</>;
 };

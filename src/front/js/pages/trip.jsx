@@ -1,6 +1,4 @@
-import React, {
-  useContext, useEffect, useState, onSubmit, handleSubmit,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/trip.scss";
 import { Link, useParams } from "react-router-dom";
@@ -22,15 +20,18 @@ export const Trip = () => {
   const modalDeleteTrip = () => {
     if (trip.traveler_id == localStorage.getItem("tokenID")) {
       return (
-        <div role="button" className="d-flex m-5 justify-content-end text-danger">
+        <div
+          role="button"
+          className="d-flex m-5 justify-content-end text-danger"
+        >
           <span onClick={handleShow}>
-            Eliminar propuesta de viaje
-            {" "}
-            <i className="fas fa-trash-alt" />
+            Eliminar propuesta de viaje <i className="fas fa-trash-alt" />
           </span>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header className="text-center">
-              <Modal.Title className="text-center">Eliminar propuesta de viaje</Modal.Title>
+              <Modal.Title className="text-center">
+                Eliminar propuesta de viaje
+              </Modal.Title>
             </Modal.Header>
             <Modal.Body className="text-center">
               <p>¿Seguro que deseas eliminar esta propuesta de viaje?</p>
@@ -75,12 +76,15 @@ export const Trip = () => {
             return (
               <div className="partner-element" key={index.toString}>
                 <Link to={linkToPartnerID}>
-                  <img src={partner.profile_picture} className="partner-picture" />
+                  <img
+                    src={partner.profile_picture}
+                    className="partner-picture"
+                  />
                   <p className="fw-bold">{partner.name}</p>
                 </Link>
               </div>
             );
-          }),
+          })
         );
       } else {
         setPartnersMap(<p>Todavía nadie se ha unido, ten paciencia :)</p>);
@@ -93,9 +97,7 @@ export const Trip = () => {
       setTripDetails(
         <>
           <h1 className="my-2">
-            Viaje a:
-            {" "}
-            <span className="text-dark fw-bold">{trip.country}</span>
+            Viaje a: <span className="text-dark fw-bold">{trip.country}</span>
           </h1>
           <div className="row">
             <div className="col-12 col-md-6">
@@ -143,11 +145,15 @@ export const Trip = () => {
           </div>
           <h4>Compañeros:</h4>
           {partnersMap != "" ? partnersMap : "Todavía no hay compañeros"}
-        </>,
+        </>
       );
     }
     if (trip.is_active == false) {
-      setTripDetails(<h2 className="text-center my-3">Parece que este viaje ha sido borrado... :(</h2>);
+      setTripDetails(
+        <h2 className="text-center my-3">
+          Parece que este viaje ha sido borrado... :(
+        </h2>
+      );
     }
   }, [partnersMap]);
 

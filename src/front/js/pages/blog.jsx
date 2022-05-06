@@ -1,9 +1,6 @@
-import React, {
-  useState, useContext, useEffect, onSubmit, handleSubmit,
-} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import Button from "../component/button";
 import { PostCard } from "../component/post-card";
 import "../../styles/blog.scss";
@@ -42,14 +39,18 @@ export const Blog = () => {
                 title={post.title}
                 text={post.text}
                 userID={post.traveler_id}
-                username={localStorage.getItem("token") ? post.traveler_name : "Usuario"}
+                username={
+                  localStorage.getItem("token") ? post.traveler_name : "Usuario"
+                }
                 userpicture={
-                  localStorage.getItem("token") ? post.traveler_picture : store.profilePicture
+                  localStorage.getItem("token")
+                    ? post.traveler_picture
+                    : store.profilePicture
                 }
               />
             );
           }
-        }),
+        })
       );
     }
   }, [store.posts]);
@@ -103,7 +104,12 @@ export const Blog = () => {
                 />
                 <h3>Añade una imagen de tu historia:</h3>
                 <div className="center-file-input">
-                  <input id="media" type="file" className="input-style" {...register("media")} />
+                  <input
+                    id="media"
+                    type="file"
+                    className="input-style"
+                    {...register("media")}
+                  />
                 </div>
                 <div className="text-center">
                   <input

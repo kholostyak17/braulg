@@ -1,13 +1,10 @@
-import React, {
-  useContext, useEffect, useState, onSubmit, handleSubmit,
-} from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 import logo from "../../img/logo.png";
 import loginImage from "../../img/background-login.jpg";
 import "../../styles/login.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
@@ -30,7 +27,13 @@ export const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-div">
             <h2>Correo electrónico:</h2>
-            <input id="email" type="email" className="input-style" required {...register("email")} />
+            <input
+              id="email"
+              type="email"
+              className="input-style"
+              required
+              {...register("email")}
+            />
             <h2>Contraseña:</h2>
             <input
               id="password"
@@ -40,10 +43,13 @@ export const Login = () => {
               {...register("password")}
             />
             <div className="text-center my-4">
-              <input type="submit" value="INICIAR SESIÓN" className="button lm secondary m-2" />
+              <input
+                type="submit"
+                value="INICIAR SESIÓN"
+                className="button lm secondary m-2"
+              />
               <p className="mt-5">
-                ¿No tienes una cuenta?
-                {" "}
+                ¿No tienes una cuenta?{" "}
                 <Link to="/register">
                   <span className="fw-bold primary-color">¡Regístrate!</span>
                 </Link>

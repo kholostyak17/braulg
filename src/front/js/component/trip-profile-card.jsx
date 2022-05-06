@@ -1,6 +1,4 @@
-import React, {
-  Component, useState, useEffect, Fragment, useContext,
-} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Button from "./button";
@@ -17,13 +15,16 @@ const TripProfileCard = (props) => {
           <div className="partner-box-trip-card" key={index.toString}>
             <Link to={linkToPartnerID}>
               <div className="partner-picture-box">
-                <img src={partner.profile_picture} className="partner-picture" />
+                <img
+                  src={partner.profile_picture}
+                  className="partner-picture"
+                />
               </div>
               <p className="">{partner.name}</p>
             </Link>
           </div>
         );
-      }),
+      })
     );
   }, []);
 
@@ -33,11 +34,7 @@ const TripProfileCard = (props) => {
         <div className="col-12">
           <p>
             <h5>
-              {props.country}
-              ,
-              {props.startDate.slice(4, -18)}
-              {" "}
-              -
+              {props.country}, {props.startDate.slice(4, -18)} -
               {props.endDate.slice(4, -18)}
             </h5>
           </p>
@@ -48,7 +45,12 @@ const TripProfileCard = (props) => {
         <div className="">{partnersMap}</div>
         <div className="">
           <Link to={linkToTripID}>
-            <Button className="text-center" size="sm" color="secondary" text="Saber más" />
+            <Button
+              className="text-center"
+              size="sm"
+              color="secondary"
+              text="Saber más"
+            />
           </Link>
         </div>
       </div>

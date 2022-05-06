@@ -1,12 +1,8 @@
-import React, {
-  useContext, useEffect, onSubmit, handleSubmit,
-} from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 import registerImage from "../../img/background-register.jpg";
 import "../../styles/register.scss";
-import { Link } from "react-router-dom";
-import Button from "../component/button";
 
 export const Register = () => {
   const { store, actions } = useContext(Context);
@@ -58,7 +54,13 @@ export const Register = () => {
               {...register("language")}
             />
             <h2>Correo electrónico:</h2>
-            <input id="email" type="email" className="input-style" required {...register("email")} />
+            <input
+              id="email"
+              type="email"
+              className="input-style"
+              required
+              {...register("email")}
+            />
             <h2>Contraseña:</h2>
             <input
               id="password"
@@ -71,7 +73,11 @@ export const Register = () => {
               {...register("password")}
             />
             <div className="text-center my-4">
-              <input type="submit" value="REGÍSTRATE" className="button lm secondary m-2" />
+              <input
+                type="submit"
+                value="REGÍSTRATE"
+                className="button lm secondary m-2"
+              />
             </div>
           </div>
         </form>

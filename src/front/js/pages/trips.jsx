@@ -1,10 +1,6 @@
-import React, {
-  useContext, useEffect, useState, onSubmit, handleSubmit,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/trips.scss";
-import { Link } from "react-router-dom";
-import Button from "../component/button";
 import { TripCard } from "../component/trip-card";
 
 export const Trips = () => {
@@ -37,7 +33,7 @@ export const Trips = () => {
               />
             );
           }
-        }),
+        })
       );
     }
   }, [store.trips]);

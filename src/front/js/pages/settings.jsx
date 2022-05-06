@@ -1,6 +1,4 @@
-import React, {
-  useState, useContext, useEffect, onSubmit, handleSubmit,
-} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import "../../styles/settings.scss";
@@ -36,7 +34,12 @@ export const Settings = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-div">
             <h2>Imagen de perfil:</h2>
-            <input id="picture" type="file" className="input-style" {...register("picture")} />
+            <input
+              id="picture"
+              type="file"
+              className="input-style"
+              {...register("picture")}
+            />
             <h2>Biografía:</h2>
             <textarea
               id="biografía"
@@ -107,12 +110,21 @@ export const Settings = () => {
             />
             <div className="text-center my-4 d-block">
               <Link to={"/user/".concat(store.currentUser.id)}>
-                <Button className="m-2" size="lm" color="primary" text="CANCELAR" />
+                <Button
+                  className="m-2"
+                  size="lm"
+                  color="primary"
+                  text="CANCELAR"
+                />
               </Link>
-              <input type="submit" value="GUARDAR" className="button lm secondary m-2" />
+              <input
+                type="submit"
+                value="GUARDAR"
+                className="button lm secondary m-2"
+              />
             </div>
           </div>
-        </form>,
+        </form>
       );
     }
   }, [store.currentUser]);
@@ -122,10 +134,12 @@ export const Settings = () => {
       <div className="col-sm-12 col-md-7 content-box scrollable-box">
         <h1 className="text-center my-4">Ajustes del perfil</h1>
         {settingsPanel}
-        <div role="button" className="d-flex m-5 justify-content-end text-danger">
+        <div
+          role="button"
+          className="d-flex m-5 justify-content-end text-danger"
+        >
           <span onClick={handleShow}>
             Eliminar cuenta
-            {" "}
             <i className="fas fa-trash-alt cursor-pointer" />
           </span>
           <Modal show={show} onHide={handleClose}>

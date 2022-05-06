@@ -1,11 +1,8 @@
-import React, {
-  useContext, useEffect, useState, Fragment,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "../component/button";
 import { Context } from "../store/appContext";
-
 import "../../styles/post.scss";
 
 export const Post = () => {
@@ -16,14 +13,16 @@ export const Post = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const modalDeletePost = () => {
     if (store.post_by_id.traveler_id == localStorage.getItem("tokenID")) {
       return (
-        <div role="button" className="d-flex m-5 justify-content-end text-danger">
+        <div
+          role="button"
+          className="d-flex m-5 justify-content-end text-danger"
+        >
           <span onClick={handleShow}>
-            Eliminar post
-            {" "}
-            <i className="fas fa-trash-alt" />
+            Eliminar post <i className="fas fa-trash-alt" />
           </span>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header className="text-center">
@@ -61,12 +60,10 @@ export const Post = () => {
   return (
     <div className="blog-view">
       <div className="col-sm-12 col-md-9 content-box scrollable-box p-3">
-        {store.post_by_id.media ? (
+        {store.post_by_id.media && (
           <div>
             <img src={store.post_by_id.media} className="post-image" />
           </div>
-        ) : (
-          ""
         )}
 
         <div className="py-2 px-3">
@@ -82,7 +79,9 @@ export const Post = () => {
                 className="user-picture-post"
               />
               <p className="user-name ms-2">
-                {localStorage.getItem("token") ? store.post_by_id.traveler_name : "Usuario"}
+                {localStorage.getItem("token")
+                  ? store.post_by_id.traveler_name
+                  : "Usuario"}
               </p>
             </div>
           </Link>

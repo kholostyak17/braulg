@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { Home } from "./pages/home";
-import { Components } from "./pages/components";
+import { Landing } from "./pages/landing";
 import { Trips } from "./pages/trips";
 import { Trip } from "./pages/trip";
 import { NewTrip } from "./pages/newtrip";
@@ -30,10 +29,7 @@ const Router = () => {
         <MyNavbar />
         <Switch>
           <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/components">
-            <Components />
+            <Landing />
           </Route>
           <Route exact path="/trips">
             <Trips />
@@ -68,9 +64,6 @@ const Router = () => {
           <Route exact path="/about-us">
             <AboutUs />
           </Route>
-          {/* <Route exact path="/faq">
-							<Faq />
-						</Route> */}
           <Route>
             <h1 className="m-4">
               Código 404: Ruta no encontrada... :(

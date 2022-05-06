@@ -4,18 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { Context } from "../store/appContext";
 import Button from "../component/button";
-import "../../styles/home.scss";
 import logo from "../../img/logo.png";
 import logoBraulg from "../../img/logo-braulg.png";
-import pictureHome from "../../img/picture-home.jpg";
-import backgroundHome from "../../img/background-home.jpg";
-import { TripCardHome } from "../component/trip-card-home";
+import { TripCardLanding } from "../component/trip-card-landing";
 import CardSmall from "../component/cardsmall";
+import "../../styles/landing.scss";
 
-export const Home = () => {
+export const Landing = () => {
   const { store, actions } = useContext(Context);
-  const linkProfile = "/user/".concat(localStorage.getItem("tokenID"));
-  const [posts, setPosts] = useState([]);
   const [postsMap, setPostsMap] = useState("");
   const [tripsMap, setTripsMap] = useState("");
   const theme = createMuiTheme({
@@ -46,7 +42,7 @@ export const Home = () => {
             title={post.title}
             coloredText={post.text}
           />
-        )),
+        ))
       );
     }
   }, [store.posts]);
@@ -54,22 +50,30 @@ export const Home = () => {
   useEffect(() => {
     if (store.trips != undefined || store.trip.user != undefined) {
       setTripsMap(
-        store.trips.slice(store.trips.length - 3, store.trips.length).map((trip, index) => (
-
-          <Grid item xs={12} sm={6} md={4} className="m-auto" key={index.toString()}>
-            <TripCardHome
-              idTrip={trip.id}
-              username="Usuario"
-              userpicture={store.profilePicture}
-              country={trip.country}
-              cities={trip.cities}
-              startDate={trip.start_date}
-              endDate={trip.end_date}
-              activities={trip.activities}
-              partners={trip.partners}
-            />
-          </Grid>
-        )),
+        store.trips
+          .slice(store.trips.length - 3, store.trips.length)
+          .map((trip, index) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              className="m-auto"
+              key={index.toString()}
+            >
+              <TripCardLanding
+                idTrip={trip.id}
+                username="Usuario"
+                userpicture={store.profilePicture}
+                country={trip.country}
+                cities={trip.cities}
+                startDate={trip.start_date}
+                endDate={trip.end_date}
+                activities={trip.activities}
+                partners={trip.partners}
+              />
+            </Grid>
+          ))
       );
     }
   }, [store.trips]);
@@ -101,28 +105,32 @@ export const Home = () => {
       </div>
       <div className="home-background">
         <div className="home-body container">
-          <h1 className="title-home my-0 py-3 landing-color fw-bold">¿Qué es Braulg?</h1>
+          <h1 className="title-home my-0 py-3 landing-color fw-bold">
+            ¿Qué es Braulg?
+          </h1>
           <div className="mx-2 resume-container">
             <p className="">
-              Braulg es una red social para conectar con personas con la finalidad de realizar
-              viajes en compañía.
+              Braulg es una red social para conectar con personas con la
+              finalidad de realizar viajes en compañía.
             </p>
             <p className="">
-              Si eres un usuario que ya tiene en mente algún plan de viaje, puedes publicar un aviso de
-              viaje donde le cuentes al resto de usuarios dónde deseas viajar, en que fecha piensas
-              hacerlo, y que actividades te apetece realizar.
+              Si eres un usuario que ya tiene en mente algún plan de viaje,
+              puedes publicar un aviso de viaje donde le cuentes al resto de
+              usuarios dónde deseas viajar, en que fecha piensas hacerlo, y que
+              actividades te apetece realizar.
             </p>
             <p>
-              En cambio, si todavía no tienes ningún plan en mente pero te apetece unirte a algún viaje
-              propuesto por otro usuario podrás ver la lista de viajes propuestos por los otros
-              usuarios y unirte a ellos como compañero. En el chat de nuestra apliación podréis
-              mantener contacto para ponerse de acuerdo respecto a todos los detalles del
-              viaje.
+              En cambio, si todavía no tienes ningún plan en mente pero te
+              apetece unirte a algún viaje propuesto por otro usuario podrás ver
+              la lista de viajes propuestos por los otros usuarios y unirte a
+              ellos como compañero. En el chat de nuestra apliación podréis
+              mantener contacto para ponerse de acuerdo respecto a todos los
+              detalles del viaje.
             </p>
             <p>
-              Además, nuestra aplicación cuenta con un blog donde los usuarios pueden compartir sus
-              experiencias para que el resto de usuarios puedan tomar inspiración para sus
-              futuros planes :).
+              Además, nuestra aplicación cuenta con un blog donde los usuarios
+              pueden compartir sus experiencias para que el resto de usuarios
+              puedan tomar inspiración para sus futuros planes :).
             </p>
           </div>
 

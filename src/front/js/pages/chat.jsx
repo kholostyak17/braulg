@@ -1,10 +1,7 @@
-import React, {
-  useContext, useEffect, useState, onSubmit, handleSubmit,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/chat.scss";
 import { Link } from "react-router-dom";
-import Button from "../component/button";
 
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import firebase from "firebase/app";
@@ -16,7 +13,8 @@ import "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyDSZkO_R-iEf2of7DQeyBqsm9oEAwMb6EQ",
   authDomain: "braulg-a8cd2.firebaseapp.com",
-  databaseURL: "https://braulg-a8cd2-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL:
+    "https://braulg-a8cd2-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "braulg-a8cd2",
   storageBucket: "braulg-a8cd2.appspot.com",
   messagingSenderId: "1002026522218",
@@ -45,10 +43,7 @@ export const Chat = () => {
     };
     if (fullMessage.message != "") {
       setConversation([...conversation, fullMessage]);
-      firebase
-        .database()
-        .ref("chat")
-        .push(fullMessage);
+      firebase.database().ref("chat").push(fullMessage);
     }
   }, [message]);
 
@@ -61,11 +56,16 @@ export const Chat = () => {
           const allMessages = Object.values(snapshot.val());
           setConversationMap(
             allMessages.map((element, index) => {
-              const myUser = store.users.find((elementarray) => elementarray.id == element.author);
+              const myUser = store.users.find(
+                (elementarray) => elementarray.id == element.author
+              );
               return (
                 <div key={index.toString()} className="full-message">
                   <Link to={"/user/".concat(myUser.id)}>
-                    <img className="chat-user-picture" src={myUser.profile_picture} />
+                    <img
+                      className="chat-user-picture"
+                      src={myUser.profile_picture}
+                    />
                   </Link>
                   <div className="chat-text">
                     <span className="fw-bold">{myUser.name.concat(": ")}</span>
@@ -73,7 +73,7 @@ export const Chat = () => {
                   </div>
                 </div>
               );
-            }),
+            })
           );
         });
     }

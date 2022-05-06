@@ -1,8 +1,5 @@
-import React, {
-  useState, useContext, useEffect, Fragment,
-} from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Card from "react-bootstrap/Card";
 import "../../styles/trip-card.scss";
 import { Link } from "react-router-dom";
 import Button from "./button";
@@ -20,13 +17,16 @@ export const TripCard = (props) => {
           <div className="partner-box-trip-card" key={index.toString()}>
             <Link to={linkToPartnerID}>
               <div className="partner-picture-box">
-                <img src={partner.profile_picture} className="partner-picture" />
+                <img
+                  src={partner.profile_picture}
+                  className="partner-picture"
+                />
               </div>
               <p className="">{partner.name}</p>
             </Link>
           </div>
         );
-      }),
+      })
     );
   }, []);
 
@@ -35,9 +35,7 @@ export const TripCard = (props) => {
       <div className="my-card-header d-flex row p-3">
         <div className="col-12 col-md-9 my-auto">
           <h2>
-            Viaje a:
-            {" "}
-            <span className="text-dark">{props.country}</span>
+            Viaje a: <span className="text-dark">{props.country}</span>
           </h2>
         </div>
         <div className="col-12 col-md-3 ms-auto my-auto text-center">

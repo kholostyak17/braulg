@@ -1,13 +1,8 @@
-import React, {
-  useState, useContext, useEffect, Fragment,
-} from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Card from "react-bootstrap/Card";
 import "../../styles/trip-card.scss";
-import { Link } from "react-router-dom";
-import Button from "./button";
 
-export const TripCardHome = (props) => {
+export const TripCardLanding = (props) => {
   const linkToTripID = "/trips/".concat(props.tripID);
   const linkToUserID = "/user/".concat(props.userID);
   const [partnersMap, setPartnersMap] = useState("");
@@ -24,7 +19,7 @@ export const TripCardHome = (props) => {
             <p className="">{partner.name}</p>
           </div>
         );
-      }),
+      })
     );
   }, []);
 
@@ -33,9 +28,7 @@ export const TripCardHome = (props) => {
       <div className="my-card-header d-flex row p-3">
         <div className="col-12 col-md-9 my-auto">
           <h2>
-            Viaje a:
-            {" "}
-            <span className="text-dark">{props.country}</span>
+            Viaje a: <span className="text-dark">{props.country}</span>
           </h2>
         </div>
       </div>
@@ -80,7 +73,7 @@ export const TripCardHome = (props) => {
   );
 };
 
-TripCardHome.propTypes = {
+TripCardLanding.propTypes = {
   userpicture: PropTypes.string,
   username: PropTypes.string,
   userID: PropTypes.number,

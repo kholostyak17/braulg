@@ -12,12 +12,21 @@ export const AboutUs = () => (
         <div className="portada" id="ivan" />
         <div className="title-total">
           <div className="title">
-            <a href="mailto:kholostyak17@gmail.com" className="title title-total">kholostyak17@gmail.com</a>
+            <a
+              href="mailto:kholostyak17@gmail.com"
+              className="title title-total"
+            >
+              kholostyak17@gmail.com
+            </a>
           </div>
           <h2 className="name-profile">Iván Jaén Trujillo</h2>
           <div className="desc" />
           <div className="actions d-flex flex-row justify-content-around">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/kholostyak17">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/kholostyak17"
+            >
               <button className="links-profile">
                 <i className="fab fa-github" />
               </button>
@@ -43,12 +52,21 @@ export const AboutUs = () => (
         <div className="portada" id="sergio" />
         <div className="title-total">
           <div className="title">
-            <a href="mailto:sergiocarrascal000@gmail.com" className="title title-total">sergiocarrascal000@gmail.com</a>
+            <a
+              href="mailto:sergiocarrascal000@gmail.com"
+              className="title title-total"
+            >
+              sergiocarrascal000@gmail.com
+            </a>
           </div>
           <h2 className="name-profile">Sergio Carrascal</h2>
           <div className="desc" />
           <div className="actions d-flex flex-row justify-content-around">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/scsanchez">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/scsanchez"
+            >
               <button className="links-profile">
                 <i className="fab fa-github" />
               </button>

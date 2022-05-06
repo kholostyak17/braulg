@@ -1,8 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import "../../styles/button.scss";
 
 const Button = (props) => {
-  const style = "button ".concat(props.className, " ", props.size, " ", props.color);
+  const style = "button ".concat(
+    props.className,
+    " ",
+    props.size,
+    " ",
+    props.color
+  );
   return (
     <button className={style} type="button" onClick={props.callBackFunc}>
       {props.text}

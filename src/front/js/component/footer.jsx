@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/footer.scss";
 
@@ -8,19 +8,11 @@ export const Footer = () => (
       <div className="footer-element">
         <Link to="/about-us">
           <span className="link-footer">
-            Made with
-            {" "}
-            <i className="fa fa-heart text-danger" />
-            {" "}
-            by Iván &amp; Sergio
+            {"Made with "} <i className="fa fa-heart text-danger" />
+            {` by Iván & Sergio`}
           </span>
         </Link>
       </div>
-      {/* <div className="footer-element">
-				<Link to="/faq">
-					<span className="link-footer">Preguntas frecuentes</span>
-				</Link>
-			</div> */}
     </div>
   </footer>
 );
