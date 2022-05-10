@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => ({
       })
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't get login!");
+            throw Error("I can't login!");
           }
           return response.json();
         })
@@ -124,7 +124,6 @@ const getState = ({ getStore, getActions, setStore }) => ({
             throw Error("I can't update this traveler!");
           }
           return response.json();
-          console.log(response);
         })
         .then(function (responseAsJson) {
           setStore({ user: responseAsJson });
@@ -155,125 +154,112 @@ const getState = ({ getStore, getActions, setStore }) => ({
             throw Error("I can't upload picture!");
           }
           return response.json();
-          console.log(response);
         })
         .catch(function (error) {
           console.log("Looks like there was a problem: \n", error);
         });
     },
 
-    getUser: (id, currentUser) => {
-      fetch(getStore().URL_API.concat("users/", id))
-        .then(function (response) {
+
+    fetchRequest: (init, endpoint, errorMessage, action) => {
+      const apiUrl = getStore().URL_API;
+      const token = localStorage.getItem("token");
+      let fetchConfig;
+      switch (init) {
+        case 'GET':
+          fetchConfig = {
+            method: "GET",
+            headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" }),
+          }
+          break;
+        case 'DELETE':
+          fetchConfig = {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          }
+          break;
+        case 'POST':
+          fetchConfig = {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          }
+          break;
+        default:
+          break;
+      }
+
+      fetch(apiUrl.concat(endpoint), fetchConfig)
+        .then( response => {
           if (!response.ok) {
-            throw Error("I can't load user!");
+            throw Error(errorMessage);
           }
           return response.json();
-          console.log(response);
         })
-        .then(function (responseAsJson) {
-          if (currentUser == true) {
-            setStore({ currentUser: responseAsJson });
-          } else {
-            setStore({ user: responseAsJson });
-          }
-        })
+        .then( responseAsJson => action(responseAsJson) )
         .catch(function (error) {
           console.log("Looks like there was a problem: \n", error);
         });
     },
+
     getUsers: () => {
-      fetch(getStore().URL_API.concat("users/"), {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" }),
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't load Traveler!");
-          }
-          return response.json();
-        })
-        .then(function (responseAsJson) {
-          setStore({ users: responseAsJson });
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
+      const endpoint = `users/`;
+      const errorMessage = "I can't load users!";
+      const action = data => setStore({ users: data });
+      getActions().fetchRequest('GET', endpoint, errorMessage, action);
+    },
+    getUser: (id, currentUser) => {
+      const endpoint = `users/${id}`;
+      const errorMessage = "I can't load user!";
+      const action = data => currentUser ? setStore({ currentUser: data }) : setStore({ user: data });
+      getActions().fetchRequest('GET', endpoint, errorMessage, action);
     },
     getTrips: () => {
-      fetch(getStore().URL_API.concat("trips"), {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" }),
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't load Trip!");
-          }
-          return response.json();
-        })
-        .then(function (responseAsJson) {
-          setStore({ trips: responseAsJson });
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
+      const endpoint = `trips/`;
+      const errorMessage = "I can't load trips!";
+      const action = data => setStore({ trips: data });
+      getActions().fetchRequest('GET', endpoint, errorMessage, action);
     },
     getTrip: (id) => {
-      fetch(getStore().URL_API.concat("trips/", id), {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" }),
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't load Trip!");
-          }
-          return response.json();
-        })
-        .then(function (responseAsJson) {
-          setStore({ trip: responseAsJson });
-          console.log(responseAsJson);
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
+      const endpoint = `trips/${id}`;
+      const errorMessage = "I can't load trip!";
+      const action = data => setStore({ trip: data });
+      getActions().fetchRequest('GET', endpoint, errorMessage, action);
     },
     getPosts: () => {
-      fetch(getStore().URL_API.concat("blog/"), {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" }),
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't load Traveler!");
-          }
-          return response.json();
-        })
-        .then(function (responseAsJson) {
-          setStore({ posts: responseAsJson });
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
+      const endpoint = `blog/`;
+      const errorMessage = "I can't load posts!";
+      const action = data => setStore({ posts: data });
+      getActions().fetchRequest('GET', endpoint, errorMessage, action);
     },
     getPost: (id) => {
-      fetch(getStore().URL_API.concat("blog/", id), {
-        method: "GET",
-        headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" }),
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't load Traveler!");
-          }
-          return response.json();
-        })
-        .then(function (responseAsJson) {
-          setStore({ post_by_id: responseAsJson });
-          console.log(responseAsJson);
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
+      const endpoint = `blog/${id}`;
+      const errorMessage = "I can't load post!";
+      const action = data => setStore({ post_by_id: data });
+      getActions().fetchRequest('GET', endpoint, errorMessage, action);
     },
+
+    deleteUser: () => {
+      const endpoint = `settings/${localStorage.getItem("tokenID")}`;
+      const errorMessage = "I can't delete this user!";
+      const action = () => {
+        localStorage.clear();
+        location.replace("./");
+      };
+      getActions().fetchRequest('DELETE', endpoint, errorMessage, action);
+    },
+    deleteTrip: (tripId) => {
+      const endpoint = `deletetrip/${tripId}/user/${localStorage.getItem("tokenID")}`;
+      const errorMessage = "I can't delete this trip!";
+      const action = () => location.replace("../trips");
+      getActions().fetchRequest('DELETE', endpoint, errorMessage, action);
+    },
+    deletePost: (postId) => {
+      const endpoint = `deletepost/${postId}/user/${localStorage.getItem("tokenID")}`;
+      const errorMessage = "I can't delete this post!";
+      const action = () => location.replace("../blog");
+      getActions().fetchRequest('DELETE', endpoint, errorMessage, action);
+    },
+
 
     createTrip: (tripData) => {
       const token = localStorage.getItem("token");
@@ -281,17 +267,16 @@ const getState = ({ getStore, getActions, setStore }) => ({
       const redirectToTrips = () => {
         location.replace("./trips/");
       };
-      fetch(getStore().URL_API.concat("newtrip/", localStorage.getItem("tokenID")), {
+      fetch(getStore().URL_API.concat("newtrip/", tokenID), {
         method: "POST",
         body: tripData,
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       })
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't register this trip!");
+            throw Error("I can't create this trip!");
           }
           return response.json();
-          console.log(response);
         })
         .then(function (responseAsJson) {
           setStore({ trips: responseAsJson });
@@ -315,7 +300,6 @@ const getState = ({ getStore, getActions, setStore }) => ({
               throw Error("I can't upload media!");
             }
             return response.json();
-            console.log(response);
           })
           .catch(function (error) {
             console.log("Looks like there was a problem: \n", error);
@@ -331,10 +315,9 @@ const getState = ({ getStore, getActions, setStore }) => ({
       })
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't register this post!");
+            throw Error("I can't create this post!");
           }
           return response.json();
-          console.log(response);
         })
         .then(function (responseAsJson) {
           createMediaPost(media, responseAsJson.id);
@@ -352,105 +335,31 @@ const getState = ({ getStore, getActions, setStore }) => ({
         });
     },
 
-    deleteUser: () => {
-      const token = localStorage.getItem("token");
-      const tokenID = localStorage.getItem("tokenID");
-      const redirectToHome = () => {
-        localStorage.clear(), location.replace("./");
-      };
-      fetch(getStore().URL_API.concat("settings/", localStorage.getItem("tokenID")), {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't delete this traveler!");
-          }
-          return response.json();
-          console.log(response);
-        })
-        .then(function (responseAsJson) {
-          redirectToHome();
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
-    },
-    deleteTrip: (tripID) => {
+    joinTrip: (id_trip) => {
       const token = localStorage.getItem("token");
       const tokenID = localStorage.getItem("tokenID");
       const redirectToTrips = () => {
-        location.replace("../trips");
+        location.replace("./trips/");
       };
-      fetch(getStore().URL_API.concat("deletetrip/", tripID, "/user/", tokenID), {
-        method: "DELETE",
+      fetch(getStore().URL_API.concat("traveler/", tokenID, "/trip/", id_trip), {
+        method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       })
         .then(function (response) {
           if (!response.ok) {
-            throw Error("I can't delete this trip!");
+            throw Error("I can't share this trip!");
           }
           return response.json();
-          console.log(response);
         })
         .then(function (responseAsJson) {
-          redirectToTrips();
+          setStore({ shared_trips: responseAsJson });
+          location.replace("../trips");
         })
         .catch(function (error) {
           console.log("Looks like there was a problem: \n", error);
         });
     },
-    deletePost: (postID) => {
-      const token = localStorage.getItem("token");
-      const tokenID = localStorage.getItem("tokenID");
-      const redirectToBlog = () => {
-        location.replace("../blog");
-      };
-      fetch(getStore().URL_API.concat("deletepost/", postID, "/user/", tokenID), {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw Error("I can't delete this post!");
-          }
-          return response.json();
-          console.log(response);
-        })
-        .then(function (responseAsJson) {
-          redirectToBlog();
-        })
-        .catch(function (error) {
-          console.log("Looks like there was a problem: \n", error);
-        });
-    },
-  },
-
-  joinTrip: (id_trip) => {
-    const token = localStorage.getItem("token");
-    const tokenID = localStorage.getItem("tokenID");
-    const redirectToTrips = () => {
-      location.replace("./trips/");
-    };
-    fetch(getStore().URL_API.concat("traveler/", tokenID, "/trip/", id_trip), {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-    })
-      .then(function (response) {
-        if (!response.ok) {
-          throw Error("I can't share this trip!");
-        }
-        return response.json();
-        console.log(response);
-      })
-      .then(function (responseAsJson) {
-        setStore({ shared_trips: responseAsJson });
-        location.replace("../trips");
-      })
-      .catch(function (error) {
-        console.log("Looks like there was a problem: \n", error);
-      });
-  },
+  }
 });
 
 export default getState;

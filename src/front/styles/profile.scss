@@ -1,9 +1,8 @@
 @import 'index.scss';
 
 .profile-view{
-    background-image: url("../img/background-profile.jpg");
-    background-repeat: repeat;
-    background-size: 100vw 100vh;
+    background: url("../img/background-profile.jpg") repeat center;
+    background-size: cover;
     @media only screen and (min-width: 768px) {
         height: 100vh;
     }
@@ -16,7 +15,7 @@
 }
 .background-image{
     width: 100%;
-    background-image: url("../img/background-profile-2.jpg");
+    background: url("../img/background-profile-2.jpg") center;
     background-size: cover;
     display: flex;
 }
@@ -37,9 +36,8 @@
     margin: 0 auto;
 }
 .trip-cards{
-    overflow-y: auto;
-    height: 40vh;
-    margin-bottom: 5rem;
+    max-height: 350px;
+    overflow-y: scroll;
 }
 .basic-info{
     
