@@ -96,7 +96,7 @@ export const Trip = () => {
     if (trip != undefined && trip.id == params.id) {
       setTripDetails(
         <>
-          <h1 className="my-2">
+          <h1 className="my-4">
             Viaje a: <span className="text-dark fw-bold">{trip.country}</span>
           </h1>
           <div className="row">
@@ -132,7 +132,7 @@ export const Trip = () => {
             {trip.traveler_id == localStorage.getItem("tokenID") ? (
               ""
             ) : (
-              <div className="col-12 col-md-6 text-center my-1 pt-2">
+              <div className="col-12 col-md-6 my-2 pt-2">
                 <Button
                   className=""
                   size="lm"

@@ -47,6 +47,7 @@ export const Blog = () => {
                     ? post.traveler_picture
                     : store.profilePicture
                 }
+                variant="blog"
               />
             );
           }

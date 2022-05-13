@@ -38,7 +38,7 @@ export const NewTrip = () => {
         <h1 className="text-center my-5">Proponer un viaje</h1>
         <form className="form-div" onSubmit={handleSubmit(onSubmit)}>
           <div className="my-4">
-            <h4>País al que vas a viajar:</h4>
+            <h5 className="my-2">País al que vas a viajar:</h5>
             <select
               id="country"
               name="country"
@@ -53,7 +53,7 @@ export const NewTrip = () => {
             </select>
           </div>
           <div className="my-4">
-            <h4>Ciudades que vas a visitar:</h4>
+            <h5 className="my-2">Ciudades que vas a visitar:</h5>
             <input
               id="cities"
               type="text"
@@ -66,7 +66,7 @@ export const NewTrip = () => {
             />
           </div>
           <div className="my-4">
-            <h4>Fecha estimada de viaje:</h4>
+            <h5 className="my-2">Fecha estimada de viaje:</h5>
             <div className="row">
               <div className="col-6">
                 <label>Fecha de inicio</label>
@@ -95,7 +95,7 @@ export const NewTrip = () => {
             </div>
           </div>
           <div className="my-4">
-            <h4>Actividades que vas a realizar:</h4>
+            <h5 className="my-2">Actividades que vas a realizar:</h5>
             <textarea
               id="activities"
               className="input-style my-textarea"

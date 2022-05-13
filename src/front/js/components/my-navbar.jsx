@@ -37,7 +37,7 @@ export const MyNavbar = () => {
         <Link to={linkProfile}>
           <Dropdown.Item
             href={linkProfile}
-            className="text-white menu-hover text-center fw-bold"
+            className="menu-item menu-hover text-center fw-bold"
           >
             Mi perfil
           </Dropdown.Item>
@@ -45,7 +45,7 @@ export const MyNavbar = () => {
         <Link to="/settings">
           <Dropdown.Item
             href="/settings"
-            className="text-white menu-hover text-center fw-bold"
+            className="menu-item menu-hover text-center fw-bold"
           >
             Ajustes
           </Dropdown.Item>

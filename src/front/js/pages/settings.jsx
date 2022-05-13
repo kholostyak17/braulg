@@ -33,14 +33,14 @@ export const Settings = () => {
       setSettingsPanel(
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-div">
-            <h2>Imagen de perfil:</h2>
+            <h5 className="my-2">Imagen de perfil:</h5>
             <input
               id="picture"
               type="file"
               className="input-style"
               {...register("picture")}
             />
-            <h2>Biografía:</h2>
+            <h5 className="my-2">Biografía:</h5>
             <textarea
               id="biografía"
               className="input-style my-textarea"
@@ -49,7 +49,7 @@ export const Settings = () => {
               defaultValue={store.currentUser.bio}
               {...register("bio")}
             />
-            <h2>Modificar nombre:</h2>
+            <h5 className="my-2">Nombre:</h5>
             <input
               id="name"
               type="text"
@@ -59,7 +59,7 @@ export const Settings = () => {
               defaultValue={store.currentUser.name}
               {...register("name")}
             />
-            <h2>Modificar edad:</h2>
+            <h5 className="my-2">Edad:</h5>
             <input
               id="age"
               type="number"
@@ -71,7 +71,7 @@ export const Settings = () => {
               required
               {...register("age")}
             />
-            <h2>Modificar idiomas:</h2>
+            <h5 className="my-2">Idiomas:</h5>
             <input
               id="language"
               type="text"
@@ -81,7 +81,7 @@ export const Settings = () => {
               defaultValue={store.currentUser.language}
               {...register("language")}
             />
-            <h2>Modificar ubicación:</h2>
+            <h5 className="my-2">Ubicación:</h5>
             <input
               id="localization"
               type="text"
@@ -91,7 +91,7 @@ export const Settings = () => {
               defaultValue={store.currentUser.localization}
               {...register("localization")}
             />
-            <h2>Modificar email:</h2>
+            <h5 className="my-2">Email:</h5>
             <input
               id="email"
               type="email"
@@ -99,7 +99,7 @@ export const Settings = () => {
               className="input-style"
               {...register("email")}
             />
-            <h2>Modificar contraseña:</h2>
+            <h5 className="my-2">Contraseña:</h5>
             <input
               id="password"
               type="password"

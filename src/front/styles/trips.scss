@@ -1,10 +1,11 @@
 .trips-view{
     height: 100vh;
     overflow: hidden;
-    background-image: url("../img/background-trips.jpg");
+    background-image: url("../img/background-trips.jpeg");
     background-repeat: repeat;
     background-size: 100vw 100vh;
 }
 .trips-container{
     height: 100% !important;
+    padding: 2rem !important;
 }

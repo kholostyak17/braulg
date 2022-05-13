@@ -79,7 +79,7 @@ export const Profile = () => {
             </div>
             <div className="row body">
               <div className="col-12 col-sm-6 mb-4">
-                <h2 className="text-center">Información básica</h2>
+                <h3 className="text-center">Información básica</h3>
                 <div className="basic-info">
                   <h5 className="mt-2">Edad:</h5>
                   <span className="text-dark">{store.user.age}</span>
@@ -90,7 +90,7 @@ export const Profile = () => {
                 </div>
               </div>
               <div className="col-12 col-sm-6 text-center mb-5">
-                <h2>Siguientes viajes</h2>
+                <h3>Historial de viajes</h3>
                 <div className="trip-cards">
                   {tripsMap != "" ? tripsMap : "Todavía no hay viajes..."}
                 </div>

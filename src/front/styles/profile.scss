@@ -3,13 +3,11 @@
 .profile-view{
     background: url("../img/background-profile.jpg") repeat center;
     background-size: cover;
-    @media only screen and (min-width: 768px) {
-        height: 100vh;
-    }
+    height: 100vh;
 }
 .content-box-profile{
+    height: 100%;
     @media only screen and (min-width: 768px) {
-    height: 100vh;
     overflow: hidden;
     }
 }
@@ -40,8 +38,8 @@
     overflow-y: scroll;
 }
 .basic-info{
-    
-    @media only screen and (min-width: 768px) {
-        text-align: center;
-    }
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 0.65rem;
+    padding: 1rem;
+    margin: 1rem;
 }

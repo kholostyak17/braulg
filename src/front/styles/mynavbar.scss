@@ -27,6 +27,12 @@
 .bg-secondary-color, .menu-hover:hover, .menu-hover:active, .menu-hover:visited, .dropdown-item.active{
     background-color: $secondary-color;
 }
+.menu-item{
+    color: $primary-color;
+    &:hover{
+        color: $primary-color-hover;
+    }
+}
 .item-hover:hover{
     color: $primary-color;
 }

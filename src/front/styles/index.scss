@@ -10,7 +10,7 @@ $font-family-secondary: 'Roboto', sans-serif;
 $primary-color: #17A398;
 // $primary-color: #075C76; //color de kochanie
 $primary-color-hover: rgb(24, 148, 138);
-$secondary-color: #F5B82E;
+$secondary-color: #f6ad04;
 // $secondary-color: #CFAC5C; //color de kochanie
 // $secondary-color: #CCB174; //color de kochanie0
 $secondary-color-hover: rgb(241, 172, 10);
@@ -97,10 +97,12 @@ a{
 //estilos referentes al diseño de las card (en trips y en blog)
 .my-card{
     margin: 1rem 1rem;
+    padding: 1rem;
     border-radius: 0.65rem;
     background-color: $white-color;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: rgba(0, 0, 0, 0.12) 0 0 12px 6px;
 }
 .my-card-header{
     border-bottom: solid 1px rgb(182, 182, 182);

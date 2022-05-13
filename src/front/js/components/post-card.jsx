@@ -9,7 +9,7 @@ export const PostCard = (props) => {
   const linkToUserID = "/user/".concat(props.userID);
 
   return (
-    <div className="my-card post-card-size row">
+    <div className={`my-card post-card-size row ${props.variant=="blog" ? "p-0" : ''}`}>
       <div className="media-box col-sm-12 col-md-5">
         {props.media ? (
           <img className="media-picture" src={props.media} />
