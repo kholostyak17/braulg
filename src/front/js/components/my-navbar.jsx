@@ -4,7 +4,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../../img/logo.png";
-import "../../styles/mynavbar.scss";
 
 export const MyNavbar = () => {
   const location = useLocation();

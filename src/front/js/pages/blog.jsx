@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import Button from "../components/button";
 import { PostCard } from "../components/post-card";
-import "../../styles/blog.scss";
 // componentes para el modal
 import Modal from "react-bootstrap/Modal";
 import CloseIcon from "@material-ui/icons/Close";

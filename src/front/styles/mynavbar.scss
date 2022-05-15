@@ -1,45 +1,51 @@
-@import 'index.scss';
+@import "_variables";
 
-.navbar{
-    background-color: $primary-color;
-    font-family: $font-family;
-    font-weight: 600;
-    color: $white-color;
+.navbar {
+  background-color: $primary-color;
+  font-family: $font-family;
+  font-weight: 600;
+  color: $white-color;
 }
-.nav-logo{
-    margin: 0.5rem; 
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 100%;
-    color: $white-color;
+.nav-logo {
+  margin: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 100%;
+  color: $white-color;
 }
-.nav-logo-name{
-    height: 1.25rem;
-    margin-left: 0.25rem;
+.nav-logo-name {
+  height: 1.25rem;
+  margin-left: 0.25rem;
 }
-.link-navbar{
-    margin:0.5rem; 
-    color: $white-color;
+.link-navbar {
+  margin: 0.5rem;
+  color: $white-color;
 }
-.link-navbar:hover{
-    color: $secondary-color;
+.link-navbar:hover {
+  color: $secondary-color;
 }
-.bg-secondary-color, .menu-hover:hover, .menu-hover:active, .menu-hover:visited, .dropdown-item.active{
-    background-color: $secondary-color;
+.bg-secondary-color,
+.menu-hover:hover,
+.menu-hover:active,
+.menu-hover:visited,
+.dropdown-item:active,
+.dropdown-item:focus {
+  background-color: $secondary-color;
+  color: $primary-color;
 }
-.menu-item{
-    color: $primary-color;
-    &:hover{
-        color: $primary-color-hover;
-    }
+.menu-item {
+  color: $primary-color;
+  &:hover {
+    color: $primary-color-hover;
+  }
 }
-.item-hover:hover{
-    color: $primary-color;
+.item-hover:hover {
+  color: $primary-color;
 }
-.toggle-button{
-    padding-left: 0;
+.toggle-button {
+  padding-left: 0;
 }
-.dropdown-menu-right{
+.dropdown-menu-right {
   right: 0;
   left: auto;
 }

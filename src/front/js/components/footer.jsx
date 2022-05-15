@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/footer.scss";
 
 export const Footer = () => (
   <footer className="footer mt-auto">

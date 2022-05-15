@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/trip.scss";
 import { Link, useParams } from "react-router-dom";
 import Button from "../components/button";
 import Modal from "react-bootstrap/Modal";

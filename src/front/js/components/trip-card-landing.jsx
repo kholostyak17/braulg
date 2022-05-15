@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import "../../styles/trip-card.scss";
 
 export const TripCardLanding = (props) => {
   const linkToTripID = "/trips/".concat(props.tripID);

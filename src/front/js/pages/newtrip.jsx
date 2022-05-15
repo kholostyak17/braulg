@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 import newtripImage from "../../img/background-newtrip.jpg";
 import countriesList from "../resources/countries.json";
-import "../../styles/newtrip.scss";
 
 export const NewTrip = () => {
   const { store, actions } = useContext(Context);
@@ -37,7 +36,7 @@ export const NewTrip = () => {
       <div className="col-sm-12 col-md-7 content-box">
         <h1 className="text-center my-5">Proponer un viaje</h1>
         <form className="form-div" onSubmit={handleSubmit(onSubmit)}>
-          <div className="my-4">
+          <div className="my-3">
             <h5 className="my-2">País al que vas a viajar:</h5>
             <select
               id="country"
@@ -52,7 +51,7 @@ export const NewTrip = () => {
               {countriesSelect}
             </select>
           </div>
-          <div className="my-4">
+          <div className="my-3">
             <h5 className="my-2">Ciudades que vas a visitar:</h5>
             <input
               id="cities"
@@ -65,7 +64,7 @@ export const NewTrip = () => {
               {...register("cities")}
             />
           </div>
-          <div className="my-4">
+          <div className="my-3">
             <h5 className="my-2">Fecha estimada de viaje:</h5>
             <div className="row">
               <div className="col-6">
@@ -94,7 +93,7 @@ export const NewTrip = () => {
               </div>
             </div>
           </div>
-          <div className="my-4">
+          <div className="my-3">
             <h5 className="my-2">Actividades que vas a realizar:</h5>
             <textarea
               id="activities"

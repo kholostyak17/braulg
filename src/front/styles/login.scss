@@ -1,12 +1,12 @@
-.login-logo{
-    border-radius: 100%;
-    height: 10rem;
+.login-logo {
+  border-radius: 100%;
+  height: 10rem;
 }
 @media only screen and (max-width: 768px) {
-    .login-view{
-        height: 100vh;
-        background-image: url("../img/background-login.jpg");
-        background-repeat: repeat;
-        background-size: 100vw 100vh;
-    }
+  .login-view {
+    min-height: 100vh;
+    background-image: url("../img/background-login.jpg");
+    background-repeat: repeat;
+    background-size: 100vw 100vh;
+  }
 }

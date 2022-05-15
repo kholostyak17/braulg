@@ -1,74 +1,73 @@
-@import 'index.scss';
+@import "_variables";
 
-.chat-view{
-    background-image: url("../img/background-chat.jpg");
-    background-repeat: repeat;
-    background-size: 100vw 100vh;
-    height: 100vh;
+.chat-view {
+  background-image: url("../img/background-chat.jpg");
+  background-repeat: repeat;
+  background-size: 100vw 100vh;
+  height: 100vh;
 }
-.content-box-chat{
-    overflow: hidden;
-    height: 80vh;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 0.65rem;
-    overflow: hidden;
+.content-box-chat {
+  overflow: hidden;
+  height: 80vh;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 0.65rem;
+  overflow: hidden;
 }
 @media only screen and (max-width: 768px) {
-    .chat-box{
-        width: 90%;
-        margin: 1rem auto;
-    }
-    .content-box-chat{
-        width: 95%;
-    }
+  .chat-box {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .content-box-chat {
+    width: 95%;
+  }
 }
-.messages-box{
-    height: 90%;
-    padding: 0.5rem;
-    overflow-y: scroll;
-    overflow-x: hidden
+.messages-box {
+  height: 90%;
+  padding: 0.5rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.full-message{
-    display: flex;
-    flex-direction: row;
-
+.full-message {
+  display: flex;
+  flex-direction: row;
 }
-.chat-user-picture{
-    border-radius: 100%;
-    border: $grey-color solid 1px;
-    height: 2rem;
-    width: 2rem;
-    img{
-        width: 100%;
-        height: 100%;
-    }
+.chat-user-picture {
+  border-radius: 100%;
+  border: $grey-color solid 1px;
+  height: 2rem;
+  width: 2rem;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
-.chat-text{
-    margin: 0.15rem auto 0.15rem 0.15rem;
-    padding: 0.3rem 0.8rem;
-    background-color: $secondary-color;
-    border-radius: 0.5rem;
-    color: $black-color;
+.chat-text {
+  margin: 0.15rem auto 0.15rem 0.15rem;
+  padding: 0.3rem 0.8rem;
+  background-color: $secondary-color;
+  border-radius: 0.5rem;
+  color: $black-color;
 }
-.input-box{
-    border-top: solid $grey-color 1px;
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $white-color;
+.input-box {
+  border-top: solid $grey-color 1px;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $white-color;
 }
-.send-icon{
-    font-size: 1.5rem;
-    margin: 0 1rem 1rem 0;
-    color: $secondary-color
+.send-icon {
+  font-size: 1.5rem;
+  margin: 0 1rem 1rem 0;
+  color: $secondary-color;
 }
 .send-icon:hover {
-	color: $primary-color;
-    cursor: pointer;
-    transform: rotate(-20deg);
+  color: $primary-color;
+  cursor: pointer;
+  transform: rotate(-20deg);
 }
-.textarea-chat{
-    resize: none;
+.textarea-chat {
+  resize: none;
 }

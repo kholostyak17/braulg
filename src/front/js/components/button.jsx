@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../styles/button.scss";
 
 const Button = (props) => {
   const style = "button ".concat(

@@ -1,19 +1,19 @@
-@import 'index.scss';
+@import "_variables";
 
-.activities-box{
-    max-height: 4.5rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
+.activities-box {
+  max-height: 4.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
-.partner-box-trip-card{
-    display: inline-block;
-    margin: 0 0.5rem;
+.partner-box-trip-card {
+  display: inline-block;
+  margin: 0 0.5rem;
 }
-.partner-picture{
-    margin: 0 auto;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 100%;
-    border: solid 1px $grey-color;
-    display: flex;
+.partner-picture {
+  margin: 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  border: solid 1px $grey-color;
+  display: flex;
 }

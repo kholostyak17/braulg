@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/trips.scss";
 import { TripCard } from "../components/trip-card";
 
 export const Trips = () => {
@@ -39,9 +38,9 @@ export const Trips = () => {
   }, [store.trips]);
 
   return (
-    <div className="container-fluid main-box trips-view d-flex">
-      <div className="col-sm-12 col-md-7 content-box mx-auto scrollable-box trips-container">
-        <h1 className="text-center mt-4">Últimos viajes propuestos</h1>
+    <div className="trips-background py-0">
+      <div className="trips-body container my-0 pb-2">
+        <h1 className="text-center pt-4">Últimos viajes propuestos</h1>
         <div className="d-flex flex-column-reverse">
           {tripsMap != "" ? (
             tripsMap

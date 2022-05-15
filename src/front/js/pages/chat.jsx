@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/chat.scss";
 import { Link } from "react-router-dom";
 
 // Firebase App (the core Firebase SDK) is always required and must be listed first

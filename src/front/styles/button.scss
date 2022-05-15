@@ -1,49 +1,49 @@
-@import 'index.scss';
+@import "_variables";
 
-.button{
-    color: $white-color;
-    border-radius: 0.25rem;
-    font-weight: 700;
-    font-family: $font-family;
-    font-size: 16px;
-    border-width: 0;
-}
-
-.primary:hover{
-    background-color: $primary-color-hover;
-}
-.secondary:hover{
-    background-color: $secondary-color-hover;
+.button {
+  color: $white-color;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  font-family: $font-family;
+  font-size: 16px;
+  border-width: 0;
 }
 
-.primary{
-    background-color: $primary-color;
+.primary:hover {
+  background-color: $primary-color-hover;
 }
-.secondary{
-    background-color: $secondary-color;
+.secondary:hover {
+  background-color: $secondary-color-hover;
 }
-.s{
-    height: 3.5rem;
-    width: 7.5rem;
-    font-size: 1.125rem;
+
+.primary {
+  background-color: $primary-color;
 }
-.m{
-    height: 4.375rem;
-    width: 19.5rem;
-    font-size: 2.25rem;
+.secondary {
+  background-color: $secondary-color;
 }
-.l{
-    height: 4.375rem;
-    width: 43.75rem;
-    font-size: 2.25rem;
+.s {
+  height: 3.5rem;
+  width: 7.5rem;
+  font-size: 1.125rem;
 }
-.sm{
-    height: 1.85rem;
-    width: 6.75rem;
-    font-size: 0.875rem;
+.m {
+  height: 4.375rem;
+  width: 19.5rem;
+  font-size: 2.25rem;
 }
-.lm{
-    height: 2.5rem;
-    width: 17.5rem;
-    font-size: 1.125rem;
+.l {
+  height: 4.375rem;
+  width: 43.75rem;
+  font-size: 2.25rem;
+}
+.sm {
+  height: 1.85rem;
+  width: 6.75rem;
+  font-size: 0.875rem;
+}
+.lm {
+  height: 2.5rem;
+  width: 17.5rem;
+  font-size: 1.125rem;
 }

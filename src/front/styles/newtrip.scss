@@ -1,15 +1,12 @@
-.my-textarea{
-    max-height: 15rem;
-    min-height: 5rem;
-    height: 100%;
+.my-textarea {
+  max-height: 15rem;
+  min-height: 5rem;
+  height: 100%;
 }
 @media only screen and (max-width: 768px) {
-    .newtrip-view{
-        background-image: url("../img/background-newtrip.jpg");
-        background-repeat: repeat;
-        background-size: 100vw;
-    }
-}
-.newtrip-view{
-    height: 100%;
+  .newtrip-view {
+    background-image: url("../img/background-newtrip.jpg");
+    background-repeat: repeat;
+    background-size: 100vw;
+  }
 }

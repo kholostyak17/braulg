@@ -1,45 +1,45 @@
-@import 'index.scss';
+@import "_variables";
 
-.profile-view{
-    background: url("../img/background-profile.jpg") repeat center;
-    background-size: cover;
-    height: 100vh;
+.profile-background {
+  background-image: url("../img/background-profile.jpg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 100vw 100vh;
 }
-.content-box-profile{
-    height: 100%;
-    @media only screen and (min-width: 768px) {
-    overflow: hidden;
-    }
+
+.profile-body {
+  background-color: rgba(255, 255, 255, 0.75);
+  min-height: 100vh;
 }
-.background-image{
-    width: 100%;
-    background: url("../img/background-profile-2.jpg") center;
-    background-size: cover;
-    display: flex;
+
+.background-image {
+  width: 100%;
+  background: url("../img/background-profile-2.jpg") center;
+  background-size: cover;
+  display: flex;
 }
-.profile-img{
-    background: white;
-    border: solid white 0.5rem;
-    border-radius:100%;
-    height: 12rem;
-    width: 12rem;
-    margin: 1.25rem auto;
-    
+.profile-img {
+  background: white;
+  border: solid white 0.5rem;
+  border-radius: 100%;
+  height: 12rem;
+  width: 12rem;
+  margin: 1.25rem auto;
 }
-.bio{
-    word-wrap: break-word;
+.bio {
+  word-wrap: break-word;
 }
-.body{
-    width: 95%;
-    margin: 0 auto;
+.body {
+  width: 95%;
+  margin: 0 auto;
 }
-.trip-cards{
-    max-height: 350px;
-    overflow-y: scroll;
+.trip-cards {
+  max-height: 350px;
+  overflow-y: scroll;
 }
-.basic-info{
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 0.65rem;
-    padding: 1rem;
-    margin: 1rem;
+.basic-info {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 0.65rem;
+  padding: 1rem;
+  margin: 1rem;
 }

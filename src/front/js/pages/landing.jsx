@@ -8,7 +8,6 @@ import logo from "../../img/logo.png";
 import logoBraulg from "../../img/logo-braulg.png";
 import { TripCardLanding } from "../components/trip-card-landing";
 import CardSmall from "../components/cardsmall";
-import "../../styles/landing.scss";
 
 export const Landing = () => {
   const { store, actions } = useContext(Context);

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../styles/post-card.scss";
 import { Link } from "react-router-dom";
 import Button from "./button";
 
@@ -9,7 +8,11 @@ export const PostCard = (props) => {
   const linkToUserID = "/user/".concat(props.userID);
 
   return (
-    <div className={`my-card post-card-size row ${props.variant=="blog" ? "p-0" : ''}`}>
+    <div
+      className={`my-card post-card-size row ${
+        props.variant == "blog" ? "p-0" : ""
+      }`}
+    >
       <div className="media-box col-sm-12 col-md-5">
         {props.media ? (
           <img className="media-picture" src={props.media} />

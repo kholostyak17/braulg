@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "../components/button";
 import { Context } from "../store/appContext";
-import "../../styles/post.scss";
 
 export const Post = () => {
   const { store, actions } = useContext(Context);

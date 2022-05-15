@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import "../../styles/settings.scss";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "../components/button";
@@ -130,9 +129,9 @@ export const Settings = () => {
   }, [store.currentUser]);
 
   return (
-    <div className="settings-view">
-      <div className="col-sm-12 col-md-7 content-box scrollable-box">
-        <h1 className="text-center my-4">Ajustes del perfil</h1>
+    <div className="settings-background py-0">
+      <div className="settings-body container my-0 pb-2">
+        <h1 className="text-center pt-4">Ajustes del perfil</h1>
         {settingsPanel}
         <div
           role="button"

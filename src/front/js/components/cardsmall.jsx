@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
-import "../../styles/card-small.scss";
 import { Link } from "react-router-dom";
 import Button from "./button";
 

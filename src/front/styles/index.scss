@@ -2,125 +2,149 @@
     General Styles
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+@import "about-us";
+@import "blog";
+@import "button";
+@import "card-small";
+@import "chat";
+@import "footer";
+@import "landing";
+@import "login";
+@import "mynavbar";
+@import "newtrip";
+@import "post-card";
+@import "post";
+@import "profile";
+@import "register";
+@import "settings";
+@import "trip-card";
+@import "trip";
+@import "trips";
+//
 
-$font-family: 'Nunito', sans-serif;
-$font-family-secondary: 'Roboto', sans-serif;
-$primary-color: #17A398;
-// $primary-color: #075C76; //color de kochanie
-$primary-color-hover: rgb(24, 148, 138);
-$secondary-color: #f6ad04;
-// $secondary-color: #CFAC5C; //color de kochanie
-// $secondary-color: #CCB174; //color de kochanie0
-$secondary-color-hover: rgb(241, 172, 10);
-$black-color: #141414;
-$grey-color: #7A7A7A;
-$white-color: #FFFFFF;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 
-h1,h2,h3,h4,h5,h6{
-    font-family: $font-family;
-    font-weight: bold;
-    color: $primary-color;
+@import "_variables";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family;
+  font-weight: bold;
+  color: $primary-color;
 }
-p{
-    font-size: 18; 
-    color: $black-color;
+p {
+  font-size: 18;
+  color: $black-color;
 }
-span, p{
-    font-family: $font-family;
+span,
+p {
+  font-family: $font-family;
 }
-h1, h2, h3, p, span{
-    overflow-wrap: break-word;
+h1,
+h2,
+h3,
+p,
+span {
+  overflow-wrap: break-word;
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
-.primary-color{
-    color: $primary-color
+.primary-color {
+  color: $primary-color;
 }
-.secondary-color{
-    color: $secondary-color
+.secondary-color {
+  color: $secondary-color;
 }
-.landing-color{
-    color: #075C76;
+.landing-color {
+  color: #075c76;
 }
 
-//estilo de inputs con fondo transparente y borde gris abajo 
-.input-style{
-    border: none;
-    border-bottom: solid 0.1rem $grey-color;
-    background-color: rgba(255, 255, 255, 0);
-    &::placeholder{color: $grey-color;}
-    margin: 0 0.5rem;
-    margin-bottom: 1rem;
-    width: 95%;
-    
+//estilo de inputs con fondo transparente y borde gris abajo
+.input-style {
+  border: none;
+  border-bottom: solid 0.1rem $grey-color;
+  background-color: rgba(255, 255, 255, 0);
+  &::placeholder {
+    color: $grey-color;
+  }
+  margin: 0 0.5rem;
+  margin-bottom: 1rem;
+  width: 95%;
 }
 
 //elementos comunes a todas vistas responsive con column-picture column-content
-.main-box, .picture-box, .content-box{
-    margin: 0;
-    padding: 0;
+.main-box,
+.picture-box,
+.content-box {
+  margin: 0;
+  padding: 0;
 }
-.content-box, .form-div{
-    margin: 0 auto;
+.content-box,
+.form-div {
+  margin: 0 auto;
 }
-.form-div{
-    width: 80%;
+.form-div {
+  width: 80%;
 }
 @media only screen and (min-width: 768px) {
-    .picture{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        size: 100vw 100vh;
-    }
-    .picture-box{
-        overflow: hidden;
-        height: 100vh;
-    }
+  .picture {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    size: 100vw 100vh;
+  }
+  .picture-box {
+    overflow: hidden;
+    min-height: 100vh;
+  }
 }
-.content-box{
-    background-color: rgba(255, 255, 255, 0.85);
+.content-box {
+  background-color: rgba(255, 255, 255, 0.85);
 }
-.scrollable-box{
-    overflow-y: scroll;
-    height: 100vh;
+.scrollable-box {
+  overflow-y: scroll;
+  min-height: 100vh;
 }
 @media only screen and (max-width: 768px) {
-    .picture-box, .picture{
-        width: 0;
-    }
+  .picture-box,
+  .picture {
+    width: 0;
+  }
 }
 
 //estilos referentes al diseño de las card (en trips y en blog)
-.my-card{
-    margin: 1rem 1rem;
-    padding: 1rem;
-    border-radius: 0.65rem;
-    background-color: $white-color;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.75);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 0 12px 6px;
+.my-card {
+  margin: 1rem 1rem;
+  padding: 1rem;
+  border-radius: 0.65rem;
+  background-color: $white-color;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 0 12px 6px;
 }
-.my-card-header{
-    border-bottom: solid 1px rgb(182, 182, 182);
-    display: flex;
+.my-card-header {
+  border-bottom: solid 1px rgb(182, 182, 182);
+  display: flex;
 }
-.my-card-body{
-    padding: 1rem;
+.my-card-body {
+  padding: 1rem;
 }
 
 //estilo de icono y nombre de usuario creador
-.user-picture{
-    width: 3.5rem;
-    height: 3.5rem;
-    margin: 0.25rem;
-    border-radius: 100%;
-    border: solid 1px $grey-color;
+.user-picture {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0.25rem;
+  border-radius: 100%;
+  border: solid 1px $grey-color;
 }
-.user-name{
-    font-size: 1.5rem;
-    font-weight: 600;
+.user-name {
+  font-size: 1.5rem;
+  font-weight: 600;
 }

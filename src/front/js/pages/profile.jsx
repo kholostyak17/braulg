@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
 import TripProfileCard from "../components/trip-profile-card";
-import "../../styles/profile.scss";
 
 export const Profile = () => {
   const location = useLocation();
@@ -61,8 +60,8 @@ export const Profile = () => {
   useEffect(() => {
     if (store.user != undefined) {
       setUser(
-        <div className="profile-view">
-          <div className="col-sm-12 col-md-7 content-box content-box-profile">
+        <div className="profile-background py-0">
+          <div className="profile-body container my-0 pb-2 px-0">
             <div className="background-image">
               <img className="profile-img" src={store.user.profile_picture} />
             </div>
