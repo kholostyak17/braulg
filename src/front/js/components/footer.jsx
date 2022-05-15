@@ -7,7 +7,7 @@ export const Footer = () => (
       <div className="footer-element">
         <Link to="/about-us">
           <span className="link-footer">
-            {"Made with "} <i className="fa fa-heart text-danger" />
+            {"Made with "} <i className="fa fa-heart secondary-color" />
             {` by Iván & Sergio`}
           </span>
         </Link>

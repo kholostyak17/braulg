@@ -48,9 +48,11 @@ export const Landing = () => {
 
   useEffect(() => {
     if (store.trips != undefined || store.trip.user != undefined) {
+      const activeTrips = store.trips.filter((trip) => trip.is_active === true);
       setTripsMap(
-        store.trips
-          .slice(store.trips.length - 3, store.trips.length)
+        activeTrips
+          .slice(activeTrips.length - 3, activeTrips.length)
+          .reverse()
           .map((trip, index) => (
             <Grid
               item
