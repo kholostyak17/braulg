@@ -64,8 +64,8 @@ export const Landing = () => {
             >
               <TripCardLanding
                 idTrip={trip.id}
-                username="Usuario"
-                userpicture={store.profilePicture}
+                username={trip.traveler_name}
+                userpicture={trip.traveler_picture}
                 country={trip.country}
                 cities={trip.cities}
                 startDate={trip.start_date}

@@ -4,7 +4,7 @@ footer {
   color: $white-color;
   background-color: $black-color;
   font-family: $font-family;
-  padding: 0.2rem 1rem;
+  padding: 2px 1rem;
 }
 .link-footer,
 .text-footer {
@@ -13,7 +13,7 @@ footer {
   white-space: nowrap;
 }
 .link-footer:hover {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(0, 195, 255, 0.65);
 }
 
 @media only screen and (max-width: 768px) {

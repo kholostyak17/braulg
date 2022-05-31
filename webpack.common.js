@@ -46,8 +46,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: "braulg.ico",
-      template: "template.html",
+      favicon: "public/favicon.ico",
+      template: "public/template.html",
     }),
     new Dotenv({ safe: true, systemvars: true }),
   ],

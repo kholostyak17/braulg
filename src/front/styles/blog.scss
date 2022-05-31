@@ -1,12 +1,12 @@
 .content-box-blog{
     background-color: rgba(255,255,255,0.25);
     padding: 0;
-    min-height: 100vh;
+    min-height: calc(100vh - 96px);
 }
 .blog-view{
     background-image: url("../img/background-blog.jpg");
     background-repeat: repeat;
-    background-size: 100vw 100vh;
+    background-size: cover;
     background-attachment: fixed;
 }
 

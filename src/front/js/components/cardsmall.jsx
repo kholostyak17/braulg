@@ -10,7 +10,7 @@ const CardSmall = (props) => {
     <Card className="card--small">
       <Card.Img className="img--small" src={props.img} />
       <Card.Body className="d-flex column flex-wrap align-items-end body-card">
-        <Card.Title className="title--small">{props.title}</Card.Title>
+        <Card.Title className="title--small fw-bold">{props.title}</Card.Title>
         <p className="text--small">{props.coloredText}</p>
         <Link to={linkToPostID}>
           <Button

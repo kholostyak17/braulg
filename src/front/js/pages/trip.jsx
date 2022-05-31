@@ -58,7 +58,6 @@ export const Trip = () => {
   };
 
   useEffect(() => {
-    actions.verifyLogin();
     actions.getTrip(params.id);
   }, []);
 
@@ -76,10 +75,16 @@ export const Trip = () => {
               <div className="partner-element" key={index.toString}>
                 <Link to={linkToPartnerID}>
                   <img
-                    src={partner.profile_picture}
+                    src={
+                      localStorage.getItem("token")
+                      ? partner.profile_picture
+                      : "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"
+                    }
                     className="partner-picture"
                   />
-                  <p className="fw-bold">{partner.name}</p>
+                  <p className="fw-bold">{
+            localStorage.getItem("token")
+            ? partner.name: "Usuario"}</p>
                 </Link>
               </div>
             );
@@ -103,8 +108,15 @@ export const Trip = () => {
               <h4>Propuesto por:</h4>
               <Link to={linkToUserID}>
                 <div className="d-flex align-items-center">
-                  <img src={trip.traveler_picture} className="user-picture" />
-                  <p className="user-name fw-bold">{trip.traveler_name}</p>
+                  <img src={
+                    localStorage.getItem("token")
+                    ? trip.traveler_picture
+                    : "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"
+                    } className="user-picture" />
+                  <p className="user-name fw-bold">{
+                  localStorage.getItem("token")
+                  ? trip.traveler_name: "Usuario"
+                  }</p>
                 </div>
               </Link>
             </div>
@@ -157,13 +169,11 @@ export const Trip = () => {
   }, [partnersMap]);
 
   return (
-    <div className="container-fluid row main-box trip-view">
-      <div className="trips-view">
+    <div className="container-fluid row main-box trips-background">
         <div className="col-sm-12 col-md-9 content-box scrollable-box px-5 py-3">
           {tripDetails}
           {modalDeleteTrip()}
         </div>
-      </div>
     </div>
   );
 };

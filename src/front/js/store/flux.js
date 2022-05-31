@@ -2,7 +2,7 @@ import jwt_decode from "jwt-decode";
 
 const getState = ({ getStore, getActions, setStore }) => ({
   store: {
-    URL_API: process.env.API_URL || "https://braulg.herokuapp.com/api/",
+    URL_API: process.env.API_URL || "https://braulg-api-production.up.railway.app/",
     URL: process.env.FRONT_URL || "https://braulg.herokuapp.com/",
     profilePicture: "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png",
     currentUser: {},

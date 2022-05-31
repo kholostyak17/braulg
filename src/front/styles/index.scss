@@ -23,9 +23,12 @@
 //
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 
 @import "_variables";
+
+* {
+  font-family: $font-family;
+}
 
 h1,
 h2,
@@ -33,18 +36,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-family;
-  font-weight: bold;
+  font-weight: bold !important;
   color: $primary-color;
 }
+
 p {
-  font-size: 18;
   color: $black-color;
 }
-span,
-p {
-  font-family: $font-family;
-}
+
 h1,
 h2,
 h3,
@@ -52,9 +51,11 @@ p,
 span {
   overflow-wrap: break-word;
 }
+
 a {
   text-decoration: none;
 }
+
 .primary-color {
   color: $primary-color;
 }
@@ -97,11 +98,11 @@ a {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    size: 100vw 100vh;
+    size: 100vw calc(100vh - 96px);
   }
   .picture-box {
     overflow: hidden;
-    min-height: 100vh;
+    height: calc(100vh - 96px);
   }
 }
 .content-box {
@@ -109,7 +110,7 @@ a {
 }
 .scrollable-box {
   overflow-y: scroll;
-  min-height: 100vh;
+  height: calc(100vh - 96px);
 }
 @media only screen and (max-width: 768px) {
   .picture-box,

@@ -1,14 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 .about-us-container {
   width:100%;
-  font-family: Roboto, sans-serif;
+  height:100%;
   margin: 0;
   padding: 2rem;
   justify-content: center;
-  height:100vh;
   background: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
   @media screen and (max-width:957px){
-        height:auto;
+    height:auto;
   }
 }
 .nav-logo-about{

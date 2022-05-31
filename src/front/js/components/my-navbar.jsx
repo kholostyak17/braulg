@@ -97,6 +97,11 @@ export const MyNavbar = () => {
               </>
             ) : (
               <>
+                <Link to="/trips">
+                  <div className="link-navbar text-center">
+                    Viajes propuestos
+                  </div>
+                </Link>
                 <Link to="/blog">
                   <div className="link-navbar text-center">Blog</div>
                 </Link>

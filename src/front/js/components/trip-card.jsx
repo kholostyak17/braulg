@@ -17,11 +17,14 @@ export const TripCard = (props) => {
             <Link to={linkToPartnerID}>
               <div className="partner-picture-box">
                 <img
-                  src={partner.profile_picture}
+                  src={localStorage.getItem("token")
+                  ? partner.profile_picture
+                  : "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"}
                   className="partner-picture"
                 />
               </div>
-              <p className="">{partner.name}</p>
+              <p className="">{localStorage.getItem("token")
+                  ? partner.name : "Usuario"}</p>
             </Link>
           </div>
         );
@@ -49,8 +52,14 @@ export const TripCard = (props) => {
             <h4>Propuesto por:</h4>
             <Link to={linkToUserID}>
               <div className="d-flex align-items-center">
-                <img src={props.userpicture} className="user-picture" />
-                <p className="user-name">{props.username}</p>
+                <img src={
+                  localStorage.getItem("token")
+                  ? props.userpicture
+                  : "https://res.cloudinary.com/braulg/image/upload/v1624454265/airfaohxepd3ncf5tnlf.png"
+                }
+                className="user-picture" />
+                <p className="user-name">{localStorage.getItem("token")
+                  ? props.username: "Usuario"}</p>
               </div>
             </Link>
           </div>

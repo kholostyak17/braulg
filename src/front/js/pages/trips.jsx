@@ -7,7 +7,6 @@ export const Trips = () => {
   const [tripsMap, setTripsMap] = useState("");
 
   useEffect(() => {
-    actions.verifyLogin();
     actions.getTrips();
   }, []);
 
